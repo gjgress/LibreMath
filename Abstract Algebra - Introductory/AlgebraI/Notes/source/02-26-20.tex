@@ -1,0 +1,67 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+
+\section{Number Theory in Rings}
+\label{sec:number_theory_in_rings}
+For the section, assume that \(R\) is an integral domain.
+\begin{defn}[Units and Associates]
+	Let \(R\) be an integral domain. An element that divides every element of \(R\) is called a \textbf{unit}. The corresponding products are called \textbf{associates}; the associate of \(c\) is the product of \(c\) and the unit.
+\end{defn}
+\begin{defn}[Irreducibles and Primes]
+	A non-unit, non-zero \(r \in R\) is \textbf{irreducible} if it can be factored ONLY trivially:
+	\begin{align*}
+		r = ab \implies a \text{ or } b \text{ is a unit}
+	\end{align*}
+	A non-unit, non-zero \(p \in R\) is a \textbf{prime} if it divides a product ONLY trivially: 
+	\begin{align*}
+		p \mid ab \implies p \mid a \text{ or } p \mid b
+	\end{align*}
+\end{defn}
+Every prime is irreducible, but the converse is false in many rings.
+\begin{defn}[Greatest Common Divisor]
+	A \textbf{greatest common divisor} of \(a\) and \(b\) is a common divisor which is a multiple of all common divisors.
+\end{defn}
+Any two gcds are associates; not every pair of elements has a gcd. This is closely related to the ideal \((a,b)\).
+ \begin{defn}[UFD]
+	\(R\) is a \textbf{unique factorization domain} if every non-zero and non-unit element in \(R\) is the product of irreducible elements, and the decomposition is unique aside from associates and the order of the factors.
+\end{defn}
+\(\Z,F[x],\Z[x]\) are some examples of UFDs.
+\begin{defn}[PID]
+	\(R\) is a \textbf{principal ideal domain} if every ideal of a principal ideal. A PID automatically satisfies the conditions for a UFD. However, the converse does not hold.
+\end{defn}
+\begin{defn}[ED]
+	\(R\) is a \textbf{Euclidean domain} if a division algorithm can be performed in \(R\). This means that there is a function \(f:R\setminus \left\{ 0 \right\} \to \N\) such that, to any \(b\neq 0, a \in R\) there exist \(c,d \in R\) satisfying
+	\begin{align*}
+		a = bc + d \quad \text{ and } \quad f(d) < f(b) \text{ or }d = 0
+	\end{align*}
+\end{defn} 
+Some examples include \(\Z, F[x]\), and the ring of Gaussian integers. Every ED is a PID, and so also a UFD. However, the converse does not hold.
+\begin{thm}[Connection with Ideals]
+	\begin{itemize}
+		\item \(c \mid d \iff d \in (c) \iff (d) \subset (c)\)
+		\item \(c\) and \(d\) are associates if and only if \((c) = (d)\)
+		\item \((d) = (a,b) \implies d = \textrm{gcd}\left\{ a,b \right\} \) 
+		\item \((d) = (a,b) \iff d = \textrm{gcd}\left\{ a,b \right\}  \text{ and }d = au + bv, \quad u,v \in R\)
+	\end{itemize}
+\end{thm}
+\begin{thm}[UFD]
+	An integral domain \(R\) is a UFD if and only if
+	\begin{itemize}
+		\item a strictly increasing sequence
+			\begin{align*}
+				(a_1) \subset (a_2)  \subset  \ldots \subset (a_j) \subset \ldots
+			\end{align*}
+			of principal ideals cannot be infinite; and
+		\item every irreducible element is a prime
+	\end{itemize}
+\end{thm}
+\end{document}

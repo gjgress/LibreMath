@@ -1,0 +1,60 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 03/24/21
+
+\section{Algebraic Closure}
+\label{sec:algebraic_closure}
+
+Before, we were looking at extensions of some polynomial in \(F[x]\) that contains all the roots of the polynomial. Now we consider field extensions that contain \textit{all} the roots of all \(f(x) \in F[x]\).
+
+\begin{defn}[Algebraic Closure]
+	Given a field \(F\), a field \(\overline{F}\) is the \textbf{algebraic closure} of \(F\) if
+	\begin{enumerate}[(a).]
+		\item \(\overline{F}\) is algebraic over \(F\),
+		\item Every polynomial \(f(x) \in F[x]\) splits completely over \(\overline{F}\)
+	\end{enumerate}
+\end{defn}
+Recall that splitting completely implies that \(f(x)\) factors into a product of degree 1 polynomials.
+
+\begin{defn}[Algebraically Closed]
+	A field \(K\) is \textbf{algebraically closed} if every polynomial with coefficients in \(K\) has a root in \(K\).
+\end{defn}
+
+\begin{prop}
+	If \(\overline{F}\) is the algebraic closure of \(F\), then \(\overline{F}\) is algebraically closed.
+\end{prop}
+
+\begin{hw}
+	For a field \(K\), the following are equivalent:
+	\begin{itemize}
+		\item \(K\) is algebraically closed
+		\item Every \(f(x)\in K[x]\) nonconstant splits completely over \(K\) 
+		\item Every irreducible \(f(x) \in K[x]\) has degree 1
+		\item There does not exist an algebraic extension of \(K\) other than \(K\) itself
+	\end{itemize}
+\end{hw}
+
+\begin{prop}
+	For every field \(F\) there exists an algebraically closed field \(K\) containing \(F\).
+\end{prop}
+
+\begin{hw}% Dummitt-Foote 13.4 #5
+	Let \(K\) be a finite extension of \(F\). Prove that \(K\) is a splitting field over \(F\) if and only if every irreducible polynomial in \(F[x]\) that has a root in \(K\) splits completely in \(K[x]\).
+\end{hw}
+\end{document}

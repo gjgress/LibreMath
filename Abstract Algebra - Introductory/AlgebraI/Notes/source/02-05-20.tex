@@ -1,0 +1,33 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+\chapter{Rings}
+\label{cha:rings}
+\begin{defn}[Binary Operation]
+	A binary operation assigns every ordered pair of a set \((a,b)\in S\times S\) a unique element \(c \in S\), which can have the following properties:
+	\begin{itemize}
+		\item For every \(a,b,c \in S\), \(a(bc) = (ab)c\) (associative)
+		\item For every \(a,b \in S\), we have \(ab = ba\) (commutative)
+		\item There is an element \(e \in S\) satisfying \(ea  = ae = a\) for every \(a \in S\) 
+		\item If \(S\) has an identity \(e\), then there is an inverse of \(a \in S\), or \(a^{-1}\) satisfying \(aa^{-1} = a^{-1}a = e\) (left and right inverses, in particular)
+	\end{itemize}
+\end{defn}
+\begin{defn}[Rings]
+	A ring is a non-empty set with two operations, \(+\) and \(\cdot \). The \(+\) operation is commutitive, associative, has an identity, and inverses for all elements. The \(\cdot \) operation is associative. Both operations have two distributive rules, namely, for all \(a,b,c\),
+	\begin{align*}
+		(a+b)c = ac + bc\\
+		a(b+c) = ab+ac 
+	\end{align*}
+\end{defn}
+If multiplication is commutative, then it is a commutative ring. If multiplication has an identity, and an inverse for all except the additive inverse, then it is a field.\\
+Rings in which two non-zero elements can multiply to a zero element has what are called (left or right) \textbf{zero-divisors}. Fields do not have zero-divisors.
+
+\end{document}

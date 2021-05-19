@@ -1,0 +1,39 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+% \section{}	
+\begin{thm}
+	The Gaussian Integers form a Euclidean Domain.
+\end{thm}
+\begin{proof}
+	We will show that \(f(\alpha) = N(\alpha)\) suffices. Observe that
+	\begin{align*}
+		\alpha = \beta \rho + \theta \iff\\
+		\frac{\alpha}{\beta = \rho + \frac{\theta}{\beta}}\iff\\
+		\frac{\alpha}{\beta}-\rho = \frac{\theta}{\beta} \iff\\
+		\left| \frac{\alpha}{\beta} - \rho \right| < 1
+	\end{align*}
+	Of course, this is the distance between \(\frac{\alpha}{\beta}\) and \(\rho\). But there always exists a lattice point within distance \(1\) of any \(\C\), and so therefore the statement holds.
+\end{proof}
+Now we characterize all \(G\)-primes.
+\begin{prop}
+To every Gaussian prime \(\pi\), there exists exactly one positive prime number \(p\) satisfying \(\pi\mid p\). Furthermore, every positive prime \(p\) is either a Gaussian prime, or the product of two complex conjugate Gaussian primes with norm \(p\).
+\end{prop}
+\begin{thm}
+	All Gaussian primes take on the form:
+	\begin{itemize}
+		\item \(\varepsilon(1+i)\) 
+		\item \(\varepsilon q\), with \(q\) a positive prime of the form \(4k-1\) 
+		\item \(\pi\) where \(N(\pi)\) is a positive prime of the form \(4k+1\)
+	\end{itemize}
+	where \(\varepsilon\) is a unit.
+\end{thm}
+\end{document}

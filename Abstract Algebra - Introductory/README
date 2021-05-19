@@ -1,0 +1,3 @@
+This is the folder that contains all introductory abstract algebra material.
+
+Because the standard courses in abstract algebra differ in many places, I have chosen to combine the two introductory courses here. Currently, the first semester of algebra is in its own subdirectory while the second semester is currently within this directory. Once the course has wrapped up, it will either be moved into its own directory ("AlgebraII"), or combined with the previous semester's material to create one large note source for abstract algebra.

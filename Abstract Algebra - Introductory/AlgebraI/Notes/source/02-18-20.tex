@@ -1,0 +1,36 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+\section{Factor Ring}
+\begin{defn}[Residue Class]
+The equivalence class of the integer \(a\) with the congruence relation, denoted by \(\overline{a}_n\), is the set
+\begin{align*}
+	\left\{ \ldots,a-2n,a-n,a,a+n,a+2n,\ldots \right\} 
+\end{align*}
+In other words, the set of integers congruent to \(a \pmod n\) is the \textbf{residue class} of the integer \(a\) modulo \(n\). 
+\end{defn}
+We can combine residue classes by taking representative elements and working with them.
+
+\begin{defn}[Coset]
+	Let \(I \triangleleft R	\). A \textbf{coset} denoted \(r + I\) is the set
+	\begin{align*}
+	\left\{r+i \mid i \in I \right\} .
+	\end{align*}
+\end{defn}
+Two cosets are either equal or disjoint. We define addition and multiplication of cosets by
+\begin{align*}
+	(r+I) + (s+I) = (r+s) + I \\
+	(r+I)(s+I) = rs + I
+\end{align*}
+\begin{defn}[Factor Ring]
+	Let \(I \triangleleft R\). We notate by \(R / I\) the \textbf{factor ring}, which is the ring with all of the cosets of \(I\) as elements, using the coset addition and multiplication defined above.
+\end{defn}
+\end{document}

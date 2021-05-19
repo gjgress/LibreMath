@@ -1,0 +1,183 @@
+\documentclass[num=4,duedate=03-03-21,course=Algebra\ II,proflastname=Walton]{hwtemplate}
+
+%%% Options for hwtemplate.cls:
+%
+%% Required:
+%
+% num - Assignment number
+% course - Name or course ID
+% proflastname - Last name of professor
+% duedate - date that homework is due, in mm-dd-yy
+%
+%% Optional:
+%
+% type - type of document (default: Homework)
+% studentid - student id used for emails etc. (default: gjg3)
+% name - your full name (default: Gabriel Gress)
+% emaildomain - domain of email (default: rice.edu)
+%
+%%%
+
+\begin{document}
+
+\lstset{language=Matlab,%
+	%basicstyle=\color{red},
+	breaklines=true,%
+	morekeywords={matlab2tikz},
+	keywordstyle=\color{blue},%
+	morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+	identifierstyle=\color{black},%
+	stringstyle=\color{mylilas},
+	commentstyle=\color{mygreen},%
+	showstringspaces=false,%without this there will be a symbol in the places where there is a space
+	numbers=left,%
+	numberstyle={\tiny \color{black}},% size of the numbers
+	numbersep=9pt, % this defines how far the numbers are from the text
+	emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+	%emph=[2]{word1,word2}, emphstyle=[2]{style},
+}
+
+% \lstinputlisting{foo.m}
+
+\maketitle
+Collaborated with the Yellow group on the first section of the problem set.
+\pagebreak
+\problem[1]
+\begin{claim}
+	Consider \(\rho:S_3 \to GL(V)\) for \(V = \C^3\) with basis given by the elementary vectors, and consider
+	\begin{align*}
+		\sigma\mapsto \begin{cases}
+			\rho_\sigma:V\to V\\
+			e_1\mapsto e_{\sigma(1)}\\
+			e_2 \mapsto e_{\sigma(2)}\\
+			e_3 \mapsto e_{\sigma(3)}
+		\end{cases}
+	\end{align*}
+	So that the matrix form of \(\rho_\sigma\) is given by
+	\begin{align*}
+		\rho_\sigma = \begin{pmatrix} \mid &\mid &\mid \\ e_{\sigma(1)} & e_{\sigma(2)} & e_{\sigma(3)} \\ \mid  & \mid  & \mid  \end{pmatrix} 
+	\end{align*}
+	Now take \(U = \textrm{span}_{\C}(e_1-e_2,e_2-e_3)\). Show that the subrepresentation \(U\) of \(S_3\) is irreducible.
+\end{claim}
+
+\begin{proof}
+	If there exists a proper subrepresentation \((U',\rho')\) of \((U,\rho)\), then it must have \(\textrm{deg}U' < \textrm{deg}U\), and hence that implies that \(\textrm{deg}U'\) is 1. If \(U'\) exists, it must be \(G\)-invariant, and so for every \(g \in S^3\) and \(u' \in U'\), we require that \(\rho'(g)(u') \in U'\). Consider as an example \(g = (12) = [2,1,3]\). Because \(U'\) is one-dimensional, it can be represented by the span of some \(u' \in U\), which can be expressed by \(u' = (c,0c+d,-d)\) for some \(c,d \in \C\).Then we have
+	\begin{align*}
+		\rho'(g) = \begin{bmatrix} 0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1 \end{bmatrix} 
+	\end{align*}
+	Applying this to an arbitrary element of \(U\) that spans \(U'\):
+	\begin{align*}
+		\rho'(g) \begin{pmatrix} c \\ -c+d \\ 0-d \end{pmatrix} = \begin{pmatrix} -c+d \\ c \\ -d \end{pmatrix} .
+	\end{align*}
+	In order for this to be a scalar multiple of \(u'\), which it must be in order for \(U'\) to be one-dimensional, \(c=d=0\). But this implies that \(U'\) is actually a zero-dimensional subspace, which is a contradiction.
+\end{proof}
+
+\problem[2]
+\begin{claim}
+	\begin{enumerate}[(a).]
+		\item Let \(K\) be a field. Given a \(K\)-vector space \(V\) and a \(K\)-linear operator \(T\) on \(V\) with \(T^2=T\), show that
+			\begin{align*}
+				V = \textrm{ker}T \oplus \textrm{im}T
+			\end{align*}
+			as \(K\)-vector spaces.
+		\item Find a group \(G\), a representation \((V,\rho)\) of \(G\), along with a linear operator \(T\) on \(V\) that intertwines with the \(G\)-action, so that
+			\begin{align*}
+				V \neq \textrm{ker}T \oplus \textrm{im}T
+			\end{align*}
+			as \(K\)-vector spaces. Recall that by \(T\) intertwining with the \(G\)-action, we mean that \(T(\rho_g(v)) = \rho_g(T(v))\) for all \(g \in G\), \(v \in V\).
+	\end{enumerate}
+\end{claim}
+\begin{proof}
+	\begin{enumerate}[(a).]
+		\item Observe that by applying the Rank-Nullity Theorem, it suffices to show that \(\textrm{ker}T \cap \textrm{im}T = \left\{ 0 \right\} \) is zero-dimensional, as the sum of their dimensions is equal to the dimension of \(V\), and so if the intersection is empty, the direct sum has the same dimension as \(V\), and because the direct sum must be a subspace, must be the whole space. Consider an arbitrary \(v \in \textrm{ker}T \cap \textrm{im}T\). This implies that \(v = Tv'\) for some \(v' \in V\). Of course, because \(T^2=T\), that implies that
+			\begin{align*}
+			v = Tv' \implies Tv = T^2v' \implies Tv = Tv' \implies 0 = Tv' \implies v = 0
+			\end{align*}
+			Because \(Tv\) is in the kernel and hence must map to zero. Ergo, \(v\) can only be zero, and so we have shown their intersection is only the zero element.
+		\item Choose \(G\) to be the trivial group, \(V = \R^2\), and \(T = \begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix} \). Note that this gives that
+			\begin{align*}
+				\rho(G) = \begin{bmatrix} 1 & 0 \\ 0 &1 \end{bmatrix} 
+			\end{align*}
+			necessarily, as \(G\) must map to identity. We can see that it intertwines directly because \(\rho\) does not change the underlying element. However, \(\textrm{ker}T \cap \textrm{im}T = \left\{ (\lambda,0) \mid \lambda \in \R \right\} \), and hence cannot be a direct sum.
+	\end{enumerate}
+\end{proof}
+\separator
+
+\problem[3]
+\begin{claim}
+	Let \(\rho:G\to GL(V)\) and \(\rho':G\to GL(V')\) be equivalent representations of a group \(G\). Show that \((V,\rho)\) is irreducible if and only if \((V',\rho')\) is irreducible.
+\end{claim}
+\begin{proof}
+	If \(\rho,\rho'\) are equivalent representations of a group \(G\), then there exists a vector space isomorphism \(\varphi:V\to V'\). To prove the theorem, it suffices to show that \((V,\rho)\) being irreducible implies \((V',\rho')\) is irreducible, because without loss of generality, one can simply choose different labels. This statement can be equivalently proven by showing that if \((V',\rho')\) is reducible, then \((V,\rho)\) is reducible, as irreducible and reducible are mutually exclusive terms. Ergo, assume that \((V',\rho')\) is reducible-- we will show that this implies \((V,\rho)\) must be reducible.\\
+
+	If \((V',\rho')\) is reducible, there exists a proper subspace \(W\subset V\) so that \(\rho\mid_W(g) := \rho(g)\mid_W\) is a representation of \(G\). Consider \(W' := \varphi(W)\)-- we will show that this must be a representation of \(G\) within \(V\) as well, as well as a subspace, so that \(\rho'\) is reducible. Because \(\varphi\) is a vector space isomorphism, there is an induced isomorphism given by
+	\begin{align*}
+		\Phi:GL(V) \to GL(V')\\
+		\Phi(\rho(g)) = (\varphi'(g))
+	\end{align*}
+	This makes it clear that \(\Phi(GL(W)) = GL(W')\), and since \(\rho,\Phi\) are group homomorphisms, their composition \(\Phi\circ\varphi\mid_W\) is a group homomorphism. Of course, this is exactly \(\varphi'\mid_{W'}\), and we can check that it in fact intertwines with \(\rho'\) :
+	\begin{align*}
+		\varphi'\mid_{W'}(g) = \Phi\circ \rho\mid_W(g) = \Phi\circ \rho(g)\mid_W = \Phi(\rho(g)\mid_W) = \rho'(g)\mid_{\varphi(W)=W'}.
+	\end{align*}
+	This confirms that \(\rho'\mid_{W'} \) is a subrepresentation of \(\rho'\), and hence \(\rho'\) is reducible, as desired.
+\end{proof}
+
+\problem[4]
+\begin{claim}
+	Let \(\rho:G\to GL_n(\C)\) be a representation of a group \(G\) of degree \(n\). Consider the map:
+	\begin{align*}
+		\rho^{*}:G\to GL_n(\C), \quad g \mapsto (\rho_{g^{-1}})^{T}.
+	\end{align*}
+	Show that \(\rho^{*}\) defines a degree \(n\) representation of \(G\). Here, \(T\) stands for transpose.
+\end{claim}
+\begin{proof}
+	Let \(g,h \in G\) be given. Then
+	\begin{align*}
+		\rho^{*}(gh) = \rho(h^{-1}g^{-1})^{T} = (\rho(h^{-1})\rho(g^{-1}))^{T} = \rho(g^{-1})^{T}\rho(h^{-1})^{T} = \rho^{*}(g)\rho^{*}(h)
+	\end{align*}
+	which shows that \(\rho^{*}\) is a group homomorphism. Of course, \(GL(\C^{n})\) has dimension \(n\), as  \(\rho\) is a representation of degree \(n\), and so \(\rho^{*}\) is also of degree \(n\).
+\end{proof}
+
+\problem[5]
+\begin{claim}
+	Let \(G\) be a finite group, and let \((V,\rho)\) be a degree \(2\) representation of \(G\). Assume that the characteristic of the ground field does not divide \(\left| G \right| \). Suppose that there are elements \(g,h \in G\) so that \(\rho_g\) and \(\rho_h\) do not commute as matrices. Show that \((V,\rho)\) is irreducible.
+\end{claim}
+\begin{proof}
+	First, observe that by Maschke's Theorem, \((V,\rho)\) is completely reducible. That is, it can be decomposed into the direct sum of irreducible components. Because \((V,\rho)\) is a degree 2 representation, this implies that \((V,\rho)\) is either an irreducible degree 2 representation, or the direct sum of degree 1 subrepresentations-- we want to show that the decomposition into degree 1 subrepresentations is not possible.\\
+
+	Assume for the sake of contradiction that \(V \cong W \oplus W'\) for \(W,W'\) one-dimensional subrepresentations of \((V,\rho)\). Because \(W,W'\) are one-dimensional, there is an isomorphism between them and their underlying field \(K\), and so \(W,W'\) must be commutative. Observe that this implies that \((V,\rho)\) is commutative: if \(v \in V\) can be decomposed into \(w+w'\), then:
+	\begin{align*}
+		v_1v_2 = (w_1+w_1')(w_2+w_2') = (w_1w_2 + w_1'w_2') = (w_2w_1 + w_2'w_1') = v_2v_1
+	\end{align*}
+	But \((V,\rho)\) cannot be commutative, as by hypothesis, there exist \(\rho_g\) and \(\rho_h\) that do not commute as matrices. Ergo, it cannot decompose into degree-one subrepresentations, and hence must be irreducible.
+\end{proof}
+
+\problem[6]
+\begin{claim}
+	Consider the degree \(2\) real representation \((V,\rho)\) of \(\Z\), given by
+	\begin{align*}
+		\rho_n = \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix} \in GL_2(\R), \quad \forall n \in \Z.
+	\end{align*}
+	Show that \((V,\rho)\) is not completely reducible.
+\end{claim}
+
+\begin{proof}
+First, observe that the only subspaces of \(\R^2\) are \(\R^2,\R\) and \(\left\{ 0 \right\} \). We will show shortly that it contains proper subrepresentations, so that \(V\) is not irreducible-- and hence if it is completely reducible, it must decompose into one-dimensional subrepresentations. Then we will show that such a decomposition is not possible.\\
+
+First, observe that the subspace \(V'\) generated by \(\begin{pmatrix} 1\\0 \end{pmatrix} \) is \(G\)-invariant:
+\begin{align*}
+	\begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix} \begin{pmatrix} v' \\ 0 \end{pmatrix} = \begin{pmatrix}v' \\ 0  \end{pmatrix} 
+\end{align*}
+and so obviously it is \(G\)-invariant. This shows that \(V\) is not irreducible.\\
+
+Consider an arbitrary subspace \(V'\) given by \(\begin{pmatrix} a\\b \end{pmatrix} \). Observe that
+\begin{align*}
+	\begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix} = \begin{pmatrix} a+nb \\ b \end{pmatrix} 
+\end{align*}
+This can only be in the subspace \(V'\) if \(V'\) is either two-dimensional, or if \(b = 0\). But that implies that any subspace \(V'\) that is one-dimensional must be of the form \(\begin{pmatrix} a \\ 0 \end{pmatrix} \), and so it is the ONLY one-dimensional subspace. Thus, if \(V\) is completely reducible, it would mean that
+\begin{align*}
+	V \cong V' \oplus V'
+\end{align*}
+but this is trivially false, as \(V'\) cannot form a direct sum with itself unless it is zero-dimensional.
+\end{proof}
+\end{document}

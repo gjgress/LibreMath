@@ -1,0 +1,87 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 05/10/21
+
+\begin{defn}[Radical Extension]
+	A field \(K\) is said to be a \textbf{radical extension} of a field \(F\) if there is a chain of fields
+	\begin{align*}
+		F = F_0 \subset F_1 \subset F_2 \subset \ldots\subset F_n = K
+	\end{align*}
+	such that, for each \(i=1,\ldots,n\), \(F_i = F_{i-1}(\alpha_i)\) and some power of \(\alpha_i\) is in \(F_{i-1}\).
+\end{defn}
+Let \(f \in F[x]\). The equation \(f(x) = 0_F\) is \textbf{solvable by radicals} if there exists a radical extension of \(F\) that contains a splitting field of \(f(x)\). This is equivalent to the notion of there existing a "formula" for the solutions.
+
+\section{Solvable Groups}
+\label{sec:solvable_groups}
+
+\begin{defn}[Solvable]
+	A group \(G\) is said to be \textbf{solvable} if it has a chain of subgroups
+	\begin{align*}
+		\langle e \rangle = G_n \triangleleft \ldots \triangleleft G_1 \triangleleft G_0 = G
+	\end{align*}
+	such that each quotient group \(G_{i-1} / G_i\) is abelian.
+\end{defn}
+Notice that all abelian groups are solvable.
+\begin{prop}
+	For \(n\geq 5\) the group \(S_n\) is not solvable.
+\end{prop}
+\begin{thm}
+	Every homomorphic image of a solvable group \(G\) is solvable.
+\end{thm}
+
+Our goal is to prove the Galois Criterion. That is, let \(f \in F[x]\). \(f(x) = 0_F\) is solvable by radicals if and only if the Galois group of \(f(x)\) is a solvable group.
+
+\begin{lemma}
+	Let \(F\) be a field and \(\eta \) a primitive \(n\)-th root of unity in \(F\). Then \(F\) contains a primitive \(d\)-th root of unity for every positive \(d\mid n\).
+\end{lemma}
+
+This combined with the next two theorems will allow us to prove the Galois Criterion.
+
+\begin{thm}
+	Let \(F\) be a field of characteristic zero and \(\eta \) a primitive \(n\)-th root of unity in some field extension of \(F\). Then \(K = F(\eta )\) is a normal extension of \(F\) and \(\textrm{Gal}_F(K)\) is abelian.
+\end{thm}
+
+\begin{thm}
+	Let \(F\) be a field of characteristic zero that contains a primitive \(n\)-th root of unity. If \(\alpha \) is a root of \(x^{n}-c \in F[x]\) in some extension field of \(F\), then \(K = F(\alpha )\) is a normal extension of \(F\) and \(\textrm{Gal}_F(K)\) is abelian.
+\end{thm}
+
+\begin{lemma}
+	Let \(F,E,K\) be fields of characteristic zero with
+	\begin{align*}
+		F\subset E\subset K = E(\alpha )\quad \alpha^k \in E
+	\end{align*}
+	If \(K\) is finite-dimensional over \(F\) and \(E\) is normal over \(F\), then there exists a field extension \(L\) of \(K\) which is a radical extension of \(E\) and a normal extension of \(F\).
+\end{lemma}
+
+\begin{thm}[Galois Criterion]
+Let \(f \in F[x]\). \(f(x) = 0_F\) is solvable by radicals if and only if the Galois group of \(f(x)\) is a solvable group.
+
+\end{thm}
+
+We can use this to show that there is no formula for the solutions of all fifth-degree polynomials, as there are fifth-degree polynomials whose Galois group is \(S_5\).
+
+\begin{thm}
+	Let \(F\) be a field of characteristic zero and \(f(x) \in F[x]\). If \(f(x) = 0_F\) is solvable by radicals, then there is a normal radical field extension of \(F\) that contains the splitting field of \(f(x)\).
+\end{thm}
+
+\begin{thm}
+	Let \(K\) be a normal radical field extension of \(F\) and \(E\) an intermediate field, all of characteristic zero. If \(E\) is normal over \(F\), then \(\textrm{Gal}_F(E)\) is a solvable group.
+\end{thm}
+
+\end{document}

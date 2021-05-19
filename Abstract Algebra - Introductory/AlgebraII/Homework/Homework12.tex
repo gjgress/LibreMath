@@ -1,0 +1,191 @@
+\documentclass[num=12,duedate=04-28-21,course=Algebra\ II,proflastname=Walton]{hwtemplate}
+
+%%% Options for hwtemplate.cls:
+%
+%% Required:
+%
+% num - Assignment number
+% course - Name or course ID
+% proflastname - Last name of professor
+% duedate - date that homework is due, in mm-dd-yy
+%
+%% Optional:
+%
+% type - type of document (default: Homework)
+% studentid - student id used for emails etc. (default: gjg3)
+% name - your full name (default: Gabriel Gress)
+% emaildomain - domain of email (default: rice.edu)
+%
+%%%
+
+\begin{document}
+
+\lstset{language=Matlab,%
+	%basicstyle=\color{red},
+	breaklines=true,%
+	morekeywords={matlab2tikz},
+	keywordstyle=\color{blue},%
+	morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+	identifierstyle=\color{black},%
+	stringstyle=\color{mylilas},
+	commentstyle=\color{mygreen},%
+	showstringspaces=false,%without this there will be a symbol in the places where there is a space
+	numbers=left,%
+	numberstyle={\tiny \color{black}},% size of the numbers
+	numbersep=9pt, % this defines how far the numbers are from the text
+	emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+	%emph=[2]{word1,word2}, emphstyle=[2]{style},
+}
+
+% \lstinputlisting{foo.m}
+
+\maketitle
+\pagebreak
+\problem[1]
+\begin{claim} %14.3 #1
+	Factor \(x^{8}-x\) into irreducibles in \(\Z[x]\) and in \(\mathbb{F}_2[x]\).
+\end{claim}
+
+\begin{proof}
+	\(\Z[x]\) :
+	\begin{align*}
+		x^{8}-x = x(x^{7}-1) = x(x-1)(1+x+x^2+x^3+x^{4}+x^{5}+x^{6})
+	\end{align*}
+	which is clearly all irreducible terms. But in \(\mathbb{F}_2[x]\):
+	\begin{align*}
+		x(x-1)(1+x+x^2+\ldots+x^{6}) = x(x-1)(1+x^2+x^3)(1+x+x^3).
+	\end{align*}
+\end{proof}
+
+\problem[2]
+
+\begin{claim} % 14.3 #3
+	Prove that an algebraically closed field must be infinite.
+\end{claim}
+
+\begin{proof}
+	Let \(F = \left\{a_1,\ldots,a_n \right\} \) be a finite field. Consider the polynomial
+	\begin{align*}
+		p(x) = (x-a_1)(x-a_2)\ldots(x-a_n)+ 1_F
+	\end{align*}
+	It is easy to see that \(p(x) = 1\) for all \(x \in F\), and hence has no roots in \(F\). Therefore, \(F\) cannot be algebraically closed if it is finite.
+\end{proof}
+
+\problem[3]
+
+\begin{claim} % 14.4 #1
+	Determine the Galois closure of the field \(\Q(\sqrt{1+\sqrt{2} } \) over \(\Q\).	
+\end{claim}
+\begin{proof}
+	First we will find the minimal polynomial, and then take its splitting field to be the Galois closure. Observe that for \(x = \sqrt{1+\sqrt{2} } \) :
+	\begin{align*}
+		x^{4}-2x^2-1 = 0
+	\end{align*}
+	and because we are in \(\Q\), this must be the minimal degree for which this holds. Now we verify that \(p\) is separable. By the quadratic formula, the roots of
+	\begin{align*}
+		p(x) = x^{4}-2x^2-1\\
+		x_1,x_2 = \pm \sqrt{1+\sqrt{2} } \\
+		x_3, x_4 = \pm i \sqrt{-1 + \sqrt{2} }  
+	\end{align*}
+	and hence \(p\) is separable. Thus the Galois closure is its splitting field, and hence must be
+	\begin{align*}
+		\Q(\sqrt{1+\sqrt{2} } , i \sqrt{-1 + \sqrt{2} } ).
+	\end{align*}
+\end{proof}
+\separator
+
+\problem[4] % 14.3 #9
+\begin{claim}
+	Let \(q = p^{m}\) be a power of the prime \(p\) and let \(\mathbb{F}_q = \mathbb{F}_{p^{m}}\) be the finite field with \(q\) elements. Let \(\sigma_q = \sigma_p^{m}\) be the \(m\)-th power of the Frobenius automorphism \(\sigma_p\), called the \(q\)-Frobenius automorphism.
+	\begin{enumerate}[(a).]
+		\item Prove that \(\sigma_q\) fixes \(\mathbb{F}_q\).
+		\item Prove that every finite extension of \(\mathbb{F}_q\) of degree \(n\) is the splitting field of \(x^{q^{n}}-x\) over \(\mathbb{F}_q\), and hence is unique.
+		\item Prove that every finite extension of \(\mathbb{F}_q\) of degree \(n\) is cyclic with \(\sigma_q\) as generator.
+		\item Prove that the subfields of the unique extension of \(\mathbb{F}_q\) of degree \(n\) are in bijective correspondence with the divisors \(d\) of \(n\).
+	\end{enumerate}
+\end{claim}
+\begin{proof}
+	\begin{enumerate}[(a).]
+		\item Let \(x \in \mathbb{F}_q\) be given. Then
+			\begin{align*}
+				\sigma_q(x) = x^{p}\cdot_{m \text{ times}}\cdot x^{p} = x^{p^{m}}
+			\end{align*}
+			But \(x^{p^{m}}-x = 0\), so \(x^{p^{m}}= x\), and hence \(\sigma_p(x) = x\) for all \(x \in \mathbb{F}_q\), as desired.
+		\item Let \(K / \mathbb{F}_q\) be a finite extension with degree \(n\). By the tower formula:
+			\begin{align*}
+				[K : \mathbb{F}_p] = [K : \mathbb{F}_q] [\mathbb{F}_q : \mathbb{F}_p] = nm
+			\end{align*}
+			and hence is a degree \(nm\) extension of \(\mathbb{F}_p\). This tells us it is the splitting field of
+			\begin{align*}
+				x^{p^{n}m}= x^{q^{n}}
+			\end{align*}
+			as desired.
+		\item Let \(K\) be a finite extension of \(\mathbb{F}_q\) and \(a\) be the order of \(\sigma_q\) so that \(\sigma_q^{a}= 1_K\). Then it holds that \(\sigma^{a}_q(k) = k = k^{q^{a}}\). Our goal is to show that \(a=n\) and hence \(\sigma_q\) is a cyclic generator. It already must hold that \(a\leq n\). Now consider
+			\begin{align*}
+				k^{q^{a}}-k = 0.
+			\end{align*}
+			This has exactly \(q^{n}\) zeroes as \(K := \mathbb{F}_{p^{q^{n}}}\). Hence \(a\geq n\), which gives us that \(a=n\), as desired.
+		\item By the above work we can see that the subfields of \(\mathbb{F}_q\) correspond to subgroups of the Galois group. The correspondence is unique by part (b), and by part (c) we know that the subgroups are cyclic groups and hence the order must divide \(n\).
+	\end{enumerate}
+\end{proof}
+
+\problem[5] % 14.4 #4
+\begin{claim}
+	Let \(f(x) \in F[x]\) be an irreducible polynomial of degree \(n\) over the field \(F\), let \(L\) be the splititng field of \(f(x)\) over \(F\) and let \(\alpha \) be a root of \(f(x)\) in \(L\). If \(K\) is any Galois extension of \(F\), show that the polynomial \(f(x)\) splits into a product of \(m\) irreducible polynomials each of degree \(d\) over \(K\), where
+	\begin{align*}
+		d = [K(\alpha ):K] = [(L\cap K)(\alpha ) : L\cap K]\\
+		m = n / d = [F(\alpha )\cap K : F].
+	\end{align*}
+	% Hint: Show first that the factorization of f(x) over K is the same as its factorization over L \cap K . Then if H is the subgroup of the Galois group of L over F corresponding to L \cap K the factors of f(x) over L \cap K correspond to the orbits of H on the roots of f(x). Use Exercise 9 of Section 4.1 
+\end{claim}
+
+\begin{proof}
+	First we will show that the factorization of \(f(x)\) over \(K\) is the same as its factorization over \(L \cap K\). Let
+	\begin{align*}
+		f = \prod_{i \in I} f_i 
+	\end{align*}
+	be a factorization of \(f\) into polynomials \(f_i\) that are irreducible in \(K\). By construction, \(f\) is algebraic in \(L\) and so \(f_i\) are all linear factors and hence are elements of \(L[x]\). Then by irreducibility theorems, we have that \(f_i\) is irreducible in \(K\cap L\) if and only if it is irreducible in \(K\), and hence must share the same factorization.\\
+
+	Let \(H\) be the subgroup of the Galois group of \(L\) over \(F\) that corresponds to \(L\cap K\). The factors of \(f(x)\) over \(L \cap K\) correspond to the orbits of \(H\) on the roots of \(f(x)\). By Exercise 9 of Section 4.1, these orbits all have order \(d\), where \(d\) is the degree of \(f_i\) over \(K\). Thus
+	\begin{align*}
+		d = [K(\alpha ):K] = [ (L\cap K) (\alpha ) : (L\cap K)].
+	\end{align*}
+	By definition of \(m\), we have that \(m = \frac{n}{d}\) and hence
+	\begin{align*}
+		m = \frac{n}{d} = \frac{[F(\alpha ):F]}{[F(\alpha ):F(\alpha )\cap K]} = [F(\alpha )\cap K : F].
+	\end{align*}
+\end{proof}
+
+\problem[6] % 14.4 #5
+\begin{claim}
+	Let \(p\) be a prime and \(F\) a field. Let \(K\) be a Galois extension of \(F\) whose Galois group is a \(p\)-group. Such an extension is called a \(p\)-extension.
+	\begin{enumerate}[(a).]
+		\item Let \(L\) be a \(p\)-extension of \(K\). Prove that the Galois closure of \(L\) over \(F\) is a \(p\)-extension of \(F\).
+		\item Give an example to show that (a) need not hold if \([K:F]\) is a power of \(p\) but \(K / F\) is not Galois.
+	\end{enumerate}
+\end{claim}
+\begin{proof}
+	\begin{enumerate}[(a).]
+		\item 
+		\item Consider \(K / F = \Q(\sqrt[3]{2}) / \Q \). We have previously shown that \(K / F\) is not Galois, and that \([K : F] = 2\). It has minimal polynomial given by
+			\begin{align*}
+				p(x) = x^3-2.
+			\end{align*}
+			The Galois extension is \(\overline{L}= \Q(\sqrt[3]{2},\sqrt{3} i) \) which satisfies \([\overline{L}:F] = 6\) by the tower theorem. Hence it is not a prime power.
+	\end{enumerate}
+\end{proof}
+
+\problem[7]
+\begin{claim}
+	Verify that \(\Q(\sqrt[3]{2} )\) is not a subfield of any cyclotomic field over \(\Q\).
+\end{claim}
+\begin{proof}
+	Let \(\omega \) be an arbitrary \(k\)-th root of unity. Suppose that \(\Q(\sqrt[3]{2})\subset \Q(\omega ) \) for some choice of \(\omega \), for the sake of contradiction. We know that \(\Q(\omega )\) is Galois and hence \(\textrm{Gal}(\Q(\omega ))\) is abelian. Thus \(\overline{Q(\sqrt[3]{2}) \subset Q(\omega )}\). But we have that Galois group of the extension of \(x^3-2\) is isomorphic to \(S_3\), which is non-abelian, and hence cannot be contained in the abelian group above.\\
+
+	This works by the fundamental theorem-- choose \(F = \Q\), \(E = \Q(\sqrt[3]{2} )\), and \(K = Q(\omega )\) and apply that \(F\subset E\subset K\), \(\Q(\sqrt[3]{2} )\) Galois over \(\Q\) implies
+	\begin{align*}
+		\textrm{Gal}(\Q(\sqrt[3]{2})  / \Q) \cong \textrm{Gal}(\Q(\omega ) / \Q) / \textrm{Gal}(\Q(\omega ) / \Q(\sqrt[3]{2} ))\\
+		\implies \textrm{Gal}(\Q(\sqrt[3]{2})  / \Q) \subset \textrm{Gal}(\Q(\omega ) / \Q)
+	\end{align*}
+\end{proof}
+\end{document}

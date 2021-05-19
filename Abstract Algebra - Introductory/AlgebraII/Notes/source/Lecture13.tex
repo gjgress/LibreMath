@@ -1,0 +1,85 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on ??
+
+Of course, we need to be sure that our construction of characters is well-defined. It turns out that they capture the properties of our representation well and are unique.
+
+\begin{prop}
+	\begin{enumerate}
+		\item The definition of \(X_V\) is independent of choice of basis of \(V\)
+		\item If \(V \cong W\), then \(X_V = X_W\) 
+		\item If \(g,h \in G\) are conjugate, then \(X_V(g) = X_V(h)\)
+	\end{enumerate}
+\end{prop}
+
+\begin{defn}
+	The \textbf{character table} of \(G\) is defined as
+	\begin{align*}
+		\begin{bmatrix} X_{V_1}(g_1) & X_{V_1}(g_2) & \ldots & X_{V_1}(g_k)\\
+		\vdots & & & \vdots \\
+	X_{V_\ell}(g_1) & X_{V_\ell}(g_2) & \ldots & X_{V_\ell}(g_k)\end{bmatrix} 
+	\end{align*}
+\end{defn}
+The number of irreducible characters of \(G\) is the same as the number of conjugacy classes of elements of \(G\). Furthermore, the character table is a square matrix with entries in \(\C\) when the rows are indexed by irreducible representations of \(G\) and the columns are indexed by conjugacy classes representations of elements of \(G\).\\
+
+In this case, \((X_{V_i}(g_j))\) is an invertible matrix.
+
+% Examples
+
+\begin{prop}
+	Let \((V,\rho )\) be a representation of \(G\), and take \(g \in G\). Then
+	\begin{enumerate}
+		\item \(X_V(e) = \textrm{dim}(V)\) 
+		\item \(X_V(g)\) is a sum of roots of unity
+		\item \(X_{V\oplus W}(g) = X_{V}(g) + X_{W}(g)\)
+		\item \(X_V(g^{-1}) = \overline{X_V(g)}\) 
+		\item \(\overline{X_V}\) is a character of \(G\)
+	\end{enumerate}
+\end{prop}
+
+Let \(X_1,\ldots,X_r\) be irreducible characters of a finite group \(G\). Define
+\begin{align*}
+	\langle X_i, X_j \rangle := \frac{1}{\left| G \right| } \sum_{g \in G} \overline{X_i(g)}X_j(g)
+\end{align*}
+
+\begin{thm}
+	\begin{enumerate}
+		\item \(\langle X_i, X_j \rangle = \delta _{ij}\) 
+		\item 
+			\begin{align*}
+				\sum_{i=1}^{r} \overline{X_i(x)}X_i(y) = \begin{cases}
+					\left| C_G(x) \right| & x,y \text{ conjugate in }G\\
+					0 & \text{otherwise}
+				\end{cases}
+			\end{align*}
+	\end{enumerate}
+\end{thm}
+			Here, \(C_G(x)\) is the centralizer of \(x \in G\), that is, \(C_G(x) = \textrm{Stab}_x(G) = \left\{g \in G \mid g x g^{-1} = x \right\} \).
+
+% Example
+
+\begin{thm}
+	If \(V,W\) are irreducible representations of \(G\), then
+	\begin{align*}
+		\langle X_V,X_V \rangle = 1\\
+		\langle X_V,X_W \rangle = 0 \text{ when }V\not\cong W
+	\end{align*}
+\end{thm}
+This shows us that characters completely determine representations, and forthermore characters completely determine irreducibility.
+\end{document}

@@ -1,0 +1,43 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 05/10/21
+
+Now we apply this theorem to finite fields. Consider \(\mathbb{F}_{p^{n}}\), the splitting field of \(x^{p^{n}}-x\). This is Galois over \(\mathbb{F}_p\). Thus we have \(\left| \textrm{Aut}(\mathbb{F}_{p^{n}} / \mathbb{F}_p )\right| = [ \mathbb{F}_{p^{n}}: \mathbb{F}_p ] = n \). This gives us \(\textrm{Gal}(\mathbb{F}_{p^{n}} / \mathbb{F}_p ) = \Z / n\Z\) and the Galois group consists solely of the Frobenius endomorphism.\\
+
+One can see then that all subfields \(\mathbb{F}_p\subset E\subset \mathbb{F}_{p^{n}}\) have the form \(E \cong \mathbb{F}_{p^{d}}\) for some \(d\mid n\). Of course, this means that \(E / F\) is necessarily Galois as well!
+
+\section{Applications of Galois Theory}
+\label{sec:applications_of_galois_theory}
+
+\begin{prop}
+	The irreducible polynomial \(x^{4}+1 \in \Z[x]\) is reducible over \(\mathbb{F}_p\) for any prime \(p\).
+\end{prop}
+\begin{proof}
+	One can check this directly for \(p=2\). If \(p>2\), then observe that \(p \cong 1,3,5\) or \(7 \mod 8\), and hence \(p^2 \cong 1 \mod 8\). Therefore we have that \(x^{8}-1 \mid x^{p^2-1}-1\) over \(\mathbb{F}_p\).\\
+
+	Of course, \(x^{4}+1 \mid x^{8}-1\) and so any root of \(x^{4}+1\) is a root of \(x^{p^2}-x\) and hence are elements of the field \(\mathbb{F}_{p^2}\). Since \([\mathbb{F}_{p^2}:\mathbb{F}_p] = 2\), the degree of the extension is no more than 2. Of course, if \(x^{4}+1\) were irreducible over \(\mathbb{F}_p\), then it would necessarily be 4, and hence it must be reducible.
+\end{proof}
+
+\begin{prop}
+	\begin{align*}
+		x^{p^{n}}-x = \prod_{d\mid n} \left\{ \text{irreducible polynomial in \(\mathbb{F}_p[x]\) of degree \(d\)} \right\}  
+	\end{align*}
+\end{prop}
+We can use this recursively as \(n\) increases.
+\end{document}

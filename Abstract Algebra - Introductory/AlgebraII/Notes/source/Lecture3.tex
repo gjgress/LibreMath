@@ -1,0 +1,52 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{./resources/pdf/logo.pdf}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 01/29/21
+
+\begin{thm}
+	If \(R\) is a UFD, then so is \(R[x]\).
+\end{thm}
+
+\begin{defn}
+	A polynomial \(f(x) \in R[x]\) is \textbf{primitive} if \( \textrm{gcd}(\left\{ \text{coeff of }f(x) \right\} ) = 1_R\)
+\end{defn}
+Recall that since \(R\) is an integral domain, one can form its field of fractions by
+\begin{align*}
+	F:= \textrm{Frac}(R) = \left\{ \frac{r}{s} \mid r,s \in R, \; s \neq 0 \right\} 
+\end{align*}
+\begin{lemma}[Gauss' Lemma]
+	Let \(R\) be a UFD with \(F = \textrm{Frac}(R)\).
+	\begin{itemize}
+		\item If \(f(x),g(x) \in R[x]\) are primitive, then so is \(f(x)\cdot g(x)\).
+		\item Take \(f(x) \in R[x]\). Then \(f(x) = \varphi(x) \psi(x) \in F[x]\) with \( \textrm{deg}(\varphi) \textrm{deg}(\psi)\geq 1 \iff f(x) = \psi(x) \varphi(x)\) in \(R[x]\).
+	\end{itemize}
+\end{lemma}
+
+\begin{cor}
+	Let \(R\) be a UFD. The irreducible elements of \(R[x]\) are of two types:
+	\begin{itemize}
+		\item nonzero scalar polynomials that are irreducible as elements of \(R\) 
+		\item primitive polynomials in \(R[x]\) that are irreducible in \(F[x]\)
+	\end{itemize}
+\end{cor}
+
+\begin{thm}
+	If \(R\) is a UFD, then \(R[x]\) is a UFD.
+\end{thm}
+
+\end{document}

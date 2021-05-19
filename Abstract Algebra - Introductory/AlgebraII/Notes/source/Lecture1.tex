@@ -1,0 +1,76 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{./resources/pdf/logo.pdf}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 01/25/21
+
+\chapter{Modules}
+\label{cha:modules}
+
+\section{Ring Review}
+\label{sec:ring_review}
+
+
+
+Recall the definition of a ring.
+
+\begin{defn}[Ring]
+	A \textbf{ring} is a nonempty set \(R\) with two operations: addition and multiplication, which has the properties
+	\begin{itemize}
+		\item \(R^{+}\) is an abelian group
+		\item \(R^{\times }\) is a semigroup
+		\item \(\times \) distributes over \(+\) :
+			\begin{align*}
+				a(b+c) = ab+ac \quad (b+c)a = ba+ca
+			\end{align*}
+	\end{itemize}
+\end{defn}
+
+\begin{defn}[Types of Rings]
+	A ring \(R\) is \textbf{commutative} if \(\times \) is commutative. Furthermore, we say a ring is \textbf{unital} if there exists an element \(1_R \in R\) so that \(1_R a = a_{1_R} = a\) for all \(a \in R\).\\
+
+The ring \(R\) is \textbf{(in)finite} if it is (in)finite as a set.\\
+
+A \textbf{subring} of \(R\) is an additive subgroup \(S\) of \(R\) that is closed under the multiplication of \(R\). Furthermore, if it contains \(1_R\) then it is a \textbf{unital subring}.\\
+
+A \textbf{unit} of \(R\) is an element \(a \in R\) that has a multiplicative inverse, i.e. \(\exists b \in R\) so that \(ab = ba = 1_R\). The set of units of \(R\) is sometimes denoted by \(R^{\times }\).
+\end{defn}
+
+In order to better classify commutative rings, we introduce a few more terminology.
+
+\begin{defn}[Irreducibles and Primes]
+	We say that \(r \in R\) is \textbf{irreducible} if 
+	\begin{align*}
+		r = ab \implies a \text{ or }b \text{ is a unit}.
+	\end{align*}
+	We impose a stronger condition that \(r \in R\) is \textbf{prime} if 
+	\begin{align*}
+		r \mid ab \implies r\mid a \text{ or }r \mid b.
+	\end{align*}
+
+\end{defn}
+Note that every prime is irreducible, but not vice versa.\\
+
+\begin{figure}[ht]
+    \centering
+     \def\svgwidth{1\linewidth}
+     \input{./figures/hierarchy-of-commutative-rings.pdf_tex}
+    \caption{Hierarchy of Commutative Rings}
+    \label{fig:hierarchy-of-commutative-rings}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,40 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 02/24/21
+
+\section{Complete Reducibility}
+\label{sec:complete_reducibility}
+
+Recall that the \textbf{characteristic} of a field \(K\) is the smallest positive integer \(p\) such that \(p 1_K = 0\). If \(p\) exists, then it is prime; else we say \(K\) has characteristic 0.
+
+\begin{thm}
+	Let \((V,\rho)\) be a representation of a finite group \(G\) of finite degree \(n\) over a field \(K\) of characteristic \(p\) with \(p \not\mid \left| G \right| \). If \(W\) is a subrepresentation of \((V,\rho)\), then there exists another subrepresentation \(W'\) of \(V\) so that
+	\begin{align*}
+		V \cong W \bigoplus W'
+	\end{align*}
+	as \(K\)-vector spaces. We refer to \(W'\) as the \textbf{complement} of the subrepresentation \(W\) of \((V,\rho)\).
+\end{thm}
+
+\begin{cor}[Maschke's Theorem]
+	Let \(V\) be a representation of a finite group \(G\) of finite degree over a field of characteristic \(p\) with \(p \not\mid \left| G \right| \). Then \(V\) is completely reducible.
+\end{cor}
+
+This can be proven by induction on \(\textrm{dim}V\). Note that this fails for infinite groups.
+
+\end{document}

@@ -1,0 +1,56 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 05/10/21
+
+We can summarize our characterization thus far by a set of equivalences. The following are equivalent:
+\begin{itemize}
+	\item A finite field extension \(K / F\) is Galois
+	\item \(\left| \textrm{Aut}(K / F) \right| = [K:F]\) 
+	\item \(K / F\) is the splitting field of a separable polynomial over \(F\) 
+	\item \(K / F\) is normal and separable
+	\item \(F = K^{\textrm{Aut}(K / F)}\)
+\end{itemize}
+
+\section{Fundamental Theorem of Galois Theory}
+\label{sec:fundamental_theorem_of_galois_theory}
+
+\begin{thm}[Fundamental Theorem of Galois Theory]
+	Let \(K / F\) be Galois and set \(G:= \textrm{Gal}(K / F)\). Then there exists a bijection between the subfields \(E\subset K\) with \(F\subset E\) and the subgroups \(H \leq G\) given by
+\begin{align*}
+	E \mapsto \textrm{Aut}(K / E)\\
+	H \mapsto K^{H}
+\end{align*}
+and these maps are inverses of each other. Furthermore, this bijection has some additonal properties:
+\begin{itemize}
+	\item If \(E_1 \leftrightarrow H_1\) and \(E_2 \leftrightarrow H_2\), then \(E_1 \subset E_2 \iff H_2 \leq H_1\).
+	\item If \(E \leftrightarrow H\), then \([K:E] = \left| H \right| \) and \([E:F] = [G:H]\).
+	\item \(K / E\) is always Galois for \(F \subset E \subset  K\).
+	\item \(E / F\) is Galois if and only if \(H \triangleleft G\). In this case, \(\textrm{Gal}(E / F) \cong G / H\).
+	\item If \(E_1 \leftrightarrow H_1\) and \(E_2 \leftrightarrow H_2\), then \(E_1 \cap E_2 \leftrightarrow \langle H_1,H_2 \rangle \) and \(E_1E_2 \leftrightarrow H_1 \cap H_2\).
+\end{itemize}
+\end{thm}
+Remember that \(H \triangleleft G\) is equivalent to \(\textrm{Aut}(K / E) \triangleleft \textrm{Aut}(K / F)\). Also recaall that \(\langle H_1,H_2 \rangle \) is the smallest subgroup of \(G\) that contains \(H_1,H_2\), and \(E_1E_2\) is the smallest subfield of \(K\) containing \(E_1,E_2\). They are not necessarily equivalent!
+
+% Examples here
+
+% Proof here
+
+\vspace{5mm}
+
+\end{document}

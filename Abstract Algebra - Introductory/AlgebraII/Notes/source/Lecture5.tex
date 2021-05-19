@@ -1,0 +1,57 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{./resources/pdf/logo.pdf}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 02/05/21
+
+\section{Modules}
+\label{sec:modules}
+
+Briefly, an \(R\)-module \(M\) is an abelian group that comes equipped with a binary operation
+\begin{align*}
+	* : R\times M \to M
+\end{align*}
+that is compatible with operations of both \(M\) and \(R\).
+
+\begin{defn}
+	Let \(R\) be a ring. A \textbf{left \(R\)-module} is a pair \((M,*:R\times M\to M := _RM)\) where \(M\) is an abelian group, and \(*\) is a binary operation so that
+	\begin{align*}
+		\forall r,s \in R, \; m,n \in M:\\
+		r*(m+n) = (r*m) + (r*n)\\
+		(r+s)*m = (r*m) + (s*m)\\
+		(rs)*m = r*(s*m)
+	\end{align*}
+	If \(R\) is unital, then we also require
+	\begin{align*}
+		1_R * m = m.
+	\end{align*}
+	The map is called the (left) \textbf{\(R\)-action map}.
+\end{defn}
+
+\begin{exmp}
+	\begin{enumerate}
+		\item If \(R\) is a field \(F\), then the \(R\)-module is an \(F\)-vector space.
+		\item Take \(M = \left\{(t_1,\ldots,t_n) \mid t_i \in R \right\}:= R^{n}\). Let
+			\begin{align*}
+				R\times M \to M\\
+				(r,(t_1,\ldots,t_n)) \mapsto (rt_1,\ldots,rt_n).
+			\end{align*}
+			This yields a left \(R\)-action on \(M = R^{n}\). This left \(R\)-module \(_\R^{n}:= R^{n}\) is called the \textbf{free left \(R\)-module of rank \(n\)}.
+	\end{enumerate}
+\end{exmp}
+
+\end{document}

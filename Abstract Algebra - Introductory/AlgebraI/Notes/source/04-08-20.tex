@@ -1,0 +1,34 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+\section{Structure of groups of special sizes}
+\label{sec:structure_of_groups_of_special_sizes}
+\begin{prop}
+	\begin{itemize}
+		\item If \(\left| G \right| = p\), then \(G \cong Z_p\)
+		\item If \(\left| G \right| =p^2\), then \(G\) is Abelian and \(G \cong Z_{p^2} \text{ OR }Z_p \times Z_p\)
+		\item Let \(p>2\), if \(\left| G \right| = 2p\), then \(G \cong Z_{2p} \text{ OR } D_p\).
+	\end{itemize}
+\end{prop}
+\begin{defn}[Permutation Groups]
+	Permutation groups are subgroups of \(S_n\).
+\end{defn}
+\begin{thm}[Cayley's Theorem]
+	Every group of size \(n\) is isomorphic to a subgroup of \(S_n\).
+\end{thm}
+\begin{proof}
+	Let \(S_n\) be all permutations of the group \(G = \left\{ e,g_2,\ldots,g_n \right\} \) and define \(\varphi:G\to S_n\) by \(g \mapsto {g_i}\choose{gg_i}\). In other words, we assign to \(g\in G\) the permutation of \(G\) onto itself; we multiply every \(g_i\) by the given \(g\) from the left. One can check that \(\varphi\) is an injective homomorphism, and so \(G \cong \textrm{Image}(\varphi)\leq S_n\).
+\end{proof}
+\begin{defn}[Simple]
+	A group \(G\) is \textbf{simple} if the only normal subgroups are the trivial ones.
+\end{defn}
+Finite simple groups are important, and only recently have they all been characterized.
+\end{document}

@@ -1,0 +1,49 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 05/10/21
+
+\begin{thm}
+	Let \(K / \mathbb{F}_p\) be a field extension of the prime subfield \(\mathbb{F}_p\).
+	\begin{itemize}
+		\item If \(K\) is finite, then \(\left| K \right| = p^{n}\) for some positive integer \(n\).
+		\item \(\left| K \right| = p^{n}\) if and only if \(K\) is the splitting field of \(x^{p^{n}}-x\) over \(\mathbb{F}_p\).
+	\end{itemize}
+	By the uniqueness of splitting fields, we can simply denote \(K\) by \(\mathbb{F}_{p^{n}}\).
+\end{thm}
+This theorem gives us a complete characterization of finite fields. The first part is proven in Dummitt-Foote 13.2 \#1.
+
+\begin{cor}
+	For all prime \(p\), for all \(n \in \Z_+\), there exists a field of cardinality \(p^{n}\). Furthermore, any two finite fields of the same cardinality are isomorphic.
+\end{cor}
+
+\section{Simple Extensions}
+\label{sec:simple_extensions}
+
+\begin{thm}
+	If \(\left| F \right| < \infty\), and \(K / F\) is a finite extension of \(F\), then \(K = F(\alpha )\) for some \(\alpha  \in K\).	
+\end{thm}
+
+This holds because \(K^{\times }\) is a cyclic group, and so there must exist \(\alpha \) so \(\langle \alpha  \rangle = K^{\times }\), and hence \(K = F(\alpha )\).
+
+\begin{thm}
+	If \(F\) is an infinite field, and \(K / F\) is a finite separable extension, then \(K = F(\alpha )\) for some \(\alpha  \in K\).
+\end{thm}
+Every field extension can be written by appending a sequence of elements, and we can reduce the elements to one by the combination \(\alpha  = \beta + \gamma  \delta \), where \((\beta ,\gamma )\) is the two additional elements, and \(\delta \neq \frac{\beta_i - \beta }{\gamma  - \gamma_j}\). Often we can simply choose \(\delta =1\) if we are lucky.
+
+\end{document}

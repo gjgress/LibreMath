@@ -1,0 +1,76 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on whenever
+
+\section{Composite Field Extensions}
+\label{sec:composite_field_extensions}
+
+\begin{defn}[Composite Field]
+	Let \(K_1\) and \(K_2\) be two subfields of a field \(K\). Then the \textbf{composite field of \(K_1\) and \(K_2\)}, denoted by \(K_1K_2\) is the smallest subfield of \(K\) containing both \(K_1\) and \(K_2\).
+\end{defn}
+The composite of any collection of subfields \(\left\{ K_i \right\} \) is defined similarly.\\\
+
+\begin{prop}
+	Let \(K_1\) and \(K_2\) be two finite extensions of \(F\) contained in \(K\). Then
+	\begin{align*}
+		[K_1K_2:F] \leq [K_1:F][K_2:F]
+	\end{align*}
+	with equality if and only if an \(F\)-vector space basis for \(K_1\) is linearly independent over \(K_2\) (or vice versa).
+\end{prop}
+If the \(F\)-vector space basis of \(K_1\) is \(\alpha_1,\ldots,\alpha_n\) and the \(F\)-vector space basis of \(K_2\) is \(\beta_1,\ldots,\beta_m\), then \(\left\{ \alpha_i \beta_j \right\}_{i,j = 1}^{n,m}\) is a \(F\)-vector span of \(K_1K_2\).
+\begin{cor}
+	If, furthermore, \([K_1:F] = n\) and \([K_2:F] = m\) with \(\textrm{gcd}(n,m) = 1\), then \([K_1K_2:F] = [K_1:F][K_2:F] = nm\).
+\end{cor}
+
+\begin{exmp}
+	\begin{itemize}
+		\item Consider \(K = \Q(\sqrt{2} )\Q(\sqrt[3]{2}) \). We have
+			\begin{align*}
+				\Q &\hookrightarrow^{2} \Q(\sqrt{2} ) \hookrightarrow^{3} \Q(\sqrt{2})\Q(\sqrt[3]{2}) = \Q(\sqrt[6]{2})\\
+				\Q &\hookrightarrow^{3} \Q(\sqrt[3]{2}) \hookrightarrow^{2} \Q(\sqrt[6]{2})\\
+				\Q &\hookrightarrow^{6} \Q(\sqrt[6]{2})
+			\end{align*}
+			where \(\hookrightarrow^{k}\) represents a degree \(k\) extension. % Fill in rest of field extensions here, and perhaps turn into diagrams
+	\end{itemize}
+\end{exmp}
+
+\section{Splitting Fields}
+\label{sec:splitting_fields}
+
+Recall that for any field \(F\) and any polynomial \(f(x) \in F[x]\), there exists a field extension \(K\) over \(F\) that contains a root, say \(\alpha  \in K\), of \(f(x)\). In this case, \(f(x) = (x-\alpha )g(x)\) in \(K[x]\) as \(K[x]\) is a Euclidean domain.\\
+
+Now we want a field extension \(K / F\) so that \(f(x) \in F[x]\) splits completely into linear factors in \(K[x]\).
+
+\begin{defn}
+	A field extension \(K\) of \(F\) is called a \textbf{splitting field for \(f(x) \in F[x]\)} if \(f(x) = \prod_{i} (x - \alpha_i) \) in \(K[x]\) and \(f(x)\) does NOT factor completely in \(K'[x]\) for any proper subfield \(K'\) of \(K\).
+\end{defn}
+\(f(x) \in K[x]\) splits completely if and only if \(K\) contains all roots of \(f(x)\).
+
+\begin{exmp}
+	\begin{itemize}
+		\item The splitting field of \(x^2-2\) over \(\Q\) is \(\Q(\sqrt{2} )\) 
+		\item The splitting field of \((x^2-2)(x^2-3)\) over \(\Q\) is \(\Q(\sqrt{2} ,\sqrt{3} )\)
+		\item The splitting field of \(x^3-2\) over \(\Q\) is NOT \(\Q(\sqrt[3]{2})\). The roots \(\sqrt[3]{2}\omega \) and \(\sqrt[3]{2}\omega^2 \) are in fact imaginary and hence are not in \(\Q(\sqrt[3]{2})\) (note that \(\omega \) represents the principal root of unity).
+	\end{itemize}
+\end{exmp}
+
+\begin{thm}
+	Splitting fields always exist. For any field \(F\), if \(f(x) \in F[x]\), then there exists a field extension \(K\) of \(F\) that is a splitting field for \(f(x)\).
+\end{thm}
+\end{document}

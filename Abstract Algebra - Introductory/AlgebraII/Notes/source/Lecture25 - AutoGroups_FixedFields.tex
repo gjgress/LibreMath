@@ -1,0 +1,79 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 05/10/21
+
+\chapter{Galois Theory}
+\label{cha:galois_theory}
+
+Galois theory studies the connection between finite field extensions via roots of polynomials and the structures of groups that permute those roots.\\
+
+Let \(F,K\) be fields, and \(K / F\) a field extension.
+
+\begin{defn}[Field Automorphism]
+	We say that \(\sigma :K\to K\) is a \textbf{field automorphism} if \(\sigma \) is a bijective unital ring homomorphism. We denote the collection of field automorphisms of \(K\) by \(\textrm{Aut}(K)\).\\
+
+	An automorphism \(\sigma  \in \textrm{Aut}(K)\) \textbf{fixes an element} \(\alpha  \in K\) if \(\sigma (\alpha )=\alpha \).\\
+
+	An automorphism \(\sigma \in \textrm{Aut}(K)\) \textbf{fixes a subset \(E\) of \(K\)} if \(\sigma (\alpha ) = \alpha \) for all \(\alpha  \in E\).\\
+
+	For \(\sigma  \in \textrm{Aut}(K)\) and \(E\subset K\), \(\sigma (E)\) denotes the subset \(\left\{\sigma (\alpha ) \mid \alpha \in E \right\} \)
+\end{defn}
+Recall that the prime subfield of a field \(K\) is given by
+\begin{align*}
+	K_{\textrm{prime}} = \begin{cases}
+		\Q & K \text{ has characteristic 0}\\
+		\Z_p & \text{\(p\) prime}
+	\end{cases}
+\end{align*}
+because \(\sigma \in \textrm{Aut}(K)\) fixes \(1_K\), it must hold that \(\sigma \) fixes \(K_{\textrm{prime}}\) and hence prime subfields are fixed by any automorphism of a field.
+
+\section{Automorphisms fixing subfields}
+\label{sec:automorphisms_fixing_subfields}
+
+\begin{defn}
+	We define \(\textrm{Aut}(K / F)\) to be the collection of automorphisms of \(K\) that fix \(F\).
+\end{defn}
+
+\begin{prop}
+	\(\textrm{Aut}(K)\) is a group under composition, and \(\textrm{Aut}(K / F)\) is a subgroup of \(\textrm{Aut}(K)\).
+\end{prop}
+
+\begin{prop}
+	Let \(\alpha  \in K\) be an algebraic element over \(F\). Then for any \(\alpha \in \textrm{Aut}(K / F)\), we get that \(m_{\alpha ,F}(\sigma (\alpha )) = 0\).
+\end{prop}
+In other words, automorphisms permute roots of minimal polynomials.
+
+\section{Subfields and Subgroups}
+\label{sec:subfields_and_subgroups}
+
+\begin{prop}
+	Let \(H\) be a subgroup of \(\textrm{Aut}(K)\). Then 
+	\begin{align*}
+		\left\{\alpha  \in K \mid \sigma (\alpha ) = \alpha \quad \forall \sigma \in H \right\} 
+	\end{align*}
+	is a subfield of \(K\). We call this subfield the \textbf{fixed field of \(H\)} denoted by \(K^{H}\).
+\end{prop}
+
+In fact, this structure induces a correspondence between field extensions and chains of subgroups.
+\begin{prop}
+	Let \(F_1 \subset F_2 \subset K\) be a sequence of field extensions. Then \(\textrm{Aut}(K / K) = \textrm{Id}_{\textrm{Aut}(K)} \leq \textrm{Aut}(K / F_2) \leq \textrm{Aut}(K / F_1)\).\\
+
+	Conversely, let \(H_1 \leq H_2 \leq \textrm{Aut}(K)\) be a chain of subgroups. Then \(K^{\textrm{Aut}(K)} = K_{\textrm{prime}} \subset K^{H_2} \subset K^{H_1}\)
+\end{prop}
+\end{document}

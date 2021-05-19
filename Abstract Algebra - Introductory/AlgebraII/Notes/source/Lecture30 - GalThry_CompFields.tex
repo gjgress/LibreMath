@@ -1,0 +1,51 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 05/10/21
+
+Now we discuss composite field extensions.
+\begin{prop}
+	If \(K / F\) is Galois, and \(F' / F\) is any field extension, then \(KF' / F'\) is Galois and \(\textrm{Gal}(KF' / F') \cong \textrm{Gal}(K / K\cap F')\).
+\end{prop}
+
+\begin{exmp}
+	Consider \(K = \Q(\omega ), F' = \Q(\sqrt[3]{2} ), F = \Q\). Then \(KF' = \Q(\omega ,\sqrt[3]{2}) \) and by this theorem is Galois over \(\Q(\sqrt[3]{2} )\). Furthermore, the Galois group is isomorphic to \(\Q(\omega )\cap \Q(\sqrt[3]{2} )\).\\
+
+	Notice that \(\Q(\sqrt[3]{2}) \) is not Galois over \(\Q\)!
+\end{exmp}
+
+\begin{cor}
+	If \(K / F\) is Galois and \(F' / F\) is any field extension, then
+	\begin{align*}
+		[KF':F] = [KF':F'][F':F] \equiv [K:K\cap F'][F':F] = \frac{[K:F][F':F]}{[K\cap F' : F]}.
+	\end{align*}
+\end{cor}
+
+\begin{prop}
+	If \(K_1 / F\) and \(K_2 / F\) are Galois, then \(K_1K_2 / F\) and \(K_1\cap K_2 / F\) are Galois. Furthermore,
+	\begin{align*}
+	\textrm{Gal}(K_1K_2 / F) \cong \left\{ (\sigma ,\tau ) \mid \sigma\mid_{K_1 \cap K_2} = \tau\mid_{K_1 \cap K_2} \right\} \leq \textrm{Gal}(K_1 / F) \times \textrm{Gal}(K_2 / F).
+\end{align*}
+	Equality holds if and only if \(K_1\cap K_2 = F\).
+\end{prop}
+
+\begin{cor}
+	Let \(E / F\) be a finite separable extension. Then there exists \(K / F\) Galois extension with \(F \subset E \subset K\), and the choice of \(K\) is minimal in the sense that, if \(E\subset K'\) and \(K' \subset \overline{K}\), then \(K\subset K'\).	
+\end{cor}
+We call the Galois extension above the \textbf{Galois closure} of \(E / F\).
+\end{document}

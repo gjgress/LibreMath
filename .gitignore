@@ -1,0 +1,13 @@
+.*
+*.aux
+*.toc
+*.fls
+*.ilg
+*.log
+*.out
+*.fdb_latexmk
+*.toc
+*.synctex.gz
+*.ind
+
+!.gitignore

@@ -1,0 +1,37 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 05/10/21
+
+\begin{prop}
+	Let \(E\) be the splitting field over \(F\) of a polynomial \(f(x) \in F[x]\). Then
+	\begin{align*}
+		\left| \textrm{Aut}(E / F)\right|  \leq [E:F] 
+	\end{align*}
+	with equality if and only if \(f(x)\) is separable over \(F\).
+\end{prop}
+The techniques used to prove this proposition also tell us that if \(K / F\) is finite, then \(\left| \textrm{Aut}(K / F) \right| \leq [K:F]\).
+
+\begin{defn}
+	Let \(K / F\) be a finite extension.
+	\begin{itemize}
+		\item If \(\left| \textrm{Aut}(K / F) \right| = [K:F]\) then \(K\) is \textbf{Galois over \(F\)} and \(K / F\) is a \textbf{Galois extension}.
+		\item If \(K / F\) is Galois, then the group \(\textrm{Aut}(K / F)\) is called the \textbf{Galois group} of \(K / F\) and is denoted \(\textrm{Gal}(K / F)\).
+	\end{itemize}
+\end{defn}
+\end{document}

@@ -1,0 +1,161 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{./resources/pdf/logo.pdf}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 01/27/21
+In order for a Euclidean Domain to be well-defined, we should clarify what we require from a division algorithm.
+
+\begin{defn}[Euclidean Function]
+	An integral domain \(R\) is a \textbf{Euclidean Domain} if there exists a \textbf{Euclidean function} \(N:R\setminus\left\{ 0 \right\} \to \N\) that satisfies \(\forall f,g \in R\setminus \left\{ 0 \right\} \):
+	\begin{align*}
+		N(fg) \geq \textrm{max}\left\{ N(f),N(g) \right\}\\
+		\exists q,r \in R \text{ such that }f = qg + r \text{ and }\left[ r = 0 \text{ or }N(r)<N(g) \right] 
+	\end{align*}
+\end{defn}
+In order to clarify what a Unique Factorization Domain is, we should also clarify what proper factorization is.
+
+\begin{defn}[Proper Factorization]
+	Let \(a \in R\) be a nonzero nonunit. A \textbf{proper factorization} of \(a\) is an equality \(a=bc\), where neither \(b\) nor \(c\) is a unit of \(R\). If this exists, we say \(b,c\) are \textbf{proper factors} of \(a\), and that \(b,c\) divide \(a\).
+\end{defn}
+Recall that an irreducible element has no proper factorizations.
+
+\begin{defn}[Unique Factorization Domain]
+	An integral domain is a \textbf{unique factorization domain} if every nonzero, nonunit element has a proper factorization by irreducible elements, that is unique up to order and multiplication by units.
+\end{defn}
+
+\begin{defn}[Associates]
+	We say that \(a,b \in R\) are \textbf{associates} if \(a \mid b\) and \(b\mid a\). In this case, \(a = bu\) for some \( u \in R^{x}\).
+\end{defn}
+\vspace{5mm} % If the previous stuff changes, this may be able to be removed
+\begin{defn}[Greatest Common Divisor]
+	Let \(a_1,\ldots,a_n \in R\). The \textbf{greatest common divisor} of these elements is an element \(d \in R\) such that
+	\begin{align*}
+		d\mid a_i \quad \forall i = 1,\ldots,n\\
+		\forall d' \in R, \text{ if }d' \mid a_1,\ldots,a_n, \text{ then }d' \mid d.
+	\end{align*}
+	If, furthermore, \(gcd(a_1,\ldots,a_n) = 1_R\), then we say that \(\left\{a_1,\ldots,a_n \right\} \) are \textbf{relatively prime}.
+\end{defn}
+In fact, gcd's are unique up to multiplication by unit.\\
+
+\begin{hw}
+	Let \(R\) be a UFD.
+	\begin{enumerate}[(a).]
+		\item Let \(b\) and \(a_1,\ldots,a_s\) be nonzero elements of \(R\). For \(d \in R\), show that
+			\begin{align*}
+				bd = gcd(ba_1,\ldots,ba_s) \iff d = gcd(a_1,\ldots,a_s)
+			\end{align*}
+		\item Let \(f(x) \in R[x]\) where \(f(x) = bf_1(x)\) for \(f_1(x)\) \textbf{primitive} (i.e. \(gcd(\text{coefficients of }f_1(x)) = 1_R\) ). Show that
+			\begin{align*}
+				b = gcd(\left\{ \text{coefficients of }f(x) \right\} ).
+			\end{align*}
+	\end{enumerate}
+\end{hw}
+Now we discuss primes.
+\begin{prop}
+	All primes are irreducible, and in EDs, PIDs, and UFDs, all irreducible elements are prime (but not in weaker rings).
+\end{prop}
+In order to prove these properties, we will introduce some useful definitions.
+
+\begin{defn}[Maximal Ideal]
+	A proper ideal \(M\) of a ring \(R\) is a \textbf{maximal ideal} of \(R\) if there does not exist another ideal of \(R\) that contains \(M\) besides \(R\) itself.
+\end{defn}
+
+\begin{anki}
+TARGET DECK
+Current Math::Abstract Algebra II
+
+% Up to 5 consequences
+START
+Definition
+Name: Maximal Ideal
+Premise 1: \(M\) is a proper ideal of ring \(R\)
+Consequence 1: \(M\) is maximal if there does not exist another ideal of \(R\) that contains \(M\) besides \(R\) itself
+Tags: ring_ideals
+<!--ID: 1611701297894-->
+END
+\end{anki}
+
+\begin{thm}[Classification of Maximal Ideals]
+	Let \(R\) be a commutative ring with identity and \(M\) an ideal in \(R\). Then \(M\) is a maximal ideal of \(R\) if and only if \(R / M\) is a field.
+\end{thm}
+
+\begin{anki}
+% Up to 4 premises
+% Up to 4 equivalences
+START
+Theorem
+Name: Classification of Maximal Ideals
+Premise 1: \(R\) commutative ring with identity
+Premise 2: \(M\) ideal in \(R\)
+Consequence 1: \(M\) maximal ideal \(\iff\) \(R/M\) is a field
+Tags: ring_ideals
+<!--ID: 1611701297914-->
+END
+\end{anki}
+
+\begin{defn}[Prime Ideal]
+	A proper ideal \(P\) in a commutative ring \(R\) is a \textbf{prime ideal} if whenever \(ab \in P\), then either \(a \in P\) or \(b \in P\).
+\end{defn}
+Note that it is possible to define prime ideals in a noncommutative setting.
+
+\begin{anki}
+% Up to 5 consequences
+START
+Definition
+Name: Prime Ideal
+Premise 1: Proper ideal \(P\) in commutative ring \(R\)
+Consequence 1: \(P\) prime ideal iff \(ab \in P \implies a \in P\) or \(b \in P\)
+Tags: rings_ideals
+<!--ID: 1611701297931-->
+END
+\end{anki}
+
+\begin{prop}
+	Let \(R\) be a commutative ring with identity \(1_R\neq 0\). Then \(P\) is a prime ideal in \(R\) if and only if \(R / P\) is an integral domain.
+\end{prop}
+
+\begin{anki}
+% Up to 4 premises
+% Up to 4 equivalences
+START
+Theorem
+Premise 1: \(R\) commutative ring w identity
+Consequence 1: \(P\) prime ideal in \(R\) iff \(R / P\) integral domain
+Tags: rings_ideals
+<!--ID: 1611701297949-->
+END
+\end{anki}
+
+As an example, note that every ideal in \(\Z\) is of the form \(n\Z\), and that \(\Z_n\) is an integral domain only when \(n\) is prime. This is why ideals of the form \(\Z_p\) are viewed as prime ideals.
+\begin{cor}
+	Every maximal ideal in a commutative ring with identity is also a prime ideal.
+\end{cor}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Every maximal ideal in a commutative ring with identity is also a {{c1::prime ideal}}. 
+Tags: rings_ideals
+<!--ID: 1611701297965-->
+END
+\end{anki}
+
+\begin{thm}
+	A PID is a UFD.
+\end{thm}
+
+\end{document}

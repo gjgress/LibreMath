@@ -1,0 +1,60 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{./resources/pdf/logo.pdf}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 02/01/21
+
+\section{Irreducibility Criteria for Polynomials}
+\label{sec:irreducibility_criteria_for_polynomials}
+
+If \(R\) is an integral domain, then for \(f(x) \in R[x]\) monic, of degree \(>0\), is irreducible if and only if \(f(x)\) cannot be factored as a product of two polynomials of deg \(\geq 1\).
+Fortunately, we have a few tools to get irreducibility of polynomials.
+
+\begin{lemma}[Gauss' Lemma]
+	For \(R\) a UFD with \(F:= Frac(R)\), and for \(f(x) \in R[x]\) primitive:\\
+	\(f(x) \in R[x]\) is irreducible if and only if \(f(x) \in F[x]\) is irreducible.
+\end{lemma}
+Another direction we can take is roots:
+\begin{prop}
+	Let \(f(x) \in F[x]\) for \(F \) a field. Then
+	\begin{itemize}
+		\item \(f(x)\) has a degree 1 factor if and only if \(f(x)\) has a root \(\alpha\) in \(F\), i.e. \(\exists \alpha \in F\) such that \(f(\alpha)=0\) 
+		\item \(f(x)\) of degree 2 or 3 is reducible if and only if \(f(x)\) has a root in \(F\)
+	\end{itemize}
+\end{prop}
+If we look at \(R = \Z\) and \(F = \Q\) specifically, we have more options.
+\begin{prop}[Rational Root Test]
+	Let \(f(x) = \sum_{i=1}^{n} a_i x^{i} \in \Z[x]\). 
+\begin{itemize}
+	\item If \(\frac{r}{s}\in \Q\) with \(gcd(r,s) = 1\) and \(\frac{r}{s}\) is a root of \(f(x)\), then \(r\mid a_0\) and \(s\mid a_n\).
+	\item If \(f(x) \in Z[x]\) is monic and if \(f(\alpha)\neq 0\) for all \(\alpha \in \Z\) dividing \(\alpha_0\), then \(f(x)\) has no roots in \(\Q\).
+\end{itemize}
+\end{prop}
+While we can work more generally for reducibility modulo ideals, for homework and exams we will only consider reducibility over \(\Z_p\) by prime ideals.
+\begin{prop}
+	Let \(R\) be an integral domain, and let \(I \triangleleft R\) be a proper ideal of \(R\). Take \(f(x) \in R[x]\) a monic polynomial of degree \(\geq 1\). If the image of \(f(x)\) in \((R / I)[x]\) is irreducible, then \(f(x)\) is irreducible in \(R[x]\).
+\end{prop}
+
+\begin{thm}[Eisenstein-Schonemann Criteria]
+	Let \(P\) be a prime ideal of an integral domain \(R\), and take
+	\begin{align*}
+		f(x) = x^{n}+ a_{n-1}x^{n-1}+ \ldots + a_1x + a_0
+	\end{align*}
+	to be a monic polynomial in \(R[x]\) of degree \(\geq 1\). Suppose \(a_{n-1},\ldots,a_1,a_0 \in P\) and \(a_0 \not\in P^2\). Then \(f(x) \) is irreducible in \(R[x]\).
+\end{thm}
+A trick we can use to help apply this is that if \(f(x)\) doesn't satisfy the criteria, use \(f(x-c)\) and try again. If it is (ir)reducible for \(f(x-c)\), it is ir(reducible) for \(f(x)\).
+\end{document}

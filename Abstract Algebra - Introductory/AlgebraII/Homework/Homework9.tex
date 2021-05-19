@@ -1,0 +1,138 @@
+\documentclass[num=9,duedate=04-07-21,course=Algebra\ II,proflastname=Walton]{hwtemplate}
+
+%%% Options for hwtemplate.cls:
+%
+%% Required:
+%
+% num - Assignment number
+% course - Name or course ID
+% proflastname - Last name of professor
+% duedate - date that homework is due, in mm-dd-yy
+%
+%% Optional:
+%
+% type - type of document (default: Homework)
+% studentid - student id used for emails etc. (default: gjg3)
+% name - your full name (default: Gabriel Gress)
+% emaildomain - domain of email (default: rice.edu)
+%
+%%%
+
+\begin{document}
+
+\lstset{language=Matlab,%
+	%basicstyle=\color{red},
+	breaklines=true,%
+	morekeywords={matlab2tikz},
+	keywordstyle=\color{blue},%
+	morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+	identifierstyle=\color{black},%
+	stringstyle=\color{mylilas},
+	commentstyle=\color{mygreen},%
+	showstringspaces=false,%without this there will be a symbol in the places where there is a space
+	numbers=left,%
+	numberstyle={\tiny \color{black}},% size of the numbers
+	numbersep=9pt, % this defines how far the numbers are from the text
+	emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+	%emph=[2]{word1,word2}, emphstyle=[2]{style},
+}
+
+% \lstinputlisting{foo.m}
+
+\maketitle
+
+Collaborated with the Yellow group.
+
+\pagebreak
+\problem[1]
+\begin{claim}
+	Suppose that \(K\) is a separable field extension of \(F\), and \(E\) is an intermediate field so that \(F\subset E\subset K\). Prove that:
+	\begin{enumerate}[(i).]
+		\item \(K\) is separable over \(E\), and
+		\item \(E\) is separable over \(F\).
+	\end{enumerate}
+\end{claim}
+
+\begin{proof}
+	\begin{enumerate}[(i).]
+		\item Let \(\alpha  \in K\) be given. Because \(K\) is a separable field extension of \(F\), we have that \(\alpha \) is the root of a separable polynomial in \(F[x]\). But because \(F\subset E\), any polynomial \(f(x) \in F[x]\) is in \(E[x]\), so \(\alpha \) is the root of a separable polynomial in \(E[x]\), and hence \(K\) is separable over \(E\).
+		\item To see that \(E\) is separable over \(F\), we let \(\alpha  \in E\) be given. Of course, because \(E\subset K\), \(\alpha  \in K\), and hence \(\alpha \) is the root of a separable polynomial in \(F[x]\), giving \(E\) separability over \(F\).
+\end{enumerate}
+\end{proof}
+
+
+\problem[2]
+\begin{claim}
+	Suppose \(K[x]\) is a polynomial ring over the field \(K\) and \(F\) is a subfield of \(K\). If \(F\) is a perfect field and \(f(x) \in F[x]\) has no repeated irreducible factors in \(F[x]\), prove that \(f(x)\) has no repeated irreducible factors in \(K[x]\).
+\end{claim}
+\begin{proof}
+	By definition, \(f\) is separable and has distinct roots in \(\overline{F}\). Let \(\alpha_i \in \overline{F}\) represent the distinct roots of \(f\). Note that \(\alpha_i \in \overline{K}\) as \(\overline{F}\subset \overline{K}\).\\
+
+	This tells us that \(f\) cannot have a repeated irreducible factor in \(K[x]\). If it did, then this repeated irreducible factor must have some \(\alpha_i\) as a root, and hence the root would be repeated in \(F[x]\), which cannot occur by hypothesis. Thus \(f(x)\) has no repeated irreducible factors in \(K[x]\).
+\end{proof}
+
+\problem[3]
+\begin{claim}
+	Prove that \(d\mid n\) if and only if \(x^{d}-1 \mid x^{n}-1\).\\ %if n = qd+r then x^n-1 = (x^{qd+r}-x^r) + (x^r - 1)
+
+	Use this to conclude that if \(a>1\) is an integer then \(d\mid n \iff a^{d}-1 \mid a^{n}-1\), and then conclude that \(\mathbb{F}_{p^{d}}\subset \mathbb{F}_{p^{n}} \iff d\mid n\).
+\end{claim}
+\begin{proof}
+	Let \(d\mid n\) and write \(n = qd\) for some \(q\). Then
+	\begin{align*}
+		x^{qd}-1 = (x^{d}-1) (x^{qd-d} + x^{qd-2d} + \ldots + x + 1)
+	\end{align*}
+	and hence \(x^{d}-1\) is a factor, as desired. Now assume the converse, so that \(x^{d}-1 \mid x^{n}-1\). Let \(n = qd+r\) for some \(r<d\). Then
+	\begin{align*}
+		x^{qd+r}-1 = x^{r}(x^{qd}-1)+ (x^{r}-1) = (x^{d}-1)(x^{qd-d} + \ldots + x + 1) + (x^{r}-1)
+	\end{align*}
+	Now observe that because \(x^{d}-1\) divides the first term, in order for \(x^{d}-1 \mid x^{n}-1\), it must divide the second term as well. But \(x^{d}-1 \mid x^{r}-1\) for \(r<d\) only when \(r=0\), and hence \(n=qd\) as desired.\\
+
+	This gives us the result for \(\alpha \) an integer, as needed. Now observe that
+	\begin{align*}
+		p^{d}-1 \mid p^{n}-1 \iff x^{p^{d}-1}-1 \mid x^{p^{n}-1}-1 \iff x^{p^{d}}-x \mid x^{p^{n}}-x
+	\end{align*}
+	This implies that the roots of \(x^{p^{d}}-x\) must all be roots of \(x^{p^{n}}-x\) and hence that \(\mathbb{F}_{p^{d}}\subset \mathbb{F}_{p^{n}}\). Because \(d\mid n \iff p^{d}-1 \mid p^{n}-1\), the iff's carry through and thus
+		\begin{align*}
+			d\mid n \iff \mathbb{F}_{p^{d}}\subset \mathbb{F}_{p^{n}}.
+		\end{align*}
+\end{proof}
+\separator
+
+\problem[4]
+\begin{claim}
+	For any prime \(p\) and any nonzero \(a \in \mathbb{F}_p\), prove that \(x^{p}-x+a\) is irreducible and separable over \(\mathbb{F}_p\). %For irreducibility, one approach is to prove first that if alpha is a root then alpha + 1 is also a root. Another approach is to suppose it is reducible and compute derivatives
+\end{claim}
+\begin{proof}
+	To see that \(x^{p}-x+a\) is separable over \(\mathbb{F}_p\), we will show that every element of \(\mathbb{F}_p\) is a root of \(f\). Let \(\alpha \) be a root of \(f\). Observe that
+	\begin{align*}
+		f(\alpha +1) = (\alpha +1)^{p}-\alpha -1+a = \alpha ^{p}+1 - \alpha  - 1 + a = \alpha ^{p}-\alpha  + 1 = f(\alpha )=0.
+	\end{align*}
+	Note that the third equality holds because we are in \(\mathbb{F}_p\). This shows that \(\alpha +1\) is a root if \(\alpha \) is a root, and thus because there exists a root of \(f\) in \(\mathbb{F}_p\), it must hold that every element of \(\mathbb{F}_p\) is a root.\\
+
+To show irreducibility, we observe that there are no linear factors. Suppose we have a factor with degree greater than or equal to 2. Because it cannot have a repeated factors, if it has a root, it must have at least one additional root. But because we have \(\alpha +1\) is a root if \(\alpha \) is a root, then we know that if \(\alpha \) is a root, then there must be a distinct root of the form \(\alpha +j\). But we can iterate this until we have \(p\) roots, in which case the factor must be \(x^{p}-x+a \) itself; and hence the only factor of degree greater than 2 is the polynomial itself.
+\end{proof}
+
+\problem[5]
+\begin{claim}
+	Let \(F\) be the quotient field of the polynomial ring \(\mathbb{F}_2[t]\), that is, \(F\) consists of fractions \(f(t) / g(t)\), for \(f(t),g(t) \in \mathbb{F}_2[t]\) with \(g(t) \neq 0\), with addition and multiplication performed as one typically adds and multiplies fractions. Consider the polynomial \(f(x) = x^2-t \in F[x]\). Show that:
+	\begin{enumerate}[(i).]
+		\item \(f(x)\) is irreducible in \(F[x]\) 
+		\item \(f(x)\) is not separable in \(F[x]\).
+	\end{enumerate}
+\end{claim}
+\begin{proof}
+	\begin{enumerate}[(i).]
+		\item We want to show that \(x^2-t\) cannot be expressed as \(f(t) / g(t)\) for \(f,g \in \mathbb{F}_2[t]\). Assume for the sake of contradiction that there is a root \(\frac{f}{g}\) in \(F[x]\). Then \(\frac{f^2}{g^2}= t\). But both \(f^2,g^2\) have even degree, and so their quotient have even degree. But \(t\) is of degree one, and so equality cannot hold.
+		\item We want to show that \(f(x)\) has a repeated root. Observe that \(x^2-t = (x-\sqrt{t})(x+\sqrt{t} )\). We want to show that there exists a field extension in which \(-\sqrt{t} =\sqrt{t} \). If \(\frac{f}{g}= \sqrt{t} \), then \(\frac{f^2}{g^2} = t\). which holds in \(\mathbb{F}_2(\sqrt{t} )\) as \(2\cdot x=0\) in \(\mathbb{F}_2\), and so we have that \(f(x)\) is not separable.
+	\end{enumerate}
+\end{proof}
+
+\problem[6]
+\begin{claim}
+	Prove Fermat's Little Theorem: if \(p\) is prime and \(c\) is an integer, then \(c^{p}\cong c \mod p\). 
+\end{claim}
+\begin{proof}
+	Recall that the splitting field of \(x^{p}-x\) is \(\Z_p\). Thus \(x^{p}-x\) factors into linear factors in \(\Z_p\), and because the degree of the polynomial is \(p\), has \(p\) roots in \(\Z_p\). Because \(x^{p}-x\) is separable, none of the roots are repeated. Thus because \(\Z_p\) has \(p\) elements, each element must be a root of \(x^{p}-x\). This is precisely equivalent to \(c^{p}\cong c \mod p\) for \(c \in \Z\).
+\end{proof}
+\end{document}

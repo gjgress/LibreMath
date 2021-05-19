@@ -1,0 +1,52 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+\begin{cor}[Jordan's Theorem]
+\begin{itemize}
+	\item Let \(G\) act transitively on the finite set \(\Omega\), where \(\left| \Omega \right| >1\). Then there is an element of \(G\) which fixes no point of \(\Omega\).
+	\item Let \(H\) be a proper subgroup of a finite group \(G\). Then
+		\begin{align*}
+			\bigcup_{g \in G} g^{-1}Hg \neq G.
+		\end{align*}
+\end{itemize}
+\end{cor}
+
+\begin{thm}[Sylow's Theorem]
+	Let \(G\) be a group of order \(n = p^{a}m\), where \(p\) is prime and \(p \not\mid m\). Then
+	\begin{itemize}
+		\item G contains a subgroup of order \(p^{a}\) 
+		\item The number of subgroups of order \(p^{a}\) is congruent to \(1 \pmod p\) and all these subgroups are conjugate
+		\item Any subgroup of \(G\) of order \(p^{k}\), \(k\leq p\), is contained in a subgroup of order \(p^{a}\)
+	\end{itemize}
+\end{thm}
+
+\begin{thm}[Cauchy's Theorem]
+	If a prime number \(p\) divides the order of a group \(G\), then \(G\) contains an element of order \(p\).
+\end{thm}
+A grouo of \(p\)-power order, acting on a set of size divisible by \(p\), has the property that the number of fixed points is divisible by \(p\). Hence, if there is at least one fixed point, then there are at least \(p\).
+
+\begin{thm}
+	Let \(G\) be a group of order \(p^{a}m\), where \(p\) is prime not dividing \(m\). Then, for \(0\leq i\leq a\),
+	\begin{itemize}
+		\item \(G\) contains a subgroup of order \(p^{i}\) 
+		\item if \(i<m\), then any subgroup of order \(p^{i}\) is contained normally in a subgroup of order \(p^{i+1}\).
+	\end{itemize}
+\end{thm}
+
+\begin{thm}
+	The center of a non-trivial \(p\)-group is non-trivial. Furthermore, if \(\left| P \right| = p^{a}\), then \(P\) has a chain
+	\begin{align*}
+		P_0<P_1<\ldots<P_a=P
+	\end{align*}
+	of subgroups, where \(\left| P_i \right| =p^{i}\) and each is a normal subgroup of \(P\). Moreover, \(P_{i+1} / P_i \cong C_p\).
+\end{thm}
+
+\end{document}

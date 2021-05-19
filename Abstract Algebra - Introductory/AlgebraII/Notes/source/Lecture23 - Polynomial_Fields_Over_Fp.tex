@@ -1,0 +1,64 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 05-10-21
+
+\section{Techniques in Characteristic p > 0}
+\label{sec:techniques_in_characteristic_p_0}
+
+\begin{prop}
+	Let \(F\) be a field of characteristic \(p>0\). Then for all \(a,b \in F\), we get that
+	\begin{align*}
+		(a+b)^{p} = a^{p} + b^{p}\\
+		(ab)^{p} = a^{p}b^{p}
+	\end{align*}
+\end{prop}
+This is the "Freshman's Dream".
+
+\begin{defn}[Frobenius Endomorphism]
+	For a field \(F\) of characteristic \(p>0\), the function
+	\begin{align*}
+		\varphi :F\to F\\
+		a\mapsto a^{p}
+	\end{align*}
+	is the \textbf{Frobenius endomorphism} of \(F\).
+\end{defn}
+\begin{cor}
+	The Frobenius endomorphism of \(F\) is an injective field homomorphism. When \(F\) is finite, it is also surjective.
+\end{cor}
+
+Now we will go back to some propositions about finite fields using these ideas.
+\begin{prop}
+	Every irreducible polynomial over a finite field \(F\) is separable. Moreover, \(f(x) \in F[x]\) is separable if and only if it is the product of distinct irreducible polynomials in \(F[x]\).
+\end{prop}
+This follows by contradiction. One can express the irreducible polynomial as a polynomial of the form \(g(x^{p})\), but this polynomial can be shown to be reducible, and so cannot occur.
+
+\begin{defn}[Perfect]
+	A field \(K\) of characteristic \(p>0\) is called \textbf{perfect} if every element of \(K\) is a \(p\)-th power in \(K\)-- that is, \(K = K^{p}\).
+\end{defn}
+By convention any field of characteristic zero is also called perfect.\\
+
+We have just shown that every irreducible polynomial over a perfect field is separable, and hence finite extensions of perfect fields are separable.
+
+\begin{hw}
+	Prove that there exists a non-perfect infinite field \(F\), i.e. find \(f(x) \in F[x]\) so that \(f\) is irreducible and not separable.
+\end{hw}
+
+These concepts can be used to prove that the \(n\)-th cyclotomic polynomial \(\Phi_n(x) \in \Z[x]\) is irreducible.
+
+\end{document}

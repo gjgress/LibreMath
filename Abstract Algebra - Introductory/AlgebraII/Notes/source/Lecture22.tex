@@ -1,0 +1,62 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 03/29/21
+
+\section{Separability}
+\label{sec:separability}
+
+\begin{defn}[Multiplicity]
+	Take \(f(x) \in F[x]\). Then over a splitting field over \(F\), we get \(f(x) = (x-\alpha_1)^{n_1}(x-\alpha_2)^{n_2}\ldots(x-\alpha_k)^{n_k}\) where \(\alpha_1,\ldots,\alpha_k\) are distinct elements of the splitting field and \(n_1\geq 1\) for all \(i\). The value \(n_i\) is called the \textbf{multiplicity} of \(\alpha_i\), and if  \(n_i>1\), \(\alpha_i\) is a \textbf{multiple root} of \(f(x)\). If \(n_i=1\) instead, then we say that \(\alpha_i\) is a \textbf{simple root}.
+\end{defn}
+
+\begin{defn}[Separable polynomials]
+	A polynomial \(f(x) \in F[x]\) is called \textbf{separable} if it has no multiple roots over a splitting field for \(F\). Else, \(f(x)\) is called \textbf{inseparable}.
+\end{defn}
+
+\begin{defn}[Polynomial derivative]
+	If \(f(x) = a_n x^{n} + a_{n-1}x^{n-1} + \ldots + a_2 x^{2} + a_1x + a_0 \in F[x]\), then its \textbf{derivative} is
+	\begin{align*}
+		D_xf(x) = na_n x^{n-1}+ \ldots + 2a_2 x + a_1 \in F[x]
+	\end{align*}
+\end{defn}
+
+\begin{prop}
+	Take \(f(x) \in F[x]\) with root \(\alpha \). Then the multiplicity of \(\alpha \) is greater than one if and only if \(D_xf(\alpha ) = 0\).
+\end{prop}
+In other words, \(f(x)\) is separable when \(f(x)\) and \(D_xf(x)\) share no roots.
+
+\begin{cor}
+	\begin{enumerate}[(a).]
+		\item Every irreducible polynomial over a field \(F\) of characteristic zero is separable
+		\item A polynomial over a field of characteristic zero is separable if and only if it is the product of distinct irreducible factors
+	\end{enumerate}
+\end{cor}
+
+
+Now we discuss how separability relates to field extensions.
+\begin{defn}[Separable]
+	Let \(K / F\) be a field extension. An element \(\alpha  \in K\) is \textbf{separable over \(F\)} if \(\alpha \) is algebraic over \(F\) and \(m_{\alpha ,F}(x)\) is separable.\\
+
+	The extension \(K / F\) is \textbf{separable} if every element of \(K\) is separable over \(F\). If there is an \(\alpha  \in K\) that is not separable over \(F\), then \(K / F\) is an \textbf{inseparable} extension.
+\end{defn}
+
+\begin{prop}
+	Every finitely generated algebraic extension of \(\Q\) is separable.
+\end{prop}
+\end{document}

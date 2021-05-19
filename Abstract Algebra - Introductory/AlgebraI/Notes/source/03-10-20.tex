@@ -1,0 +1,49 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+% \section{}	
+\begin{prop}[Disjoint Partitions of Fields]
+	Let \(R\) be a field. Then we can partition \(R\) into disjoint sets by taking all sets of the form
+	\begin{align*}
+		\left\{ a, -a, a^{-1}, (-a)^{-1} \right\} 
+	\end{align*}
+	where \(a\) is non-zero, and taking the set \(\left\{ 0 \right\} \).
+\end{prop}
+\begin{thm}[Two Squares Theorem]
+Consider the equation \(x^2+y^2 = n\), and let \(n = 2^{\alpha}p_1^{\beta_1}\ldots p_r^{\beta_r}q_1^{\gamma_1}\ldots q_s^{\gamma_s}\) be the Gaussian factorization of \(n\). Then, \(x^2+y^2 = n\) is solvable in \(\Z\) if and only if all \(\gamma_j\) are even. Furthermore, the number of solutions is
+\begin{align*}
+	4 \prod_{j=1}^{r} (\beta_j + 1) 
+\end{align*}
+\end{thm}
+\begin{proof}
+	First, we write \(n = x^2+y^2 = (x+yi)(x-yi)\). Using the Gaussian factorization, we rewrite
+	\begin{align*}
+		n = 2^{\alpha}p_1^{\beta_1}\cdot \ldots\cdot q_1^{\gamma_1}\cdot \ldots = (-i)^{\alpha}(1+i)^{2\alpha}\pi_1^{\beta_1}\overline{\pi_1}^{\beta_1}\cdot \ldots\cdot q_1^{\gamma_1}
+	\end{align*}
+	Now observe that
+	\begin{align*}
+		(x+yi)\mid n \implies x+yi = \varepsilon (1+i)^{\alpha'}\pi_1^{\beta_1'}\overline{\pi_1}^{\beta_1''}\cdot \ldots\cdot q_1^{\gamma_1'}\cdot \ldots \\
+		\implies x-yi = \overline{\varepsilon}(1-i)^{\alpha'}\overline{\pi_1}^{\beta_1'}\pi_1^{\beta_1'}\cdot \ldots\cdot q_1^{\gamma_1}
+	\end{align*}
+	Then because
+	\begin{align*}
+		n = (x+yi)(x-yi) \implies\\
+		2\alpha = \alpha' + \alpha' \iff\alpha' = \alpha\\
+		\beta_1 = \beta_1' + \beta_1'' \iff \beta_1' = 0,1,\ldots,\beta_1; \beta_1'' = \beta_1-\beta_1' \\
+		\gamma_1 = \gamma_1' + \gamma_1' \iff \gamma_1 \text{ even}, \gamma_1' = \frac{\gamma_1}{2}\\
+		(-i)^{\alpha} = \varepsilon \overline{\varepsilon}(-i)^{\alpha} \iff 1 = \varepsilon \overline{\varepsilon} \text{ which always holds}
+	\end{align*}
+	Thus, the equation is always solvable if all the \(\gamma\) are even. Looking at the above, the number of solutions will be
+	\begin{align*}
+		1 \cdot (\beta_j+1) \cdot 1 \cdot 4 = 4 \prod_{j=1}^{r} (\beta_j + 1) 
+	\end{align*}
+\end{proof}
+\end{document}

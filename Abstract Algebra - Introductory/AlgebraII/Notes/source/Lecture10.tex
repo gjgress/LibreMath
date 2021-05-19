@@ -1,0 +1,55 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 02/22/21
+
+\section{Subrepresentations and Irreducibility}
+\label{sec:subrepresentations_and_irreducibility}
+
+Let \(K\) be a field and \(G\) a group. Recall that if \(\textrm{dim}_KV = n\), we can identify the group \(GL(V)\) with \(GL_n(K)\), the group of invertible \(K \)-linear operators on \(V\) under composition.
+
+\begin{defn}[Subrepresentations]
+	Let \(\rho:G\to GL(V)\) be a representation of \(G\). Suppose that \(W\) is a subspace of \(V\) which is \(G\)-invariant. That is, for all \(w \in W\), \(g \in G\), it holds that  \(\rho_g(w)\in W\). Then \(W\) becomes a representation of \(G\) and we say that
+	\begin{align*}
+		(W,\rho w:G\to GL(W))\\
+		g\mapsto \left[ \rho_g\mid W:W\to W \quad w \mapsto \rho_g(w) \right] 
+	\end{align*}
+	is a \textbf{subrepresentation} of \((V,\rho)\).
+\end{defn}
+
+% Examples
+
+\begin{defn}
+	The \textbf{direct sum} of two representations of \(G\), \((V',\rho_V')\) and \((V'',\rho_V'')\) is the representation of \(G\) given by:
+	\begin{align*}
+		(V:=V'\bigoplus V'', \rho_{V'\bigoplus V''}:G \to GL(V) )\\
+		g\mapsto \left[ \rho_g:V\to V \quad v = v'+v''\mapsto \rho_g'(v') + \rho_g''(v'') \right] 
+	\end{align*}
+\end{defn}
+If we fix a basis for both \(V'\) and \(V''\), then their union is a basis of \(V = V'\bigoplus V''\).
+
+% Examples
+
+\begin{defn}[Irreducible]
+	A representation is called \textbf{irreducible} if it contains no proper subrepresentations-- otherwise it is called \textbf{reducible}. A representation is called \textbf{completely reducible} if it decomposes as a direct sum of irreducible subrepresentations.
+\end{defn}
+Irreducible representations will turn out to be the building blocks of group representation theory. This is complemented by Mascinke's Theorem, which will state that every \(\C\)-linear representation of a finite group \(G\) of finite degree is completely reducible.
+
+% Example (Necessary)
+
+\end{document}

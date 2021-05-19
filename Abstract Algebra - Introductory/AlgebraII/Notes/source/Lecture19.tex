@@ -1,0 +1,47 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 03/17/21
+
+\begin{prop}
+	Take \(f(x) \in F[x]\) of degree \(n\). Then for \(K :=\) splitting field of \(f(x)\), we get that \([K:F] \leq n!\).
+\end{prop}
+Now we discuss the uniqueness of splitting fields.
+\begin{thm}
+	Let \(\varphi :F\to F'\) be an isomorphism of fields. Let
+	\begin{align*}
+		f(x) = a_nx^{n}+ \ldots + a_1x + a_0 \in F[x]\\
+		f'(x) = \varphi (a_n)x^{n}+ \ldots + \varphi (a_1) x + \varphi (a_0) \in F'[x].
+	\end{align*}
+	Let \(E\) be the splitting field of \(f(x)\) over \(F\) and \(E'\) be the splitting field of \(f'(x)\) over \(F'\). Then the isomorphism \(\varphi \) extens to an isomorphism \(\sigma :E\to E'\), so that \(\sigma \mid_F = \varphi \).
+\end{thm}
+This can be proven by induction on the degree of \(f(x)\).
+\begin{cor}
+	Any two splitting fields for a polynomial \(f(x) \in F[x]\) over a field \(F\) are isomorphic.
+\end{cor}
+
+Thus we can safely refer to -the- splitting field of a polynomial over a field.
+
+\begin{defn}
+	If \(K\) is an algebraic extension of \(F\), which is the splitting field over \(F\) for a collection of polynomials \(\left\{ f_i(x) \right\} \in F[x]\), then \(K\) is called a \textbf{normal} extension of \(F\).
+\end{defn}
+In other words, a normal extension is simply an algebraic extension that is also a splitting field.
+\begin{hw}
+	Determine the splitting field of \(x^{6}-4\) over \(\Q\) and its degree over \(\Q\).
+\end{hw}
+\end{document}
