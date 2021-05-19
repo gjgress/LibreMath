@@ -11,8 +11,8 @@ My goal is for this repository to become a collaborative hub of free materials. 
 - Lecture notes and problem sets for academic subjects
 - Anki decks that contain flashcards for the corresponding academic subjects
 - Auxiliary files such as LaTeX source files, style templates, vim snippets, configurations, etc. so that:
-- - Anyone can download the repository in its current state and change/use it for their own purposes
-- - Others can suggest changes to improve the content here
+  - Anyone can download the repository in its current state and change/use it for their own purposes
+  - Others can suggest changes to improve the content here
 - More?
 
 ## How can I contribute?
