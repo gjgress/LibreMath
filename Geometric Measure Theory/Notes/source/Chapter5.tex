@@ -1,0 +1,192 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 03/19/21
+
+\chapter{Local structure of fractals}
+\label{cha:local_structure_of_fractals}
+
+In order to analyze the local properties of fractals, we restrict to \(s\)-sets, which are Borel sets of Hausdorff dimension \(s\) with positive finite \(s-\) dimensional Hausdorff measure. This is a first introduction to problems in geometric measure theory.
+
+\section{Densities}
+\label{sec:densities}
+
+\begin{defn}[Density]
+	Let \(F\) be a subset of the plane. The \textbf{density} of \(F\) at \(x\) is
+	\begin{align*}
+		\lim_{r \to 0} \frac{\textrm{area}(F\cap \overline{B}(x,r))}{\pi r^2}
+	\end{align*}
+	where the denominator is simply the area of \(\overline{B}(x,r)\).
+\end{defn}
+The Lebesgue density theorem tells us that for \(F\) Borel, the value is either \(0\) or \(1\) depending on whether \(x\) is in \(F\).\\
+
+Now we consider \(s\)-dimensional Hausdorff measure on these sets for \(F\) with dimension \(s\).
+\begin{defn}[Upper and lower densities]
+	Let \(x \in \R^{n}\) and \(F\) be an \(s\)-set. The \textbf{lower} and \textbf{upper density} is given by
+	\begin{align*}
+		\underline{D}^{s}(F,x) = \underline{\textrm{lim}}_{r\to 0} \frac{\mathcal{H}^{s}(F\cap B(x,r))}{(2r)^{s}}\\
+		\overline{D}^{s}(F,x) = \overline{\textrm{lim}}_{r\to 0} \frac{\mathcal{H}^{s}(F\cap B(x,r))}{(2r)^{s}}.
+	\end{align*}
+	If they both agree, then the density of \(F\) at \(x\) exists and is that value.
+\end{defn}
+
+\begin{defn}[Regular points]
+	If \(\underline{D}^{s}(F,x) = \overline{D}^{s}(F,x) = 1\), then \(x\) is a \textbf{regular} point of \(F\), otherwise it is an \textbf{irregular} point.\\
+
+	An \(s\)-set is called \textbf{regular} if, except on a set of \(\mathcal{H}^{s}\)-measure, all of its points are regular. If instead all of its points (except on a set of \(\mathcal{H}^{s}\) ) are irregular, then the \(s\)-set is \textbf{irregular}.
+\end{defn}
+Note that unlike points, an \(s\)-set can be not regular, but not irregular.\\
+
+Despite expectations, the densities of irregular sets do have some conditions.
+\begin{prop}
+	Let \(F\) be an \(s\)-set in \(\R^{n}\). Then
+	\begin{enumerate}[(a).]
+		\item \(\underline{D}^{s}(F,x) = \overline{D}^{s}(F,x) = 0\) for \(\mathcal{H}^{s}\)-almost all \(x \not\in F\) 
+		\item \(2^{-s}\leq \overline{D}^{s}(F,x)\leq 1\) for \(\mathcal{H}^{s}\)-almost all \(x \in F\).
+	\end{enumerate}
+\end{prop}
+Of course, it follows from (b) that the lower density of irregular sets is strictly less than 1 almost everywhere.\\
+
+It can be shown that if \(E\subset F\) is a Borel subset, then \(E\) is regular if \(F\) is regular and \(E\) is irregular if \(F\) is irregular. This also gives us that the intersection of a regular and irregular set must have \(\mathcal{H}^{s}\)-measure zero.
+
+\begin{thm}
+	Let \(F\) be an \(s\)-set in \(\R^2\). Then \(F\) is irregular unless \(s\) is an integer.
+\end{thm}
+\begin{proof}
+	We will only show the case for when \(0<s<1\), as the other cases are much harder. We will do this by showing that the density \(D^{s}(F,x)\) fails to exist almost everywhere in \(F\). Suppose for the sake of contradiction that there exists \(F_1\subset F\) of positive measure where the density exists and so
+	\begin{align*}
+		\frac{1}{2}< 2^{-s} \leq D^{s}(F,x).
+	\end{align*}
+	By Egoroff's theorem, we may find \(r_0>0\) and a Borel set \(E\subset F_1\subset F\) with \(\mathcal{H}^{s}(E) > 0\) such that
+	\begin{align*}
+		\mathcal{H}^{s}(F\cap B(x,r)) > \frac{1}{2}(2r)^{s}
+	\end{align*}
+	for all \(x \in E\) and \(r<r_0\). Let \(y \in E\) be a cluster point of \(E\), and \(\eta\) be a number with \(0<\eta <1\), and let \(A_{r,\eta }\) be the annulus given by \(B(y,r(1+\eta )) \setminus B(y,r(1-\eta ))\) as can be seen in Figure \ref{fig:annulus}. Then
+	\begin{align*}
+		(2r)^{-s}\mathcal{H}^{s}(F\cap A_{r,\eta }) = (2r)^{-s}\mathcal{H}^{s}(F\cap B(y,r(1+ \eta ))) - (2r)^{-s}\mathcal{H}^{s}(F\cap B(y,r(1-\eta )))\\
+		\to D^{s}(F,y)((1+\eta )^{s}-(1-\eta )^{s})
+	\end{align*} as \(r\to 0\). For each term in a sequence of values of \(r\) tending to 0, we can find some \(x \in E\) with \(\left| x-y \right| =r\). This tells us that \(B(x,r\eta  / 2) \subset A_{r,\eta }\) and hence
+	\begin{align*}
+		\frac{1}{2}r^{s}\eta^{s} < \mathcal{H}^{s}(F\cap B(x,r \eta  / 2)) \leq \mathcal{H}^{s}(F\cap A_{r,\eta }) \implies\\
+		2^{-s-1}\eta^{s} \leq D^{s}(F,y)((1+\eta )^{s}-(1-\eta )^{s}) = D^{s}(F,y)(2s\eta +\text{higher order terms})
+	\end{align*}
+	As \(\eta \to 0\), this cannot hold for \(0<s<1\), and so we have a contradiction.
+\end{proof}
+
+\begin{figure}[ht]
+\scalebox{1}{
+    \centering
+     \def\svgwidth{1\linewidth}
+     \input{./figures/annulus.pdf_tex}
+}
+    \caption{Annulus}
+    \label{fig:annulus}
+\end{figure}
+\section{Structure of 1-sets}
+\label{sec:structure_of_1_sets}
+
+We cannot generalize integral dimension \(s\)-sets as easily, but fortunately we can sometimes obtain decomposition theorems that can allow us to analyze \(s\)-sets.
+
+\begin{thm}[Decomposition Theorem]
+	Let \(F\) be a \(1\)-set. The set of regular points of \(F\) form a regular set, and the set of irregular points forms an irregular set.
+\end{thm}
+
+Recall the definition of curves:
+\begin{defn}[Jordan curve]
+	A \textbf{Jordan curve} \(C\) is the image of a continuous injection \(\psi:[a,b]\to \R^2\), where \([a,b] \subset \R\) is a proper closed interval.
+\end{defn}
+By this definition, curves are not self-intersecting, have two ends, and are compact connected subsets of the plane. The length \(\mathcal{L}(C)\) of the curve \(C\) is given by the approximation
+\begin{align*}
+	\mathcal{L}(C) = \sup \sum_{i=1}^{m} \left| x_i - x_{i-1} \right| 
+\end{align*}
+where the supremum is taken over all partitions. If \(\mathcal{L}(C)\) is positive and finite, we call \(C\) a \textbf{rectifiable curve}. Of course, the length of a curve equals its \(1\)-dimensional Hausdorff measure.
+
+\begin{lemma}
+	If \(C\) is a rectifiable curve, then \(\mathcal{H}^{1}(C) = \mathcal{L}(C)\).
+\end{lemma}
+Rectifiable curves act nicely in the plane.
+\begin{lemma}
+	A rectifiable curve is a regular \(1\)-set.
+\end{lemma}
+Of course, this also tells us that curve-like structures are also regular. That is,
+\begin{prop}
+	A \(1\)-set contained in a countable union of rectifiable curves is a regular \(1\)-set.
+\end{prop}
+We can also say that a \(1 \)-set is curve-free if its intersection with every rectifiable curve has \(\mathcal{H}^{1}\)-measure zero,
+\begin{prop}
+	An irregular \(1\)-set is curve-free.
+\end{prop}
+\begin{prop}
+	Let \(F\) be a curve-free \(1\)-set in \(\R^2\). Then \(\underline{D}^{1}(F,x) \leq \frac{3}{4}\) at almost all \(x \in F\).
+\end{prop}
+
+\begin{thm}
+	\begin{enumerate}[(a).]
+		\item A \(1\)-set in \(\R^2\) is irregular if and only if it is curve-free.
+		\item A \(1\)-set in \(\R^2\) is regular if and only if it is the union of a curve-like set and a set of \(\mathcal{H}^{1}\)-measure zero.
+	\end{enumerate}
+\end{thm}
+
+These are remarkable as they classify densities of sets by curves. In fact, this even told us that in any \(1\)-set \(F\), the set of points for which \(\frac{3}{4} < \underline{D}^{1}(F,x) < 1\) has \(\mathcal{H}^{1}\)-measure zero.\\
+
+Some other nice properties we have are total disconnectedness of irregular \(1\)-sets.
+
+% Section on tangents
+
+\section{Tangents to s-sets}
+\label{sec:tangents_to_s_sets}
+
+At first, the concepts of tangents may seem unrelated to our discussion on dimension and local volume. However, the topic is more related than one might expect-- if a smooth curve \(C\) has a tangent at \(x\), then when one is close to \(x\), the set \(C\) is concentrated in two directions that are diametrically opposite. This is a notable property, and one we hope to extend to more generalized \(s\)-sets.\\
+
+Of course, we have to focus locally on sets of positive measure (i.e. almost all points).
+
+\begin{defn}[Tangent]
+	An \(s\)-set \(F\) in \(\R^{n}\) has a \textbf{tangent at \(x\) in direction \(\theta \)}, where \(\theta \) is a unit vector, if
+	\begin{align*}
+		\overline{D}^{s}(F,x) > 0
+	\end{align*}
+	and for every angle \(\varphi >0\),
+	\begin{align*}
+		\lim_{r \to 0} r^{-s} \mathcal{H}^{s}(F \cap \; (B(x,r)\setminus S(x,\theta ,\varphi ))) = 0
+	\end{align*}
+	where \(S(x,\theta ,\varphi )\) is the double sector with vector \(x\), consisting of those \(y\) such that the line segment \([x,y]\) makes an angle at most \(\varphi \) with \(\theta \) or \(-\theta \).
+\end{defn}
+In other words, a tangent in direction \(\theta \) requires that (a). a significant part of \(F\) lies near \(x\), and (b) a negligible amount close to \(x\) lies outside of any double sector near \(\theta \).\\
+
+First we discuss \(1\)-sets for posterity.
+\begin{prop}
+	A rectifiable curve \(C\) has a tangent at almost all of its points.
+\end{prop}
+We already know by a previous lemma that the upper density is \(1\) for almost all \(x \in C\). The rest of the proof follows by the fact that the change in length of the curve is a well-defined function that exists as a vector almost everywhere. Of course, by arc length reparametrization, its magnitude is always one. This derivative then is precisely the unit vector \(\theta \), and we can constrain via epsilon-delta techniques so that the length derivative is contained in \(S\) provided that the parametrization is within \(\varepsilon\) of the tangent point \(x\). Thus we can force the set outside of the double sector to be empty, and hence it has a tangent at almost all \(x\). % Full proof can be found in Federer 5.10
+
+\begin{prop}
+	A regular \(1\)-set \(F\) in \(\R^2\) has a tangent at almost all of its points.
+\end{prop}
+This follows because regular \(1\)-sets can be covered a.e. by a countable collection of rectifiable curves.
+
+ \begin{prop}
+	At almost all points of an irregular \(1\)-set, no tangent exists.
+\end{prop}
+This proof depends on the characterisation of irreuglar sets as curve-free sets, which is very involved.
+
+\begin{prop}
+	If \(F\) is an \(s\)-set in \(\R^2\) with \(1<s<2\), then at almost all points of \(F\) no tangent exists.
+\end{prop}
+
+These results start to illuminate a much larger picture. For example, it can be shjown that if \(s>1\), almost every line through \(\mathcal{H}^{s}\)-a.e. point of an \(s\)-set \(F\) intersects \(F\) in a set of dimension \(s-1\).
+\end{document}

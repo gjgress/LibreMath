@@ -1,0 +1,211 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{./resources/pdf/logo.pdf}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 02/08/21
+
+\chapter{Hausdorff and Packing Measures and Dimensions}
+\label{cha:hausdorff_and_packing_measures_and_dimensions}
+
+\begin{defn}
+	Let \(F\) be a subset of \(\R^{n}\) and \(s\geq 0\). For each \(\delta>0\), define
+	\begin{align*}
+		\mathcal{H}^{s}_{\delta}(F) = \inf \left\{\sum_{i=1}^{\infty} \left| U_i \right|^{s} \mid \left\{ U_i \right\} \text{ is a \(\delta\)-cover of \(F\)} \right\} .
+	\end{align*}
+The Hausdorff dimension looks at all covers of \(F\) of a certain dimension, and minimizes the \(s\)-th power of the diameters of the covering set. Notice that as \(\delta\) decreases, the class of permissible covers in \(F\) is reduced, and so the infimum increases. This gives us
+\begin{align*}
+	\mathcal{H}^{s}(F) = \lim_{\delta \to 0} \mathcal{H}^{s}_{\delta}(F)
+\end{align*}
+which we define the \textbf{\(s\)-dimensional Hausdorff measure of \(F\)}. This limit exists for any subset \(F\), but it can and will usually be \(0\) or \(\infty\).
+\end{defn}
+In fact, \(\mathcal{H}^{s}\) is a measure. Hausdorff measure generlizes the typical ideas of length, area, volumne, and in fact for subsets of \(\R^{n}\), \(n\)-dimensional Hausdorff measure is within a constant multiple of \(n\)-dimensional Lebesgue measure. In particular, if \(F\) is a Borel subset of \(\R^{n}\), then
+\begin{align*}
+	\mathcal{H}^{n}(F) = c^{-1}_n \textrm{vol}^{n}(F)
+\end{align*}
+where \(c_n\) is the volume of an \(n\)-dimensional ball of diameter \(1\).
+
+\begin{prop}
+	Let \(F\subset \R^{n}\) and \(f:F\to \R^{m}\) be a Holder mapping-- that is, it satisfies
+	\begin{align*}
+		\left| f(x) - f(y) \right| \leq c \left| x-y \right|^{\alpha} \quad \forall x,y \in F
+	\end{align*}
+	for constants \(\alpha > 0\) and \(c > 0\). Then for each \(s\),
+	\begin{align*}
+		\mathcal{H}^{s / \alpha}(f(F)) \leq c^{s / a}\mathcal{H}^{s}(F).
+	\end{align*}
+	In particular, if \(f\) is a Lipschitz mapping, then
+	\begin{align*}
+		\mathcal{H}^{s}(f(F)) \leq c^{s}\mathcal{H}^{s}(F).
+	\end{align*}
+\end{prop}
+
+\begin{prop}[Scaling Property]
+	Let \(f:\R^{n}\to \R^{n}\) be a similarity transformation of scale factor \(\lambda>0\). If \(F\subset \R^{n}\), then
+	\begin{align*}
+		\mathcal{H}^{s}(f(F)) = \lambda^{s}\mathcal{H}^{s}(F).
+	\end{align*}
+\end{prop}
+
+\section{Hausdorff Dimension}
+\label{sec:hausdorff_dimension}
+
+Using the robustness of the Hausdorff dimension, we can better construct a definition of dimension.\\
+
+Observe that for \(\delta<1\), \(\mathcal{H}^{s}_{\delta}(F)\) is non-increasing with \(s\). In particular, for \(t>s\)
+ \begin{align*}
+	 \mathcal{H}^{t}_\delta(F) \leq \delta^{t-s}\mathcal{H}^{s}_{\delta}(F).
+\end{align*}
+This seems to imply that there is some critical value of \(s\) at which \(\mathcal{H}^{s}(F)\) jumps from \(\infty\) to \(0\). This critical value is what we call the Hausdorff dimension.
+
+\begin{defn}
+	Let \(F \subset \R^{n}\). Then the \textbf{Hausdorff dimension} of \(F\) is
+	\begin{align*}
+		\textrm{dim}_H F := \inf \left\{s \geq 0 \mid \mathcal{H}^{s}(F) = 0 \right\} = \sup \left\{s \mid \mathcal{H}^{s}(F) = \infty \right\} .
+	\end{align*}
+\end{defn}
+This immediately gives
+\begin{align*}
+	\mathcal{H}^{s}(F) = \begin{cases}
+		\infty & 0\leq s< \textrm{dim}_H F\\
+		0 & s> \textrm{dim}_H F
+	\end{cases}
+\end{align*}
+Note that for \(s =  \textrm{dim}_H F\), \(\mathcal{H}^{s}(F)\) can be zero, infinite, or finite. A Borel set that \(\mathcal{H}^{s}\) as finite is called an \(s\)-set.\\
+
+Fortunately, \(\mathcal{H}^{s}\) satisfies many of the same properties as the box-counting dimension. Furthermore, it satisfies the Holder condition exactly as expected:
+\begin{prop}
+	Let \(F\subset \R^{n}\) and suppose that \(f:F\to \R^{m}\) satisfies the Holder condition
+	\begin{align*}
+		\left| f(x)-f(y) \right| \leq c \left| x-y \right|^{\alpha} \quad \forall x,y \in F.
+	\end{align*}
+	Then \( \textrm{dim}_H f(F) \leq (1 / \alpha) \textrm{dim}_H F\). If \(f\) is instead bi-Lipschitz, then we have equality instead.
+\end{prop}
+
+There is also a clear relationship between Hausdorff dimension and box-counting dimension.
+\begin{prop}
+	For every non-empty bounded \(F\subset \R^{n}\),
+	\begin{align*}
+		\textrm{dim}_H F \leq \underline{ \textrm{dim}}_B F \leq \overline{ \textrm{dim}}_B F.
+	\end{align*}
+\end{prop}
+Note that so far, bi-Lipschitz mappings preserve all our notions of dimension. So similar to homeomorphisms, one can regard two sets as equivalent if there is a bi-Lipschitz mapping between them. This allows us to begin distinguishing topological properties from dimension.
+\begin{prop}
+	Every set \(F\subset \R^{n}\) with \( \textrm{dim}_H F < 1\) is totally disconnected.
+\end{prop}
+\begin{proof}
+	Let \(x\) and \(y\) be distinct points of \(F\). We define a mapping \(f(z) = \left| z-x \right| \). The reverse triangle inequality gives us
+	\begin{align*}
+		\left| f(z) - f(w) \right| \leq \left| z-w \right| ,
+	\end{align*}
+	so that \(f\) is Lipschitz and so \( \textrm{dim}_H f(F) < 1\). This implies that \(f(F)\) is a subset of \(\R\) of \(\mathcal{H}^{1}\)-measure zero-- which implies it has a dense complement. Choosing \(r\) with \(r \not\in f(F)\) and \(0<r<f(y)\), it follows that
+	\begin{align*}
+		F = \left\{z \in F \mid \left| z-x \right| <r \right\} \cup \left\{z \in F \mid \left| z-x \right| >r \right\} .
+	\end{align*}
+	That is, \(F\) is contained in two disjoint open sets with \(x\) in one set and \(y\) in the other-- and so \(x,y\) lie in different connected components of \(F\).
+\end{proof}
+
+%% Section on computing examples
+
+\begin{exmp}[Middle third Cantor set]
+	The Cantor set \(F\) splits into a left part \(F_L=F \cap \left[ 0,\frac{1}{3} \right] \) and a right part \(F_R = F \cap \left[ \frac{2}{3},1 \right] \). Both parts are geometrically similar to \(F\) but simply scaled by a ratio of \(\frac{1}{3}\). Furthermore, \(F = F_L \sqcup F_R\). Thus, for any \(s\),
+	\begin{align*}
+		\mathcal{H}^{s}(F) = \mathcal{H}^{s}(F_L) + \mathcal{H}^{s}(F_R) = \left( \frac{1}{3} \right)^{s}\mathcal{H}^{s}(F) + \left( \frac{1}{3} \right)^{s}\mathcal{H}^{s}(F)
+	\end{align*}
+	by the scaling property of Hausdorff measures. Assuming that at the critical value \(s = \textrm{dim}_H F\), we have that the Hausdorff measure is finite (a nontrivial assumption), then we can divide both sides by \(\mathcal{H}^{s}(F)\) to get \(1 = 2\left( \frac{1}{3} \right)^{s}\) which then gives \(s = \log 2 / \log 3\).
+\end{exmp}
+A more rigorous approach can be shown to calculate this value, but this heuristic is particularly useful for self-similar sets.
+
+%% Section on ball measures, net measure, that are equivalent
+
+\section{Equivalent definitions of Hausdorff dimension}
+\label{sec:equivalent_definitions_of_hausdorff_dimension}
+
+It is useful to have equivalent definitions, as some definitions will be easier to compute for certain classes of sets. One simple variation is done via covering by spherical balls: let
+\begin{align*}
+	\mathcal{B}^{s}_{\delta}(F) = \inf \left\{\sum_{i} \left| B_i \right|^{s} \mid \left\{ B_i \right\} \text{ is a \(\delta\)-cover of \(F\) by balls} \right\} 
+\end{align*}
+and consider the measure \(\mathcal{B}^{s}(F) = \lim_{\delta \to 0} \mathcal{B}^{s}_\delta(F)\). Once again, we obtain a dimension when \(\mathcal{B}^{s}(F)\) jumps from \(\infty\) to zero. One can verify that this bounds the Hausdorff measure on both sides by a constant, and so the value of \(s\) where the jumps occur must be the same.\\
+
+Of course, we can further restrict by using covers by only open sets, or closed sets. If \(F\) is compact, we can even consider finite subcovers of open covers.\\
+
+One important variant is the net measure. For now, consider the cases when \(F\) is a subset of \([0,1]\). Recall that a binary interval is an interval of the form \([r_2^{-k},(r+1)2^{-k}]\) where \(k = 0,1,\ldots\) and \(r = 0,1,\ldots,2^{k}-1\). Then
+\begin{align*}
+	\mathcal{M}^{s}_{\delta}(F) = \inf \left\{ \sum \left| U_i \right|^{s} \mid \left\{ U_i \right\} \text{ is a \(\delta\)-cover of \(F\) by binary intervals} \right\} 
+\end{align*}
+which leads to the net measures
+\begin{align*}
+	\mathcal{M}^{s}(F) = \lim_{\delta \to 0} \mathcal{M}^{s}_\delta (F).
+\end{align*}
+This form can be more convenient, as two binary intervals are either disjoint or contained in one another, allowing any cover of a set by binary intervals to become a cover by disjoint binary intervals.n
+
+%% Section on packing measure, which is a measure correlated with the modified upper box-counting dimension
+
+\section{Packing Measure}
+\label{sec:packing_measure}
+
+For \(s\geq \) and \(\delta>0\), we define
+\begin{align*}
+	\mathcal{P}^{s}_\delta(F) = \sup \left\{\sum_{i=1}^{\infty} \left| B_i \right|^{s} \mid \left\{ B_i \right\} \text{ is a collection of disjoint balls of radii at most \(\delta\) with centers in \(F\)} \right\} .
+\end{align*}
+The limit
+\begin{align*}
+	\mathcal{P}^{s}_0(F) = \lim_{\delta \to 0} \mathcal{P}^{s}_\delta(F)
+\end{align*}
+exists. However, it is not a measure-- so we modify the definition by decomposing \(F\) into a countable collection of sets and define
+\begin{align*}
+	\mathcal{P}^{s}(F) = \inf \left\{\sum_{i=1}^{\infty} \mathcal{P}^{s}_0(F_i) \mid F\subset \bigcup_{i=1}^{\infty}F_i \right\} 
+\end{align*}
+This is now a measure on \(\R^{n}\) known as the \(s\)-dimensional packing measure. Similarly, the packing dimension is the jump value given by
+\begin{align*}
+	\textrm{dim}_P F = \sup \left\{s\geq 0 \mid \mathcal{P}^{s}(F) = \infty \right\} = \inf \left\{s \mid \mathcal{P}^{s}(F) = 0 \right\} .
+\end{align*}
+In fact, this definition is the same as the modified upper box dimension.
+
+\begin{lemma}
+	For \(F\) a non-empty bounded subset of \(\R^{n}\),
+	\begin{align*}
+		\textrm{dim}_P F \leq \overline{ \textrm{dim}_B}F.
+	\end{align*}
+\end{lemma}
+And hence
+\begin{prop}
+	If \(F\subset \R^{n}\), then \(\textrm{dim}_PF = \overline{\textrm{dim}_{MB}}F\).
+\end{prop}
+This gives us the relations
+\begin{align*}
+	\textrm{dim}_H F \leq \underline{\textrm{dim}_{MB}}F \leq \overline{\textrm{dim}}_{MB}F = \textrm{dim}_P F \leq \overline{\textrm{dim}}_B F
+\end{align*}
+This connection greatly opens the options in computing the geometry of fractals, however it is difficult to calculate. The following corollary strengthens the connection between the modified box dimension and the packing dimension.
+
+\begin{cor}
+	Let \(F\subset \R^{n}\) be compact and assume that
+	\begin{align*}
+		\overline{\textrm{dim}}_B(F\cap V) = \overline{\textrm{dim}}_B F
+	\end{align*}
+	for all open sets \(V\) that intersect \(F\). Then \(\textrm{dim}_P F = \overline{\textrm{dim}}_BF\).\\
+
+	If \(F\subset \R^{n}\) is of second category, then \(\textrm{dim}_P F = n\). That is, this holds if \(F\) is or contains a dense \(G_\delta\) set.
+\end{cor}
+
+%% Gauge function
+
+%% Dimension prints??
+
+%% Porosity
+
+
+\end{document}

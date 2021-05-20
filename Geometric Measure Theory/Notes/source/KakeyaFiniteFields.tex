@@ -1,0 +1,126 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+\logo{~/LibreMath/Auxiliary Files/resources/png/logo.png}
+\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+\department{Department of Mathematics}
+\title{A Study of Kakeya Sets}
+%\subtitle{Based on MATH xxx}
+\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+\context{Techniques and Results in the Field}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% Notes taken on 04/12/21
+
+These notes summarize and discuss a variant of the Kakeya conjecture in finite fields. These results are profound, as the techniques developed in the restricted form of the problem can be generalized to broader tools that can help reduce the bound on dimension for the Kakeya conjecture in higher dimensions.
+
+\chapter{Kakeya Sets in Finite Fields}
+\label{cha:kakeya_sets_in_finite_fields}
+
+This section is a summary of Dvir's paper on the size of Kakeya sets in finite fields.\\
+% Inherently compact-- why?
+
+We have a slightly different definition of Kakeya sets in finite fields:
+\begin{defn}[Kakeya Set]
+	Let \(\mathbb{F}\) be a finite field of \(q\) elements. A \textbf{Kakeya set} in \(\mathbb{F}^{n}\) is a set \(K\subset \mathbb{F}^{n}\) such that \(K\) contains a line in every direction. That is, for every \(x \in \mathbb{F}^{n}\), there exists a \(y \in \mathbb{F}^{n}\) such that
+	\begin{align*}
+		L_{y,x} := \left\{y + a\cdot x \mid a \in \mathbb{F} \right\} \subset K.
+	\end{align*}
+\end{defn}
+% Can we work in general over n-tuple fields (not necessarily finite)? I think one can define a norm on n-tuples over fields, and hence can define unit length. How can we define so it is consistent with R and C?
+
+% Ans-- not really possible. Finite fields have such a different structure. Many propositions/theorems are true on one and not the other (Szemeredi-Trotter theorem). Tubes are a slight resolution.
+
+Because of the structure of the lines in \(\mathbb{F}^{n}\), a lower bound can be imposed on the size of these sets. Previously, the best lower bounds in the general case is of the form \(C_n \cdot q^{\frac{4n}{7}}\). Previous results were obtained by using an additive number theory lemma-- the theorem proved here is obtained via homogeneous polynomials and gets a near-optimal bound.
+
+\begin{thm}
+	Let \(K\subset \mathbb{F}^{n}\) be a Kakeya set. Then
+	\begin{align*}
+		\left| K \right| \geq C_n\cdot q^{n-1}
+	\end{align*}
+	where \(C_n\) depends only on \(n\).
+\end{thm}
+This can be improved by observing that the product of Kakeya sets is also a Kakeya set.
+
+\begin{cor}
+	For every integer \(n\) and every \(\varepsilon>0\), there exists a constant  \(C_{n,\varepsilon}\) depending only on \(n\) and \(\varepsilon\) such that any Kakeya set \(K\subset \mathbb{F}^{n}\) satisfies
+	\begin{align*}
+		\left| K \right| \geq C_{n,\varepsilon }\cdot q^{n-\varepsilon}.
+	\end{align*}
+\end{cor}
+This follows from taking the Cartesian product of Kakeya sets, applying Theorem 1, then taking the \(r\)-th root to obtain the bound on \(K\).
+
+\begin{defn}
+	A set \(K\subset \mathbb{F}^{n}\) is a \textbf{\((\delta ,\gamma )\)-Kakeya set} if there exists a set \(\mathcal{L}\subset \mathbb{F}^{n}\) of size at least  \(\delta \cdot q^{n}\) such that, for every \(x \in \mathcal{L}\) there is a line in direction \(x\) that intersects \(K\) in at least \(\gamma \cdot q\) points.
+\end{defn}
+This broader definition will be easier to work with. We will give a lower bound on these types of Kakeya sets, and then obtain Theorem 1 by setting \(\delta =\gamma =1\).
+
+\begin{thm}
+	Let \(K\subset \mathbb{F}^{n}\) be a \((\delta ,\gamma )\)-Kakeya set. Then
+	\begin{align*}
+		\left| K \right| \geq {{d+n-1}\choose{n-1}} = \frac{(d+n-1)!}{(n-1)!d!},
+	\end{align*}
+	where
+	\begin{align*}
+		d = \left\lfloor q \cdot \textrm{min}\left\{ \delta ,\gamma  \right\}  \right\rfloor - 2.
+	\end{align*}
+\end{thm}
+
+\section{Proof of Theorem 1.0.2}
+\label{sec:proof_of_theorem_1_0_2}
+
+To prove Theorem 2, we first need a lemma on polynomials in finite fields:
+\begin{lemma}% Schwartz-Zippel
+	Let \(f \in \mathbb{F}^{n}[x]\) be a non-zero polynomial with \(\textrm{deg}(f)\leq d\). Then
+	\begin{align*}
+		\left| \left\{x \in \mathbb{F}^{n} \mid f(x) = 0 \right\}  \right| \leq d\cdot q^{n-1}.
+	\end{align*}
+\end{lemma}
+
+\begin{proof}[Proof of Theorem 1.0.2]
+	Suppose for the sake of contradiction that
+	\begin{align*}
+		\left| K \right| < {{d+n-1}\choose{n-1}} = \frac{(d+n-1)!}{(n-1)!d!}.
+	\end{align*}
+	Observe that there are \(q\) monomials of degree \(d\) and hence more monomials than the size of \(K\). %Why?
+Thus there must exist a homogeneous polynomial \(g\) of degree \(d\), where \(g\) is not the zero polynomial, that satisfies
+\begin{align*}
+	\forall x \in K, \quad g(x) = 0.
+\end{align*}
+In other words, because the degree of \(d\) is sufficiently high enough, we can solve a system of equations to create a polynomial that takes on zeroes on \(K\).\\
+
+We will use this to show that \(g\) has too many zeroes and hence must be identically zero, which would contradict the above. Consider the set
+\begin{align*}
+	K' := \left\{c\cdot x \mid x \in K,\, c \in \mathbb{F} \right\} 
+\end{align*}
+that contains all lines that pass through zero and intersect \(K\) at some point. By the homogeneity of \(g\), observe that
+\begin{align*}
+	g(c\cdot x) = c^{d}\cdot g(x)
+\end{align*}
+and so for all \(x \in K'\), we must have that \(g(x) = 0\).\\
+
+Now recall the defintion of a \((\delta ,\gamma )\)-Kakeya set, and let the set \(\mathcal{L}\subset \mathbb{F}^{n}\) be given (with size \(\delta \cdot q^{n}\)).
+
+\begin{prop}
+	For every \(y \in \mathcal{L}\), \(g(y) = 0\).
+\end{prop}
+
+\begin{proof}[Proof of Proposition]
+	
+\end{proof}
+Let \(y \in \mathcal{L}\) be a non-zero vector. Then by definition there exists a point \(z \in \mathbb{F}^{n}\) such that
+\begin{align*}
+	L_{z,y} = \left\{z + a\cdot y \mid a \in \mathbb{F} \right\} 
+\end{align*}
+intersects \(K\) in at least \(\gamma \cdot q\) points. Therefore, since \(d+2 \leq \gamma \cdot d\), there exist \(d+2\) distinct field elements \(a_1,\ldots,a_{d+2} \in \mathbb{F}\) such that \(z+a_i \cdot y \in K\). One \(a_i\) might be zero, but because they are distinct, this still guarantees \(d+1\) distinct non-zero field elements that lie in \(K\).
+
+% Rest of proof
+\end{proof}
+
+\end{document}

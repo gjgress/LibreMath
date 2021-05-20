@@ -1,0 +1,160 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{./resources/pdf/logo.pdf}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 02/08/21
+
+\chapter{Box-counting Dimension}
+\label{cha:box_counting_dimension}
+
+The premise behind the box-counting dimension is to count the minimal number of sets of diameter \(\leq \delta\) that can cover a subset \(F\) of Euclidean space. Denoting this number by \(N_{\delta}(F)\), we observe if there exists a power law so that
+\begin{align*}
+	N_{\delta}(F) \cong c \delta^{-s}
+\end{align*}
+for some positive constants \(c,s\). If this exists, we say that \(F\) has box dimension \(s\). Note that we can rewrite this as
+\begin{align*}
+	s = \lim_{\delta \to 0} \frac{\log N_{\delta}(F)}{-\log \delta}.
+\end{align*}
+
+\begin{defn}
+Of course, this may not be well-defined. To formalize this concept, we introduce \textbf{lower} and \textbf{upper box-counting dimensions of \(F\)} :
+\begin{align*}
+	\underline{ \textrm{dim}}_{B}F = \liminf_{\delta \to 0} \frac{\log N_{\delta}(F)}{-\log \delta}\\
+	\overline{ \textrm{dim}}_{B}F = \limsup_{\delta \to 0} \frac{\log N_\delta(F)}{-\log \delta}
+\end{align*}
+If they are equal, then we say it is the \textbf{box-counting dimension} as above:
+\begin{align*}
+	\textrm{dim}_B F = \lim_{\delta \to 0} \frac{\log N_\delta(F)}{-\log \delta}.
+\end{align*}
+\end{defn}
+
+Note that in order to make sure this is well-defined we typically only apply box dimension to non-empty bounded sets.\\
+
+What makes this definition so interesting is that it can be modified in many ways to get the same result. Using cube, or largest number of disjoint balls still yields the same numbers. In other words, we can use the same statement but redefine \(N_\delta(F)\) to be
+\begin{enumerate}
+	\item the smallest number of sets of diameter at most \(\delta\) that cover \(F \)
+	\item the smallest number of closed balls of radius \(\delta\) that cover \(F\) 
+	\item the smallest number of cubes of side \(\delta\) that cover \(F\) 
+	\item the number of \(\delta\)-mesh cubes that intersect \(F\) 
+	\item the largest number of disjoint balls of radius \(\delta\) with centers in \(F\)
+\end{enumerate}
+and get the same results.\\
+
+% Probably should include some examples here
+
+An equivalent definition of a different form is useful. Define the \(\delta\)-neighborhood to be
+\begin{align*}
+	F_\delta = \left\{x \in \R^{n} \mid \left| x-y \right| \leq \delta \text{ for some \(y \in F\)}\right\} .
+\end{align*}
+We can consider the \(n\)-dimensional Lebesgue measure of this object. In fact, if for some \(0<c<\infty\) we have
+\begin{align*}
+	\lim_{\delta \to 0} \left( \mathcal{L}^{n}(F_\delta) / \delta^{n-s} \right) = c
+\end{align*}
+for some \(s>0\), then we can regard \(F\) as \(s\)-dimensional. In this case, we call \(c\) the \(s\)-dimensional Minkowski content of \(F\).
+
+\begin{prop}
+	If \(F\) is a subset of \(\R^{n}\), then
+	\begin{align*}
+		\underline{ \textrm{dim}}_B F = n - \limsup_{\delta \to 0} \frac{\log \mathcal{L}^{n}(F_\delta)}{\log \delta}\\
+		\overline{ \textrm{dim}}_B F = n - \liminf_{\delta\to 0} \frac{\log \mathcal{L}^{n}(F_\delta)}{\log \delta}
+	\end{align*}
+\end{prop}
+This proposition is why the box-dimension is also commonly referred to as the Minkowski dimension.\\
+
+One notable fact is that, if we are considering the box dimension of a compact subset of \(\R\), we can instead consider the complementary intervals in order to determine the dimension. Further detail in later chapters.
+
+\section{Properties of Box-counting Dimension}
+\label{sec:properties_of_box_counting_dimension}
+
+\begin{enumerate}
+	\item Monotonicity-- if \(E\subset F\), then \( \textrm{dim}_BE \leq \textrm{dim}_BF\), along with their supremum and infimum versions.
+	\item For \(F\subset \R^{n}\) non-empty and bounded,
+		\begin{align*}
+			0 \leq \underline{ \textrm{dim}}_B F \leq \overline{ \textrm{dim}}_B F \leq n.
+		\end{align*}
+	\item Finite stability--
+		\begin{align*}
+			\overline{ \textrm{dim}}_B(E\cup F) = \textrm{max} \left\{ \overline{ \textrm{dim}}_B E, \overline{ \textrm{dim}}_B F \right\} .
+		\end{align*}
+	\item If \(F\subset \R^{n}\) is open, then \( \textrm{dim}_B F = n\).
+	\item If \(F\) is non-empty and finite, then \( \textrm{dim}_B F = 0\).
+	\item If \(F\) is a smooth bounded \(m\)-dimensional submanifold of \(\R^{n}\), then \( \textrm{dim}_H F = m\).
+\end{enumerate}
+We also have a preservation of dimension under Lipschitz transformations. 
+
+\begin{prop}
+	\begin{enumerate}[(a).]
+		\item If \(F\subset \R^{n}\) and \(f:F\to \R^{m}\) is a Lipschitz transformation, that is,
+			\begin{align*}
+				\left| f(x) - f(y) \right| \leq c \left| x-y \right| \quad \forall x,y \in F
+			\end{align*}
+			then
+			\begin{align*}
+				\underline{ \textrm{dim}}_Bf(F) \leq \underline{ \textrm{dim}}_BF\\
+				\overline{ \textrm{dim}}_B f(F) \leq \overline{ \textrm{dim}}_B F
+			\end{align*}
+		\item If \(F\subset \R^{n}\) and \(f:F\to \R^{m}\) is a bi-Lipschitz transformation, that is,
+			\begin{align*}
+				c_1 \left| x-y \right| \leq \left| f(x) - f(y) \right| \leq c \left| x-y \right| \quad \forall x,y \in F
+			\end{align*}
+			with \(0<c_1\leq c<\infty\), then we have equality instead.
+	\end{enumerate}
+\end{prop}
+This applies to a lot of transformations, such as affine translations. We also begin to get more information about projections-- for example, we can bound the dimension of the projection above by the original dimension.
+
+\begin{prop}
+	\begin{align*}
+		\underline{ \textrm{dim}}_B \overline{F} = \underline{ \textrm{dim}}_B F\\
+		\overline{ \textrm{dim}}_B \overline{F} = \overline{ \textrm{dim}}_B F.
+	\end{align*}
+\end{prop}
+This is concerning and has some undesired consequences. FOr example, if \(F\) is a dense subset of an open region in \(\R^{n}\), its dimension must be \(n\). This implies that countable sets, which are very small compared to \(\R\), can have non-zero box dimension. Worse yet, the box dimension of individual rationals is clearly zero, yet their union has dimension \(1\). In other words, we cannot assert any sort of closure under unions.
+
+\section{Modified Box-counting Dimension}
+\label{sec:modified_box_counting_dimension}
+
+We can resolve some of these issues, but obviously it comes at a cost (of being more difficult to apply directly).
+\begin{defn}
+	We define the \textbf{lower} and \textbf{upper modified} box-counting dimension by:
+	\begin{align*}
+		\underline{ \textrm{dim}}_{MB}F = \inf \left\{ \sup_{i} \underline{ \textrm{dim}}_B F_i \mid F\subset \bigcup_{i =1}^{\infty}F_i \right\} \\
+		\overline{ \textrm{dim}}_{MB}F = \inf \left\{ \sup_{i} \overline{ \textrm{dim}}_B F_i \mid F \subset \bigcup_{i=1}^{\infty}F_i \right\} .
+	\end{align*}
+	This is bounded above by the original definition, but has the added benefit that countable sets have dimension zero.
+\end{defn}
+This carries all the properties that we had earlier with the box-counting dimension, but with some other nice properties, such as \textbf{countably stable}:
+\begin{align*}
+	\underline{ \textrm{dim}}_{MB} \left( \bigcup_{i =1} ^{\infty}F_i \right) = \sup_{i} \left\{ \underline{ \textrm{dim}}_{MB}F_i \right\} 
+\end{align*}
+for any countable sequence of sets \(\left\{ F_i \right\} \) (and of course for the upper modified box dimension). We have a nice property that allows us to determine if this version is equivalent to the standard box dimension.
+
+\begin{prop}
+	Let \(F\subset \R^{n}\) be compact. Suppose that
+	\begin{align*}
+		\overline{ \textrm{dim}}_B (F \cap V) = \overline{ \textrm{dim}}_B F
+	\end{align*}
+	for all open sets  \(V\) that intersect \(F\). Then \( \overline{ \textrm{dim}}_B F = \overline{ \textrm{dim}}_{MB}F\), and likewise for lower box-counting dimensions.
+\end{prop}
+This can be proven by application of Baire's category theorem.\\
+
+Recall that we say a set \(F\subset \R^{n}\) is of \textbf{second category} in \(\R^{n}\) if it cannot be expressed as a countable union of nowhere dense sets (closure has empty interior). Equivalently, if \(F\subset \bigcup_{i=1}^{\infty}F_i\), there is some \(F_i\) and non-empty open set \(V\) such that \(V \subset \overline{F\cap F_i}\).
+
+\begin{prop}
+	Let \(F\subset \R^{n}\) be of second category. Then \( \underline{ \textrm{dim}}_{MB}F = \overline{ \textrm{dim}}_{MB}F = n\).
+\end{prop}
+
+\end{document}

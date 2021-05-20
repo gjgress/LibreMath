@@ -1,0 +1,116 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 03/08/21
+
+\chapter{Calculating Dimensions}
+\label{cha:calculating_dimensions}
+
+\section{Basic Methods}
+\label{sec:basic_methods}
+
+Typically, we upper-bound Hausdorff measure/dimension by finding effective coverings by small sets. We obtain lower bounds by putting measures on the set.
+
+\begin{prop}
+	Suppose \(F\) can be covered by \(n_k\) sets of diameter at most \(\delta_k\) with \(\delta_k \to 0\) as \(k\to \infty\). Then
+	\begin{align*}
+		\textrm{dim}_H F \leq \underline{\textrm{dim}}_B F \leq \underline{\textrm{lim}}_{k\to \infty} \frac{\log n_k}{- \log \delta _k}
+	\end{align*}
+	Moreover, if \(n_k \delta ^{s}_k\) remains bounded as \(k\to \infty\), then \(\mathcal{H}^{s}(F)<\infty\). If \(\delta _k \to \infty\) but \(\delta _{k+1}\geq c \delta _k\) for some \(0<c<1\), then
+	\begin{align*}
+		\overline{dim}_B F \leq \overline{\lim_{k \to \infty} } \frac{\log n_k}{- \log \delta_k}.
+	\end{align*}
+\end{prop}
+Typically, the upper bound for Hausdorff dimension is the actual value. We can obtain that by evaluating sums of coverings of sets. However, there are many such covers, and so while upper bounds might be easily boundable, lower bounds are difficult to obtain. As a result, we instead show that no individual set \(U\) covers the whole of \(F\). We do this by mass distribution-- recall that a \textbf{mass distribution} on \(F\) is a measure with support contained in \(F\) such that \(0 < \mu (F) < \infty\).
+
+\begin{thm}[Mass distribution principle]
+	Let \(\mu \) be a mass distribution on \(F\) and suppose that for some \(s>0\), there are numbers \(c>0\) and \(\varepsilon>0\) such that
+	\begin{align*}
+		\mu(U) \geq c \left| U \right|^{s}
+	\end{align*}
+	for all sets \(U\) with \(\left| U \right| \leq \varepsilon\). Then \(\mathcal{H}^{s}(F) \geq \mu (F) / c\) and
+	\begin{align*}
+		s \leq \textrm{dim}_H F \leq \underline{\textrm{dim}}_B F \leq \overline{\textrm{dim}}_B F.
+	\end{align*}
+\end{thm}
+
+% Examples
+
+\begin{lemma}[Vitali Covering Lemma]
+	Let \(C\) be a family of balls contained in some bounded region of \(\R^{n}\). Then there is a (finite or countable) disjoint subcollection \(\left\{ B_i \right\} \) such that
+	\begin{align*}
+		\bigcup_{B \in \mathcal{C}} B \subset \bigcup_{i} \tilde{B}_i
+	\end{align*}
+	where \(\tilde{B}_i\) is the closed ball concentric with \(B_i\) and of four times the radius.
+\end{lemma}
+
+\begin{prop}
+	Let \(\mu \) be a mass distribution on \(\R^{n}\), let \(F\subset \R^{n}\) be a Borel set and let \(0<c<\infty\) be a constant.
+	\begin{enumerate}
+		\item If \(\overline{\lim_{r \to 0} }\mu (B(x,r)) / r^{s} < c\) for all \(x \in F\), then \(\mathcal{H^{s}(F) \geq \mu (F) / c}\) 
+		\item If \(\overline{\lim_{r \to 0} }\mu (B(x,r)) / r^{s} > c\) for all \(x \in F\), then \(\mathcal{H}^{s}(F) \leq 2^{s}\mu (\R^{n}) / c\).
+	\end{enumerate}
+\end{prop}
+
+We will briefly discuss subsets of finite measure. It is important as sets with infinite measure can be unwieldly, so reducing them to sets of positive finite measure can be helpful.
+\begin{thm}
+	Let \(F\) be a Borel subset of \(\R^{n}\) with \(0 < \mathcal{H}^{s}(F) \leq \infty\). Then there is a compact set \(E\subset F\) such that \(0<\mathcal{H}^{s}(E) < \infty\).
+\end{thm}
+Proving this is very difficult. The sketch of the proof focuses on the case with \(F\) a compact subset of \([0,1)\). In general, one applies the net measures to an inductively defined decreasing sequence \(E_0 \supset E_1 \supset \ldots\) of compact subsets of \(F\). By defining this inductively sequence carefully, we can ensure that the net measure is finite and continuous on a limiting sequence that converges to \(E\).\\
+
+Many results apply only to \(s\)-sets, and so one way to approach \(s\)-dimensional sets with \(\mathcal{H}^{s}(F) = \infty\) is to use the above theorem to extract a subset of positive finite measure, study the subset, then interpret the larger set \(F\) based on these properties.
+
+\begin{prop}
+	Let \(F\) be a Borel set satisfying \(0<\mathcal{H}^{s}(F) < \infty\). There is a constant \(b\) and a compact set \(E\subset F\) with \(\mathcal{H}^{s}(E) > 0\) such that
+	\begin{align*}
+		\mathcal{H}^{s}(E \cap B(x,r)) \leq br^{s}
+	\end{align*}
+	for all \(x \in \R^{n}\) and \(r>0\).
+\end{prop}
+
+\begin{cor}[Frostman's Lemma]
+	Let \(F\) be a Borel subset of \(\R^{n}\) with \(0<\mathcal{H}^{s}(F) \leq \infty\). Then there is a compact set \(E\subset F\) such that \(0<\mathcal{H}^{s}(E) < \infty\) and a constant \(b\) such that
+	\begin{align*}
+		\mathcal{H}^{s}(E\cap B(x,r)) \leq br^{s}
+	\end{align*}
+	for all \(x \in \R^{n}\) and \(r>0\).
+\end{cor}
+This is often regarded as aa converse of the mass distribution principle.
+
+\section{Potential Theoretic Methods}
+\label{sec:potential_theoretic_methods}
+
+This is one of the most widely used techniques currently. The idea is to use potentials and energy so that integration can yield results on dimension.\\
+
+Recall that for \(s\geq 0\), the \textbf{\(s\)-potential} at a point \(x\) of \(\R^{n}\) resulting from the mass distribution \(\mu \) on \(\R^{n}\) is defined as
+\begin{align*}
+	\varphi_S(x) = \int \frac{\,d \mu (y)}{\left| x-y \right|^{s}}.
+\end{align*}
+Similarly, the \textbf{\(s\)-energy} of \(\mu \) is
+\begin{align*}
+	I_s(\mu ) = \int \varphi_s(x) \,d \mu (x) = \int \frac{\,d \mu (x)\,d \mu (y)}{\left| x-y \right|^{s}}.
+\end{align*}
+
+\begin{thm}
+	Let \(F\) be a subset of \(\R^{n}\).
+	\begin{enumerate}
+		\item If there is a mass distribution \(\mu \) on \(F\) with \(I_s(\mu )<\infty\), then \(\mathcal{H}^{s}(F) = \infty\) and \(\textrm{dim}_H F \geq s\).
+		\item If \(F\) is a Borel set with \(0<\mathcal{H}^{s}(F) \leq \infty\), then for all \(0<t<s\), there exists a mass distribution \(\mu \) on \(F\) with \(I_t(\mu )<\infty\).
+	\end{enumerate}
+\end{thm}
+\end{document}
