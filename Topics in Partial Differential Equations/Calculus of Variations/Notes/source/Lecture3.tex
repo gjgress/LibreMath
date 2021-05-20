@@ -1,0 +1,185 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 05/19/21
+
+\section{Existence of minimizers by direct method}
+\label{sec:existence_of_minimizers_by_direct_method}
+
+We will focus on finding the existence of minimizers to problems of ther form
+\begin{align*}
+	\inf_{u \in C(\overline{\Omega }) } \left\{\mathcal{F}(u) \mid u=u_0 \text{ on }\partial \Omega  \right\} \\
+	\inf_{i} \left\{ \mathcal{F}(u) \mid g \right\} 
+\end{align*}
+
+For classes of the form
+\begin{align*}
+	\inf_{u \in \mathcal{A}} \mathcal{F}(u)
+\end{align*}
+where \(\mathcal{A}\) is some competition class, we start by picking a minimizing sequence (implicitly we are taking \(\mathcal{A}\neq \emptyset\)). We will pick the minimizing sequence so that:
+\begin{align*}
+	\lim_{j \to \infty} \mathcal{F}(u_j) = \inf_{\mathcal{A}} \mathcal{F}(u) < \infty\\
+	\left\{ u_j \right\}_j \subset \mathcal{A}
+\end{align*}
+Then by sequential compactness, there exists a subsequence \(\left\{ \hat{u}_j \right\}_j\) for which \(\lim_{j \to \infty} \left\{ \tilde{u}_j \right\}_j \to u\) for some \(u\). Note that while \(u\) may not be in our space, the energy of \(u\) will be in our space.\\
+
+Now we restrict our functions to be lower semicontinuous. Then we can show that if \(v_j \to v\), then \(\mathcal{F}(v) \leq \liminf_{j \to \infty} \mathcal{F}(v_j)\).\\
+
+Now we need to show that the limit to which we converge to is within our competition class-- that is, \(u \in \mathcal{A}\). Once we have this, then we have that
+\begin{align*}
+	\inf_{\mathcal{A}} \mathcal{F} \geq \mathcal{F}(u) \leq \liminf_{j \to \infty} \mathcal{F}(\tilde{u}_j) = \lim_{j \to \infty} \mathcal{F}(\tilde{u}_j) = \inf_{\mathcal{A}} \mathcal{F}\\
+	\implies \mathcal{F}(u) = \inf_{\mathcal{A}} \mathcal{F}
+\end{align*}
+
+\begin{exmp}
+	Let \(\mathcal{F}(u) = \int_{0}^{1} u^2+((u')^2-1) \) and choose our competition class to be
+	\begin{align*}
+		\mathcal{A} = \left\{u \in C^{1}([0,1]) \mid u(0)=u(1)=0 \right\} 
+	\end{align*}
+	First, observe that \(\mathcal{F}(u) > 0\) for all \(u \in \mathcal{A}\). Positivity of the integral tells us that if \(\mathcal{F}(u) = 0\) then \(u=0\), but \(\mathcal{F}(0_{\mathcal{A}}) = 1\).\\
+
+	However, we can see that \(\inf_{\mathcal{A}} \mathcal{F} = 0\). Choose \(u_j \in \textrm{Lip}(0,1), u_j' = \pm 1, 0\leq u_j\leq \frac{1}{2j}\). This satisfies \(u_j(0) = u_j(1) = 0\), and
+	\begin{align*}
+		F(u_j) = \int_{0}^{1} u_j^2 + \left( (\pm 1)^2 - 1 \right)^2 = \int_{0}^{1} (u_j)^2 \leq  \frac{1}{(4j)^2} 
+	\end{align*}
+	giving us the infimum.
+\end{exmp}
+
+\begin{exmp}
+	Let
+	\begin{align*}
+		\mathcal{F}(u) = \int_{\R^{n}}\left| \nabla u \right|^2\\
+		\mathcal{A} = \left\{u \in C^{1}(\R^{n}) \mid \int_{\R^{n}}\left| u \right|^{q}=1 \right\} \quad 1\leq q<\infty
+	\end{align*}
+	We can see that \(\mathcal{F}(u) > 0\) for all \(u \in \mathcal{A}\) (check). However, \(\inf_{\mathcal{A}} \mathcal{F} = 0\) ONLY when \(n\geq 3\) AND \(q = \dfrac{2n}{n-2}\). We can see this by picking any \(u_0 \in \mathcal{A}\) and setting \(u_\lambda (x) = \lambda^{\frac{n}{q}}u(\lambda x)\) :
+	\begin{align*}
+		\int_{\R^{n}}\left| u_\lambda  \right|^{q} = \int_{\R^{n}} \left| u_0 \right|^{q} = 1 \quad \forall \lambda >0\\
+		\int_{\R^{n}}\left| \nabla u_\lambda  \right|^2 = \int_{\R^{n}} \left| \lambda^{\frac{n}{q}+1} \nabla u(\lambda x) \right|^2 \,d x\\
+		= \lambda^{2\left( \frac{n}{q}+1 \right) } \int_{\R^{n}} \left| \nabla u(\lambda x) \right|^2 \,d x = \lambda^{2\left( \frac{n}{q}+1 \right) -n} \int_{\R^{n}} \left| \nabla u_0 \right|^2
+	\end{align*}
+	in which case, unless \(2\left( \frac{n}{q}+1 \right) -n = 0\), we get that the above integral goes to zero.
+\end{exmp}
+
+\begin{exmp}[Dirichlet problem]
+	Let \(\Omega \subset \R^{n}\) be open and bounded, and let
+	\begin{align*}
+		\mathcal{F} = \left\{ \frac{1}{2} \int_{\Omega } \left| \nabla u \right|^2 \mid  \right\} \\
+		\mathcal{A} = \left\{ u \in C^{1}(\overline{\Omega })\mid u = u_0 \text{ on }\partial\Omega  \right\} 
+	\end{align*}
+	It follows immediately that \(\mathcal{A}\neq \emptyset\) and \(\inf_{\mathcal{A}} \mathcal{F} < \infty\).\\
+
+	Now consider a sequence of minimizers \(\left\{ u_j \right\}_j \subset C^{1}(\overline{\Omega })\) that converge to \(\inf_{\mathcal{A}} \mathcal{F}< \infty\). 
+\end{exmp}
+
+\begin{rmrk}[Properties of \(L^2(\Omega\) ]
+	We define
+	\begin{align*}
+		L^2(\Omega ) := \left\{h: \Omega \to \R \mid h \text{ is measurable and } \int_\Omega \left| h \right|^2 < \infty\right\} .
+	\end{align*}
+	Note that we say that two functions are equivalent if they agree Lebesgue almost-everywhere on \(\Omega \).\\
+
+	\(L^2(\Omega )\) is a complete separable metric space with a metric given by
+	\begin{align*}
+		d(h_1,h_2) = \|h_1 - h_2\|_{L^2(\Omega )} = \left( \int_\Omega \left| h_1 - h_2 \right|^2 \right)^{ \dfrac{1}{2}}\\
+		\|h\|_{L^2(\Omega )} = \sqrt{ \langle h \mid h \rangle_{L^2(\Omega )}} \\
+		\langle h \mid g \rangle_{L^2(\Omega )} = \int_\Omega fg
+	\end{align*}
+	That is, \(L^2(\Omega )\) is a Hilbert space. There exists an orthonormal basis \(\left\{ h_j \right\}_j \subset L^2(\Omega )\) such that
+	\begin{align*}
+		\langle h_i \mid h_j \rangle_{L^2} = \delta_{ij}\\
+		\lim_{n \to \infty} \|h - \sum_{j=1}^{n} \langle h \mid h_j \rangle h_j\|_{L^2} = 0
+	\end{align*}
+	We also have the \textbf{Riesz representation theorem}. If \(\ell:L^2(\Omega ) \to \R\) is a (continous) linear functional, then there exists \(h \in L^2(\Omega )\) such that
+	\begin{align*}
+		\ell(g) = \langle h\mid g \rangle_{L^2(\Omega )} \quad \forall g \in L^2(\Omega )
+	\end{align*}
+	This only works if and only if there exists a \(C\) such that
+	\begin{align*}
+		\left| \ell(g) \right| \leq C \|g\|_{L^2}\quad \forall g \in L^2
+	\end{align*}
+	This is just another way of saying that linear functionals on bounded spaces are always continuous.
+\end{rmrk}
+	These properties combine to tell us that, if \(\left\{ h_j \right\}_j\) is a bounded sequence in \(L^2(\Omega )\), then it converges to some \(h \in L^2(\Omega )\) in some subsequence.\\
+
+	However, without boundedness, we might not have traditional convegence-- even with subsequences. If \(\left\{ h_j \right\}_j\) is a sequence in \(L^2(\Omega )\) such that \(\int_\Omega \left| h_j \right|^2 = 1\), there does not necessarily exist \(h \in L^2(\Omega )\) such that \(h_j \to j\) in \(L^2(\Omega )\). To see this, consider the following example:
+\begin{exmp}
+	Let \(\Omega = (0,\pi )\), \(h_j(x) = \frac{2}{\pi } \sin(jx)\) with \(j \in \Z_+\). Observe that
+	\begin{align*}
+		\int_{0}^{\pi } \left| h_j \right|^2 = 1 \quad \forall j 
+	\end{align*}
+	By our properties from earlier, we have that for all \(g \in L^2(0,\pi )\), \(g = \lim_{N \to \infty} \sum_{j=1}^{N} \langle g \mid h_j \rangle h_j\) which implies
+	\begin{align*}
+		\int_{0}^{\pi } g^2 = \sum_{j=1}^{\infty} \langle g\mid h_j \rangle^2 \implies \lim_{j \to \infty} \langle g \mid h_j \rangle = 0. 
+	\end{align*}
+	Where the last parts follow from the fact that \(\int_{0}^{\pi } g(x)\sin(jx) \,d x \to 0 \) as \(j\) gets sufficiently large. But now we have an issue-- for any subsequence \(\left\{ \tilde{h}_j \right\}_j \subset \left\{ h_j \right\}_j\), there exists an \(h \in L^2(0,\pi )\) such that
+	\begin{align*}
+		0 = \lim_{j \to \infty} \int_{0}^{\pi } \left| h- \tilde{h}_j \right|^2 = \int_{0}^{\pi } h^2 + \int_{0}^{\pi } \tilde{h}_j ^2 - 2 \int_{0}^{\pi } h \tilde{h}_j = 2    
+	\end{align*}
+	and hence cannot exist.
+\end{exmp}
+In other words, \(L^2(\Omega )\) is not compact. However-- it is compact in the weak sense (sequentially compact when using weak convergence).
+
+\begin{prop}
+	If \(\left\{ h_j \right\}_j \subset L^2(\Omega )\) such that
+	\begin{align*}
+		\int_\Omega \left| h_j \right|^2 \leq C \quad \forall j
+	\end{align*}
+	then there exists an \(h \in L^2(\Omega )\) and a subsequence \(\left\{ \tilde{h}_j \right\}_j\) such that
+	\begin{align*}
+		\int_\Omega \tilde{h}_j g \to \int_\Omega h g \quad \forall g \in C^2(\Omega ).
+	\end{align*}
+	In other words, we have convergence in the inner product of our subsequence with a fixed test function \(g\).
+\end{prop}
+
+\begin{proof}[Proof of weak compactness]
+	Take our sequence
+	\begin{align*}
+		\int_\Omega \left| h_j \right|^2 \leq C < \infty \quad \forall j
+	\end{align*}
+	Let \(Q = \left\{ \varphi_k \right\}_{k=1}^{\infty}\) be a countable dense subset of \(L^2(\Omega )\). Then for all fixed \(k\), we have
+	\begin{align*}
+		\int_\Omega h_j \varphi_k \subset \R \text{ bounded}\\
+		\left| \int_\Omega h_j \varphi_k \right| \subset \|h_j\|_{L^2} \|\varphi_k\|_{L^2} \leq C \|\varphi_k\|_{L^2(\Omega )}
+	\end{align*}
+	In other words, we have our weak convergence on our countable dense subset, as the boundedness gives us a convergent subsequence.\\
+
+	By countable density, we have that there exists a subsequence \(\left\{ \tilde{h}_j \right\}_j\) such that
+	\begin{align*}
+		\lim_{j \to \infty} \int_\Omega \tilde{h}_j \varphi_k \to \ell_k\quad \forall k \in \Z_{+}
+	\end{align*}
+	 and we can take \(\ell:Q\to \R\) to be
+	 \begin{align*}
+		 \ell(\varphi_k) = \lim_{j \to \infty} \int_\Omega \tilde{h}_j \varphi _k = \ell_k\\
+		 \left| \ell(\varphi _k) \right| \leq C \|\varphi_k\|_{L^2(\Omega )}
+	 \end{align*}
+	 In other words, \(\ell\) is a bounded linear functional. Then we can extend \(\ell:L^2(\Omega )\to \R\) by defining
+	 \begin{align*}
+		 \ell(\varphi ) = \lim_{k \to \infty} \ell(\tilde{\varphi }_k)\\
+		 \lim^{L^2}_{k \to \infty} \left\{ \tilde{\varphi_k }_k \right\} = \varphi 
+	 \end{align*}
+	 This is well-posed, and moreover \(\left| \ell\left( \varphi  \right) \leq C \|\varphi \|_{L^2} \right| \) for all \(\varphi  \in L^2\) by the density. \\
+
+	 We can apply the Riesz representation theorem to get that there exists an \(h \in L^2(\Omega )\) such that \(\ell(\varphi ) = \int_\Omega \varphi h\) because
+	 \begin{align*}
+	 	\int_\Omega h \varphi_k = \ell_k = \lim_{j \to \infty} \int_\Omega \tilde{h}_j \varphi_k \implies\\
+		\lim_{j \to \infty} \langle \tilde{h}_j \mid \varphi_k \rangle = \langle h \mid \varphi_k \rangle \quad \forall k \in \Z_+
+	 \end{align*}
+	 and by the density of \(Q = \left\{ \varphi_k \right\}_k\) in \(L^2\), we have convergence in the whole space.
+\end{proof}
+
+\end{document}

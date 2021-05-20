@@ -1,0 +1,185 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 05/18/21
+
+Now let us consider the Euler-Lagrange equations of a graph:
+\begin{align*}
+	&\inf_{u} \left\{ \int_\Omega f(\nabla u) \mid \int_\Omega g(u) = M \right\} \quad &(P_1)\\
+	&\inf_{u} \left\{ \int_\Omega f(\nabla u) \mid \int_{\Omega }g(u) = M; \; u = u_0 \; \partial \Omega  \right\}  \quad &(P_2)
+\end{align*}
+
+\begin{exmp}
+	Consider \(f(z) = \sqrt{1+\left| z \right|^2} \) and \(g(s) = \left| s \right| \), \(u_0 = 0\). We are looking for minimizers that satisfy \(\int_\Omega \left| u \right| = M\). If \(u\geq 0\), then this integral is exactly the area below the graph of \(u\).\\
+
+	Problems of this sort are referred to as being of \textbf{isoperimetric type}. We have a fixed perimeter, and we want to minimize a function which is constrained along it. It does not always admit a solution, however.\\
+
+	To see this, consider \(\Omega = B_R(0)\). The minimizer will be a spherical cap described by \(u(x) = \sqrt{S^2-\left| x \right|^2} - \sqrt{S^2 - R^2} \) for some \(S\geq R\). If \(M > \dfrac{\left| B_R \right| }{2}\) then there is no graph which can attain \(M\) within the constraints!
+\end{exmp}
+\begin{figure}[ht]
+    \centering
+     \def\svgwidth{1\linewidth}
+     \input{./figures/example-space-for-p_1-and-p_2.pdf_tex}
+     \caption{Area graph with \(f(z) = \sqrt{1+\left| z \right|^2} \) and \(g(s) = \left| s \right| \)}
+    \label{fig:example-space}
+\end{figure}
+
+\begin{exmp}
+	Consider \(f(\nabla u) = \dfrac{\left| \nabla u \right|^2}{2}\), \(g(u) = \dfrac{u^2}{2}\) and \(u_0 = 0\).\\
+
+	In this case, minimizers \textit{always} exist, and are eigenfunctions of \(-\Delta \) that satisfy the zero Dirichlet condition.
+\end{exmp}
+
+\section{Linear Transformations by Smooth Functions}
+\label{sec:linear_transformations_by_smooth_functions}
+
+We can learn more about minimizers on the graph family of Euler-Lagrange equations by combining them with nicely behaved functions. Consider
+\begin{align*}
+	\int_\Omega g(u+t\varphi ) = M
+\end{align*}
+for all non-negative real \(t\). What constraints must \(\varphi \) have to satisfy this? We can see that
+\begin{align*}
+	g(u+t\varphi ) = g(u) + tg'(u)\varphi + \dfrac{t^2}{2}g''(u)\varphi^2 + o(t^3)\implies\\
+	M = M+t \int_\Omega g'(u) \varphi  + \dfrac{t^2}{2}\int_\Omega g''(u)\varphi^2 + o(t^3)
+\end{align*}
+for all \(t\). We can actually infer from this that \(\int_\Omega g'(u) \varphi  = 0\) by the first-order conservation of \(\int g(u)\)!\footnote{To check this, apply integration by parts and see what you get.} Then the sum \(u+t\varphi \) only differs from \(u\) by \(o(t^2)\), and so for small \(t\) is relatively close.\\
+
+% Diagram
+
+In the context of differential geometry, we can interpret this new family as the functions in
+\begin{align*}
+	T_u\mathcal{M} = \left\{\varphi  \mid \int g'(u)\varphi  = 0 \right\} .
+\end{align*}
+This is because if \(\varphi :\int_{\Omega }g'(u)\varphi  = 0\), then there should be an \(O(t^2)\) correction such that
+\begin{align*}
+	u+t\varphi +O(t^2) \in \mathcal{M}.
+\end{align*}
+
+Let us discuss these families more formally. Let \(\varphi, \xi  \in C^{\infty}(\overline{\Omega })\) such that
+\begin{align*}
+	\int_\Omega g'(u)\varphi =0 \quad \int_\Omega  g'(u) \xi   = 1
+\end{align*}
+Consider \(u+t\varphi +s \xi  \in C^{\infty}(\Omega )\) with two parameters \((t,s)\). The implicit function theorem tells us that there exists \(\varepsilon>0\) and \(s(t):(-\varepsilon,\varepsilon)\to \R\) such that, if \(u(t) = u + t\varphi  + s(t) \xi  \), then
+\begin{align*}
+	\int_\Omega g(u(t)) = M \quad \forall \left| t \right| <\varepsilon\\
+	s(0) = 0
+\end{align*}
+This \(s(t)\) is in essence our \(O(t^2)\) correction that allows the families \(\varphi \) to still satisfy our condition. Let us look in more detail how \(s(t)\) interacts with our current formulations:
+
+\begin{align*}
+	\int_\Omega g(u) &= \int_\Omega g(u+t\varphi +s(t) \xi ) \\
+	&= \int_\Omega g(u) + t \int _\Omega g'(u) \left[ \varphi +s'(0) \xi  \right] + \dfrac{t^2}{2}\int_\Omega  g''(u)\left[ \varphi +s'(0)\xi  \right]^2 + g'(u) \xi  s''(0) + o(t^2) \\
+	&\implies 0 = \int _\Omega g'(u) \left[ \varphi +s'(0) \xi  \right] = s'(0) \int_\Omega g'(u) \xi  = s'(0)\\
+	&\implies 0 = \int_\Omega g''(u)\varphi^2 + s''(0) \int_\Omega g'(u) \xi 
+\end{align*}
+But notice that \(\int_\Omega g'(u) \xi  = 1\), so that
+\begin{align*}
+	s''(0) = - \int_\Omega g''(u) \varphi^2
+\end{align*}
+This classifies our correction factor up to low orders, so we have that
+\begin{align*}
+	s \approx - \left[ \int_\Omega g''(u) \varphi^2 \right] \cdot \dfrac{t^2}{2}
+\end{align*}
+
+Now we can plug this back into the Euler-Lagrange equations of the problem
+\begin{align*}
+	\inf_{u} \left\{ \int_\Omega f(\nabla u) \mid \int_\Omega g(u) = M \right\} .
+\end{align*}
+to get
+\begin{align*}
+	\mathcal{F}(u+t\varphi +s(t) \xi ) \geq \mathcal{F}(u) \quad \forall \left| t \right| < \varepsilon\\
+\end{align*}
+and our variations on
+\begin{align*}
+	f(\nabla u + t \nabla \varphi + s(t) \nabla \xi )
+\end{align*}
+are given by
+\begin{align*}
+	&\frac{d}{dt} f(\nabla u + t\nabla \varphi + s(t) \nabla \xi ) = \nabla f(\nabla u+\ldots) \cdot (\nabla \varphi +s'(t) \nabla \xi )\\
+	&= \nabla f(\nabla u)\cdot \nabla \varphi \\
+	&\frac{d^2}{dt^2}f(\nabla u+t \nabla \varphi + s(t) \nabla \xi) = (\nabla \varphi +s'(t) \nabla \xi ) \cdot \nabla^2 f(\nabla u + \ldots)(\nabla \varphi + s'(t) \nabla \xi ) + \nabla f(\nabla u + \ldots)\cdot \nabla \xi s''(t) \\
+	&= \nabla \varphi \cdot (\nabla^2f(\nabla u)\nabla \varphi ) + \nabla f(\nabla u)\cdot \nabla \xi s''(0)
+\end{align*}
+
+\hline
+
+Now let \(\psi \in C^{\infty}(\overline{\Omega })\) and choose
+\begin{align*}
+	\varphi = \psi - \left[ \frac{\int g '(u) \psi }{\int  g '(u)^2} \right] g'(u) = \int_\Omega g'(u)\varphi =0
+\end{align*}
+Or in other words, we are choosing \(\varphi \) to be \(\psi \) subtracted by its projection along \(g'(u)\). We are choosing \(\varphi \) this way so that \(\langle g'(u), \varphi  \rangle = 0\). Note that there is an implicit assumption here that \(g\) satisfies \(\int g '(u)^2 > 0\). Lastly, choose \(\xi = \dfrac{g'(u)}{\int_\Omega g'(u)^2}\) so that \(\langle g'(u),\xi  \rangle= 1\).
+
+Now let's reconsider the Euler-Lagrange equations, but with the choices of \(\varphi \) and \(\xi \) as above. That is, for all \(\varphi \) and \(\xi \) of the form above:
+\begin{align*}
+	\int_\Omega \nabla f(\nabla u)\cdot \nabla \varphi = 0\\
+	\int_\Omega \nabla \varphi \cdot (\nabla^2f(\nabla u)\nabla \varphi ) + s''(0) \nabla f(\nabla u)\cdot \nabla \xi \geq 0
+\end{align*}
+Now we substitute in the projection form for \(\varphi \) :
+\begin{align*}
+	\int_\Omega \nabla f ( \nabla u) \cdot \left[ \nabla \psi - \left[ \frac{\int g'(u) \psi }{\int g'(u)^2} \right] g''(u) \nabla u \right]= 0 \\
+\implies \int_\Omega \nabla f(\nabla u)\cdot \nabla \psi - \lambda (u) \int_\Omega g'(u) \psi = 0
+\end{align*}
+and so
+\begin{align*}
+	\lambda (u) = \frac{\int_\Omega g''(u) \left[ \nabla u \cdot \nabla f(\nabla u) \right] }{\int_\Omega g'(u)^2}
+\end{align*}
+This \(\lambda(u)\) is what we refer to by a \textbf{Lagrange multiplier}.\\
+
+Now denote \(X \cong \nabla f(\nabla u)\) and observe:
+\begin{align*}
+	\int_\Omega X \cdot \nabla \psi = \int_\Omega dw(\psi X) - \int_\Omega \psi \textrm{div}X\\
+	= \int_{\partial\Omega }\psi (X\cdot \nu_\Omega ) - \int_\Omega \psi \textrm{div}X.
+\end{align*}
+
+\begin{align*}
+	0 = \int_{\partial\Omega }\psi \nu_\Omega \cdot \nabla f(\nabla u) + \int_\Omega \psi \left[ -dw(\nabla f(\nabla u)) - \lambda g'(u) \psi  \right] \quad \forall \psi \in C^{\infty}(\overline{\Omega })
+\end{align*}
+Testing on \(\psi =0\) on \(\partial\Omega \), but arbitrary otherwise, we get on \(\Omega \) :
+\begin{align*}
+	-dw(\nabla f(\nabla u)) = \lambda g'(u)
+\end{align*}
+Once we know this we get
+
+\begin{align*}
+	\begin{cases}
+	-dw(\nabla f(\nabla u)) = \lambda g'(u) & \Omega \\
+	\nu_\Omega \cdot \nabla f(\nabla u) = 0 & \partial\Omega
+	\end{cases}
+\end{align*}
+
+\begin{exmp}
+	Choosing \(f(z) = \dfrac{\left| z \right|^2 }{2}\) and \(g(u) = \dfrac{u^2}{2}\), the above becomes
+	\begin{align*}
+		- \Delta u = \lambda u \quad \Omega \\
+		\frac{\partial u}{\partial \nu_\Omega } = \nabla u\cdot \nu_\Omega  = 0 \quad \partial\Omega 
+	\end{align*}
+	This is the Neumann eigenfunctions of the Laplacian \(\Omega \).
+\end{exmp}
+
+\begin{exmp}
+	Consider the space \(\Omega  = (0,\pi )\), and let \(u_k(x) = \cos(kx)\) for \(k \in \N\). These are all solutions to
+	\begin{align*}
+		-u_k'' = \lambda u_k \quad (0,\pi )\\
+		u'_k\mid_{0,\pi }=0
+	\end{align*}
+	\(\lambda =k^2\) and \((u_k) \cong k^2\). This is an example of a variational problem with many critical points.
+\end{exmp}
+
+Notice that if \(f(z) = \sqrt{1+\left| z \right|^2} \) then \(\nabla f(\nabla u) \cdot \nu_\Omega = \frac{\nabla u \cdot \nu_{\Omega }}{\sqrt{1+ \left| \nabla u \right|^2} }=0\).
+
+\end{document}

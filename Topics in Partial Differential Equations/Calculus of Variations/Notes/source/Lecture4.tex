@@ -1,0 +1,218 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 05/20/21
+
+\section{More Direct Methods}
+\label{sec:more_direct_methods}
+
+Let \(u_0 \in C^{1}(\overline{\Omega })\) with \(\Omega \) some open bounded set. We want to minimize the functional:
+\begin{align*}
+	\inf_{u} \left\{\frac{1}{2} \int_\Omega \left| \nabla u \right|^2 \mid u =u_0 \text{ on }\partial\Omega  \right\} 
+\end{align*}
+Let \(\left\{ u_j \right\}_j\) be a minimizing sequence for \(\inf_{\mathcal{A}} \mathcal{F}\) that satisfies the boundary conditions, and satisfying
+\begin{align*}
+	\lim_{j \to \infty} \frac{1}{2}\int_\Omega \left| \nabla u_j \right|^2 = \inf_{\mathcal{A}} \mathcal{F}.
+\end{align*}
+Because the limit supremum of the sequence is finite, we know that there exists a subsequence \(\left\{ \tilde{u}_j \right\}_j\) and \(T \in L^2(\Omega , \R^{n})\) such that
+\begin{align*}
+	\int_\Omega T \varphi  = \lim_{j \to \infty} \int_\Omega \varphi \nabla \tilde{u}_j \quad \forall \varphi  \in L^2(\Omega )
+\end{align*}
+Does this subsequence also have a limit of \(u\)? And is this \(T\) simply \(\nabla u\)?  
+
+\begin{thm}[Trace Inequality for Minimizers]
+	If \(u \in C^{1}(\overline{\Omega })\) and \(\Omega \) is bounded with smooth boundary, then
+	\begin{align*}
+		\int_\Omega u^2 \leq C(n, \textrm{diam}\Omega ) \left[ \int_{\partial \Omega }u^2 + \int_\Omega \left| \nabla  u\right|^2 \right] .
+	\end{align*}
+\end{thm}
+This quantifies the restrictions of the boundary conditions \(\begin{cases}
+	u=0 & \partial\Omega \\
+	\nabla u=0 & \Omega 
+\end{cases} \implies u \cong 0\) on \(\Omega \).
+
+\begin{proof}[Proof of trace inequality]
+	Choose \(X(x) = x\) so that \(\textrm{div}(X) = n\). We will pick \(x_0 \in \R^{n}\) later so that the following is satisfied:
+	\begin{align*}
+		n \int_\Omega u^2 = \int_\Omega u^2 \textrm{div}(x-x_0)\\
+		= \int_\Omega \textrm{div}\left( (x-x_0)u^2 \right) - \int_\omega 2u \nabla u \cdot (x-x_0)\\
+		\leq  \int_{\partial \Omega }u^2(x-x_0)\cdot \nu_\Omega + \int_\Omega 2 \left| u \right| \left| \nabla u \right| (x-x_0)
+	\end{align*}
+	Using some standard algebraic inequalities (i.e. \(2ab \leq \varepsilon a^2 + \frac{1}{\varepsilon}b^2\) so that \((\sqrt{\varepsilon} a = \frac{b}{\sqrt{\varepsilon} })^2\geq 0\)), we can put bounds on both terms individually to get
+	\begin{align*}
+		\int_{\partial \Omega }u^2(x-x_0)\cdot \nu_\Omega + \int_\Omega 2 \left| u \right| \left| \nabla u \right| (x-x_0)\leq 2 \textrm{diam} (\Omega ) \left\[ \int_{\partial \Omega }u^2 + \int_\Omega 2\left| u \right| \left| \nabla u \right|  \right\]\\
+		\leq 2 \textrm{diam}(\Omega ) \int_{\partial \Omega } u^2+ 2 \textrm{diam}(\Omega ) \left[ \varepsilon \int_{\Omega }u^2 + \frac{1}{\varepsilon} \int_{\Omega } \left| \nabla u \right|^2 \right]\\
+		\implies \left( n-2\varepsilon\textrm{diam}(\Omega ) \right) \int_{\Omega } u^2 \leq 2 \textrm{diam}(\Omega )\left[ \int_{\partial \Omega }u^2 + \frac{1}{\varepsilon} \int_\Omega  \left| \nabla u \right|^2 \right] 
+	\end{align*}
+	Now we simply choose \(\varepsilon = \dfrac{n}{4 \textrm{diam}(\Omega )}\) and we have the statement
+	\begin{align*}
+		\int_\Omega u^2 \leq \dfrac{4 \textrm{diam}(\Omega)}{n} \left[ \int_{\partial \Omega }u^2 + \dfrac{4 \textrm{diam}(\Omega )}{n} \int_\Omega  \left| \nabla u \right|^2 \right] 
+	\end{align*}
+\end{proof}
+
+What is the relation between \(T\) and \(u\)?
+
+\begin{defn}
+	Let \(u \in L^{1}_{\textrm{loc}}(\Omega )\), and \(T \in L^{1}_{\textrm{loc}}(\Omega , \R^{n})\). We say that \(T\) is the unique vector field called the \textbf{weak} or \textbf{distributional gradient} of \(u\) if the following is satisfied:
+	\begin{align*}
+		\int_\Omega u \nabla \varphi = - \int_\Omega \varphi T \quad \forall \varphi  \in C^{\infty}_c (\Omega )
+	\end{align*}
+\end{defn}
+
+Earlier, we asked if the limit of the subsequence was equivalent to the \(u\) earlier. Now we claim that the weak limit \(T\) of \(\left\{ \nabla u_j \right\}_j\) is the weak gradient of
+ \begin{align*}
+	u = \lim_{n \to \infty}^{w} \left\{ u_j \right\}_j .
+\end{align*}
+This follows because
+\begin{align*}
+	\int_\omega u \nabla \varphi = \lim_{j \to \infty} \int_\Omega u_j \nabla \varphi  = - \lim_{j \to \infty} \int_\Omega \varphi \nabla u_j\\
+	= - \int_\Omega \varphi T
+\end{align*}
+In summary, by weak compactness in \(L^2\) and by Trace inequality, we have
+\begin{align*}
+	\begin{cases}
+		u_j \to u & L^2(\Omega )\quad u \in W^{1,2}(\Omega )\\
+		\nabla u_j \to \nabla u & L^2(\Omega ,\R^{n})
+	\end{cases}
+\end{align*}
+We need to define a space where these weak objects can live:
+\begin{defn}[\(L^2\) Sobolev Space]
+	We define the \textbf{Sobolev Space in \(L^2\)} to be
+	\begin{align*}
+		W^{1,2}(\Omega ) := \left\{u \in L^2(\Omega ) \mid \exists  \text{ weak gradient }\nabla u \in L^2(\Omega ,\R^{n}) \right\} 
+	\end{align*}
+\end{defn}
+
+Now we ask a new question: is it true that
+\begin{align*}
+	\int_\Omega \left| \nabla u \right|^2 \leq \liminf_{j \to \infty} \int_\Omega  \left| \nabla u_j \right|^2
+\end{align*}
+
+Yes. Pick any \(T \in L^2(\Omega ,\R^{n})\). Then
+\begin{align*}
+	\int_\Omega (\nabla u) \cdot T = \lim_{j \to \infty} \int_\Omega (\nabla u_j) \cdot T\\
+	\leq \lim_{j \to \infty} \left( \int_\Omega \left| \nabla u_j \right|^2 \right)^{ \sfrac{1}{2}} \left( \int_{\Omega } \left| T \right|^2 \right)^{ \sfrac{1}{2}}
+\end{align*}
+Now choose
+\begin{align*}
+	T = \frac{\nabla u}{\|\nabla u\|_{L^2}}
+\end{align*}
+to get the inequality we desire.\\
+
+Another question. Is \(u \in \mathcal{A}\), where 
+\begin{align*}
+	\mathcal{A} = \left\{ \mid  \right\} 
+\end{align*}
+
+\begin{exmp}
+	Consider
+	\begin{align*}
+		u_\alpha (x) = \dfrac{1}{\left| x \right|^{\alpha }}\\
+		\nabla u_\alpha (x) = \dfrac{-\alpha }{\left| x \right|^{\alpha +1}} \hat{x}
+	\end{align*}
+	where \(\hat{x} = \dfrac{x}{\left| x \right| }\). Then
+	\begin{align*}
+		\int_{B_\varepsilon(0)} \left| \nabla u_\alpha  \right|^2 \approx \int_{0}^{\varepsilon} \dfrac{\rho^{n-1}}{\left( \rho^{\alpha +1} \right)^2} \,d \rho < \infty \\
+		\iff n-1 -2(\alpha +1) > -1 \iff\alpha < \frac{n}{2}-1
+	\end{align*}
+\end{exmp}
+
+	Now we ask a seemingly silly question: is \(\nabla u_{\alpha }\) the weak gradient of \(u_\alpha \)? Yes, but we have to be careful-- if \(\nabla u = 0\) almost everywhere in \(\R^2\), say, \(u\) is a step function, then the weak gradient doesn't exist. One can show that
+	\begin{align*}
+		\int \varphi \nabla u_{\alpha } = - \int u_\alpha \nabla \varphi \quad \forall \varphi \in C^{\infty}_c(B_1(0))	
+	\end{align*}
+via some standards calculations from distribution theory. Because this holds, we have
+\begin{align*}
+	u^{(n)} = \sum_{k=1}^{n} \dfrac{2^{-k}}{\left| x-x_k \right|\alpha }
+\end{align*}
+where \(\left\{ x_k\right\}_{k=1}^{\infty} \) is countably dense in \(B_1(0)\). We have that \(u^{(n)} \in W^{1,2}(\Omega )\) if \(\alpha < \frac{n}{2}-1\).In fact, this is a Cauchy sequence in \(W^{1,2}(\Omega )\) (check this), and so
+\begin{align*}
+	\exists u \in W^{1,2}(\Omega ) \text{ such \hat{t} } u = \lim_{N \to \infty} u^{(N)}= \sum_{k=1}^{\infty} \dfrac{2^{-k}}{\left| x-x_k \right|^{\alpha }}
+\end{align*}
+
+\begin{exmp}
+	Let \(u \not\in L^{\omega }_{\textrm{loc}}(B_{1}(0))\). For all \(B_\varepsilon(x) \subset B_1(0)\), we have
+	\begin{align*}
+		\textrm{essential sup}_{B_\varepsilon} \left| u \right|  = \infty
+	\end{align*}
+\end{exmp}
+
+\begin{rmrk}
+What is the essential supremum? Let \(f:\Omega \to \R\). Consider the case when \(\tilde{f}:\Omega \to \R\) by
+\begin{align*}
+	\tilde{f}(x) = \begin{cases}
+		f(x) & \Omega \setminus Q^{n}\\
+		j & x = x_j \in Q^{n}\cap \Omega 
+	\end{cases}
+\end{align*}
+So that \(f = \tilde{f}\) almost everywhere in \(\Omega \) and \(\sup_{j} \tilde{f}= \infty\). A traditional supremum is unbounded and so won't work nicely here. Instead, notice that
+\begin{align*}
+	\left\{x \in \Omega  \mid f(x) > t \right\} = \left\{f > t \right\} \\
+	\mathcal{L}^{n}( \left\{ f > t \right\} ) = \mathcal{L}^{n}\left( \left\{ \tilde{f} > t \right\}  \right)
+\end{align*}
+With this in mind, we define
+\begin{align*}
+	\textrm{essential sup}_{\Omega } f := \inf_{t} \left\{ t\mid \mathcal{L}^{n}( \left\{f >t \right\} ) = 0 \right\} .
+\end{align*}
+\end{rmrk}
+
+\begin{exmp}
+	\(u=u_0\) on \(\partial \Omega \)?\\
+
+	\(u_j \to u\) in \(L^2(\Omega )\) but we do \textit{not} have convergence of boundary data. To see this, look at the diagram in \ref{fig:convergence-of-boundary-data}.
+\end{exmp}
+
+\begin{figure}[ht]
+    \centering
+     \def\svgwidth{1\linewidth}
+     \input{./figures/convergence-of-boundary-data.pdf_tex}
+    \caption{Convergence of Boundary Data}
+    \label{fig:convergence-of-boundary-data}
+\end{figure}
+
+
+The moral is that we need more properties to hold: if \(u_j = u_0 \partial \Omega \), \(\sup_{j} \int \left| \nabla u_j \right|^2 < \infty\) and
+\begin{align*}
+	\begin{cases}
+		u_j \to u\\
+		\nabla u_j \to \nabla u
+	\end{cases}
+\end{align*}
+then we can say that \(u = u_0\) on \(\partial \Omega \) in the distributional sense.\\
+
+To summarize the work we've done, if we are working with problems of the form
+\begin{align*}
+	\inf_{u} \left\{\frac{1}{2}\int_\Omega \left| \nabla u \right|^2 \mid u = u_0 \text{ on }\partial \Omega  \text{ in distribution} \right\} 
+\end{align*}
+where \(u \in W^{1,2}(\Omega )\), then the direct method gives you a minimizer. For the restricted problem with \(u \in C^{1}(\overline{\Omega })\) :
+\begin{align*}
+	\inf_{u} \left\{\frac{1}{2}\int_\Omega \left| \nabla u \right|^2 \mid u = u_0 \text{ on }\partial\Omega  \text{ in classical sense} \right\} \\
+	= \frac{1}{2}\int_\Omega  \left| \nabla u \right|^2
+\end{align*}
+we have the existence of a minimizer \(u \in W^{1,2}(\Omega )\).\\
+
+Some classical results give us some insight:
+\begin{thm}[Serrin '61]
+	If \(\left\{ u_j \right\}_j \subset L^{1}_{\textrm{loc}}(\Omega )\) and \(\lim_{j \to \infty} u_j = u\) in \(L^{1}_{\textrm{loc}}(\Omega )\) and \(u_j,u\) have weak gradient in \(L^{1}(\Omega ,\R^{n})\), then for all \(f:\R^{n}\to [0,\infty)\) convex, we have
+	\begin{align*}
+		\int_\Omega f(\nabla u) \leq \liminf_{j \to \infty} \int_\Omega f(\nabla u_j).
+	\end{align*}
+\end{thm}
+We have a converse too. If \(f:\R^{n}\to [0,\infty)\) is continuous and the above result holds, then for all \(u_j,j\) as above, \(f\) is convex.
+
+\end{document}

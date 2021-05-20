@@ -1,0 +1,219 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 05/17/21
+
+\chapter{Euler-Lagrange Equations}
+\label{cha:euler_lagrange_equations}
+% Optimization problems, variational techniques, and gradient flows.
+Calculus of variations refers to an array of variational techniques that are utilized in optimization problems. In particular, we will be learning how to find minimizers of functionals. That is, we will consider a particular functional (real-valued function that takes in functions), and apply various techniques to find the minimal function that fits our conditions.\\
+
+First, we need to discuss the class of objects we will be working with. Let \(\mathcal{F}\) be a functional, \(\Omega \subset \R^{n}\) an open set, and \(u_0: \partial\Omega \to \R\) is our constraint on the boundary. Then our goal is to find
+\begin{align*}
+	\inf_{u} \left\{\mathcal{F}(u) \mid u=u_0 \text{ on } \partial\Omega  \right\}
+\end{align*}
+where \(u:\Omega  \to \R\) is \(C^{1}(\overline{\Omega })\) (differentiable and \(\nabla u\) is continuous up to \(\partial \Omega \)). We will choose our functional to be
+\begin{align*}
+	\mathcal{F}(u) = \int_{\Omega }f(\nabla u(x)) \,d x = \int_\Omega f(\nabla u)
+\end{align*}
+where \(f:\R^{n}\to \R\) is an arbitrary scalar-valued function. In essence, we are looking at a class of functionals that take on this form for some \(f\). It turns out that this form is very natural. Choosing
+\begin{align*}
+	f(\nabla u) = \frac{1}{2} \left| \nabla u \right|^2
+\end{align*}
+corresponds to \(\mathcal{F}\) being the Dirichlet energy, and choosing
+\begin{align*}
+	f(\nabla u) = \sqrt{1 + \left| \nabla u \right|^2}
+\end{align*}
+corresponds to \(\mathcal{F}\) being an area functional. Finally, we might simply have that \(\mathcal{F}(u)\) is an \(n\)-dimensional representation of a graph of \(u\) over \(\Omega \):
+\begin{align*}
+	\inf_{\int_\Omega  g(u) = M} \mathcal{F}(u) \quad g:\R\to \R\\
+	\inf \left\{\mathcal{F}(u) \mid \int_{\Omega }g(u) = M, \quad u = u_0 \partial \Omega  \right\} 
+\end{align*}
+
+\section{Gradient Flows}
+\label{sec:gradient_flows}
+
+The first step in finding the minimizers is to look at gradient flows. 
+
+\begin{defn}[Gradient Flow]
+A \textbf{gradient flow} is a system of ordinary differential equations written in the form:
+\begin{align*}
+	x'(t) = -\nabla F(x(t))\\
+	x(0) = x_0
+\end{align*}
+where \(t\) is a non-negative real variable, \(x:[0,\infty) \to \R^{n}\) and \(F:\R^{n}\to \R\). We refer to these systems as gradient flows because \(-\nabla F(x(t))\) points in the direction of steepest descent of \(F:\R^{n}\to \R\).
+\end{defn}
+
+% Figure of F, x0, and imagery related to steepest descent
+%\begin{figure}[ht]
+%    \centering
+%     \def\svgwidth{1\linewidth}
+%     \input{./figures/gradient-flow.pdf_tex}
+%    \caption{Gradient Flow}
+%    \label{fig:gradient-flow}
+%\end{figure}
+
+If \(x_0\) is a critical point of \(F\), then \(\nabla F(x_0) = 0\). This implies \(x(t) \equiv x_0\) (and hence is trivial. So we can assume from here on out that it is non-trivial.\\
+
+We can generalize the notion of gradient flows to functionals. Let \(\mathcal{F}:C^{1}(\overline{\Omega }) \to \R\) be a functional such as \(\mathcal{F}(u) = \frac{1}{2} \int_\Omega \left| \nabla u \right|^2\), or \(\mathcal{F}(u) = \int_\Omega \sqrt{1+\left| \nabla u \right|^2} \). A gradient flow of \(\mathcal{F}\) is a function \(u(x,t):\Omega \times [0,\infty)\to \R\) that satisfies
+\begin{align*}
+	u_{(t)} = \frac{\partial u}{\partial t} = - \textrm{grad }\mathcal{F}(u(x,t))
+\end{align*}
+We need to be a bit more careful with these-- need to discuss what the gradient of a functional even looks like. This formulation is very useful, though, as there are many PDEs can be written in this form and hence are expressible as gradient flows.
+
+\section{Applying Variational Techniques}
+\label{sec:applying_variational_techniques}
+
+Our goal is to develop variational techniques that apply to
+\begin{align*}
+	\inf_{u \in C^{1}(\overline{\Omega }) } \left\{\mathcal{F}(u) \mid u = u_0 \partial \Omega  \right\} \quad (P)
+\end{align*}
+We need a few necessary conditions for minimality. We say that \(u \in C^{1}(\overline{\Omega })\) is a minimizer in \((P)\) if
+\begin{align*}
+	\mathcal{F}(u) \leq \mathcal{F}(v) \quad \forall v \text{ s.t. }v = u_0 \partial \Omega .
+\end{align*}
+
+\begin{defn}[Variations]
+Fix \(\varphi  \in C^{\infty}_c(\Omega )\) and take
+\begin{align*}
+	u + t \Omega \in \mathcal{A} \quad \forall t \in \R
+\end{align*}
+(This \(\mathcal{A}\) will be our "competition class") We call these the \textbf{variations} of \(u\). This gives us that
+\begin{align*}
+	\mathcal{F}(u) \leq \mathcal{F}(u+t\Phi ) \quad \forall t \in \R\\
+	\delta \mathcal{F}_u (\varphi ) = \frac{d}{dt}\mid_{t = 0} \mathcal{F}(u+t\varphi ) = 0\\
+	\delta^2 \mathcal{F}_u (\Phi ) = \frac{d^2}{dt^2}\mid_{t = 0}\mathcal{F}(u+t\varphi )\geq 0.
+\end{align*}
+We call \(\delta \mathcal{F}_u: C^{\infty}_c(\Omega ) \to \R\) the \textbf{first variation}, and likewise \(\delta^2\mathcal{F}_u:C^{\infty}_c(\Omega ) \to \R\) the \textbf{second variation}.\\
+\end{defn}
+
+Then we can state the former more simply: if \(u\) is a minimizer in \(P\), then
+\begin{align*}
+\delta \mathcal{F}_u \equiv 0\\
+\delta^2 \mathcal{F}_u \geq 0
+\end{align*}
+Why is this the case? We know that
+\begin{align*}
+	\mathcal{F}(u+t\varphi ) = \int_\Omega f (\nabla u + t \nabla \varphi ) = \int_\Omega f(\nabla u(x) + t \nabla \varphi (x)) \,d x\\
+	f(z+tw) = f(z) + t \nabla f(z)\cdot w + \frac{t^2}{2}w \cdot \left[ \nabla^2f(z) w \right] + o(t^2)\quad z,w \in \R^{n}, \, t \in \R
+\end{align*}
+Take \(z = \nabla u(x)\) and \( w = \nabla \varphi (x)\). Then we write
+\begin{align*}
+	\mathcal{F}(u+t\varphi ) = \mathcal{F}(u) + t \int_\Omega \nabla f (\nabla u) \cdot \nabla \varphi  + \frac{t^2}{2} \int_\Omega \nabla \varphi \cdot \left[ \nabla^2 f(\nabla u) \nabla \varphi  \right] + o(t^2)
+\end{align*}
+Now see that we have
+\begin{align*}
+	\frac{d}{dt}\mid_{t = 0} \mathcal{F}(u+t\varphi ) = \int_\Omega \nabla f(\nabla u) \cdot \nabla \varphi \\
+	\frac{d^2}{dt^2}\mid_{t = 0} \mathcal{F}(u+t\varphi ) = \int_{\Omega } \nabla \varphi \cdot \left[ \nabla ^2 f(\nabla u) \nabla \varphi  \right] .
+\end{align*}
+
+\begin{rmrk}
+The leading term \(o(t^2)\) implies that \(o(t^2) = h(z,w,t)\)for some \(h\) such that \(\lim_{t \to 0} \sup_{\left| w \right| \leq 1} \frac{h(z,w,t)}{t^2}= 0\).
+\end{rmrk}
+So if \(u\) is a minimizer in \(\inf_{u} \left\{\mathcal{F}(u) \mid u=u_0 \text{ on }\partial \Omega  \right\} \) then we must have
+\begin{align*}
+	\delta \mathcal{F}_u(\varphi ) = \int_{\Omega }\mathcal{F}_u (\nabla u) \cdot \nabla \varphi  = 0 \quad \forall \varphi \in C^{\infty}_c (\Omega )\\
+	\delta^2 \mathcal{F}_u(\varphi ) = \int_{\Omega }\nabla \varphi \cdot \left[ \nabla^2 f(\nabla u) \nabla \varphi  \right] \geq 0 \quad \forall \varphi \in C^{\infty}_c(\Omega )
+\end{align*}
+Our goal is to utilize these variations to derive the Euler-Lagrangian equations.
+
+%Notice that the first condition holds if and only if \(div ( \nabla f (\nabla )) = 0\) in \(\Omega \). 
+
+%The Euler-Lagrange equations of (P) are
+%\begin{align*}
+%	div(\nabla f(\nabla u)) = 0 \quad \Omega \\
+%	u = u_0 \quad \partial \Omega 
+%\end{align*}
+
+\begin{rmrk}
+	When \(f(z)\) is convex, then \(A= \nabla^2f(z) \geq 0\), and \(w\cdot (Aw) \geq 0\) for all \(w \in \R^{n}\), so the second condition is always satisfied if \(f \) is convex.
+\end{rmrk}
+
+We have two critical tools when applying these variational techniques. The first is called the fundamental lemma of the calculus of variations.
+
+\begin{lemma}[Fundamental Lemma of Calculus of Variations]
+	If \(u \in L^{1}_{\textrm{loc}}(\Omega )\)\footnotemark 	and \(\int_\Omega u\varphi =0\) for all \(\varphi  \in C^{\infty}_c(\Omega )\), then \(u = 0\) almost everywhere in \(\Omega \).\\
+
+	That is, there exists a set \(S\subset \Omega \) with \(\mathcal{L}^{n}(S) = 0\) such that \(u(x) = 0 \) for all \(x \in \Omega \setminus S\).
+\end{lemma}
+\footnotetext{Recall that \begin{align*}L^{1}_{\textrm{loc}}(\Omega ) = \left\{u:\Omega\to \R \mid u \text{ measurable, }\int_K \left| u \right| < \infty \quad \forall K \in \Omega \textrm{ compact} \right\} \end{align*}} % Footnote
+
+Note that this captures the notion that we don't care as much about \(u\) at a single point, but more about integrating \(u\) over a small ball centered at a point.\\
+
+The other critical tool is the divergence theorem.
+
+\begin{thm}[Divergence Theorem]
+	If \(X \in C^{1}(\overline{\Omega },\R^{n})\), then \(\textrm{div}X\)\footnotemark satisfies
+	\begin{align*}
+		\int_{\Omega } \textrm{div} X = \int_{\partial \Omega }X\cdot \nu_{\Omega }
+	\end{align*}
+	where \(\nu_{\Omega }\) is the outer unit normal.
+\end{thm}
+	\footnotetext{Recall that
+	\begin{align*}
+		\textrm{div}X = \sum_{i=1}^{n} \frac{\partial }{\partial X_i} \left[ X^{(i)} \right] , \quad X = (X^{(1)}, X^{(2)},\ldots,X^{(n)}).
+\end{align*}}
+If \(u\) is a minimizer, then
+\begin{align*}
+	0 = \int_\Omega \nabla f(\nabla u) \cdot \nabla \varphi
+\end{align*}
+Take \(X = \nabla f(\nabla u)\) and observe that
+\begin{align*}
+	\textrm{div}(\varphi X) = X\cdot \nabla \varphi + \varphi \textrm{div}X.
+\end{align*}
+Then observe that
+\begin{align*}
+	\int_\Omega \nabla f (\nabla u) \cdot \nabla \varphi =\int_\Omega X \cdot \nabla \varphi\\
+	= \int_\Omega \textrm{div}(\varphi X) - \int_\Omega \varphi \textrm{div}X\\
+	= \int_{\partial \Omega }(\varphi X)\cdot \nu_\Omega - \int_\Omega \varphi \textrm{div}X.
+\end{align*}
+Observe that because \(\varphi \in C^{\infty}_c(\Omega )\), the first term is zero! So
+\begin{align*}
+	0 = - \int_\Omega \varphi \textrm{div}X \quad \forall \varphi \in C^{\infty}_c(\Omega )
+\end{align*}
+By the fundamental lemma of calculus of variations, this implies that \(\textrm{div}X = 0\) almost everywhere in \(\Omega \), and because it is continuous, it means that \(\textrm{div}X = 0\) everywhere in \(\Omega \).\\
+
+In conclusion:
+\begin{align*}
+	\textrm{div}\left[ \nabla f(\nabla u) \right] = 0 \quad \text{ in }\Omega \\
+	u = u_0 \quad \text{ in }\partial\Omega 
+\end{align*}
+are the \textbf{Euler-Lagrange equations} of \(\inf_{u} \left\{ \mathcal{F}(u) \mid u = u_{0} \text{ on }\partial \Omega  \right\} \).
+
+\begin{exmp}[Dirichlet problem for the Laplace equation]
+	Take \(f(z) = \dfrac{\left| z \right|^2}{2}\). Then \(\nabla f(z) = z\) and so the Euler-Lagrange equations tell us that under the normal assumptions, \(u\) satisfies
+	\begin{align*}
+		\begin{cases}
+			\Delta u = 0 & \Omega \\
+			u = u_0 & \partial \Omega 
+		\end{cases}
+	\end{align*}
+\end{exmp}
+
+\begin{exmp}[Minimal surfaces equation]
+	If we take \(f(z) = \sqrt{1+\left| z \right|^2} \), then we have
+	\begin{align*}
+		\nabla f(z) = \frac{z}{\sqrt{1+\left| z \right|^2} }\implies\\
+		\begin{cases}
+			\textrm{div}\left( \frac{\nabla u}{\sqrt{1+\left| \nabla u \right|^2} } \right) = 0 & \Omega \\
+			u = u_0 & \partial \Omega 
+		\end{cases}
+	\end{align*}
+\end{exmp}
+
+\end{document}
