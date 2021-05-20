@@ -1,6 +1,6 @@
-# Libera-Mentis
+# LibreMath
 
-Libera Mentis is a personal education project created and developed by Gabriel Gress. Its aim is to be a continuously growing free open-source educational resource for students wanting to learn mathematics and other subjects.
+LibreMath is a personal education project created and developed by Gabriel Gress. Its aim is to be a continuously growing free open-source educational resource for students wanting to learn mathematics and other subjects.
 
 At the moment, there's not a lot here. I am a mathematics student, and as I learn mathematics through courses other educational resources, I create my notes via LaTeX. The ones that are polished enough to be worth sharing are put here-- but as I create and polish more notes, I hope this repository can grow as a resource and involve more of the community.
 
