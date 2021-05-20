@@ -18,3 +18,5 @@ My goal is for this repository to become a collaborative hub of free materials. 
 ## How can I contribute?
 
 At the moment-- you can't. This project is very much in its early stages, and so until I can get a few things going, I am not interested in collaboration or suggestions. However, if you notice errors in the academic material I have already provided here (of which there are many), feel free to contact me and I will fix them as I continue to work on this.
+
+To see more about where this project is headed, I encourage you to check out the [open projects](https://github.com/gjgress/LibreMath/projects).
