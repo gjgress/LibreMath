@@ -4,7 +4,7 @@ LibreMath is a personal education project created and developed by Gabriel Gress
 
 At the moment, there's not a lot here. I am a mathematics student, and as I learn mathematics through courses other educational resources, I create my notes via LaTeX. The ones that are polished enough to be worth sharing are put here-- but as I create and polish more notes, I hope this repository can grow as a resource and involve more of the community.
 
-To find compiled versions of the notes, visit the static site dedicated to the [LibreMath](https://gjgress.github.io/LibreMath/) [project](project). LaTeX sources for these files can be found within this repository.
+To find compiled versions of the notes, visit the static site dedicated to the [LibreMath](https://gjgress.github.io/LibreMath/) project. LaTeX sources for these files can be found within this repository.
 
 ## What is the goal?
 
