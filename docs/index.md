@@ -17,19 +17,19 @@ LibreMath is a personal education project created and developed by Gabriel Gress
       - Dynamical Systems (under construction)
       - Functional Analysis (under construction)
       - Harmonic Analysis (under construction)
-      - [Geometric Measure Theory](Geometric Measure Theory/Notes/compiled/Notes.pdf)
+      - [Geometric Measure Theory](resources/GMT.pdf)
       - Topological Groups (under construction)
   - Algebra
     - Linear Algebra (under construction)
-    - [Abstract Algebra I](Abstract\ Algebra\ -\ Introductory/Algebra\ I/Notes/compiled/Notes.pdf)
-    - [Abstract Algebra II](Abstract\ Algebra\ -\ Introductory/Algebra\ II/Notes/compiled/Notes.pdf)
+    - [Abstract Algebra I](resources/AlgebraI.pdf)
+    - [Abstract Algebra II](resources/AlgebraII.pdf)
     - Lie Theory (under construction)
   - Differential Equations
     - Ordinary Differential Equations (under construction)
     - Partial Differential Equations I (under construction)
     - Partial Differential Equations - Topics
       - Fluid Flow Equations (under construction)
-      - [Calculus of Variations](Topics\ in\ Partial\ Differential\ Equations/Calculus\ of\ Variations/Notes/compiled/Notes.pdf)
+      - [Calculus of Variations](resources/CoV.pdf)
   - Probability
     - Probability Theory I (under construction)
     - Topics in Probability

@@ -55,7 +55,7 @@ This quantifies the restrictions of the boundary conditions \(\begin{cases}
 	\end{align*}
 	Using some standard algebraic inequalities (i.e. \(2ab \leq \varepsilon a^2 + \frac{1}{\varepsilon}b^2\) so that \((\sqrt{\varepsilon} a = \frac{b}{\sqrt{\varepsilon} })^2\geq 0\)), we can put bounds on both terms individually to get
 	\begin{align*}
-		\int_{\partial \Omega }u^2(x-x_0)\cdot \nu_\Omega + \int_\Omega 2 \left| u \right| \left| \nabla u \right| (x-x_0)\leq 2 \textrm{diam} (\Omega ) \left\[ \int_{\partial \Omega }u^2 + \int_\Omega 2\left| u \right| \left| \nabla u \right|  \right\]\\
+		\int_{\partial \Omega } u^2(x-x_0) \cdot \nu_\Omega + \int_\Omega 2 \left| u \right| \left| \nabla u \right| (x-x_0)\leq 2 \textrm{diam} (\Omega ) \left[ \int_{\partial \Omega }u^2 + \int_\Omega 2\left| u \right| \left| \nabla u \right|  \right]\\
 		\leq 2 \textrm{diam}(\Omega ) \int_{\partial \Omega } u^2+ 2 \textrm{diam}(\Omega ) \left[ \varepsilon \int_{\Omega }u^2 + \frac{1}{\varepsilon} \int_{\Omega } \left| \nabla u \right|^2 \right]\\
 		\implies \left( n-2\varepsilon\textrm{diam}(\Omega ) \right) \int_{\Omega } u^2 \leq 2 \textrm{diam}(\Omega )\left[ \int_{\partial \Omega }u^2 + \frac{1}{\varepsilon} \int_\Omega  \left| \nabla u \right|^2 \right] 
 	\end{align*}
@@ -142,7 +142,7 @@ via some standards calculations from distribution theory. Because this holds, we
 \end{align*}
 where \(\left\{ x_k\right\}_{k=1}^{\infty} \) is countably dense in \(B_1(0)\). We have that \(u^{(n)} \in W^{1,2}(\Omega )\) if \(\alpha < \frac{n}{2}-1\).In fact, this is a Cauchy sequence in \(W^{1,2}(\Omega )\) (check this), and so
 \begin{align*}
-	\exists u \in W^{1,2}(\Omega ) \text{ such \hat{t} } u = \lim_{N \to \infty} u^{(N)}= \sum_{k=1}^{\infty} \dfrac{2^{-k}}{\left| x-x_k \right|^{\alpha }}
+	\exists u \in W^{1,2}(\Omega ) \text{ such that{t} } u = \lim_{N \to \infty} u^{(N)}= \sum_{k=1}^{\infty} \dfrac{2^{-k}}{\left| x-x_k \right|^{\alpha }}
 \end{align*}
 
 \begin{exmp}
