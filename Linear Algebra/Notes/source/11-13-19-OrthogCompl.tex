@@ -1,0 +1,96 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+\section{Orthogonal Complements}
+\label{sec:orthogonal_complements}
+
+\begin{defn}[Orthogonal Complement]
+	Let \(U\subset V\). Then we denote by \(U^{\perp}\) the \textbf{orthogonal complement} of \(U\), where
+	\begin{align*}
+		U^{\perp}:= \left\{v \in V \mid \langle v,u \rangle =0 \quad \forall u \in U \right\} 
+	\end{align*}
+\end{defn}
+Be cautious with this definition-- it doesn't quite correspond to our normal intuition for orthogonal spaces. For example, a line could be orthogonal to a plane in \(\R^3\), and indeed there exists isomorphisms so that the line is an orthogonal complement of said plane, but one must first ensure that the line and plane map to vector spaces accordingly.
+
+\begin{prop}[Properties of Orthogonal Complement]
+	\begin{itemize}
+		\item If \(U\subset V\), then \(U^{\perp}\subset V\).
+		\item \(\left\{ 0 \right\}^{\perp}= V\).
+		\item \(V^{\perp} = \left\{ 0 \right\} \).
+		\item If \(U\subset V\), then \(U\cap U^{\perp} = \left\{ 0 \right\} \).
+		\item If \(U,W \subset V\) and \(U\subset W\), then \(W^{\perp}\subset U^{\perp}\).
+	\end{itemize}
+\end{prop}
+
+Recall the soulmate theorem, which stated that if \(U\subset V\), then there existed a vector space \(W\subset V\) such that
+\begin{align*}
+	U \oplus W = V.
+\end{align*}
+
+It turns out this theorem is further improved by our new definitions.
+
+\begin{thm}[Soulmate Theorem Revisited]
+	Suppose \(U\) is a finite-dimensional subspace of \(V\). Then
+	\begin{align*}
+		U \oplus U^{\perp} = V.
+	\end{align*}
+\end{thm}
+By the Rank-Nullity theorem, this gives us that \(\textrm{dim}(U^{\perp}) = \textrm{dim}(V) - \textrm{dim}(U)\).
+
+\begin{thm}
+	Let \(U\) be a finite-dimensional subspace of \(V\). Then
+	\begin{align*}
+		U = (U^{\perp})^{\perp}.
+	\end{align*}
+\end{thm}
+Note that this fails when \(U\) is infinite-dimensional.
+
+\subsection{Orthogonal Projection}
+\label{subsec:orthogonal_projection}
+
+\begin{defn}[Orthogonal Projection]
+	Let \(U\subset V\) be a finite-dimensional subspace. The \textbf{orthogonal projection} of \(V\) onto \(U\) is the operator \(P_U\) on \(V\) defined by:
+	\begin{align*}
+		P_Uv = u\\
+		v = u + w \quad u \in U, \; w \in U^{\perp}
+	\end{align*}
+\end{defn}
+This operator has quite a few very nice properties.
+
+\begin{prop}[Properties of Orthogonal Projection]
+	Let \(U\subset V\) be a finite-dimensional subspace, and \(v \in V\). Then
+	\begin{itemize}
+		\item \(P_U u = u\) for all \(u \in U\) 
+		\item \(P_U w = 0\) for all \(w \in U^{\perp}\) 
+		\item \(\textrm{Im}P_U = U\) 
+		\item \(\textrm{Ker}P_U = U^{\perp}\) 
+		\item \(v - P_U v \in U^{\perp}\) 
+		\item \(P_U^2 = P_U\) 
+		\item \(\|P_U v\|\leq \|v\|\) 
+		\item For every orthonormal basis \(e_1,\ldots,e_m\) of \(U\),
+			\begin{align*}
+				P_U v = \langle v,e_1 \rangle e_1 + \ldots + \langle v,e_m \rangle e_m.
+			\end{align*}
+	\end{itemize}
+\end{prop}
+% \printindex
+\end{document}

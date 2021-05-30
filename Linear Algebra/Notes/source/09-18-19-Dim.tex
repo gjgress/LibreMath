@@ -1,0 +1,32 @@
+\documentclass{memoir}
+\usepackage{linalg}
+
+\begin{document}
+\section{Dimension}%
+\label{cha:dimension}
+\begin{defn}[Dimension]
+	The \textbf{dimension} of a finite-dimensional vector space is the length of any basis of the vector space.
+\end{defn}
+\begin{lemma}[Dimension of a subspace]
+	If $V$ is finite-dimensional and $U$ is a subspace of $V$, then
+	\begin{align*}
+	\text{dim}U \leq \text{dim}V.
+	\end{align*}
+\end{lemma}
+
+\begin{lemma}
+	Suppose $V$ is finite-dimensional. Then every linearly independent list of vectors in $V$ with length $\text{dim}V$ is a basis of $V$.
+\end{lemma}
+\subsection{Dimension of a sum of two spaces}
+\begin{prop}
+Let $U_1,U_2 \in V$ be finite dimensional vector spaces over some field $F$.\\
+
+Then
+\begin{align*}
+	\textrm{dim}(U_1+U_2) = \textrm{dim}U_1 + \textrm{dim}U_2 - \textrm{dim}(U_1\cap U_2)
+\end{align*}
+\end{prop}
+\begin{cor}
+	Suppose $V$ is finite-dimensional and $U$ is a subspace of $V$ such that $\text{dim}U = \text{dim}V$. Then $U = V$.
+\end{cor}
+\end{document}

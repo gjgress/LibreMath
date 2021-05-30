@@ -1,0 +1,118 @@
+\documentclass{memoir}
+\usepackage{linalg}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+\section{Matrix Multiplication}	
+\begin{defn}
+	Suppose $A$ is an $m\times n$ matrix and $C$ is an $n\times p$ matrix. Then $AC$ is defined to be the $m\times p$ matrix whose entries are defined as follows:
+	\begin{align*}
+		(AC)_{jk} = \sum_{r=1}^{n} A_{jr}C_{rk}.
+	\end{align*}
+\end{defn}	
+Matrix multiplication is not commutative.
+
+\begin{cor}
+	If $T \in \mathcal{L}(U,V)$ and $S \in \mathcal{L}(V,W)$, then $\mathcal{M}(ST) = \mathcal{M}(S)\mathcal{M}(T)$
+\end{cor}
+We denote $A_{j,\cdot}$ to be the $1\times n$ matrix consisting of row $j$ of $A$. Likewise, $A_{\cdot ,k}$ denotes the $m\times 1$ matrix consisting of column $k$ of $A$.
+\begin{cor}
+	Suppose $A$ is an $m\times n$ matrix and $C$ is an $n\times p$ matrix. Then
+	\begin{align*}
+		(AC)_{jk} = A_{j\cdot }C_{\cdot k}
+	\end{align*}
+\end{cor}
+\begin{cor}
+	Suppose $A$ is $m\times n$ matrix and $C$ is $n\times p$ matrix. Then
+	\begin{align*}
+		(AC)_{k} = AC_{k}
+	\end{align*}
+\end{cor}
+\begin{cor}
+	Suppose $A$ is $m\times n$ matrix and $c = \begin{bmatrix} c_1 \\ \vdots \\ c_n \end{bmatrix} $ is an $n\times 1$ matrix. Then
+	\begin{align*}
+		Ac = c_1A_{~1} + \ldots + c_nA_{~n}.
+	\end{align*}
+\end{cor}
+
+\section{Invertibility and Isomorphic Vector Spaces}
+\label{cha:invertibility_and_isomorphic_vector_spaces}
+
+\subsection{Invertible Linear Maps}
+\label{sec:invertible_linear_maps}
+
+\begin{defn}
+	A linear map $T \in \mathcal{L}(V,W)$ is called \textbf{invertible} if there exists a linear map $S \in \mathcal{L}(W,V)$ such that $ST$ equals the identity map on $V$ and $TS$ equals the identity map on $W$. \\
+
+	A linear map that $S$ that satisfies this is called an \textbf{inverse} of $T$. we denote the inverse by $T^{-1}$.
+\end{defn}
+\begin{lemma}
+	An invertible linear map has a unique inverse.
+\end{lemma}
+\begin{thm}
+	A linear map is invertible if and only if it is injective and surjective.
+\end{thm}
+
+We will not show it here, but one can see that the inverse of a linear map corresponds to the matrix inverse.
+\subsection{Isomorphic Vector Spaces}
+\label{sec:isomorphic_vector_spaces}
+
+\begin{defn}[Isomorphism and Isomorphic]
+	An \textbf{isomorphism between vector spaces} is an invertible linear map. Two vector spaces are called \textbf{isomorphic} if there is an isomorphism from one vector space onto the other one.
+\end{defn}
+\begin{lemma}[Equal dimension implies isomorphic]
+	Two finite-dimensional vector spaces over $F$ are isomorphic if and only if they have the same dimension.
+\end{lemma}
+\begin{cor}
+	Suppose $v_1,\ldots,v_n$ is a basis of $V$ and $w_1,\ldots,w_m$ is a basis of $W$. Then $\mathcal{M}$ is an isomorphism between $\mathcal{L}(V,W)$ and $F^{m,n}$.
+\end{cor}
+\begin{cor}[Dimension of Space of Linear Maps]
+	Suppose $V$ and $W$ are finite-dimensional. Then $\mathcal{L}(V,W)$ is finite-dimensional and
+	\begin{align*}
+		\textrm{dim}\mathcal{L}(V,W) = ( \textrm{dim}V) ( \textrm{dim}W)	
+	\end{align*}
+\end{cor}
+\subsection{Linear Maps Thought of as Matrix Multiplication}
+\label{sec:linear_maps_thought_of_as_matrix_multiplication}
+
+\begin{defn}[Matrix of a vector]
+	Suppose $v \in V$ and $v_1,\ldots,v_n$ is a basis of $V$. The \textbf{matrix of $v$} with respect to this basis is the $n\times 1$ matrix
+	\begin{align*}
+		\mathcal{M}(v) = \begin{bmatrix} c_1 \\ \vdots \\ c_n \end{bmatrix} ,
+	\end{align*}
+	where $c_1,\ldots,c_n$ are the scalars such that
+	\begin{align*}
+		v = c_1v_1 + \ldots + c_nv_n .
+	\end{align*}
+\end{defn}
+\begin{cor}
+	Suppose $T \in \mathcal{L}(V,W)$ and $v_1,\ldots,v_n$ is a basis of $V$, $w_1,\ldots,w_m$ a basis of $W$. Then the $ k$-th column of $\mathcal{M}(T)$ equals $\mathcal{M}(v_k)$.
+\end{cor}
+
+\begin{lemma}[Linear maps act like matrix multiplication]
+	Suppose $T \in \mathcal{L}(V,W)$ and $v \in V$. Suppose $v,w$ are bases of $W$. Then
+	\begin{align*}
+		\mathcal{M}(Tv) = \mathcal{M}(T) \mathcal{M}(v) .
+	\end{align*}
+\end{lemma}
+\subsection{Operators}
+\label{sec:operators}
+
+\begin{defn}[Operators]
+	A linear map from a vector space to itself is called an \textbf{operator} or \textbf{endomorphism}. We notate $\mathcal{L}(V)$ as the set of all operators on $V$.	
+\end{defn}
+\begin{thm}[Injectivity is equivalent to surjectivity in finite dimensions]
+	Suppose $V$ is finite-dimensional and $T \in \mathcal{L}(V)$. Then the following are equivalent:
+	\begin{itemize}
+		\item $T$ is invertible
+		\item $T$ is injective
+		\item $T$ is surjective
+	\end{itemize}
+\end{thm}
+\end{document}

@@ -1,0 +1,57 @@
+\documentclass{memoir}
+\usepackage{linalg}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+\section{The Spectral Theorem}
+\label{sec:the_spectral_theorem}
+
+\subsection{The Complex Spectral Theorem}
+\label{subsec:the_complex_spectral_theorem}
+
+\begin{thm}[Complex Spectral Theorem]
+	Suppose \(F = \C\) and \(T = \mathcal{L}(V)\). Then the following are equivalent:
+	\begin{itemize}
+		\item \(T\) is normal
+		\item \(V\) has an orthonormal basis consisting of eigenvectors of \(T\).
+		\item \(T\) has a diagonal matrix with respect to some orthonormal basis of \(V\).
+	\end{itemize}
+\end{thm}
+
+\subsection{The Real Spectral Theorem}
+\label{subsec:the_real_spectral_theorem}
+
+\begin{lemma}
+	Suppose \(T \in \mathcal{L}(V)\) is self-adjoint and \(b,c \in \R\) are such that \(b^2< 4c\). Then
+	\begin{align*}
+		T^2+bT+cI
+	\end{align*}
+is invertible.
+\end{lemma}
+\begin{lemma}
+	Suppose \(V \neq \left\{ 0 \right\} \) and \(T \in \mathcal{L}(V)\) is a self-adjoint operator. Then \(T\) has an eigenvalue.
+\end{lemma}
+\begin{lemma}
+	Suppose \(T \in \mathcal{L}(V)\) is self-adjoint and \(U\) is a subspace of \(V\) that is invariant under \(T\). Then
+	\begin{itemize}
+		\item \(U^{\perp}\) is invariant under \(T\) 
+		\item \(T\mid_U \in \mathcal{L}(U)\) is self-adjoint
+		\item \(T\mid_{U^{\perp}} \in \mathcal{L}(U^{\perp})\) is self-adjoint.
+	\end{itemize}
+\end{lemma}
+\begin{thm}[Real Spectral Theorem]
+	Suppose \(F = \R\) and \(T \in \mathcal{L}(V)\). Then the following are equivalent:
+	\begin{itemize}
+		\item \(T\) is self-adjoint
+		\item \(V\) has an orthonormal basis consisting of eigenvectors of \(T\).
+		\item \(T \) has a diagonal matrix with respect to some orthonormal basis of \(V\).
+	\end{itemize}
+\end{thm}
+
+\end{document}

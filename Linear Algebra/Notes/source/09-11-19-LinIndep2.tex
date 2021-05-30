@@ -1,0 +1,45 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+\begin{document}
+If $\text{Span}(v_1,\ldots,v_m) = V$, we say that $v_1,\ldots,v_m$ "span" the space $V$. \\
+
+We call the set of unit vectors of a space the \textbf{standard basis}.
+\begin{defn}
+	A vector space $V$ is \textbf{finite-dimensional} if $V = span(v_1,\ldots,v_m)$.
+\end{defn}
+If a vector space is not finite-dimensional, then we say it is \textbf{infinite-dimensional}. To maintain convention, if \(V = F[x]\), then \(\textrm{deg}(0) = -\infty\).
+\begin{thm}
+	\(F[x]\) is infinite-dimensional.
+\end{thm}
+
+\subsection{Linear Independence}
+\begin{defn}[Linear independence]
+	A list $v_1,\ldots,v_m$ of vectors is \textbf{linearly independent} if and only if
+	\begin{align*}
+	a_1v_1+\ldots+a_mv_m = \vec{0}\implies a_1,\ldots,a_m = 0
+	\end{align*}
+	
+\end{defn}
+	A list of vectors in $V$ is \textbf{linearly dependent} if it is not linearly independent.\\
+
+	We can also say that a list in $V$ is linearly dependent if there exist $a_1,\ldots,a_m$ not all zero such that $a_1v_1+\ldots+a_mv_m = 0$.
+
+\begin{lemma}
+	If \(v_1,\ldots,v_m\) are linearly independent, then there is exactly one way to write $v \in \text{Span}(v_1,\ldots,v_m)$ as a linear combination of the vectors.
+\end{lemma}
+\begin{thm}
+Let $V$ be a finite-dimensional vector space. If \(v_1,\ldots,v_m\) is an arbitrary set of linearly independent vectors in \(V\) and \(w_1,\ldots,w_k\) is an arbitrary set of vectors that span \(V\), then \(m\leq k\).
+
+\end{thm}
+\begin{lemma}[Linear Dependence Lemma]
+	Let $v_1,\ldots,v_m \in V$ be a set of linearly dependent vectors. Then there exists an index $j$ such that \begin{itemize}
+		\item $v_j \in \text{Span}(v_1,\ldots,v_{j-1})$ 
+		\item $\text{Span}(v_1,\ldots,v_m) = \text{Span}(v_1,\ldots,v_{j-1},v_{j+1},\ldots,v_m)$ 
+	\end{itemize}
+\end{lemma}
+\begin{lemma}[Finite-dimensional subspaces]
+	Every subspace of a finite-dimensional vector space is finite-dimensional.
+\end{lemma}
+
+\end{document}

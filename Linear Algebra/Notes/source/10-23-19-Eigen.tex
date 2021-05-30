@@ -1,0 +1,241 @@
+\documentclass{memoir}
+\usepackage{linalg}
+% This covers all the notes from 10-23-19 to ~11-01-19
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+\chapter{Eigenvalues, Eigenvectors, and Eigenspaces}
+\begin{defn}[Invariant subspace]
+	Suppose $T \in \mathcal{L}(V)$. A subspace $U$ of $V$ is called \textbf{invariant} under $T$ if $u \in U$ implies $Tu \in U$.
+\end{defn}
+\section{Eigenvalues and Eigenvectors}
+\label{sec:eigenvalues_and_eigenvectors}
+
+
+\begin{defn}[Eigenvalue]
+
+	Suppose $T  \in \mathcal{L}(V)$. A number $\lambda \in F$  is called an \textbf{eigenvalue} of $T$ if there exists $v \in V$ such that $v\neq 0$ and $Tv = \lambda v$.
+
+\end{defn}
+\begin{lemma}[Equivalent conditions]
+	Suppose $V$ is finite-dimensional, $T \in \mathcal{L}(V)$, and $\lambda \in F$. Then the following are equivalent:
+	\begin{itemize}
+		\item $\lambda$ is an eigenvalue of $T$ 
+		\item $T-\lambda I$ is not injective
+		\item $T-\lambda I$ is not surjective
+		\item $T-\lambda I$ is not invertible
+	\end{itemize}
+\end{lemma}
+\begin{defn}[Eigenvector]
+	Suppose $T \in \mathcal{L}(V)$ and $\lambda \in F$ is an eigenvalue of $T$. A vector $v\in V$ is called an \textbf{eigenvector} of $T$ corresponding to $\lambda$ if $v\neq 0$ and $Tv = \lambda v$.
+\end{defn}
+\begin{lemma}[Linearly independent eigenvectors]
+	Let $T \in \mathcal{L}(V)$. Suppose $\lambda_1,\ldots,\lambda_m$ are distinct eigenvalues of $T$ and $v_1,\ldots,v_m$ are corresponding eigenvectors. Then $v_1,\ldots,v_m$ is linearly independent.
+\end{lemma}
+
+\section{Existence of Eigenvalues}
+\label{sec:existence_of_eigenvalues}
+\begin{thm}
+	Every operator on a finite-dimensional, nonzero, complex vector space has an eigenvalue.
+\end{thm}
+\begin{defn}[Upper-triangular Matrix]
+A matrix ix called \textbf{upper-triangular} if all the entries below the diagonal equal zero.
+	
+\end{defn}
+\begin{thm}
+	Suppose $V$ is a finite-dimensional complex vector space and $T\in \mathcal{L}(V)$. Then $T$ has an upper-triangular matrix with respect to some basis of $V$.
+\end{thm}
+\begin{thm}
+	Suppose $T \in \mathcal{L}(V)$ has an upper-triangular matrix with respect to some basis of $V$. Then $T$ is invertible if and only if all the entries on the diagonal of that upper-triangular matrix are nonzero.
+\end{thm}
+\begin{thm}
+	Suppose $T \in \mathcal{L}(V)$ has an upper-triangular matrix with respect to some basis of $V$. Then the eigenvalues of $T$ are precisely the entries on the diagonal of that upper-triangular matrix.
+\end{thm}
+\section{Eigenspaces and Diagonal Matrices}
+\label{cha:eigenspaces_and_diagonal_matrices}
+\begin{defn}[Eigenspace]
+	
+Suppose $T \in \mathcal{L}(V)$ and $\lambda\in F$. The \textbf{eigenspace} of $T$ corresponding to $\lambda$, denoted $E(\lambda,T)$, is defined by 
+\begin{align*}
+	E(\lambda,T) = \textrm{null}(T-\lambda I).
+\end{align*}
+In other words, $E(\lambda,T)$ is the set of all eigenvectors of $T$ corresponding to $\lambda$, along with the zero vector.
+\end{defn}
+\begin{cor}[Sum of eigenspaces is a direct sum]
+	Suppose $V$ is finite-dimensional and $T \in \mathcal{L}(V)$. Suppose also that $\lambda_1,\ldots,\lambda_m$ are distinct eigenvalues of $T$. Then
+	\begin{align*}
+		E(\lambda_1,T) + \ldots + E(\lambda_m,T)
+	\end{align*}
+	is a direct sum. Furthermore,
+	\begin{align*}
+		\textrm{dim} E(\lambda_1,T) + \ldots + \textrm{dim} E(\lambda_m,T) \leq \textrm{dim} V.
+	\end{align*}
+\end{cor}
+\begin{defn}[Diagonalizable]
+	An operator $T\in \mathcal{L}(V)$ is called \textbf{diagonalizable} if the operator has a diagonal matrix with respect to some basis of $V$.
+\end{defn}
+\begin{thm}[Conditions equivalent to diagonalizability]
+	Suppose $V$ is finite-dimensional and $T \in \mathcal{L}(V)$. Let $\lambda_1,\ldots,\lambda_m$ denote the distinct eigenvalues of $T$. Then the following are equivalent:
+	\begin{itemize}
+		\item $T$ is diagonalizable 
+		\item $V$ has a basis consisting of eigenvectors of $T$ 
+		\item There exist one-dimensional subspaces $U_1,\ldots,U_n$ of $V$, each invaraint under $T$, such that
+			\begin{align*}
+				V = U_1 \bigoplus \ldots \bigoplus U_n 
+			\end{align*}
+		\item $V = E(\lambda_1,T) \bigoplus \ldots \bigoplus E(\lambda_m,T)$ 
+		\item \textrm{dim}$V$ = \textrm{dim}$E(\lambda_1,T) + \ldots + \textrm{dim}E(\lambda_m,T)$.
+	\end{itemize}
+\end{thm}
+\begin{cor}
+	If $T \in \mathcal{L}(V)$  has \textrm{dim}$V$ distinct eigenvalues, then $T$ is diagonalizable.
+\end{cor}
+
+\section{Trace and Determinant}
+\label{sec:trace_and_determinant}
+
+The trace and determinant of linear maps are a vital tool to characterizing linear maps, and now that we have defined eigenvalues, we can work with the concepts well enough to get a deep understanding.
+
+\begin{defn}[Trace]
+	Suppose \(T \in \mathcal{L}(V)\). The \textbf{trace} of \(T\) is the sum of the eigenvalues of \(T\), with each eigenvalue repeated according to its multiplicity.
+\end{defn}
+Note that if our underlying field is \(R\), we have to include complex eigenvalues as well.\\
+
+This might seem different than the traditional definition used in other linear algebra notes, but we will soon see that it corresponds exactly to the other definitions. In particular, the trace has a connection to characteristic polynomials.
+
+\begin{prop}
+	Suppose \(T \in \mathcal{L}(V)\) and let \(n = \textrm{dim}(V)\). Then \(\textrm{Tr}(T)\) is equal to the negative of the coefficient of \(x^{n-1}\) in the characteristic polynomial of \(T\).
+\end{prop}
+
+Now we will make the connection to entries of a matrix.
+\begin{thm}
+	Let \(T \in \mathcal{L}(V)\). Then the trace of \(\mathcal{M}(T)\) is the sum of the entries of the diagonal, and exactly equals \(\textrm{Tr}(T)\).
+\end{thm}
+
+Note that this also tells us that the trace is invariant under change of basis, of course.
+
+\begin{cor}
+	If \(A\) and \(B\) are linear maps of the same size, then
+	\begin{align*}
+		\textrm{Tr}(AB) = \textrm{Tr}(BA)
+	\end{align*}
+\end{cor}
+
+The trace also has a useful additivity property.
+
+\begin{prop}
+	Suppose \(S,T \in \mathcal{L}(V)\). Then \(\textrm{Tr}(S+T) = \textrm{Tr}(S) + \textrm{Tr}(T)\).
+\end{prop}
+
+The trace can be useful in proving some rather strong properties. For example
+\begin{prop}
+	There do not exist operators \(S,T \in \mathcal{L}(V)\) such that
+	\begin{align*}
+		ST-TS = I.
+	\end{align*}
+\end{prop}
+\begin{proof}
+	To see this, observe that
+	\begin{align*}
+		\textrm{Tr}(ST-TS) &= \textrm{Tr}(ST) - \textrm{Tr}(TS)\\
+				   &= \textrm{Tr}(ST) - \textrm{Tr}(ST)\\
+				   &= 0
+	\end{align*}
+	but \(\textrm{Tr}(I) = \textrm{dim}(V)\), and so equality can never hold. 
+\end{proof}
+
+\subsection{Determinant}
+\label{subsec:determinant}
+
+Once again, we will define the determinant in an abstract manner, and show it corresponds to our traditional notion of a determinant.
+
+\begin{defn}[Determinant]
+	Let \(T \in \mathcal{L}(V)\). The \textbf{determinant} of \(T\) is the product of the eigenvalues of \(T\), with each eigenvalue repeated according to its multiplicity.
+\end{defn}
+If our underlying field is \(\R\), then we need to include the complex eigenvalues as well.\\
+
+Once again, the determinant has many deep connections, including to the characteristic polynomial.
+\begin{prop}
+	Suppose \(T \in \mathcal{L}(V)\) and let \(n = \textrm{dim}(V)\). Then \(\textrm{det}(T)\) equals \((-1)^{n}\) times the constant term of the characteristic polynomial of \(T\).
+\end{prop}
+
+This alone actually gives us some powerful consequences already.
+\begin{prop}
+	An operator on \(V\) is invertible if and only if its determinant is nonzero.
+\end{prop}
+\begin{proof}
+	Recall that the operator \(T\) is invertible if and only if 0 is not an eigenvalue of \(T\). Of course, this only occurs if and only if the product of the eigenvalues of \(T\) is nonzero, and hence we have the proposition.
+\end{proof}
+
+Some take the proposition below to be the definition, but we will have it follow as a consequence.
+\begin{prop}
+	Let \(T \in \mathcal{L}(V)\). Then the characteristic polynomial of \(T\) equals \(\textrm{det}(xI-T)\).
+\end{prop}
+
+All of this corresponds to the traditional definition of determinants of matrices. We will omit the details to show this, however.
+
+\begin{defn}[Determinant of a matrix]
+	Let \(A\) be an \(n\)-by-\(n\) matrix given by
+	\begin{align*}
+		A = \begin{pmatrix} A_{1,1} & \cdots & A_{1,n}\\
+		\vdots & \ddots & \vdots \\
+	A_{n,1} & \cdots & A_{n,n}\end{pmatrix} .
+	\end{align*}
+	The \textbf{determinant} of \(A\) is defined by
+	\begin{align*}
+		\textrm{det}(A) = \sum_{(\sigma_1,\ldots,\sigma_n) \in \textrm{perm}(n)} \left( \textrm{sign}(\sigma_1,\ldots,\sigma_n) \right) A_{m_1,1}\ldots A_{\sigma_n, n}.
+	\end{align*}
+\end{defn}
+
+\begin{prop}
+	Suppose \(A\) is a square matrix and \(B\) is obtained from \(A\) by interchanging two columns. Then
+	\begin{align*}
+		\textrm{det}(A) = -\textrm{det}(B).
+	\end{align*}
+\end{prop}
+We can also see that if a square matrix has two equal columns, then \(\textrm{det}(A) = 0\).
+
+\begin{prop}
+	Suppose \(S,T \in \mathcal{L}(V)\). Then
+	\begin{align*}
+		\textrm{det}(ST) = \textrm{det}(TS) = \textrm{det}(S) \textrm{det}(T)
+	\end{align*}
+\end{prop}
+
+Many of our special operators have unique traces and determinants.
+
+\begin{prop}
+	Suppose \(V\) is an inner product space and \(S \in \mathcal{L}(V)\) is an isometry. Then \(\left| \textrm{det}(S) \right|=1\).
+\end{prop}
+
+\subsection{Volume}
+\label{subsec:volume}
+
+
+
+\begin{prop}
+	Suppose \(V\) is an inner product space and \(T \in \mathcal{L}(V)\). Then
+	\begin{align*}
+		\left| \textrm{det}(T) \right| = \textrm{det}\left( \sqrt{T^{*}T}  \right) .
+	\end{align*}
+\end{prop}
+
+We define a linear map on a set by
+\begin{align*}
+	T(\Omega ) := \left\{Tx \mid x \in \Omega  \right\} .
+\end{align*}
+
+\begin{prop}
+	Let \(T \in \mathcal{L}(\R^{n})\) and \(\Omega \subset \R^{n}\). Then
+	\begin{align*}
+		\textrm{Vol}(T(\Omega )) = \left| \textrm{det}(T) \right|  \textrm{Vol}(\Omega )
+	\end{align*}
+\end{prop}
+This also implies that isometries don't change volume.
+\end{document}

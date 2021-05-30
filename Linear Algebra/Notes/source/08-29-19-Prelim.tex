@@ -1,0 +1,40 @@
+\documentclass{memoir}
+\usepackage{linalg}
+
+\begin{document}
+\chapter{Fields and Other Prerequisites}	
+\section{Fields}
+\begin{defn}[Fields]
+	
+Let $F$ be a field. Then we define $F^{n} = \left\{ (x_1, \ldots,x_n) \mid x_i \in F, i=1,\ldots,n \right\}$ and the following properties are true:
+\begin{itemize}
+	\item elements of $F^{n}$ can be added: if $x = (x_1,\ldots,x_n)$ and $y = (y_1,\ldots,y_n)$
+	\item Has a neutral element: $(0,\ldots,0) =: \overline{0}$
+	\item Has an additive inverses: $-x = (-x_1,\ldots,-x_n)$ where $x + (-x) = \overline{0}$.
+	\item Elements of $F^{n}$ can be "scaled" by elements of $F$: Let $\lambda \in F, x = (x_1,\ldots,x_n)\in F^{n}$. Then we define $\lambda \cdot x$ as $(\lambda \cdot x_1, \ldots, \lambda \cdot x_n)$. 
+\end{itemize}
+\end{defn}
+Warning: $F^{n}$ is NOT a field, unless $n=1$ (because we cannot well-define a multiplying property).
+
+\section{Proofs by Induction}
+
+\begin{thm}[Principle of Mathematical Induction II]
+	Let $P(n)$ be a statement indexed by $n \in N$. Suppose that
+	\begin{enumerate}
+		\item $P(1)$ is true. (The \textit{base case})
+		\item If $P(k)$ is true for some $k \in \N$, then $P(k+1)$ is true. (The \textit{inductive hypothesis})
+	\end{enumerate}
+	Then $P(n)$ is true for all $n \in N$.
+\end{thm}
+\begin{thm}[Principle of Mathematical Induction III]
+	Let $Q(n)$ be a statement indexed by $n \in N$. Suppose that
+	\begin{enumerate}
+		\item $Q(k_0)$ is true for some $k_0 \in \N$. (The \textit{base case})
+		\item If $Q(k)$ is true for some $k \in \N$, then $Q(k+1)$ is true. (The \textit{inductive hypothesis})
+	\end{enumerate}
+	Then $Q(n)$ is true for all $n \geq k_0$.
+
+
+\end{thm}
+
+\end{document}

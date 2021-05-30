@@ -1,0 +1,51 @@
+\documentclass{memoir}
+\usepackage{linalg}
+\usepackage{marginnote}
+\begin{document}
+% \section{}	
+\section{First Consequences of Axioms of a Vector Space}
+Let $(V,F,+,\cdot)$ be a vector space. 
+\begin{prop}
+The additive identity of $V$ is unique
+\end{prop}
+\begin{proof}
+	Suppose $V$ has two additive identities $\overline{0}, \overline{0'}$. Then $\overline{0} = \overline{0}+ \overline{0'} = \overline{0'}$.
+\end{proof}
+
+\begin{prop}
+	Additive inverses are unique
+\end{prop}
+
+\begin{proof}
+	Let $v\in V$ be any vector. Suppose that $w, w'$ are additive inverses of v.
+	Then 
+	\begin{align*}
+		w &= w + \overline{0}\\
+		  &= w + (v+w')\\
+		  &= (w+v) + w'\\
+		  &= \overline{0} + w'\\
+		  &= w'
+	\end{align*}
+\end{proof}
+
+\begin{prop}
+	For all $v\in V, 0\cdot v = \overline{0}$
+\end{prop}
+
+\begin{proof}
+	\begin{align*}
+		0 \cdot v &= (0+0) \cdot v\\
+			  &= 0\cdot v + 0\cdot v
+	\end{align*}
+	Add $-0\cdot v$ to both sides:
+\begin{align*}
+	-(0\cdot v) + (0\cdot v) &= -(0\cdot v) + (0\cdot v) + (0\cdot v)\\
+				 &\implies \overline{0} = \overline{0} + (0\cdot v)\\
+				 &\implies \overline{0} = 0\cdot v
+\end{align*}
+\end{proof}
+
+\begin{hw}
+	Prove that $-v = (-1)*v$.
+\end{hw}
+\end{document}

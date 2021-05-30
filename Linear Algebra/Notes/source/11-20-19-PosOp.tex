@@ -1,0 +1,65 @@
+\documentclass{memoir}
+\usepackage{linalg}
+
+\begin{document}
+% Covers 11-20-19 and 11-22-19 (probably)
+
+\section{Positive Operators and Isometries}
+\label{sec:positive_operators_and_isometries}
+\begin{defn}[Positive Operator]
+	An operator \(T \in \mathcal{L}(V)\) is called \textbf{positive} if \(T\) is self-adjoint and
+	\begin{align*}
+		\langle Tv, v \rangle \geq 0
+	\end{align*}
+	for all \(v \in V\).
+\end{defn}
+If \(V\) is a complex vector space, then \(T\) does not need to be self-adjoint (if an inner product is real for all values, then the operator must be self-adjoint; positivity implies real).
+\begin{defn}[Square Root]
+	An operator \(R\) is called a \textbf{square root} of an operator \(T\) if \(R^2 = T\).
+\end{defn}
+\begin{lemma}[Properties of Positive Operators]
+	Let \(T \in \mathcal{L}(V)\). Then the following are equivalent:
+	\begin{itemize}
+		\item \(T\) is positive
+		\item \(T\) is self-adjoint and all the eigenvalues of \(T\) are nonnegative
+		\item \(T\) has a positive square root
+		\item \(T\) has a self-adjoint square root
+		\item there exists an operator \(R \in \mathcal{L}(V)\) such that \(T = R^{*}R\).
+	\end{itemize}
+\end{lemma}
+\begin{cor}
+	Each positive operator on \(V\) has a unique positive square root.
+\end{cor}
+
+Using more tools, one can further state that if \(V\) is a complex vector space and \(T\) an invertible operator, then \(T\) has a square root.
+
+\subsection{Isometries}
+\label{subsec:isometries}
+
+We can impose one further condition on isomorphisms to strengthen the relation.
+\begin{defn}[Isometry]
+	An operator \(A \in \mathcal{L}(V)\) is an \textbf{isometry} if
+	\begin{align*}
+		\|Av\| = \|v\|
+	\end{align*}
+	for all \(v \in V\).
+\end{defn}
+Note that we haven't explicitly stated that isometries are isomorphisms. It turns out that this follows directly from the definition above.
+
+\begin{prop}[Characterization of Isometries]
+	Let \(A \in \mathcal{L}(V)\). The following are equivalent:
+	\begin{itemize}
+		\item \(A\) is an isometry
+		\item \(\langle Au,Av \rangle = \langle u,v \rangle \) for all \(u,v \in V\)
+		\item \(Ae_1,\ldots,Ae_n\) is orthonormal for all choices of orthonormal vectors \(e_1,\ldots,e_n \in V\)
+		\item There exists an orthonormal basis \(e_1,\ldots,e_n \in V\) such that \(Se_1,\ldots,Se_n\) is orthonormal
+		\item \(S^{*}S = SS^{*}= I\) 
+		\item \(S^{*}\) is an isometry
+		\item \(S\) is invertible and \(S^{-1} = S^{*}\)
+	\end{itemize}
+\end{prop}
+Of course, this gives us that isometries are normal. This in fact gives us one more vital characterzation:
+\begin{prop}
+	Let \(V\) be a complex inner product space and \(A \in \mathcal{L}(V)\). Then there is an orthonormal basis of \(V\) consisting of eigenvalues of \(A\) with corresponding eigenvalues equal to \(\left| 1 \right| \) if and only if \(A\) is an isometry.
+\end{prop}
+\end{document}

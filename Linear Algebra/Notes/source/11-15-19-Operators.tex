@@ -1,0 +1,115 @@
+\documentclass{memoir}
+\usepackage{linalg}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+% \section{}	
+\chapter{Adjoints and Operators}
+\label{cha:operators}
+
+\section{Adjoints}
+\label{sec:adjoints}
+
+\begin{defn}[adjoint]
+	Suppose $T \in \mathcal{L}(V,W)$. The \textbf{adjoint} of $T$ is the function $T^{*}:W\to V$ such that
+	\begin{align*}
+		 \langle Tv, w \rangle = \langle v, T^{*}w \rangle 
+	\end{align*}
+for every $v \in V$ and every $w \in W$.
+\end{defn}
+
+\begin{cor}
+	If $T \in \mathcal{L}(V,W)$, then $T^{*}\in \mathcal{L}(W,V)$.
+\end{cor}
+\begin{cor}[Properties of the adjoint]
+	\begin{itemize}
+		\item \((S+T)^{*} = S^{*}+T^{*}\) for all \(S,T \in \mathcal{L}(V,W)\)
+		\item \((\lambda T)^{*} = \overline{\lambda}T^{*}\) for all \(\lambda \in F\) and \(T \in \mathcal{L}(V,W)\) 
+		\item \((T^{*})^{*} = T\) for all \(T \in \mathcal{L}(V,W)\)
+		\item \(I^{*}= I\), where \(I\) is the identity operator on \(V\) 
+		\item \((ST)^{*} = T^{*}S^{*}\) for all \(T \in \mathcal{L}(V,W)\) and \(S \in \mathcal{L}(W,U)\)
+	\end{itemize}
+\end{cor}
+
+We can derive some nice properties of the adjoint map by looking at orthogonal complements.
+
+\begin{prop}[Kernel and Image of the Adjoint]
+	Let \(T \in \mathcal{L}(V,W)\). Then
+	\begin{itemize}
+		\item \(\textrm{Ker}T^{*} = (\textrm{Im}T)^{\perp}\) 
+		\item \(\textrm{Im}T^{*} = (\textrm{Ker}T)^{\perp}\) 
+		\item \(\textrm{Ker}T = (\textrm{Im}T^{*})^{\perp}\) 
+		\item \(\textrm{Im}T = (\textrm{Ker}T^{*})^{\perp}\)
+	\end{itemize}
+\end{prop}
+
+\begin{prop}[The matrix of \(T^{*}\) ]
+	Let \( T \in \mathcal{L}(V,W)\). Suppose \(e_1,\ldots,e_n\) is an orthonormal basis of \(V\) and \(f_1,\ldots,f_m\) is an orthonormal basis of \(W\). Then
+	\begin{align*}
+		 \mathcal{M}(T^{*}, (f_1,\ldots,f_m), (e_1,\ldots,e_n))
+	\end{align*}
+	is the conjugate transpose of
+	\begin{align*}
+		\mathcal{M}(T,(e_1,\ldots,e_n),(f_1,\ldots,f_m)).
+	\end{align*}
+\end{prop}
+\section{Self-Adjoint Operators}
+\label{sec:self_adjoint_operators}
+
+\begin{defn}[self-adjoint]
+	An operator \(T \in \mathcal{L}(V)\) is called \textbf{self-adjoint} if \(T = T^{*}\). In orther words, \(T \in \mathcal{L}(V)\) is self-adjoint if and only if
+	\begin{align*}
+		 \langle Tv, w \rangle = \langle v, Tw \rangle 
+	\end{align*}
+for all \(v,w \in V\).
+\end{defn}
+\begin{cor}
+	Every eigenvalue of a self-adjoint operator is real.
+\end{cor}
+\begin{cor}
+	Suppose \(V\) is a complex inner product space and \(T \in \mathcal{L}(V)\). Suppose
+	\begin{align*}
+ \langle Tv, v \rangle = 0
+	\end{align*}
+	for all \(v \in V\). Then \(T = 0\).
+\end{cor}
+\section{Normal Operators}
+\label{sec:normal_operators}
+
+\begin{defn}[Normal]
+	An operator on an inner product space is called \textbf{normal} if it commutes with its adjoint. In other words, \(T \in \mathcal{L}(V)\) is normal if
+	\begin{align*}
+		 TT^{*} = T^{*}T.
+	\end{align*}
+\end{defn}
+\begin{prop}
+	An operator \(T \in \mathcal{L}(V)\) is normal if and only if
+	\begin{align*}
+		 \|Tv\| = \|T^{*}v\|
+	\end{align*}
+	for all \(v \in V\).
+\end{prop}
+\begin{cor}
+	Suppose \(T \in \mathcal{L}(V)\) is normal and \(v \in V\) is an eigenvector of \(T\) with eigenvalue \(\lambda\). Then \(v\) is also an eigenvector of \(T^{*}\) with eigenvalue \(\overline{\lambda}\).
+\end{cor}
+\begin{cor}
+	Suppose \(T \in \mathcal{L}(V)\) is normal. Then eigenvectors of \(T\) corresponding to distinct eigenvalues are orthogonal.
+\end{cor}
+
+\begin{prop}[Normal operators and invariant subspaces]
+	Suppose \(V\) is an inner product space, \(T \in \mathcal{L}(V)\) normal, and \(U\subset V\) a subspace that is invariant under \(T\). Then
+	\begin{itemize}
+		\item \(U^{\perp}\) is invariant under \(T\) 
+		\item \(U\) is invariant under \(T^{*}\) 
+		\item \((T\mid_U)^{*} = (T^{*})\mid_U\) 
+		\item \(T\mid_U \in \mathcal{L}(U)\) and \(T\mid_U^{\perp} \in \mathcal{L}(U^{\perp})\) are normal operators
+	\end{itemize}
+\end{prop}
+
+\end{document}

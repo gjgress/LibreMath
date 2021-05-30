@@ -1,0 +1,68 @@
+\documentclass{memoir}
+\usepackage{linalg}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+\section{Singular Value Decomposition}
+\label{cha:singular_value_decomposition}
+Let \(V, \langle \cdot, \cdot \rangle \) be a finite-dimensional inner product space.
+
+\begin{defn}[Singular Values]
+	The \textbf{singular values} \(s_1,\ldots,s_n\) of \(T\) are the eigenvalues of \(\sqrt{T^{*}T} \), each one repeated \( \textrm{dim}E(s_i,\sqrt{T^{*}T} )\) many times.
+\end{defn}
+We can order the singular values \(s_1,\ldots,s_n\) of \(T\) such that
+\begin{align*}
+	s_1\geq s_2\geq \ldots\geq s_n\geq 0.
+\end{align*}
+\begin{thm}[Singular Value Decomposition]
+	Let \((V, \langle \cdot, \cdot \rangle )\) be an inner product space over \(\R\) of dimension \(n\). Let \(T \in \mathcal{L}(V)\) be a linear operator with singular values \(s_1,\ldots,s_n\). There exists distinct orthonormal bases \(e_1,\ldots,e_n\) and \(f_1,\ldots,f_n\) of \(V\) such that
+	\begin{align*}
+		\mathcal{M}(T,(e_1,\ldots,e_n),(f_1,\ldots,f_n)) = \begin{bmatrix} s_1 & \ldots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \ldots & s_n \end{bmatrix} 
+	\end{align*}
+Furthermore,
+\begin{align*}
+	T(v) = s_1 \langle v, e_1 \rangle f_1 + \ldots + s_n \langle v, e_n \rangle f_n \quad \forall v \in V
+\end{align*}
+\end{thm}
+This is a decomposition. If \(h_1,\ldots,h_n\) is the standard basis of \(\R^{n}\), then using the standard inner product, let \(A = \mathcal{M}(T,(h_1,\ldots,h_n)\). The SVD theorem is equivalent to saying there are matrices \(U,\Sigma,V\) such that
+\begin{align*}
+	A = U\Sigma V^T
+\end{align*}
+This is basically a series of changes of bases.\\
+
+The matrix \(V\) represents the matrix of the operator \(T_V: \R^{n}\to \R^{n}\) that turns the standard basis vectors \(h_1,\ldots,h_n\) to the basis \(e_1,\ldots,e_n\). Therefore the columns of the matrix consist of the coefficients of the \(e_i\) when expressed in terms of the standard basis \(h_1,\ldots,h_n\). This matrix is orthogonal, and thus \(V^{-1}=V^{T}\)\\
+
+The matrix of \(U\) has as columns the coefficients of the \(f_i\) when they are expressed in terms of the standard basis \(h_1,\ldots,h_n\). This matrix is also orthogonal.
+
+\subsection{Computing an SVD}
+\label{sec:computing_an_svd}
+
+\textbf{Computing V}
+\begin{enumerate}
+	\item Compute \(A^{T}A\)
+	\item Find an orthonormal basis of eigenvectors for \(A^{T}A\).
+	\item Form \(V\) by using these eigenvectors as its columns.
+\end{enumerate}
+This also gives us \(s_1^2,\ldots,s_n^2\).\\
+
+\textbf{Computing \(\Sigma\)}
+\begin{enumerate}
+	\item Compute \(V\). When finding the eigenvectors, keep the eigenvalues (compute eigenvectors of \(A^{T}A\)).
+	\item The eigenvalues are \(s_1^2,\ldots,s_n^2\), so take the square root of these (in order) to get the singular values
+	\item Place these in order along the diagonal
+\end{enumerate}
+
+\textbf{Computing U}
+\begin{enumerate}
+	\item Calculate \(Av_i\) for each \(v_i \in V\)
+	\item Divide each \(Av_i \) by \(s_i\) 
+	\item This yields \(u_i\), which are the columns of \(U\).
+\end{enumerate}
+
+\end{document}

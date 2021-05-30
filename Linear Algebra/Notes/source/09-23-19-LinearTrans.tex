@@ -1,0 +1,31 @@
+\documentclass{memoir}
+\usepackage{linalg}
+
+\begin{document}
+\chapter{Linear Transformations}
+Let $V, W$ be vector spaces over a field $F$.
+\begin{defn}[Linear Map]
+	A \textbf{linear transformation} or \textbf{map} is a function $T:V\to W$ such that, for all $u,v \in V$:
+	\begin{align*}
+		T(u+v) = T(u) + T(v) \\
+		T(\lambda\cdot v) = \lambda \cdot T(v)
+	\end{align*}
+\end{defn}
+Notice that $T(\vec{0}_V) = \vec{0}_W$.\\
+
+We denote by $\mathcal{L}(V,W) := \left\{ T: V\to W \mid T \text{ is linear} \right\} $
+\begin{exmp}[Examples of Linear Transformations]
+	Some examples include
+	\begin{itemize}
+		\item Zero map: $0:V\to W$ is defined as $v \mapsto \vec{0}_W$
+		\item Identity: $\text{Id}:V\to V$ is defined as $v\mapsto v$
+		\item Differentation: $D:P(\R)\mapsto P(\R)$ is defined as $p \mapsto p'$
+		\item Integration: $T:P(\R) \to \R$ is defined as $p \mapsto \int_0^1 p := \int_0^1 p(x)dx$
+		\item Shift: $S:F^{\infty}\to  F^{\infty}$ is defined as $(x_1,x_2,\ldots) \mapsto (x_2,x_3,\ldots)$
+		\item $T: \R^3 \to \R^2 $ defined as $(x,y,z) \mapsto (5x-y+2z, 7x+37-19z)$
+	\end{itemize}
+\end{exmp}
+\begin{cor}
+	The set $\mathcal{L(V,W)}$ is itself a vector space over $F$.
+\end{cor}
+\end{document}

@@ -1,0 +1,88 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+\begin{document}
+\section{Sums of Subspaces}
+Let $(V,F,+,\cdot )$ be a vector space, and let $U_1,\ldots,U_m$ be subspaces. Define 
+\begin{align*}
+	U_1 +\ldots+U_m := \left\{ u_1+\ldots+u_m \mid u_i \in U_i \text{ for } i=1,\ldots,m \right\}
+\end{align*}
+to be the sum of two subspaces.
+
+\begin{exmp}
+Let $V = \R^{3}$, $F=\R$ and consider
+\begin{align*}
+	U_1 = \left\{ (x,0,0) \mid x\in \R \right\} \in \R^{3}\\
+	U_2 = \left\{ (0,y,0) \mid y \in \R \right\} \in \R^{3}
+\end{align*}. Then
+\begin{align*}
+	U_1 + U_2 = \left\{ (x,y,0) \mid x,y\in \R \right\} .
+\end{align*}
+\end{exmp}
+
+\begin{thm}[Sum of subspaces]
+	If $U_1,\ldots,U_m \subseteq V$ are subspaces of $(V,F,+,\cdot )$, then $U_1+\ldots+U_m$ is the "smallest" subspace of $V$ that contains $U_1,\ldots,U_m$. That is, if there exists \(U'\subset V\) such that \(U_1,\ldots,U_m\subset U'\), then \(U_1+\ldots+U_m \subset U'\).
+\end{thm}
+\begin{proof}
+	First we show that $U_1 + \ldots + U_m$ is a subspace of $V$. It is easy to see that $\overline{0} = \overline{0}+\ldots+\overline{0}$ and so the zero vector is in our space. We also know that
+	\begin{align*}
+		(u_1+\ldots+u_m) + (v_1+\ldots+v_m) = (u_1+v_1)+(u_2+v_2)+\ldots+(u_m+v_m) \in U_1+\ldots+U_m
+	\end{align*}
+	Finally, 
+
+	\begin{align*}
+		\lambda \cdot (u_1+\ldots+u_m) = \lambda \cdot u_1 + \ldots + \lambda \cdot u_m \in U_1 + \ldots+U_m.
+	\end{align*}
+	which gives us that \(U_1+\ldots+U_m\) is a subspace of \(V\) as desired.\\
+
+	Now we show that $U_i \subseteq U_1 + \ldots + U_m$. Let $u_i \in U_i.$ Then 
+	\begin{align*}
+		u_2 = \overline{0} + \ldots + \overline{0} + u_i + \overline{0} + \ldots + \overline{0} \implies u_i \in U_1 + \ldots + U_m
+	\end{align*}
+	as desired.
+
+Finally, we want to show the statement. Let $U' \subseteq V$ be a subspace with $U_1,\ldots,U_m \subseteq U'$, and let $u_1+\ldots+u_m \in U_1+\ldots+U_m$. Our work above gives us that $u_i \in U_i$. Because we have \(U_i \subset U'\), that implies that each \(u_i \in U'\), and so
+\begin{align*}
+	u_1 + \ldots+ u_m \in U'
+\end{align*}
+as desired.
+\end{proof}
+
+	\section{Direct sums}
+	\begin{defn}[Direct sum]
+		Let $U_1,\ldots,U_m$ be subspace of $(V,F,+,\cdot )$. If each $v \in U_1 + \ldots +U_m$ can be written in \textit{exactly} one way as
+\begin{align*}
+	v = u_1 + \ldots +u_m \quad u_i \in  U_i
+\end{align*}
+		 then we say $U_1 + \ldots + U_m$ is a \textbf{direct sum}, and denote it by
+		\begin{align*}
+		U_1 \oplus U_2 \oplus \ldots \oplus U_m .
+		\end{align*}
+	\end{defn}
+	\begin{exmp}
+	Let $V = \R^{3}$, $F = \R$, and consider $U_1 = \left\{ (x,y,0) \mid x,y \in R \right\} $ and $U_2 = \left\{ (0,0,z) | z \in \R \right\} $. Then $U_1 \bigoplus U_2$ is direct.\\
+
+	But consider $U_3 = \left\{ (0,y,y) \mid y \in \R \right\} $. Then $U_1 + U_2 + U_3$ is NOT direct. 
+\end{exmp}
+\begin{lemma}[Criterion for direct sums]
+	$U_1 \oplus \ldots \oplus U_m \iff \left[ u_1 + \ldots + u_m = 0 \implies u_1,\ldots,u_m=0\right]$ where $u_i \in U_i$.
+\end{lemma}
+	\begin{proof}
+	First we will prove the forward direction. Observe that $\overline{0} = \overline{0} + \ldots + \overline{0}$. Because it is a direct sum, it is the only way to write the zero vector, and so each $u_i \in U_i$ must be $\overline{0}$. \\ 
+
+	For the reverse direction, suppose that the only way to write $\overline{0} = u_1 + \ldots + u_m$ is to take $u_i = \overline{0}$ . \\ Let $v \in U_1 + \ldots + U_m$. Suppose that
+	\begin{align*}
+	v = u_1+\ldots+u_m \quad u_i \in U_i \\
+	v = u'_1+\ldots+u'_m \quad u'_i \in U_i
+	\end{align*}
+	Subtraction yields $\overline{0}=(u_1 - u'_1) + \ldots + (u_m - u'_m)$. By hypothesis, each parentheses must be zero, and so \(u_i = u'_i\) and hence the representation of \(v\) is unique.
+\end{proof}
+
+\begin{lemma}[Direct sum of two subspaces]
+Let $U,W \subseteq V$ be two subspaces. Then
+\begin{align*}
+	U\oplus W \iff U\cap W = \left\{ \vec{0} \right\} . 
+\end{align*}
+\end{lemma}
+
+\end{document}

@@ -1,0 +1,31 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+\begin{document}
+\section{Bases}
+\begin{defn}[Basis]
+A \textbf{basis} of $V$ is a list of vectors in $V$ that is linearly independent and spans $V$.
+\end{defn}
+\begin{lemma}[Criterion for basis]
+	A list $v_1,\ldots,v_n$ of vectors in $V$ is a basis of $V$ if and only if every $v \in V$ can be written uniquely in the form
+	\begin{align*}
+		v = a_1v_1+\ldots+a_nv_n
+	\end{align*}
+	where $a_1,\ldots,a_n \in F$.
+\end{lemma}
+\begin{thm}
+	Every spanning list in a vector space can be reduced to a basis of the vector space.
+\end{thm}
+	Hence, every finite-dimensional vector space has a basis.
+\begin{cor}
+	Every linearly independent list of vectors in a finite-dimensional vector space can be extended to a basis of the vector space.	
+\end{cor}
+
+\begin{thm}[Soulmate space]
+	Let $(V,F,+,\cdot )$ be a finite dimensional vector space. let $U\subset V$ be a subspace. Then there exists a $ W \subset V$ such that
+	\begin{align*}
+	U \oplus W = V
+	\end{align*}
+\end{thm}
+Note that \(W\) is a finite-dimensional vector space.
+\end{document}

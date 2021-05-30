@@ -20,7 +20,7 @@ LibreMath is a personal education project created and developed by Gabriel Gress
       - [Geometric Measure Theory](resources/GMT.pdf)
       - Topological Groups (under construction)
   - Algebra
-    - Linear Algebra (under construction)
+    - [Linear Algebra](resources/LinearAlgebra.pdf)
     - [Abstract Algebra I](resources/AlgebraI.pdf)
     - [Abstract Algebra II](resources/AlgebraII.pdf)
     - Lie Theory (under construction)

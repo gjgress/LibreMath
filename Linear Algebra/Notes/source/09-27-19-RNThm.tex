@@ -1,0 +1,57 @@
+\documentclass{memoir}
+\usepackage{linalg}
+
+\begin{document}
+\begin{prop}[Surjectivity]
+	A linear map is \textbf{surjective} if for every $w \in W$, there is a $v \in V$ such that $T(v) = w$. In other words:
+	\begin{align*}
+	\textrm{Im}T = W
+	\end{align*}
+\end{prop}
+\begin{thm}[Rank-Nullity theorem]
+	Let $V$ be a finite dimensional vector space and \(W\) a vector space. Let $T \in \mathcal{L}(V,W)$. Then $\textrm{Im}T$ is a finite dimensional vector space and 
+
+	\begin{align*}
+		\textrm{dim}V = \textrm{dim}(\textrm{Ker}T) + \text{dim}(\textrm{Im}T).
+	\end{align*}
+\end{thm}
+Notice that \(W\) is not necessarily finite-dimensional. This theorem carries many huge consequences.
+\begin{cor}
+	Let $V,W$ be finite dimensional vector spaces over $F$. Suppose that $\text{dim}V > \text{dim}W$. Then any linear map $T:V\to W$ cannot be injective.
+\end{cor}
+\begin{cor}
+	Let $V,W$ be finite dimensional vector spaces over $F$. Suppose that $\text{dim}V<\text{dim}W$. Then any linear map $T:V\to W$ cannot be surjective.
+\end{cor}
+
+The Rank-Nullity Theorem is really powerful and allows us to prove many theorems more directly (versus a standard matrix elimination proof, which is often more verbose).
+
+\begin{prop}
+	Consider a system of linear equations given by
+	\begin{align*}
+		\sum_{j=1}^{n} A_{1,j}x_j = b_1\\
+		\vdots\\
+		\sum_{j=1}^{n} A_{m,j}x_j = b_m
+	\end{align*}
+	where \(A_{i,j} \in F\) constant, \(x_i \in F\) undetermined, and \(b_i \in F\) constant. We call the system \textbf{homogeneous} when \(b_i = 0\) for all \(1\leq i\leq m\).\\
+
+	If the system of equations is homogeneous and \(n>m\) (more variables than equations), then the system of equations has nontrivial solutions.\\
+
+	If instead, the system of equations is \textbf{inhomogeneous} (not all \(b_i\) are zero), and \(m>n\) (more equations than variables), then for every choice of \(A_{i,j}\) there exist \(b_i\) for which there are no solutions. 
+\end{prop}
+
+\begin{proof}
+For the first part of the proposition, define \(T:F^{m}\to F^{n}\) by
+\begin{align*}
+	T(x_1,\ldots,x_n) = \left( \sum_{j=1}^{n} A_{1,j}x_j, \ldots, \sum_{j=1}^{n} A_{n,j}x_j \right) 
+\end{align*}
+Then the homogeneous system given in the proposition is exactly
+\begin{align*}
+	T(x_1,\ldots,x_n) = 0.
+\end{align*}
+Then it suffices to show that \(\textrm{null}(T) \neq \left\{ 0 \right\} \). By the Rank-Nullity Theorem, \(T\) cannot be injective, and so this holds. Notice that because \(\textrm{null}(T)\) is a vector space, we can find a basis for \(\textrm{null}(T)\) which then describes all solutions to the homogeneous system of equations.\\
+
+For the second part of the proposition, we use the same \(T\), but instead observe that because \(m>n\), \(T\) cannot be surjective. This implies that there exist \(b_{i}\) for which the system has no solutions, regardless of choice of \(A_{i,j}\).
+
+\end{proof}
+
+\end{document}

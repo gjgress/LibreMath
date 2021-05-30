@@ -1,0 +1,77 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+\chapter{Vector Spaces}
+
+\begin{defn}[Vector Space]
+A \textbf{vector space} has four key elements:
+
+\begin{itemize}
+	\item Our space of vectors $V$
+	\item A field $F$
+	\item An addition operation \(+:V\times V \to V\)
+	\item A scalar multiplication operation \(\cdot:F\times V \to V\)
+\end{itemize}
+
+where operations (3) and (4) must satisfy:
+\begin{itemize}
+	\item Commutativity: $u + v = v + u$ $ \forall u,v \in V$
+	\item Associativity: $(u+v)+w = u+(v+w)$, $ \forall u,v,w \in V$ AND $(\lambda_1 \cdot  \lambda_2)\cdot v = \lambda_1 \cdot (\lambda_2\cdot v)$
+	\item Additive identity: $\exists \overline{0}\in V$ such that $v+\overline{0} = v$, $\forall v\in V$.
+	\item Scalar multiplicative identity: $1_F \cdot v = v$, $\forall v\in V$
+	\item Distributivity: 
+\begin{align*}
+		\lambda \cdot (u+v) = \lambda \cdot u + \lambda * v \quad \lambda \in F, \; u,v \in V\\
+	(\lambda_1 + \lambda_2) \cdot v = \lambda_1 \cdot v + \lambda_2 \cdot v \quad \lambda_1, \lambda_2 \in F, \; v \in V
+\end{align*}
+\end{itemize}
+We call elements \(v \in V\) \textbf{vectors}.
+\end{defn}
+\begin{exmp}[Vector Spaces]
+Some pedagogical examples:
+	\begin{itemize}
+\item $(\R^2,\R,+,\cdot)$
+\item $(\mathbb{C}^2, \mathbb{C}, +, \cdot)$ (via complex scalar multiplication)
+\item $(\mathbb{C}^2,\R,+,\cdot)$ (via real scalar multiplication)
+\item $(F^{n}, F, +, \cdot )$
+\item $(F^{\infty}, F, +, \cdot )$ where $F^{\infty} = \left\{ (x_1,x_2,\ldots) \mid x_i \in F, i=1,2,\ldots \right\}$ (note that this space is infinite dimensional)
+\item Let $F$ be a field, and $S$ a set. Let $V = F^{S} := \left\{ \text{ all functions } f:S\to F \right\} $. Addition is defined in $V$ as follows: Let  $f,g:S\to F$. Then $\forall  s \in S$
+	\begin{align*}
+		(f+g): S\to F \text{ and } (f+g)(s) := f(s)+g(s)
+	\end{align*}
+	Scalar multiplication is defined as follows: Let $\lambda \in F; f\in V; f:S\to F$, so $(\lambda \cdot f):S\to F$. Then $\forall s \in S$
+	\begin{align*}
+	(\lambda \cdot f)(s) := \lambda \cdot f(s) \forall s\in S
+\end{align*}
+	\item  Let $F = \R$ and $V = \left\{  \text{polynomials of degree }\leq 19 \text{ with coefficients in }\R  \right\} $.
+Then V is a vector space.
+	\end{itemize}
+
+\end{exmp}
+
+\begin{rmrk}
+	
+If $S = \left\{ 1,\ldots,n \right\} $ then $V = F^{S}$ which is equivalent to functions $f:\left\{ 1,\ldots,n \right\} \to F$, which is equivalent to $F^{n}$. Thus they are isomorphic.
+\end{rmrk}
+
+% \printindex
+\end{document}

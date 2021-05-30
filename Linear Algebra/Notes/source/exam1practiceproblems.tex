@@ -1,0 +1,396 @@
+\documentclass{memoir}
+\usepackage{linalg}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+\newcommand{\solution}{\textbf{\large Solution}}
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+\chapter*{Practice Problems}
+\section{1B}
+\begin{homeworkProblem}
+Suppose $a \in F$, $v \in V$, and $av = 0$. Prove that $a = 0$ or $v = 0$.
+\end{homeworkProblem}
+\begin{homeworkProblem}
+	Suppose $v,w \in V$. Explain why there exists a unique $x \in V$ such that
+	 \begin{align*}
+		v + 3x = w.
+	\end{align*}
+\end{homeworkProblem}
+
+\section{1C}
+\begin{homeworkProblem}
+	Show that the set of differentiable real-valued functions $f$ on the interval $(-4,4)$ such that 
+	\begin{align*}
+		f'(-1) = 3f(2)
+	\end{align*}
+	is a subspace of $\R^{(-4,4)}$.
+\end{homeworkProblem}
+\begin{homeworkProblem}
+	Suppose $b \in \R$. Show that the set of continuous real-valued functions $f $ on the interval $[0,1]$ such that $\int_0^{1}f = b$ is a subspace of $\R^{[0,1]}$ if and only if $b = 0$.
+\end{homeworkProblem}
+\begin{homeworkProblem}
+	Give an example of a nonempty subset $U$ of $\R^2$ such that $U$ is closed under scalar multiplication, but $U$ is not a subspace of $\R^2$.
+\end{homeworkProblem}
+\begin{homeworkProblem}
+	Suppose $U_1, U_2$ are subspaces of $V$. Prove that the intersection $U_1\cap U_2$ is a subspace of $V$.
+\end{homeworkProblem}
+\begin{homeworkProblem}
+	Suppose
+	\begin{align*}
+		U = \{(x,x,y,y) \in F^{4} \mid x,y \in F \} .
+	\end{align*}
+	Find a subspace $W$ of $F^{4}$ such that $F^{4} = U \bigoplus W$.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	Suppose 
+	\begin{align*}
+	U = \left\{ (x,y,x+y,x-y,2x) \in F^{5} \mid x,y \in F \right\}
+\end{align*}
+	Find a subspace $W$ of $F^{5}$ such that $F^{5} = U \bigoplus W$ \\
+
+	\color{gray}
+	\textbf{Solution} \\
+
+	Consider $W = \left( 0, 0, a, b, c \right) $, $a,b,c \in F$. First we show that $U+W = F^{5}$. Observe that any vector $(v,w,x,y,z) \in F^{5}$ can be written as $(v,w,v+w,v-w,2v) + (0, 0, x-v-w,y+w-v,z-2v)$, and therefore the sum of the spaces is equal to $F^{5}$. Now let $a \in U \cap W$. Because $a \in W$, the first two elements of $a$ must be $a = (0, 0, ?, ?, ?)$. But if $a \in U$, this implies that $x,y$ in any vector of $U$ must be zero. Then, $x+y = x-y = 2x = 0$. Therefore, $a = (0,0,0,0,0)$. This implies that $U \cap W = \left\{ 0 \right\} $, and therefore $U + W$ is a direct sum.
+
+\end{homeworkProblem}
+
+\section{2A}
+
+\begin{homeworkProblem}
+	Find a number $t$ such that
+	\begin{align*}
+	(3,1,4),(2,-3,5),(5,9,t) 
+	\end{align*}
+	is not linearly independent in $\R^3$.\\
+
+	\color{gray}
+	\textbf{Solution} \\
+	$t = 2$ guarantees that $(3,1,4),(2,-3,5),(5,9,t)$ is not linearly independent in $R^3$. It suffices to show that there are values $a,b,c \in \R$ such that $a(3,1,4) + b(2,-3,5) + c(5,9,2) = 0$, where $a,b,c$ are not all zero. Consider $a = -3, b = 2, c = 1$. Then $-3(3,1,4) + 2(2,-3,5) + (5,9,2) = (-9,-3,-12) + (4,-6,10) + (5,9,2)$. This can be rewritten as $(-9+4+5,-3-6+9,-12+10+2) = (0,0,0)$. Thus when $t=2$, the list is not linearly independent.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	\textbf{(a)}\\
+Show that if we think of $\C$ as a vector space over $\R$, then the list $(1+i,1-i)$ is linearly independent. \\
+
+	\textbf{(b)} \\
+	Show that if we think of $\C$ as a vector space over $\C$, then the list $(1+i, 1-i)$ is linearly dependent. \\
+
+	\color{gray}
+	\textbf{Solution}\\
+
+	\textbf{(a)}\\
+	Recall that we can write $1+i, 1-i$ as an ordered pair $(1,1), (1,-1)$ using addition and multiplication defined on $\C$. Now consider $a(1,1) + b(1,-1) = 0$, where $a,b \in \R$. But recall that $a = (a,0)$ and $b = (b,0)$. Then we can rewrite this as $(a,0)(1,1) + (b,0)(1,-1) = 0$. Then using the rules of multiplication on $\C$, we can rewrite this as $(a-0,a+0) + (b-0,b+0) = 0 \implies (a,a) + (b,-b) = 0$. Using our rules for addition on $\C$, this is equivalent to $(a+b,a-b) = 0 = (0,0)$. This implies that $a+b = 0 = a-b$. But $a+b = a-b \implies 2b = 0 \implies b = 0 \implies a = 0$ using addition on reals. Thus, $1+i, 1-i$ are linearly independent vectors in $\C$ over $\R$.\\
+
+	\textbf{(b)} \\
+	Let $(a,b), (c,d) \in \C, a,b,c,d \in \R$. It suffices to find an $(a,b), (c,d)$ such that $(a,b)(1,1) + (c,d)(1,-1) = 0$. Consider $(0,1),(1,0)$. Then $(0,1)(1,1) + (1,0)(1,-1) = (-1,1) + (1,1) = (0,0) = 0$, and because $(a,b), (c,d)$ were noth both zero, this implies that the list $(1+i, 1-i)$ is not linearly independent over $\C$.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	Suppose $v_1,v_2,v_3,v_4$ is linearly independent in $V$. Prove that the list
+	\begin{align*}
+		v_1-v_2,v_2-v_3,v_3-v_4,v_4
+	\end{align*}
+	is also linearly independent.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	Suppose $v_1,\ldots,v_m$ is linearly independent in $V$ and $w \in V$. Show that $v_1,\ldots,v_m,w$ is linearly independent if and only if 
+	\begin{align*}
+		w \not\in \text{span}(v_1,\ldots,v_m)
+	.\end{align*}
+	\color{gray}
+\textbf{Solution}\\
+%\[
+First, assume $v_1,\ldots,v_m,w$ is linearly independent. Assume for the sake of contradiction that $w \in \text{span}(v_1,\ldots,v_m)$. This implies that $w$ can be written as a linear combination of $v_1,\ldots,v_m$, and thus there exist $a_1,\ldots,a_m \in \R$ such that $a_1v_1+\ldots a_mv_m = w$. If all the coefficients are zero, then $w$ is zero, and zero cannot be linearly independent with any set of vectors. Then consider $-a_1v_1-\ldots-a_mv_m + w$. This is a linear combination of the vectors in the list, but by definition the first part is equivalent to $-w$. Then this sum would be zero, and thus there exists a linear combination of the list with coefficients not all zero that is zero. But then the list is not linearly independent, a contradiction. \\
+
+Now assume $w \not\in \text{span}(v_1,\ldots,v_m)$. Now consider $a_1v_1+\ldots a_mv_m + a_{m+1}w = 0$, $a_i \in \R$. This can be rewritten as $a_1v_1+\ldots a_mv_m = -a_{m+1}w$. But if this is true, then because $-a_{m+1}$ is a scalar, this would imply that $w$ is in the span of the vectors. This contradicts our original assumption, so the only way for the equality to hold is if $-a_{m+1} = 0$, and then because $v_1,\ldots,v_m$ are linearly independent, they can only sum to zero if all their coefficients are zero. Thus, the list $v_1,\ldots,v_m,w$ is linearly independent. 
+
+%\]
+\end{homeworkProblem}
+\begin{homeworkProblem}
+	Explain why there does not exist a list of six polynomials that is linearly independent in $P_4(F)$. \\
+	\color{gray}
+
+	 \textbf{Solution}\\
+
+	 We showed in class that $\text{Span}\left( 1,x,x^2,x^3,x^{4} \right) = P_4(F)$. But we also showed that $\text{Span}\left( 1,x,x^2,x^3,x^{4} \right) = P_4(F)$ is the smallest subspace of  $P_4(F)$ that contains $1,x,x^2,x^3,x^{4}$. Thus, any other element of $P_4(F)$ can be written as a linear combination of those five polynomials.. So if we had a sixth polynomial $z$, we would simply find the linear combination of the other five variables that sum to $z$, then multiply them by $-1$. This would give us a linear combination of six polynomials that sum to zero where all coeffiencts are not zero, and thus, cannot be linearly independent in $P_4(F)$.
+
+\end{homeworkProblem}
+\begin{homeworkProblem}
+	Explain why no list of four polynomials spans $P_4(F)$.
+\end{homeworkProblem}
+\begin{homeworkProblem}
+	Recall that $V$ is infinite-dimensional if and only if there is a sequence $v_1,v_2,\ldots$ of vectors in $V$ such that $v_1,\ldots,v_m$ is linearly independent for every positive integer $m$. Then prove that $F^{\infty}$ is infinite-dimensional.\\ 
+	\color{gray}
+	
+	\textbf{Solution}\\
+
+	Consider the sequence of vectors $v_1,\ldots,v_m$, $m\in \N$ where $v_i = (0,\ldots,0,1,0,\ldots)$, the 1 being in the $i$-th position.  The only way $m$ such vectors can sum to zero is if all their coefficients are zero. This is clear because if the $i$-th position of the sum is zero, then $a_iv_i = \vec{0}$, as all other vectors have zero in that position, and thus the coefficient does not matter. But this is true for any $a_iv_i$, so the list is always linearly independent. But $m$ is chosen arbitrarily, and can be any positive integer. Thus the premise from 2A 14 holds, and thus $F^{\infty}$ is infinite-dimensional. 
+\end{homeworkProblem}
+
+\section{2B}
+
+\begin{homeworkProblem}
+	\textbf{(a)}
+	Let $U$ be the subspace of $\R^{5}$ defined by
+	\begin{align*}
+		U = \left\{ (x_1,x_2,x_3,x_4,x_5) \in \R^{5}\mid x_1=3x_2 \text{ and }x_3=7x_4 \right\} 
+	.\end{align*}
+	Find a basis of $U$.\\
+
+	\textbf{(b)}
+	Extend the basis in (a) to a basis of $\R^{5}$.\\
+
+	\textbf{(c)}
+	Find a subspace $W$ of $R^{5}$ such that $R^{5} = U \bigoplus W$.\\
+
+	\color{gray}
+	\textbf{Solutions}\\
+
+	\textbf{(a)}
+	The list $(3,1,0,0,0),(0,0,7,1,0),(0,0,0,0,1)$ spans $U$ and is linearly independent. Linear independence is clear, as we have shown on multiple occasions (and in previous proofs) that lists where all elements have zero in an entry except one are linearly independent. Now we show it is a basis for $U$. Because for any linear combination of these vectors, the only ones that affect $x_1,x_2$ are the first element of the list, the ratio must hold,as multiplying by $\lambda \in \R$ will maintain the ratio. Likewise, this holds for $x_3,x_4$. So therefore span$(3,1,0,0,0),(0,0,7,1,0),(0,0,0,0,1)) \subset U$. To show the other direction, consider an arbitrary $(x_1,x_2,x_3,x_4,x_5) \in U$, that satisfies $x_1=3x_2$ and $x_3 = 7x_4$. Observe that $\frac{x_1}{3}(3,1,0,0,0) + \frac{x_3}{7}(0,0,7,1,0) + x_5(0,0,0,0,1) = (x_1,x_2,x_3,x_4,x_5)$. Thus every element in $U$ is an element of the span. This implies that the list given is a basis of $U$.\\
+
+	\textbf{(b)}
+	Adding the elements $(0,1,0,0,0)$ and $(0,0,0,1,0)$ to the previous list forms a basis of $\R^{5}$. Observe that any element $(x_1,x_2,x_3,x_4,x_5)$ can be written as $\frac{x_1}{3}(3,1,0,0,0) - (\frac{x_1}{3}-x_2)(0,1,0,0,0) + \frac{x_3}{7}(0,0,7,1,0) - (\frac{x_3}{7}-x_4)(0,0,0,1,0) + x_5(0,0,0,0,1)$. And because each of the elements in the list are in $\R^{5}$, and $\R^{5}$ is a vector space, then the span must also be in $\R^{5}$. Thus with these two elements it becomes a basis for $\R^{5}$.\\
+
+	\textbf{(c)}
+	$W = \text{span}((0,1,0,0,0),(0,0,0,1,0))$ is a subspace of $\R^{5}$ where $\R^{5} = U \bigoplus W$. Because the list are elements of $\R^{5}$ its span must be a subspace of $\R^{5}$. We have also already shown that $\R^{5}=U+W$ in part (b). All that remains to show is that the only element that intersects $U,W$ is the zero vector. Consider an arbitrary $x \in U,W$. Observe that because the first element of both of the elements in the basis of $W$ is zero, the first element of $x$ must also be zero. This implies that the coefficient of $(3,1,0,0,0)$ must also be zero. This implies that $x_2 = 0$. This forces the coefficient of  $(0,1,0,0,0)$ to be zero. This also follows for $x_3$, as both $x_3$ in the basis of $W$ is zero, so it forces the coefficient of  $(0,0,7,1,0)$ to be zero, forcing the rest of the elements to be zero. The same logic follows for $x_5$. Thus the only element that can be in both at once is $(0,0,0,0,0)$, proving that $U+W$ is a direct sum.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	\textbf{(a)}
+	Let $U$ be the subspace of $\C^{5}$ defined by
+	\begin{align*}
+		U = \left\{ (x_1,x_2,x_3,x_4,x_5) \in \C^{5}\mid 6x_1=x_2 \text{ and }x_3 + 2x_4 + 3x_5=0 \right\} 
+	.\end{align*}
+	Find a basis of $U$.\\
+
+	\textbf{(b)}
+	Extend the basis in (a) to a basis of $\C^{5}$.\\
+
+	\textbf{(c)}
+	Find a subspace $W$ of $C^{5}$ such that $C^{5} = U \bigoplus W$.\\
+\end{homeworkProblem}
+\begin{homeworkProblem}
+	Suppose $v_1,v_2,v_3,v_4$ is a basis of $V$. Prove that
+	\begin{align*}
+		v_1+v_2,v_2+v_3,v_3+v_4,v_4
+	\end{align*}
+	is also a basis of $V$.
+\end{homeworkProblem}
+	
+\begin{homeworkProblem}
+	Suppose $U$ and $W$ are subspaces of $V$ such that $V=U\bigoplus W$. Suppose also that $u_1,\ldots,u_m$ is a basis of $U$ and $w_1,\ldots,w_n$ is a basis of $W$. Prove that
+	\begin{align*}
+		 u_1,\ldots,u_m,w_1,\ldots,w_n
+	.\end{align*}
+	is a basis of $V$.\\
+
+	\color{gray}
+	\textbf{Solution}\\
+
+	First, observe that the list is linearly independent. If the list were not linearly independent, then an element of $U$ could be written as a linear combination of elements in $W$ or vice versa. However, the only element in their intersection by definition is $\left\{ 0 \right\} $, so the linear combination has to have coefficients of all zero. Because $V = U\bigoplus W$, every element in $V$ can be written as a unique sum of elements of $U$ and $W$. But every element in $U$ can be expressed as a linear combination of $u_1,\ldots,u_m$ and every element in $W$ can be expressed as a linear combination of $w_1,\ldots,w_n$. So then any element in $V$ can be expressed as the sum of the linear combination of the two bases, and thus can be expressed as the span of $(u_1,\ldots,u_m,w_1,\ldots,w_n$. And because $U,W$ are subspaces of $V$, each element in the basis is an element of $V$, and so because $V$ is a subspace, span$(u_1,\ldots,u_m,w_1,\ldots,w_m)$ is contained in $V$. Therefore it is a basis for $V$. 
+\end{homeworkProblem}
+\section{2C}
+\begin{homeworkProblem}
+	\textbf{(a)}
+	Let $U = \{p \in P_4(F) \mid p(6) = 0 \}  $. Find a basis of $U$.\\
+
+	\textbf{(b)}
+	Extend the basis in part (a) to a basis of $P_4(F)$.\\
+
+	\textbf{(c)}
+	Find a subspace $W$ of $P_4(F)$ such that $P_4(F) = U \bigoplus W$.\\
+\end{homeworkProblem}
+\begin{homeworkProblem}
+	\textbf{(a)}
+	Let $U = \{p \in P_4(\R) \mid p''(6) = 0 \}  $. Find a basis of $U$.\\
+
+	\textbf{(b)}
+	Extend the basis in part (a) to a basis of $P_4(\R)$.\\
+
+	\textbf{(c)}
+	Find a subspace $W$ of $P_4(\R)$ such that $P_4(\R) = U \bigoplus W$.\\
+\end{homeworkProblem}
+\begin{homeworkProblem}
+	\textbf{(a)}
+	Let $U = \left\{ p \in P_4(F) \mid p(2) = p(5) \right\} $. Find a basis of $U$.\\
+
+	\textbf{(b)}
+	Extend the basis in part (a) to a basis of $P_4(F)$.\\
+
+	\textbf{(c)}
+	Find a subspace $W$ of $P_4(F)$ such that $P_4(F) = U \bigoplus W$.\\
+\end{homeworkProblem}	
+\begin{homeworkProblem}
+	\textbf{(a)}
+	Let $U = \left\{ p \in P_4(F) \mid p(2) = p(5) = p(6) \right\} $. Find a basis of $U$.\\
+
+	\textbf{(b)}
+	Extend the basis in part (a) to a basis of $P_4(F)$.\\
+
+	\textbf{(c)}
+	Find a subspace $W$ of $P_4(F)$ such that $P_4(F) = U \bigoplus W$.\\
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	\textbf{(a)}
+	Let $U = \left\{ p \in P_4(\R) \mid \int_{-1}^{1}p = 0 \right\} $. Find a basis of $U$.\\
+
+	\textbf{(b)}
+	Extend the basis in part (a) to a basis of $P_4(\R)$.\\
+
+	\textbf{(c)}
+	Find a subspace $W$ of $P_4(\R)$ such that $P_4(\R) = U \bigoplus W$.\\
+
+	\color{gray}
+	\textbf{Solutions}\\
+
+	\textbf{(a)}
+	Consider the list $\left\{ (x, x^3, 5x^{4}-1, 3x^2-1) \right\} $. First, we show it is linearly independent. In order to sum the elements to 0, the coefficient of $5x^{4}-1$ must be the negative of the coefficient of $3x^2-1$, otherwise the constant won't become zero. However, because they each contain a term of different degrees, the $x^{4},x^{2}$ terms cannot become zero. Thus, the coefficient of those terms must be zero, and likewise for $x,x^3$. Thus the list is linearly independent. \\
+	
+	Now we show that every element of the span of the list is in $U$. Let the elements of the list be referred to as $p_1,p_2,p_3,p_4$. Then consider $\int_{-1}^{1}(\lambda_1p_1+\lambda_2p_2+\lambda_3p_3+\lambda_4p_4)dx$, $\lambda_i \in \R$. Due to the laws of integration we can rewrite this as $\sum_{i=1}^{4} \lambda_i\int_{-1}^{1}(p_i)dx$. But each of those polynomials evaluates to zero over the interval, and so any linear combination of the four polynomials is in the set.\\
+	
+	Now we would like to show that any element in $U$ is an element of the span of our four vectors. Observe that the property placed on $U$ is equivalent to the statement that for $p(x) = ax^{4}+bx^3+cx^2+dx+e$, $\frac{2a}{5}+\frac{2c}{3}+2e = 0$, which can be seen by integration of the general $p(x)$ from -1 to 1. Every element of the list satisfies these properties, and contains every degree of polynomial from 1 to 5, with the constraint meaning that any constant must be written as a combination of $p_3,p_4$. Thus any polynomial that fits these constraints can be written as the coefficient multiplied by the respective degree element from the list, and the constraints will force the rest of the terms to be what is necessary for the property to hold. Thus, the list spans $U$, and so forms a basis. \\
+
+	\textbf{(b)}
+	Simply adding the vector $\left\{ 1 \right\} $ extends the basis to $P_4(\R)$. This is clear as for the coefficients $a,b,c,d$ of $p(x)$, they can be multiplied with the respective ratio to the elements of the previous list. This will result in a constant $e$, but to change the constant to an arbitrary one in $P_4(\R)$, simply choose the coefficient of $\left\{ 1 \right\} $ to be the one desired minus $e$. Thus this new basis covers $P_4(\R)$. And because the degree of this vector is zero, the argument for linear independence from (a) still holds. \\
+
+	\textbf{(c)}
+	W = span$(1)$ actually suffices as a subspace of $P_4(\R)$ such that $P_4(\R) = U \bigoplus W$. We have already shown that $P_4(\R) = U+W$ and because $W$ is a span of a list of linearly independent vector $W$ is a subspace, so all that remains to show is that it is a direct sum. Consider  $U\cap W$. Because $W$ has no polynomials, only constants, any terms with polynomials of degree 1 or more in $U$ must have a coefficient of zero, otherwise it cannot be an element of $U\cap W$. But all elements in $U$ have degree of 1 or more, so this means that all coefficients are zero, meaning the element must be zero. This implies that any element in the intersection must be zero, and thus, it is a direct sum.
+
+\end{homeworkProblem}
+\begin{homeworkProblem}
+	Suppose $p_0,p_1,\ldots,p_m \in P(F)$ are such that each $p_j$ has degree $j$. Prove that $p_0,p_1,\ldots,p_m$ is a basis of $P_m(F)$.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+Suppose that $U$ and $W$ are subspaces of $\R^{8}$ such that $\text{dim}U = 3$, $\text{dim}W = 5$, and $U+W = \R^{8}$. Prove that $\R^{8} = U \bigoplus W$.\\
+
+\color{gray}
+\textbf{Solution}\\
+%\[
+
+First, observe that $\text{dim}\R^{8} = 8$, as per 2.37. Then we know that $8 = \text{dim}(U+W) = \text{dim}U + \text{dim}W - \text{dim}(U\cap W) = 3 + 5 - \text{dim}(U\cap W)$. Therefore $\text{dim}(U\cap W) = 0$ which implies that $U\cap W = \left\{ 0 \right\}$ which implies that $U+W$ is a direct sum, as desired.
+%\]
+\end{homeworkProblem}
+\begin{homeworkProblem}
+	Suppose $U$ and $W$ are both five-dimensional subspaces of $\R^{9}$. Prove that $U \cap W \neq \left\{ 0 \right\} $.\\
+
+	\color{gray}
+	\textbf{Solution}\\
+
+	Again, by 2.37, $\text{dim}\R^{9} = 9$. Because $U,W$ are both subspaces of $\R^{9}$, $U+W \subset \R^{9}$, and so $\text{dim}(U+W) \leq 9$. We can also express this as $\text{dim}(U+W) = \text{dim}U + \text{dim}W - \text{dim}(U\cap W) = 5 + 5 - \text{dim}(U\cap W)$. Therefore, in order for the inequality to hold true, $\text{dim}(U\cap W) \geq 1$. But $\text{dim}\left\{ 0 \right\} = 0$, so the intersection cannot be solely zero.
+\end{homeworkProblem}
+
+\section{3A}
+\begin{homeworkProblem}
+	Suppose $b,c \in \R$. Define $T:P(\R)\to \R^2$ by 
+	\begin{align*}
+		Tp = \left( 3p(4) + 5p'(6) + bp(1)p(2), \int_{-1}^{2} x^3p(x) \,d x + c \sin p(0) \right) .
+	\end{align*}
+	Show that $T$ is linear if and only if $b = c = 0$.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	Suppose $T \in \mathcal{L}(F^{n},F^{m})$. Show that there exist scalars $A_{j,k}\in F$ for $j = 1,\ldots,m$ and $k = 1,\ldots,n$ such that
+	\begin{align*}
+		T(x_1,\ldots,x_n) = (A_{1,1}x_1 + \ldots + A_{1,n}x_n, \ldots, A_{m,1}x_1 + \ldots + A_{m,n}x_n)
+	.\end{align*}
+	for every $(x_1,\ldots,x_n) \in F^{n}$.\\
+
+	\color{gray}
+	\textbf{Solution}\\
+
+	Consider some $T \in \mathcal{L}(F^{n},F^{m})$. Observe that because $T(\vec{0}) = 0$, this implies that $T(1,0,\ldots,0)$ must solely depend on $x_1$. This means that $T(1,0,\ldots,0)$ must be of the form $(a_1x_1,a_2x_1,\ldots,a_mx_1)$. There cannot be any fixed constant non-dependent on $x_1$, as if there were, then $T(\vec{0}) \neq 0$. Each $x_1$ term must be to the power of $1$, as if it were any other power, additivity would fail. Otherwise we cannot say anything about the coefficients of each $x_1$ beyond the fact that $a_i \in F$. Likewise, this argument applies to $T(0,1,0,\ldots,0) = (b_1x_2,b_2x_2,\ldots,b_mx_2)$ and so on for each entry of $x$. The span of each of these entries covers $F^{n}$, and so the output of any vector in $F^{n}$ must be a linear combination of these values. Thus, $T(x_1,\ldots,x_n) = \lambda_1(a_1x_1,\ldots,a_mx_1) + \ldots + \lambda_m(z_1x_m,\ldots,z_m,x_m)$. Rewriting these coefficients in the concise notation of $A_{ij}$ allows us to express this linear combination as $(A_{1,1}x_1 + \ldots + A_{1,n}x_n,\ldots,A_{m,1}x_1 + \ldots + A_{m,n}x_n)$ as desired. 
+\end{homeworkProblem}
+\section{3B}
+\begin{homeworkProblem}
+	Show that
+\begin{align*}
+	 \left\{T \in \mathcal{L}(\R^{5},\R^{4}) \mid \text{dim null}T > 2 \right\}	
+\end{align*}
+is not a subspace of $\mathcal{L}(R^{5},R^{4})$. 
+\end{homeworkProblem}
+\begin{homeworkProblem}
+	Give an example of a linear map $T:\R^{4}\to \R^{4}$ such that
+	\begin{align*}
+		\text{range}T = \text{null}T.
+	\end{align*}
+\end{homeworkProblem}
+\begin{homeworkProblem}
+	Suppose $v_1,\ldots,v_n$ spans $V$ and $T \in \mathcal{L}(V,W)$. Prove that the list $Tv_1,\ldots,Tv_n$ spans range$T$.	
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	Suppose $T$ is a linear map from $F^{4}$ to $F^2$ such that
+	\begin{align*}
+		\text{null}T = \left\{(x_1,x_2,x_3,x_4) \in F^{4} \mid x_1 = 5x_2 \text{ and }x_3 = 7x_4 \right\} .
+	\end{align*}
+	Prove that $T$ is surjective.
+\end{homeworkProblem}
+\begin{homeworkProblem}
+	Suppose $U$ is a 3-dimensional subspace of $\R^{8}$ and that $T$ is a linear map from $\R^{8}$ to $\R^{5}$such that $\text{null}T = U$. Prove that $T$ is surjective.
+\end{homeworkProblem}
+\begin{homeworkProblem}
+	Prove that there does not exist a linear map from $F^{5}$ to $F^{2}$ whose null space equals 
+	\begin{align*}
+		\left\{(x_1,x_2,x_3,x_4,x_5) \in F^{5} \mid x_1=3x_2 \text{ and }x_3=x_4=x_5 \right\} .
+	\end{align*}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	Suppose $V$ and $W$ are both finite-dimensional. Prove that there exists an injective linear map from $V$ to $W$ if and only if $\text{dim}V \leq \text{dim}W$.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	Suppose $V$ and $W$ are both finite-dimensional. Prove that there exists an surjective linear map from $V$ to $W$ if and only if $\text{dim}V \geq \text{dim}W$.
+\end{homeworkProblem}
+\end{document}

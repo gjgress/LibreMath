@@ -1,0 +1,64 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+\section{Subspaces}
+\begin{defn}[Subspace]	
+Let $(V,F,+,\cdot )$ be a vector space. A subset $U \subseteq V$ is a subspace if $(U,F,+,\cdot )$ is itself a vector space under the same operations as \(V\).
+\end{defn}
+
+\begin{lemma}[Conditions for subspaces]
+ $U \subseteq V$ is a subspace if and only if
+\begin{itemize}
+	\item $\overline{0}$ is still in $U$
+	\item  $U$ is closed under addition: if $u,v \in U$ then $u+v \in U$
+	\item $U$ is closed under scalar multiplication;  if $v \in U$ and $\lambda \in F$ then $\lambda \cdot v \in U$
+\end{itemize}
+\end{lemma}
+The three conditions ensure that the additive identity of $V$ is in $U$, and that both addition and scalar multiplication make sense in U.
+
+%If $u \in U$ then $(3) \implies (-1)\cdot u\in U\implies-u\in U$, therefore $U$ contains additive inverses.
+%Remaining axioms are inherited from V, such as associativity. 
+%\begin{figure}[ht]
+%    \centering
+%    \incfig{figure-1}
+%    \caption{Visual of subspaces}
+%    \label{fig:visual_of_subspaces}
+%\end{figure}
+
+\begin{exmp}[Example of subspace]
+Let $F = \R$ and $ V = \left\{f \mid  f:(0,3)\to \R \right\} $. Let
+\begin{align*}
+U = \left\{ f \in V \mid f \text{ differentiable, } f'(2) = 0 \right\} \subseteq V .
+\end{align*}
+Then \(U\subset V\) is a subspace.
+\end{exmp}
+
+\begin{proof}[Proof of Example]
+The zero vector of V is $\overline{0}:(0,3)\to \R$ defined by $\overline{0}:x\mapsto  0$. The zero vector is differentiable and zero at $x=2$, so the zero vector is in our set U.\\
+
+Now we want to show that $U$ is closed under addition. Let $f,g \in U$. By the linearity of differentiation, $(f+g)$ is differentiable, and so satisfies the first property of U. If $f'(2)=0$ and $g'(2)=0$, then $\frac{d}{dx}(f(x)+g(x))\mid_{x=2} = 0 + 0 = 0$\\
+
+Finally, we want to show that U is closed under scalar multiplication. Let $f\in U$ and $\lambda \in \R$. Consider $\lambda \cdot f(x)$. Because $\lambda$ is a scalar, we know that $\lambda \cdot f(x)$ is still differentiable. Moreover, the derivative of the new function is simply $\lambda \cdot f'(x)$, and at $x = 2$, $\lambda \cdot f'(2) = \lambda \cdot 0 = 0$ and so U is still closed under scalar multiplication.
+\end{proof}
+
+% \printindex
+\end{document}

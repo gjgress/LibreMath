@@ -1,0 +1,171 @@
+\documentclass{memoir}
+\usepackage{linalg}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+% \section{}	
+\chapter{Special Vector Spaces}
+\label{cha:products_and_quotients_of_vector_spaces}
+
+\section{Products and Direct Sums}
+\begin{defn}[Product of Vector Spaces]
+	Suppose $V_1,\ldots,V_m$ are vector spaces over $F$.
+	\begin{itemize}
+		\item The \textbf{product} $V_1\times \ldots \times V_m$ is defined by
+			\begin{align*}
+				V_1 \times \ldots \times V_m = \left\{(v_1,\ldots,v_m) \mid v_1 \in V_1,\ldots,v_m \in V_m \right\} .
+			\end{align*}
+	\item Addition on $V_1\times \ldots \times V_m$ is defined by
+		\begin{align*}
+			(u_1,\ldots,u_m) + (v_1,\ldots,v_m) = (u_1+v_1,\ldots,u_m+v_m).
+		\end{align*}
+	\item Scalar multiplication on $V_1\times \ldots \times V_m$ is defined by
+		\begin{align*}
+			 \lambda(v_1,\ldots,v_m) = (\lambda v_1,\ldots, \lambda v_m).
+		\end{align*}
+	\end{itemize}
+\end{defn}
+\begin{lemma}
+	Suppose $V_1,\ldots,V_m$ are vector spaces over $F$. Then $V_1\times \ldots \times V_m$ is a vector space over $F$.
+\end{lemma}
+\begin{lemma}[Dimension of a product is sum of dimensions]
+	Suppose $V_1,\ldots,V_m$ are finite-dimensional vector spaces. Then $V_1 \times \ldots \times V_m$ is finite-dimensional and
+	\begin{align*}
+		\textrm{dim}(V_1\times \ldots\times V_m) = \textrm{dim}V_1 + \ldots + \textrm{dim}V_m .
+	\end{align*}
+\end{lemma}
+\begin{lemma}[Products and direct sums]
+	Suppose that $U_1,\ldots,U_m$ are subspaces of $V$. Define a linear map $\Gamma: U_1\times \ldots\times U_m \to U_1+\ldots+U_m$ by
+	\begin{align*}
+		\Gamma(u_1,\ldots,u_m) = u_1+\ldots+u_m.
+	\end{align*}
+	Then $U_1 + \ldots + U_m$ is a direct sum if and only if $\Gamma$ is injective (and thus invertible).
+\end{lemma}
+\begin{lemma}
+	Suppose $V$ is finite-dimensional and $U_1,\ldots,U_m$ are subspaces of $V$. Then $U_1+\ldots+U_m$ is a direct sum if and only if
+	\begin{align*}
+		\textrm{dim}(U_1+\ldots+U_m) = \textrm{dim}U_1 + \ldots + \textrm{dim}U_m.
+	\end{align*}
+\end{lemma}
+\section{Quotients of Vector Spaces}
+\label{sec:quotients_of_vector_spaces}
+\begin{defn}[v + U]
+	Suppose $v \in V$ and $U$ is a subspace of $V$. Then $v+U$ is the subset of $V$ defined by 
+	\begin{align*}
+		v + U = \left\{v+u \mid u \in U \right\} .
+	\end{align*}
+\end{defn}
+\begin{defn}[affine subset, parallel]
+	An \textbf{affine subset} of $V$ is a subset of $V$ of the form $v+U$ for some $v \in V$ and some subspace $U$ of $V$.\\
+
+	For $v \in V$ and $U$ a subspace of $V$, the affine subset $v+U$ is said to be \textbf{parallel} to $U$.
+\end{defn}
+\begin{defn}[Quotient space]
+	Suppose $U$ is a subspace of $V$. Then the \textbf{quotient space} $V / U$ is the set of all affine subsets of $V$ parallel to $U$. In other words,
+	\begin{align*}
+		V / U = \left\{v + U \mid v \in V \right\}.
+	\end{align*}
+\end{defn}
+\begin{lemma}
+	Suppose $U$ is a subspace of $V$ and $v,w \in V$. Then the following are equivalent:
+	\begin{itemize}
+		\item $v - w \in U$ 
+		\item $v + U = w + U$ 
+		\item $(v+U) \cap (w+U) \neq \emptyset$
+	\end{itemize}
+\end{lemma}
+\begin{defn}[addition and scalar multiplication on $V / U$]
+	Suppose $U$ is a subspace of $V$. Then \textbf{addition} and \textbf{scalar multiplication} are defined on $V / U$ by 
+	\begin{align*}
+		(v+U) + (w + U) = (v + w) + U\\
+		\lambda(v+U) = (\lambda v) + U
+	\end{align*}
+	for $v,w \in V$ and $\lambda in F$.
+\end{defn}
+\begin{thm}
+	Suppose $U$ is a subspace of $V$. Then $V / U$ is a vector space.
+\end{thm}
+\begin{defn}[quotient map, $\pi$ ]
+	Suppose $U$ is a subspace of $V$. The \textbf{quotient map} $\pi$ is the linear map $\pi:V\to V / U$ defined by
+	\begin{align*}
+		\pi(v) = v + U
+	\end{align*}
+	for $v \in V$.
+\end{defn}
+\begin{lemma}
+	Suppose $V $ is finite-dimensional and $U$ is a subspace of $V$. Then
+	\begin{align*}
+		\textrm{dim}V / U = \textrm{dim}V - \textrm{dim}U.
+	\end{align*}
+\end{lemma}
+Each linear map $T$ on $V$ induces a linear map $\hat{T} on V / ( \textrm{null}T)$, which we define:
+\begin{defn}
+	Suppose $T \in \mathcal{L}(V,W)$. Define $\hat{T}:V / ( \textrm{null}T) \to W$ by
+	\begin{align*}
+		\hat{T}(v+ \textrm{null}T) = Tv.
+	\end{align*}
+\end{defn}
+\begin{lemma}[Null space and range of $\hat{T}$]
+	Suppose $T \in  \mathcal{L}(V,W)$. Then
+	\begin{itemize}
+		\item $\hat{T}$ is a linear map from $V / ( \textrm{null}T)$ to $W$ 
+			\item $\hat{T}$ is injective
+			\item \textrm{range} $\hat{T}$ = \textrm{range} $T$ 
+			\item $V / ( \textrm{null} T)$ is isomorphic to $ \textrm{range} T$.
+	\end{itemize}
+\end{lemma}
+\section{Dual Space and Dual Map}
+\label{sec:dual_space_and_dual_map}
+\begin{defn}[Linear functional]
+	A \textbf{linear functional} on $V$ is a linear map from $V$ to $F$. In other words, a linear functional is an element of $\mathcal{L}(V,F)$.
+\end{defn}
+\begin{defn}[Dual Space]
+	The \textbf{dual space} of $V$, denoted $V'$, is the vector space of all linear functionals on $V $. In other words, $V' = \mathcal{L}(V,F)$.
+\end{defn}
+\begin{cor}
+	Suppose $V $ is finite-dimensional. Then $V'$ is also finite-dimensional and $ \textrm{dim}V' = \textrm{dim}V$
+\end{cor}
+\begin{defn}[Dual Basis]
+	If $v_1,\ldots,v_n$ is a basis of $V$, then the \textbf{dual basis} of $v_1,\ldots,v_n$ is the list $\varphi_1,\ldots,\varphi_n$ of elements of $V'$, where each $\varphi_j$ is the linear functional on $V$ such that
+	\begin{align*}
+		\varphi_j (v_j) = \begin{cases}
+			1 & \text{if } k = j\\
+			0 & \text{if } k \neq j
+		\end{cases}
+	\end{align*}
+\end{defn}
+\begin{lemma}
+	Suppose $V$ is finite-dimensional. Then the dual basis of a basis of $V$ is a basis of $V'$.
+\end{lemma}
+
+\begin{defn}[dual map]
+	If $T \in \mathcal{L}(V,W)$, then the \textbf{dual map} of $T$ is the linear map $T' \in \mathcal{L}(W',V')$ defined by $T'(\varphi) = \varphi \circ T$ for $\varphi \in W'$.
+\end{defn}
+\begin{lemma}[Algebraic properties of dual maps]
+	\begin{itemize}
+		\item $(S+T)' = S' + T'$ for all $S,T \in \mathcal{L}(V,W)$.
+		\item $(\lambda T)' = \lambda T'$ for all $\lambda \in F$, and all $T \in \mathcal{L}(V,W)$.
+		\item $(ST)' = T'S'$ for all $T \in \mathcal{L}(U,V)$ and all $S \in \mathcal{L}(V,W)$.
+	\end{itemize}
+\end{lemma}
+
+\begin{defn}[Transpose]
+The \textbf{transpose} of a matrix $A$, denoted $A^{T}$, is the matrix obtained from $A$ by interchanging the rows and columns. More specifically, if $A$ is an $m$-by-$n$ matrix, then $A^{T}$ is the $n$-by-$m$ matrix whose entries are given by
+\begin{align*}
+	(A^{T})_{k,j} = A_{j,k}
+\end{align*}
+\end{defn}
+\begin{cor}
+	If $A$ is $m\times n$, and $C$ is $n\times p$, then $(AC)^{T} = C^{T}A^{T}$
+\end{cor}
+These properties extend to their matrices.
+\begin{thm}[The matrix of T' is the transpose of the matrix of T]
+	Suppose $T \in \mathcal{L}(V,W)$. Then $\mathcal{M}(T') = (\mathcal{M}(T))^{T}$
+\end{thm}
+\end{document}

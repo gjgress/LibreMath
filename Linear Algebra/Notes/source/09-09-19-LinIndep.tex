@@ -1,0 +1,23 @@
+\documentclass{memoir}
+\usepackage{linalg}
+
+\begin{document}
+	
+\section{Linear Independence and Span}
+\subsection{Linear Combination}
+\begin{defn}[Linear Combination]
+Let $(V,F,+,\cdot )$ be a vector space. A \textbf{linear combination of $v_1,\ldots,v_m \in V$} is a vector of the form
+\begin{align*}
+	a_1v_1 + a_2v_2 + \ldots a_mv_m \quad a_i \in F
+\end{align*}
+\end{defn}
+\begin{defn}[Span]
+	The \textbf{span of $v_1,\ldots,v_m$} is the set of ALL possible combination of the vectors:
+	\begin{align*}
+	\text{Span}(v_1,\ldots,v_m) := \left\{ a_1v_1+\ldots+a_mv_m\mid a_i \in F \right\} .
+	\end{align*}
+\end{defn}
+\begin{prop}
+	$\text{Span}(v_1,\ldots,v_m)$ is the smallest subspace of $V$ that contains $v_1,\ldots,v_m$.
+\end{prop}
+\end{document}

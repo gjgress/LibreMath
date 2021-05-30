@@ -1,0 +1,63 @@
+\documentclass{memoir}
+\usepackage{linalg}
+
+\begin{document}
+\section{Algebraic Operations on $\mathcal{L}(V,W)$}	
+	
+\begin{defn}[Addition and scalar multiplication on linear maps]
+Suppose $S,T \in \mathcal{L}(V,W)$ and $\lambda \in F$. The  \textbf{sum} $S+T$ and \textbf{product} $\lambda T$ are the linear maps from $V \to W$ defined by
+\begin{align*}
+	(S+T)(v) = Sv + Tv \\
+	(\lambda T)(v) = \lambda(Tv)
+\end{align*}
+for all $v \in V$.
+\end{defn}
+Composition of maps is also a map; $S(T(V))$ is similar to "multiplying" maps.\\ 
+
+Moreso, these compositions are associative: ($T_3 \circ (T_2\circ T_1) = (T_3\circ T_2) \circ T_1$). It also has the identity: $Id_W \circ T = T \circ Id_V$.\\
+
+Finally, it is also distributive; $T \circ (S_1+S_2) = T\circ S_1 + T \circ S_2$\\
+
+Say $T \in L(V,W)$, $T:V\to W$. Suppose that $V$ is a finite-dimensional vector space. Then $T$ is \textit{determined} by what it does to a basis of $V$ :\\
+
+Say $v_1,\ldots,v_n$ is a basis for $V$. Suppose we know the output of $T(v_1),\ldots,T(v_n)$. Then let $v \in V$. Know $v = a_1v_1+\ldots+a_nv_n$. Then $T(v) = T(a_1v_1+\ldots+a_nv_n) = T(a_1v_1)+\ldots+T(a_nv_n) = a_1T(v_1) + \ldots + a_n T(v_n)$\\
+
+Therefore, we can construct $T(v)$ for any $v$ from knowledge of how $T$ applies to the basis.
+\color{black}
+\begin{thm}[Linear maps and basis of domain]
+	Suppose that $w_1,\ldots,w_n \in W$ are arbitrary vectors and $v_1,\ldots,v_n$ is a basis of $V$. Then there is \textbf{exactly} one linear map $T:V\to W$ that sends $v_i$ to $w_i$.
+\end{thm}
+Note that \(\left\{ w_i \right\} \) are not necessarily linearly independent or spanning!
+
+\section{Kernels}
+\begin{defn}[Kernel]
+	Let $T \in L(V,W)$, $T:V\to W$. The \textbf{kernel} of $T$ is 
+
+\begin{align*}
+	\textrm{ker}T := \left\{ v \in V \mid T(v) = \vec{0})W \right\} 
+\end{align*}
+\end{defn}
+Note: $T(\vec{0}_V) = \vec{0}_W$ and so  $\vec{0}_V \in \text{ker}(T) $ automatically. We also refer to the kernel by Null$(T)$ sometimes.
+\begin{exmp}[Examples of kernels]
+	\begin{itemize}
+		\item The zero map obviously has a kernel of the whole set
+		\item The kernel of $\textrm{Id}_V$ is the set $\left\{ \vec{0}_V \right\} $
+		\item Differentiation has a kernel consisting of constants
+	\end{itemize}
+\end{exmp}
+\begin{defn}[Injective]
+	A map is \textbf{injective} if $T(u) = T(v) \implies u = v$
+
+In other words, different inputs give different outputs.
+\end{defn}
+\begin{prop}
+	Let $T \in L(V,W)$. Then $T$ is injective if and only if $\text{ker}(T) = \left\{ \vec{0}_V \right\} $
+\end{prop}
+\section{Range and Surjectivity}
+\begin{defn}[Range/Image]
+	For $T$ a function from $V\to W$, the \textbf{range} or \textbf{image} of $T$ is the subset of $W$ defined by:
+	\begin{align*}
+		\text{range} T = \textrm{Im}T = \{Tv \mid v \in V \} .
+	\end{align*}
+\end{defn}
+\end{document}

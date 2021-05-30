@@ -1,0 +1,178 @@
+\documentclass{memoir}
+\usepackage{linalg}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+\chapter{Inner Products and Norms}
+\label{cha:inner_products_and_norms}
+\section{Inner Products}
+\label{sec:inner_products}
+
+\begin{defn}[Dot Product]
+	For $x,y \in \R^{n}$, the \textbf{dot product} of $x$ and $y$, denoted $x\cdot y$, is defined by
+	\begin{align*}
+		x\cdot y = x_1y_1+\ldots+x_ny_n
+	\end{align*}
+	where $x = (x_1,\ldots,x_n)$ and $y = (y_1,\ldots,y_n)$.
+\end{defn}
+The dot product takes in two vectors and returns a scalar. Moreover, $x\cdot x = \|x\|^2$.
+\begin{cor}[Properties of dot products]
+	\begin{itemize}
+		\item $x\cdot x \geq 0$ for all $x\in \R^{n}$ 
+		\item $x\cdot x = 0$ if and only if $x = 0$ 
+		\item for $y \in \R^{n}$ fixed, the map from $\R^{n}$ to $\R$ that sends $x \in \R^{n}$ to $x\cdot y$ is linear
+		\item $x\cdot y = y\cdot x$ for all $x,y \in \R^{n}$
+	\end{itemize}
+\end{cor}
+This is almost quite right for complex numbers, but for that we must generalize a little further.
+\begin{defn}[Inner Product]
+	An \textbf{inner product} on $V$ is a function that takes each ordered pair $(u,v)$ of elements in $V$ to a number $\langle u, v \rangle \in F$ and has the following properties:
+	\begin{itemize}
+		\item $ \langle v, v \rangle \geq 0 $ for all $v \in V$ \textbf{(positivity)}
+		\item $ \langle v, v \rangle = 0$ if and only if $v = 0$ \textbf{(definiteness)}
+		\item  $ \langle u+v, w \rangle = \langle u, w \rangle + \langle v, w \rangle $ for all $u,v,w \in V$ \textbf{(additivity in first slot)}
+		\item $ \langle \lambda u, v \rangle = \lambda \langle u, v \rangle $ for all $\lambda \in F$ and all $u,v \in V$ \textbf{(homogeneity in first slot)}
+		\item $ \langle u, v \rangle = \overline{ \langle v, u \rangle }$ for all $u,v \in V$ \textbf{(conjugate symmetry)}.
+	\end{itemize}
+\end{defn}
+\begin{defn}[Inner Product Space]
+	An \textbf{inner product space} is a vector space $V$ along with an inner product on $V$.
+\end{defn}
+Notation: For the rest of the chapter, $V$ denotes a inner product space over $F$.
+
+\begin{cor}[Basic properties of an inner product]
+	\begin{itemize}
+		\item For each fixed $u \in V$, the function that takes $v$ to $ \langle v, u \rangle $ is a linear map from $V$ to $F$ 
+		\item $ \langle 0, u \rangle = 0$ for every $u \in V$ 
+		\item $ \langle u, 0 \rangle = 0$ for every $u \in V$ 
+		\item $ \langle u, v+w \rangle = \langle u, v \rangle + \langle u, w \rangle $ for all $u,v,w \in V$
+		\item $ \langle u, \lambda v \rangle  = \overline{\lambda} \langle u, v \rangle $ for all $\lambda \in F$ and $u,v \in V$
+	\end{itemize}
+\end{cor}
+\section{Norms}
+\label{sec:norms}
+\begin{defn}[Norm]
+	For $v \in V$, the \textbf{norm} of $v$, denoted $\|v\|$, is defined by
+	\begin{align*}
+		 \|v\| = \sqrt{ \langle v, v \rangle } .
+	\end{align*}
+\end{defn}
+\begin{cor}[Basic properties of the norm]
+	Suppose $v \in V$.
+	\begin{itemize}
+		\item $\|v\|=0$ if and only if $v = 0$.
+		\item $\|\lambda v\|= \left| \lambda \right| \|v\|$ for all $\lambda \in F$.
+	\end{itemize}
+\end{cor}
+\begin{defn}[Orthogonal]
+	Two vectors $u,v \in V$ are called \textbf{orthogonal} if $ \langle u, v \rangle = 0$.
+\end{defn}
+\begin{cor}
+	\begin{itemize}
+		\item 0 is orthogonal to every vector in $V$ 
+		\item 0 is the only vector in $V$ that is orthogonal to itself
+	\end{itemize}
+\end{cor}
+\begin{thm}[Pythagorean Theorem]
+	Suppose $u,v$ are orthogonal vectors in $V$. Then
+	\begin{align*}
+		\|u+v\|^2 = \|u\|^2+\|v\|^2
+	\end{align*}
+\end{thm}
+\begin{cor}[Orthogonal Decomposition]
+	Suppose $u,v \in V$, with $v\neq 0$. Set $c = \frac{ \langle u, v \rangle }{\|v\|^2}$ and $w = u - \frac{ \langle u, v \rangle }{\|v\|^2}v$. Then
+	\begin{align*}
+ \langle w, v \rangle =0 \text{ and } u = cv + w.
+	\end{align*}
+\end{cor}
+\begin{thm}[Cauchy-Schwarz Inequality]
+	Suppose $u,v \in V$. Then
+	\begin{align*}
+		 \left| \langle u, v \rangle  \right| \leq \|u\|\|v\|.
+	\end{align*}
+	This inequality is an equality if and only if one of $u,v$ is a scalar multiple of the other.
+\end{thm}
+\begin{thm}[Triangle Inequality]
+	Suppose $u,v \in V$. Then
+	\begin{align*}
+ \|u+v\| \leq \|u\|+ \|v\|.
+	\end{align*}
+	This inequality is an equality if and only if one of $u,v$ is a nonnegative multiple of the other.
+\end{thm}
+\begin{thm}[Parallelogram Equality]
+	Suppose $u,v \in V$. Then
+	\begin{align*}
+ \|u+v\|^2 + \|u-v\|^2 = 2\left( \|u\|^2+ \|v\|^2 \right) .
+	\end{align*}
+\end{thm}
+\section{Orthonormal Bases}
+\label{sec:orthonormal_bases}
+\begin{defn}[Orthonormal]
+	A list of vectors is called \textbf{orthonormal} if each vector in the list has norm 1 and is orthogonal to all other vectors in the list.
+\end{defn}
+\begin{cor}
+	Every orthonormal list of vectors in $V$ with length \textrm{dim}$V$ is an orthonormal basis of $V$.
+\end{cor}
+\begin{lemma}
+	Suppose $e_1,\ldots,e_n$ is an orthonormal basis of $V$ and $v \in V$. Then
+	\begin{align*}
+		v = \langle v, e_1 \rangle e_1 + \ldots + \langle v, e_n \rangle e_n
+	\end{align*}
+	and
+	\begin{align*}
+		\|v\|^2 = \left| \langle v, e_1 \rangle  \right|^2 + \ldots + \left| \langle v, e_n \rangle  \right|^2.
+	\end{align*}
+\end{lemma}
+\begin{thm}[Gram-Schmidt Procedure]
+	Suppose $v_1,\ldots,v_m$ is a linearly independent list of vectors in $V$. Let $e_1 = \frac{v_1}{\|v_1\|}$. For $j=2,\ldots,m$, define $e_j$ inductively by
+	\begin{align*}
+		e_j = \frac{v_j - \langle v_j, e_1 \rangle e_1 - \ldots - \langle v_j, e_{j-1} \rangle e_{j-1}}{\|v_j - \langle v_j, e_1 \rangle e_1 - \ldots - \langle v_j, e_{j-1} \rangle e_{j-1}\|}.
+	\end{align*}
+Then $e_1,\ldots,e_m$ is an orthonormal list of vectors in $V$ such that
+\begin{align*}
+	span(v_1,\ldots,v_j) = span(e_1,\ldots,e_j)
+\end{align*}
+\end{thm}
+\begin{cor}
+	Every finite-dimensional inner product space has an orthonormal basis.
+\end{cor}
+\begin{cor}
+	Suppose $V$ is finite-dimensional. Then every orthonormal list of vectors in $V$ can be extended to an orthonormal basis of $V$.
+\end{cor}
+\begin{lemma}
+	Suppose $T \in \mathcal{L}(V)$. If $T$ has an upper-triangular matrix with respect to some basis of $V$, then $T$ has an upper-triangular matrix with respect to some orthonormal basis of $V$.
+\end{lemma}
+\begin{thm}[Schur's Theorem]
+	Suppose $V$ is a finite-dimensional complex vector space and $T \in \mathcal{L}(V)$. Then $T$ has an upper-triangular matrix with respect to some orthonormal basis of $V$.
+\end{thm}
+\begin{thm}[Riesz Representation Theorem]
+	Suppose $V$ is finite-dimensional and $\varphi $ is a linear functional on $V$. Then there is a unique vector $u\in V$ such that
+	 \begin{align*}
+		 \phi(v) = \langle v, u \rangle 
+	\end{align*}
+	for every $v \in V$.
+\end{thm}
+To construct this vector, first we write
+\begin{align*}
+	\varphi(v) = \varphi\left( \langle v, e_1 \rangle e_1 + \ldots + \langle v, e_n \rangle e_n \right) \\
+	= \langle v, e_1 \rangle \varphi(e_1) + \ldots + \langle v, e_n \rangle \varphi(e_n) \\
+	= \langle v, \overline{\varphi(e_1)}e_1 + \ldots + \overline{\varphi(e_n)}e_n \rangle 
+\end{align*}
+for every \(v \in V\). Thus, we can simply set
+\begin{align*}
+	u = \overline{\varphi(e_1)}e_1 + \ldots + \overline{\varphi(e_n)}e_n.
+\end{align*}
+\begin{lemma}
+	Suppose there exists $ u_1,u_2 \in V$ such that
+	\begin{align*}
+		 \langle v, u_1 \rangle = \langle v, u_2 \rangle \text{ for all } v \in V.
+	\end{align*}
+	Then $u_1 = u_2$.
+\end{lemma}
+\end{document}

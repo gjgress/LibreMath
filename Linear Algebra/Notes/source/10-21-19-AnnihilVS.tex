@@ -1,0 +1,68 @@
+\documentclass{memoir}
+\usepackage{linalg}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+\section{The Null Space and Range of the Dual of a Linear Map}	
+\begin{defn}[Annihilator]
+	For $U \subset V$, the \textbf{annihilator} of $U $, denoted $U^{0}$, is defined by
+	\begin{align*}
+		U^{0} = \left\{\varphi\in V' \mid \varphi(u) = 0 \; \forall u \in U \right\} .
+	\end{align*}
+\end{defn}
+\begin{exmp}
+	Suppose $U$ is the subspace of $P(\R)$ consisting of all polynomial multiples of $x^2$. If $\varphi $ is the linear functional on $P(\R)$ defined by $\varphi(p) = p'(0)$, then $\varphi \in U^{0}.$
+\end{exmp}
+\begin{cor}
+	Suppose $U \subset V$. Then $U^{0}$ is a subspace of $V'$.
+\end{cor}
+\begin{thm}[Dimension of Annihilator]
+	Suppose $V$ is finite-dimensional and $U$ is a subspace of $V$. Then
+	\begin{align*}
+		\textrm{dim}U + \textrm{dim}U^0 = \textrm{dim}V.
+	\end{align*}
+\end{thm}
+\begin{thm}[Null Space of $T'$ ]
+	Suppose $V,W$ are finite-dimensional and $T \in \mathcal{L}(V,W)$. Then
+	\begin{itemize}
+		\item $\textrm{null}T' = ( \textrm{range}T)^{0}$
+		\item $ \textrm{dim} \textrm{ null} (T') = \textrm{dim} \textrm{ null} (T) + \textrm{dim} (W) - \textrm{dim} (V)$
+	\end{itemize}
+\end{thm}
+\begin{cor}
+	Suppose $V,W$ are finite dimensional and $T \in \mathcal{L}(V,W)$. Then $T$ is surjective if and only if $T'$ is injective.
+\end{cor}
+\begin{thm}[Range of $T'$ ]
+	Suppose $V,W$ are finite-dimensional and $T \in \mathcal{L}(V,W)$. Then
+	\begin{itemize}
+		\item $ \textrm{dim} \textrm{ range }T' = \textrm{dim} \textrm{ range }T $
+		\item $\textrm{range }T' = ( \textrm{null} T)^0$
+	\end{itemize}
+\end{thm}
+\begin{cor}
+	Suppose $V,W$ are finite-dimensional and $T \in \mathcal{L}(V,W)$. Then $T$ is injective if and only if $T'$ is surjective.
+\end{cor}
+
+\subsection{Rank}
+% Missing some definitions and theorems-- fill in later, Axler 3F
+We will define row and column ranks initially, but keep in mind that this terminology will soon prove to be superfluous.
+\begin{defn}[Row and Column Rank]
+	Suppose \(A\) is an \(m\)-by-\(n\) matrix with entries in \(F\). The \textbf{row rank} of \(A\) is the dimension of the span of the rows of \(A\) in \(F^{1,n}\), and the \textbf{column rank} of \(A\) is the dimension of the span of the columns of \(A\) in \(F^{m,1}\).
+\end{defn}
+One can then prove that the column rank of \(\mathcal{M}(T)\) is equal to \(\textrm{dim}\textrm{Im}(T)\).
+
+\begin{lemma}
+Suppose $A \in F^{m,n}$. Then the row rank of $A$ equals the column rank of $A$.
+\end{lemma}
+This is what allows us to get rid of the superfluous terminology and create a simpler definition:
+\begin{defn}[rank]
+	The \textbf{rank} of a matrix \(A \in F^{m,n}\) is the column rank of \(A\). That is, the dimension of the span of the columns of \(A\) in \(F^{m,1}\), or the dimension of \(\textrm{Im}(A)\).
+\end{defn}
+
+\end{document}

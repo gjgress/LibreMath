@@ -1,0 +1,64 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 05/28/21
+
+\section{Characteristic and Minimal Polynomials}
+\label{sec:characteristic_and_minimal_polynomials}
+
+\subsection{Cayley-Hamilton Theorem}
+\label{subsec:cayley_hamilton_theorem}
+
+\begin{defn}[Characteristic Polynomial]
+	Let \(V\) be a vector space and \(T\) an operator on \(V\). Let \(\lambda_1,\ldots,\lambda_m\) be the distinct eigenvalues of \(T\) with multiplities \(d_1,\ldots,d_m\). Then we denote the \textbf{characteristic polynomial} of \(T\) by
+	\begin{align*}
+		(x-\lambda_1)^{d_1} \ldots (x-\lambda_m)^{d_m}.
+	\end{align*}
+\end{defn}
+The characteristic polynomial turns out to be a convenient characterization and a powerful tool.
+
+\begin{prop}
+	Let \(V\) be a vector space, \(T\) an operator on \(V\), and \(q\) the characteristic polynomial of \(T\). Then \(q\) has degree \(\textrm{dim}(V)\) and the zeroes of \(q\) are exactly the eigenvalues of \(T\).
+\end{prop}
+This trivially holds by the definition. Note that now we need to make an important distinction-- if \(V\) is a real-valued vector space instead of a complex vector space, then the eigenvalues of \(T\) are instead the real zeroes of \(q\). We need to make a couple adjustments along the way for these kinds of cases.
+
+\begin{thm}[Cayley-Hamilton Theorem]
+	Let \(V\) be a vector space, \(T\) an operator on \(V\), and \(q\) the characteristic polynomial of \(T\). Then \(q(T) = 0\).
+\end{thm}
+
+\begin{proof}[Cayley-Hamilton]
+	
+\end{proof}
+
+\subsection{Minimal Polynomial}
+\label{subsec:minimal_polynomial}
+
+\begin{defn}[Minimal Polynomial]
+	Suppose \(T \in \mathcal{L}(V)\). Then there is a unique monic polynomial \(p\) such that \(p(T) = 0\). We refer to \(p\) as the \textbf{minimal polynomial}.
+\end{defn}
+If there is a non-monic polynomial \(q\) such that \(q(T)=0\), then \(q = ps\) for some polynomial \(s\). Of course, the reverse holds as well.
+
+\begin{prop}
+	Let \(V\) be a vector space and \(T\) an operator over \(V\). Then the characteristic polynomial of \(T\) is a polynomial multiple of the minimal polynomial of \(T\).
+\end{prop}
+Furthermore, we have that the zeroes of the minimal polynomial of \(T\) are precisely the eigenvalues of \(T\). This makes it clear that our minimal polynomial looks similar to our characteristic polynomial of \(T\), but with smaller exponents.
+
+% \printindex
+\end{document}
