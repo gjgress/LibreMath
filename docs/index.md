@@ -48,6 +48,8 @@ LibreMath is a personal education project created and developed by Gabriel Gress
 
 ## Source Files
 
+The source repository for these resources can be found [here](https://github.com/gjgress/LibreMath).
+
 - Vim configuration (under construction)
-- [Snippets](Auxiliary Resources/snippets/tex.snippets)
-- [LaTeX style template](Auxiliary Resources/texmf/tex/latex/notestemplate.sty)
+- [Snippets](https://github.com/gjgress/LibreMath/blob/main/Auxiliary%20Resources/snippets/tex.snippets)
+- [LaTeX style template](https://github.com/gjgress/LibreMath/blob/main/Auxiliary%20Resources/texmf/tex/latex/notestemplate/notestemplate.sty)
