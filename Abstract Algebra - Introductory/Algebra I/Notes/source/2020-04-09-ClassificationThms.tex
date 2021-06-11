@@ -1,0 +1,138 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+\section{Characterization of Finitely Generated Groups}
+\label{sec:characterization_of_finitely_generated_groups}
+(Note: One can read this section without having seen Sylow's theorem and simply ignore any statement about Sylow \(p\)-groups. However, the content here should be revisited once the reader encounters Sylow's theorem elsewhere)\\
+
+We have already begun classifying groups via Sylow's theorem, but once we utilize the tools of direct products, we can more generally classify groups. Hence the theorems in this section are an extension of the tools given via Sylow's theorem.\\
+
+A group \(G\) is \textbf{finitely generated} if there is a finite subset \(A\subset G\) such that \(G = \langle A \rangle \).
+
+\begin{defn}[Free Abelian Group]
+	Let \(r \in \N\) be given. We define the \textbf{free abelian group of rank \(r\)} to be the group
+	\begin{align*}
+		\Z^{r} = \Z\times \Z\times \ldots^{r}\times \Z.
+	\end{align*}
+	If \(r = 0\), then \(\Z^{0}=1\).
+\end{defn}
+
+\begin{thm}[Fundamental Theorem of Finitely Generated Abelian Groups]
+	Let \(G\) be a finitely generated abelian group. Then
+	\begin{align*}
+		G \cong \Z^{r} \times \Z_{n_1} \times \Z_{n_2}\times \ldots\times \Z_{n_s}
+	\end{align*}
+	for some integers \(r,n_1,n_2,\ldots,n_s\) such that \(r\geq 0\), \(n_i \geq 2\), and \(n_{i+1}\mid n_i\). Furthermore, this factorization of \(G\) is unique.\\
+
+	We call \(r\) the \textbf{free rank} or \textbf{Betti number} of \(G\), and the integers \(n_1,n_2,\ldots,n_s\) the \textbf{invariant factors of \(G\)}. The factorization above is hence referred to as the \textbf{invariant factor decomposition of \(G\).}
+\end{thm}
+A finitely generated abelian group is a finite group if and only if its free rank is zero. Furthermore, if  \(G\) is a finite abelian group, then its order is the product of its invariant factors, and we say that \(G\) is of \textbf{type  \((n_1,\ldots,n_s)\)}.\\
+
+Observe that because \(n_1\) is the largest invariant factor, and each \(n_i\mid n\), if \(p\) is a prime divisor of \(\left| G \right| =n\), then \(p \mid n_1\).
+
+\begin{cor}
+	If \(n\) is the product of distinct primes, then up to isomorphism the only abelian group of order \(n\) is \(\Z_n\).
+\end{cor}
+
+The fact that \(n_{i+1} \mid n_i\) really puts a strong restriction on the structure of finite abelian groups. When \(n\) is finite, we will see that the types of abelian groups of order \(n\) correspond to the factorization of \(n\).
+
+\begin{thm}[Primary Decomposition Theorem for Finite Abelian Groups]
+	Let \(G\) be an abelian group with \(\left| G \right| =n >1\), and let the unique factorization of \(n\) into distinct prime powers be given by
+	\begin{align*}
+		n = p^{\alpha_1}_1 p_2^{\alpha_2}\ldots p_k^{\alpha_k}.
+	\end{align*}
+	Then
+	\begin{align*}
+		G \cong A_1\times A_2 \times \ldots\times A_k
+	\end{align*}
+	where \(\left| A_i \right| = p_i^{\alpha_i}\), and
+	\begin{align*}
+		A_i \cong \Z_{p_i^{\beta_1}}\times \Z_{p_i^{\beta_2}}\times \ldots\times \Z_{p_i^{\beta_t}}
+	\end{align*}
+	where
+	\begin{align*}
+		\beta_1 + \beta_2 + \ldots + \beta_t = \alpha_i \\
+		\beta_1\geq \beta_2\geq \ldots\geq \beta_t \geq 1.
+	\end{align*}
+	Furthermore, this decomposition is unique.\\
+
+	We call the integers \(p_i^{\beta_j}\) the \textbf{elementary divisors of \(G\)}. Thhis decomposition is called the \textbf{elementary divisor decomposition of \(G\)}.
+\end{thm}
+The subgroups \(A_i\) are the Sylow \(p_i\)-subgroups of \(G\), and hence the theorem essentially states that \(G\) is isomorphic to the direct product of its Sylow subgroups (which are normal and hence unique, because \(G\) is abelian). \\
+
+Notice that the decomposition in \(A\) is the invariant factor decomposition of \(A\) with the divisibility condition in the fundamental theorem of finitely generated abelian groups, and hence the elementary divisors of \(G\) are the invariant factors of the Sylow \(p_i\)-subgroups.\\
+
+The advantage of this representation is that it lets us easier determine all possible abelian groups of a certain order. Because the \(\beta_i\) are all uniquely determined and satisfy the above properties, it forms a partition of  \(\alpha  \), and hence we simply look at all combinations of partitions of \(\alpha_i\).
+
+\begin{exmp}[Abelian groups of order \(p^5\)]
+	Consider an abelian group \(G\) with \(\left| G \right| = p^{5}\) for some \(p\) prime. Then this technique allows us to distinguish all unique groups like so:
+	\begin{align*}
+		\begin{array}{c | c}
+		\textbf{Invariant Factors} & \textbf{Abelian Groups}\\
+			\hline
+		5 &\quad \Z_{p^{5}}\\
+		4,1 &\quad \Z_{p^{4}}\times \Z_p\\
+		3,2 &\quad \Z_{p^3}\times \Z_{p^2}\\
+		3,1,1 &\quad \Z_{p^3}\times \Z_p \times \Z_p\\
+		2,2,1 &\quad \Z_{p^2}\times \Z_{p^2}\times \Z_p\\
+		2,1,1,1 &\quad \Z_{p^2}\times \Z_p\times \Z_p\times \Z_p\\
+		1,1,1,1,1 &\quad \Z_p\times \Z_p \times \Z_p \times \Z_p \times \Z_p
+		\end{array}
+	\end{align*}
+	Hence, there are exactly 7 distinct (up to isomorphism) groups of order \(p^{5}\).
+\end{exmp}
+
+Of course, it would be more helpful if we had a nice way to pass between the two representations of a factorization of a finite abelian group\ldots
+\begin{prop}
+	Let \(m,n \in \Z_+\). Then \(\Z_{m}\times \Z_n \cong \Z_{mn}\) if and only if \((m,n) = 1\).\\
+
+	If \(n = p_1^{\alpha_1}p_2^{\alpha_2}\ldots p_k^{\alpha_k}\), then
+	\begin{align*}
+		\Z_n \cong \Z_{p_1}^{\alpha_1}\times \Z_{p_2^{\alpha_2}} \times  \ldots \times \Z_{p_k^{\alpha_k}}.
+	\end{align*}
+\end{prop}
+
+Then we can go back and forth between the two representations by: factoring out our \(n_i\)'s into their prime decomposition, in which case collecting each \(p_j\) factor gives you each of the Sylow \(p_j\) subgroups.\\
+
+For the reverse direction, we group the elementary divisors by their \(p_i\) value, then take the product across different \(p_i\) in decreasing order. For example, if the elementary divisors of \(G\) are \(2,3,2,25,3,2\), then \(\left| G \right| = 2^3\cdot 3^2\cdot 5^2\), so the invariant factors of \(G\) are \((2_1^{1}\cdot 3_1^{1}\cdot 5^2_1)\), \((2_2^{1}\cdot 3_2^{1}\cdot 5_2^{0})\), and \((2_3^{1}\cdot 3_3^{0}\cdot 5_3^{0})\), so that
+\begin{align*}
+	G \cong \Z_{150} \times \Z_6 \times \Z_2.
+\end{align*}
+This makes it very easy to compare groups of the same order, because if their elementary divisors differ, they cannot be isomorphic.
+
+\begin{defn}[Rank]
+	If \(G\) is a finite abelian group of type \((n_1,\ldots,n_t)\), the integer \(t\) is called the \textbf{rank} of \(G\).
+\end{defn}
+
+\begin{prop}
+	\begin{itemize}
+		\item If \(\left| G \right| = p\), then \(G \cong Z_p\)
+		\item If \(\left| G \right| =p^2\), then \(G\) is Abelian and \(G \cong Z_{p^2} \text{ OR }Z_p \times Z_p\)
+		\item Let \(p>2\), if \(\left| G \right| = 2p\), then \(G \cong Z_{2p} \text{ OR } D_p\).
+	\end{itemize}
+\end{prop}
+
+The first two we have already seen from automorphisms. We will see the latter one after developing more group theory.
+
+% \printindex
+
+\end{document}

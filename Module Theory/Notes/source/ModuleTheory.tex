@@ -1,0 +1,107 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+\usetikzlibrary{arrows,chains,matrix,positioning,scopes}
+
+\makeatletter
+\tikzset{join/.code=\tikzset{after node path={%
+\ifx\tikzchainprevious\pgfutil@empty\else(\tikzchainprevious)%
+edge[every join]#1(\tikzchaincurrent)\fi}}}
+\makeatother
+
+\tikzset{>=stealth',every on chain/.append style={join},
+         every join/.style={->}}
+
+
+\logo{~/LibreMath/Auxiliary Resources/resources/png/logo.png}
+\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+\department{Department of Mathematics}
+\title{Introduction to Module Theory}
+%\subtitle{Based on MATH xxx}
+\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+\maketitle
+
+% Notes taken on 
+\setcounter{chapter}{-1}
+\chapter{Preamble}
+\label{cha:preamble}
+
+\input{Introduction}
+
+\chapter{Introduction to Modules}
+\label{cha:introduction_to_modules}
+
+\input{~/LibreMath/Abstract Algebra - Introductory/Algebra II/Notes/source/Lecture5 - IntroModules}
+\input{~/LibreMath/Abstract Algebra - Introductory/Algebra II/Notes/source/Lecture6 - Submodules_ModHomo}
+\input{~/LibreMath/Abstract Algebra - Introductory/Algebra II/Notes/source/Lecture7 - QuotModules_IsoThms_Prod}
+\chapter{Generating Modules}
+\label{cha:generating_modules}
+\input{~/LibreMath/Abstract Algebra - Introductory/Algebra II/Notes/source/Lecture8 - GeneratingSets_FreeModules}
+
+
+\section{Generators and Relations of Modules}
+\label{sec:generators_and_relations_of_modules}
+\input{RepresentationsModules}
+
+
+\section{Modules of Noetherian Rings}
+\label{sec:modules_of_Noetherian_rings}
+\input{ModulesOnNoetherianRings}
+
+\section{Structure of Abelian Groups}
+\label{sec:structure_of_abelian_groups}
+
+\input{FundThmAbelGroupsViaModules}
+
+\section{Tensor Products}
+\label{sec:tensors}
+
+\input{TensorProductsModules}
+
+\section{Exact Sequences}
+\label{sec:exact_sequences}
+
+\input{ExactSequences}
+
+\chapter{Structure of Modules over Principal Ideal Domains}
+\label{cha:structure_of_modules_over_principal_ideal_domains}
+
+\section{Fundamental Structure Theorems}
+\label{sec:fundamental_structure_theorems}
+
+\input{ModulesoverPIDs}
+
+\section{Rational Canonical Form}
+\label{sec:rational_canonical_form}
+
+\input{CanonicalForms}
+
+
+\section{Jordan Canonical Form}
+\label{sec:jordan_canonical_form}
+
+\input{CanonicalForms2}
+
+\chapter{Group Representation Theory}
+\label{cha:group_representation_theory}
+
+\section{Ties to Group Representation Theory}
+\label{sec:ties_to_group_representation_theory}
+\input{~/LibreMath/Abstract Algebra - Introductory/Algebra II/Notes/source/Lecture9 - GroupRepresentationThy}
+\input{~/LibreMath/Abstract Algebra - Introductory/Algebra II/Notes/source/Lecture10 - Subrepresentations}
+\input{~/LibreMath/Abstract Algebra - Introductory/Algebra II/Notes/source/Lecture11 - CompleteReducibility}
+\input{~/LibreMath/Abstract Algebra - Introductory/Algebra II/Notes/source/Lecture12 - GHomo_SchursLemma}
+\input{~/LibreMath/Abstract Algebra - Introductory/Algebra II/Notes/source/Lecture13 - CharacterThry}
+
+
+
+% \printindex
+\end{document}

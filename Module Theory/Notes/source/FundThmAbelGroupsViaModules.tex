@@ -1,0 +1,64 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+Recall the fundamental theorem of finitely generated abelian groups.
+
+\begin{thm}[Structure Theorem for Abelian Groups]
+	A finitely generated abelian group V is a direct sum of cyclic subgroups \(C_{d_1},\ldots,C_{d_k}\) and a free abelian group \(L\):
+	\begin{align*}
+		V = C_{d_1}\bigoplus \ldots \bigoplus C_{d_k}\bigoplus L,
+	\end{align*}
+	where the order \(d_i\) of \(C_{d_i}\) is greater than one, and \(d_i \mid d_{i+1}\) for \(i<k\).
+\end{thm}
+
+\begin{thm}[Structure Theorem (Alternate Form)]
+	Every finite abelian group is a direct sum of cyclic groups of prime power orders.
+\end{thm}
+\begin{thm}[Uniqueness for Structure Theorem]
+	Suppose that a finite abelian group \(V\) is a direct sum of cyclic groups of prime power orders \(d_j = p_j^{r_k}\). The integers \(d_j\) are uniquely determined by the group \(V\).
+\end{thm}
+
+\subsection{Analogues for Polynomial Rings and Linear Operators}
+\label{sub:analogues_for_polynomial_rings_and_linear_operators}
+
+\begin{thm}
+	Let \(R = F[t]\) be a polynomial ring in one variable over a field \(F\) and let \(A\) be an \(m\times n\) \(R\)-matrix. There are products \(Q,P\) of elementary \(R\)-matrices such that
+	\begin{align*}
+		A' = Q^{-1}AP
+	\end{align*}
+	is diagonal, each non-zero diagonal entry \(d_i\) of \(A'\) is a monic polynmial, and \(d_1\mid \ldots\mid d_k\).
+\end{thm}
+
+\begin{rmrk}
+Let \(M\) be a free cyclic \(R\)-module. Then there is a surjective homomorphism \(\varphi:R\to M\) defined by \(r\mapsto rv\), where \(v\) is the singular generating element in \(M\). The kernel of \(\varphi\) is a submodule of \(R\) and hence an ideal \(I \triangleleft R\). Therefore, \(M\) is isomorphic to the \(R\)-module \(R / I\). When \(R = F[t]\), the ideal \(I\) will be principal.
+\end{rmrk}
+
+\begin{thm}[Structure Theorem for Modules over Polynomial Rings]
+	Let \(R = F[t]\) be the ring of polynomials in one variable with coefficients in a field \(F\). Let \(V\) be a finitely generated module over \(R\). Then V is a direct sum of cyclic modules \(C_1,C_2,\ldots,C_k\) and a free module \(L\), where \(C_i\) is isomorphic to \(R / (d_i)\), the elements \(d_1,\ldots,d_k\) are monic polynomials of positive degree and satisfy both (but not simultaneously)
+\begin{itemize}
+	\item \(d_1\mid d_2\mid \ldots\mid d_k\) 
+	\item Each \(d_i\) is a power of a monic irreducible polynomial
+\end{itemize}
+\end{thm}
+
+% \printindex
+\end{document}

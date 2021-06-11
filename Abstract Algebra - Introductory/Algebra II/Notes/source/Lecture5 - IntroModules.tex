@@ -1,0 +1,87 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+%\logo{./resources/pdf/logo.pdf}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 02/05/21
+
+\section{Modules}
+\label{sec:modules}
+
+An \(R\)-module \(M\) is an abelian group that comes equipped with a binary operation \(\cdot \) that maps from \(R\times M\) to \(M\) that is compatible with operations of both \(M\) and \(R\). It is the natural generalization of vector spaces to rings, but with the key difference that we may not have multiplicative inverses for elements in our \(R\)-module.
+
+\begin{defn}[Left \(R\)-module]
+Let \(R\) be a ring. A \textbf{left \(R\)-module} is a pair \(\prescript{}{R}{M} := (M,\cdot :R\times M\to M)\) where \(M\) is an abelian group, and \(\cdot \) is a binary operation so that
+	\begin{align*}
+		\forall r,s \in R, \; m,n \in M:\\
+		r\cdot (m+n) = (r\cdot m) + (r\cdot n)\\
+		(r+s)\cdot m = (r\cdot m) + (s\cdot m)\\
+		(rs)\cdot m = r\cdot(s\cdot m)
+	\end{align*}
+	If \(R\) is unital, then we also require
+	\begin{align*}
+		1_R \cdot  m = m.
+	\end{align*}
+	The map is called the (left) \textbf{\(R\)-action map}.
+\end{defn}
+
+\begin{exmp}[Free Module of Rank \(n\)]
+	\begin{enumerate}
+		\item If \(R\) is a field \(F\), then the \(R\)-module is an \(F\)-vector space.
+		\item Take \(M = R^{n} := \left\{(t_1,\ldots,t_n) \mid t_i \in R \right\}\). Let the \(R\)-action map of \(\prescript{}{R}M\) be defined by
+			\begin{align*}
+				R\times M \to M\\
+				(r,(t_1,\ldots,t_n)) \mapsto (rt_1,\ldots,rt_n).
+			\end{align*}
+			One can check that this satisfies the necessary properties of a left \(R\)-action on \(M = R^{n}\). This left \(R\)-module \(\prescript{}{R}R^{n}\) (which we will simply denote here on out by \(R^{n}\)) is called the \textbf{free left \(R\)-module of rank \(n\)}.
+	\end{enumerate}
+\end{exmp}
+
+\begin{exmp}[\(\Z\)-Modules]
+An abelian group \(M\) can be made into a module \(\prescript{}{\Z}M\) over the integers in exactly one way. Consider the \(\Z\)-action map defined by
+\begin{align*}
+	\Z\times M \to M\\
+	(n,m) \mapsto  m + \ldots_{n} + m
+\end{align*}
+One can check that this indeed is a \(\Z\)-module over \(M\). 
+\end{exmp}
+
+\begin{hw}
+	Prove that the \(\Z\)-action given above is the unique \(\Z\)-action for any \(\Z\)-module. Furthermore, show that \(\prescript{}{\Z}M\) is isomorphic to an abelian group.
+\end{hw}
+
+\begin{exmp}[\(F{[}x{]}\) Modules]
+	Let \(R = F[x]\) be a polynomial ring over a field \(F\), and let \(V\) be a vector space over \(F\) with a linear operator \(T \in \mathcal{L}(V)\). We can construct an \(F[x]\)-module on \(V\) via \(T\) (denoted \(\prescript{}{F[x]}V)\)). To see this, let \(p(x) \in F[x]\) be a polynomial given by
+	\begin{align*}
+		p(x) = a_nx^{n}+ a_{n-1}x^{n-1} + \ldots + a_1 x + a_0.
+	\end{align*}
+	For each \(v \in V\), we define the action of \(p(x)\) on \(v\) by
+	\begin{align*}
+		p(x)\cdot v &= (a_n T^{n} + a_{n-1}T^{n-1} + \ldots + a_1 T + a_0) (v)\\
+		       &= a_n T^{n}(v) + a_{n-1}T^{n-1}(v) + \ldots + a_1 T(v) + a_0v
+	\end{align*}
+	Informally, we are defining an action of \(x\) on \(V\) by \(T\), and then extending it onto \(F[x]\) in a natural way.\\
+
+	Recall that \(F\leq F[x]\) (as constant polynomials), and hence the action of \(F\) is exactly the same as constant polynomials, which correspond to the standard action of \(F\) on \(V\). In other words, this action is an extension of the action of \(F\) onto a larger ring \(F[x]\).\\
+
+	Because this action is dependent on the choice of  \(T\), this gives us many different \(F[x]\)-module structures on the same vector space \(V\). One can check that \(T=0\) also yields us the standard action of \(F\) on \(V\).\\
+
+	What is interesting to note is that the action of \(F[x]\) via \(T\) encapsules \textit{all} possible \(F[x]\)-modules-- this holds because the action of \(x \in F[x]\) on \(V\) is a linear transformation from \(V\) to \(V\), and hence must correspond to some \(T\) which all actions \(p(x)\) must adhere to.\\
+
+	One might ask what \(F[x]\)-submodules look like. We can see immediately that an \(F[x]\)-submodule \(\prescript{}{F[x]}W \leq \prescript{}{F[x]}V\) must also be an \(F\)-submodule, and hence \(W<V\) as a vector subspace. Furthermore, in order for it to be well-defined, \(W\) must be \textbf{\(T\)-invariant}, that is, \(T(W) \subset  W\). In fact this too is a bijection, so that all \(F[x]\)-submodules of \(V\) correspond to \(T\)-invariant subspaces of \(V\).
+\end{exmp}
+This example shows that the ideal structure of \(F[x]\) greatly restricts the module structure on \(V\) (and in fact can be used to derive its Jordan canonical form). In fact, the reasonings above can be applied to any PID \(R\), and in the special case \(R = \Z\) we can obtain the fundamental theorem of finitely generated abelian groups. In general, it is always interesting to see how the structure of a ring \(R\) will affect its modules.
+
+\end{document}

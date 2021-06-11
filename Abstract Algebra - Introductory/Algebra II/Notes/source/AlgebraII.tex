@@ -1,5 +1,6 @@
 \documentclass{memoir}
 \usepackage{notestemplate}
+\usetikzlibrary{matrix,arrows.meta}
 
 \logo{~/LibreMath/Auxiliary Resources/resources/png/logo.png}
 \institute{Rice University}
@@ -12,6 +13,7 @@
 %\context{Well, I was bored...}
 \date{\today}
 
+%\makeindex
 
 \begin{document}
 
@@ -21,28 +23,43 @@
 
 \setcounter{chapter}{-1}
 \input{Introduction}
-\input{Lecture1}
-\input{Lecture2}
-\input{Lecture3}
-\input{Lecture4}
-\input{Lecture5}
-\input{Lecture6}
-\input{Lecture7}
-\input{Lecture8}
-\input{Lecture9}
-\input{Lecture10}
-\input{Lecture11}
-\input{Lecture12}
-\input{Lecture13}
-\input{Lecture14}
-\input{Lecture15}
-\input{Lecture16}
-\input{Lecture17}
-\input{Lecture18}
-\input{Lecture19}
-\input{Lecture20}
-\input{Lecture21}
-\input{Lecture22}
+\input{Lecture1 - RingReview}
+
+\section{Rings with Divison Structures}
+\label{sec:rings_with_divison_structures}
+
+\input{Lecture2 - ED_UFD_PID}
+\input{~/LibreMath/Ring Theory/Ideals}
+\input{Lecture3 - GaussLemma_IntroPolyRings}
+\input{Lecture4 - PolyIrreducibilityCrit}
+\input{Lecture5 - IntroModules}
+\input{Lecture6 - Submodules_ModHomo}
+\input{Lecture7 - QuotModules_IsoThms_Prod}
+\input{Lecture8 - GeneratingSets_FreeModules}
+
+\chapter{Group Representation Theory}
+\label{cha:group_representation_theory}
+
+\section{Ties to Group Representation Theory}
+\label{sec:ties_to_group_representation_theory}
+\input{Lecture9 - GroupRepresentationThy}
+\input{Lecture10 - Subrepresentations}
+\input{Lecture11 - CompleteReducibility}
+\input{Lecture12 - GHomo_SchursLemma}
+\input{Lecture13 - CharacterThry}
+
+\chapter{Field Extensions}
+\label{cha:field_extensions}
+
+\input{Lecture14 - IntroField}
+\input{Lecture15 - IntroFieldExtn}
+\input{Lecture16 - MinimalPoly}
+\input{Lecture17 - TowerThm}
+\input{Lecture18 - CompositeSplittingFields}
+\input{Lecture19 - SplittingFieldUniqueness}
+\input{Lecture20 - CyclotomicField}
+\input{Lecture21 - Algebraic_Closure}
+\input{Lecture22 - Separability_Polynomials}
 \input{Lecture23 - Polynomial_Fields_Over_Fp}
 \input{Lecture24 - Finite_Fields_Simple_Extensions}
 \input{Lecture25 - AutoGroups_FixedFields}
@@ -52,10 +69,11 @@
 \input{Lecture29 - GalThry_FiniteFields}
 \input{Lecture30 - GalThry_CompFields}
 
-\par\noindent\rule[5pt]{\textwidth}{0.4pt}
-Everything from here on out is optional.
+%\par\noindent\rule[5pt]{\textwidth}{0.4pt}
+%Everything from here on out is optional.
 
-\input{Lecture31 - MoreGal}
+\input{Lecture31 - SolvableGrps_GalCriterion}
 
+%\printindex
 
 \end{document}

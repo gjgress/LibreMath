@@ -1,0 +1,174 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+\begin{defn}[Gaussian Integers]
+	The Gaussian integers are elements of the quadratic integer ring \(\Z[i]\). Elements of the ring are the complex numbers \(a+bi \in \C\) with \(a,b \in \Z\). The field norm \(N\) maps
+	\begin{align*}
+		a+bi \mapsto a^2+b^2
+	\end{align*}
+	and hence the units\(u\) are given by
+	\begin{align*}
+		N(a+bi) = a^2+b^2 = \pm 1 \implies u \in \left\{ \pm 1, \pm i \right\}
+	\end{align*}
+\end{defn}
+
+In general, let \(\mathcal{O}\) be a quadratic integer ring and \(N\) the associated field norm. The multiplicity of the norm gives us a natural irreducibility condition.
+
+\begin{hw}
+	Let \(\alpha  \in \mathcal{O}\) be an element such that \(N(\alpha ) = \pm p\) for a prime \(p \in \Z\). Then \(\alpha \) is irreducible in \(\mathcal{O}\).
+\end{hw}
+
+Let \(\pi \in \mathcal{O}\) be a prime element. Observe that \((\pi ) \cap \Z\) is a prime ideal in \(\Z\). Because \(N(\pi )\) is a nonzero integer, we have that \((\pi )\cap \Z = p\Z\) for some integer prime \(p\). Hence \(\pi \mid p\) in \(\mathcal{O}\)-- this hints that we can find the prime elements of \(\mathcal{O}\) by determing how primes in \(\Z\) factor as elements of \(\mathcal{O}\).\\
+
+Suppose \(\pi \mid p\) in \(\mathcal{O}\). Then
+\begin{align*}
+	N(\pi )N(\pi ') = N(p) = p^2 \implies N(\pi ) = \pm p^2 \text{ or } N(\pi ) = \pm p
+\end{align*}
+If the first holds, then \(\pi '\) is a unit and \(p = \pi \) is irreducible in \(\Z[i]\). If the second holds, then \(\pi '\) is also irreducible and \(p = \pi \pi '\) is the product of precisely two irreducibles.\\
+
+Now returning to the case of the Gaussian integers, it follows that \(p\) factors in \(\Z[i]\) into precisely two irreducibles if and only if \(p = a^2+b^2\) for \(a,b \in \Z\). Otherwise, it remains irreducible in \(\Z[i]\). If \(p=a^2+b^2\) then the irreducible elements in \(\Z[i]\) are \(a\pm bi\).
+
+\begin{exmp}[Factoring an even prime]
+	Clearly \(2 = 1^2+1^2\) and so we get a factorization
+	\begin{align*}
+		2 = (1+i)(1-i) = -i(1+i)^2
+	\end{align*}
+	In fact, \((1+i)\) and \((1-i)\) are associates-- this is the only situation in which conjugate irreducibles can be associates.
+\end{exmp}
+Since \(a^2 \equiv 0 \pmod{4}\) or \(a^2 \equiv 1\pmod{4}\) for any integer \(a \in \Z\), an odd prime in \(\Z\) that satisfies \(p = a^2+b^2\) must be congruent to \(1 \pmod{ 4}\). Hence, if \(p\) is a prime of \(\Z\) and \(p \equiv 3 \pmod{4}\) then \(p\) is irreducible in \(\Z[i]\). In fact, in the first case with \(p \equiv 1 \pmod{4}\), \(p\) must factor into two distinct irreducibles \((a+bi)(a-bi)\).
+
+\begin{lemma}
+	The prime number \(p \in \Z\) divides an integer of the form \(n^2+1\) if and only if \(p = 2\) or \(p \equiv 1 \pmod{ 4}\).
+\end{lemma}
+
+The Gaussian integers admit a nice Euclidean algorithm that is key to factoring primes further.
+\begin{thm}
+	The Gaussian integers \(\Z[i]\) form a Euclidean Domain.
+\end{thm}
+\begin{proof}% Find an alternate proof?
+	We will show that \(f(\alpha) = N(\alpha)\) suffices. Observe that
+	\begin{align*}
+		\alpha = \beta \rho + \theta \iff\\
+		\frac{\alpha}{\beta = \rho + \frac{\theta}{\beta}}\iff\\
+		\frac{\alpha}{\beta}-\rho = \frac{\theta}{\beta} \iff\\
+		\left| \frac{\alpha}{\beta} - \rho \right| < 1
+	\end{align*}
+	Of course, this is the distance between \(\frac{\alpha}{\beta}\) and \(\rho\). But there always exists a lattice point within distance \(1\) of any \(\C\), and so therefore the statement holds.
+\end{proof}
+
+\begin{thm}[Fermat's Theorem on sum of squares]
+	The prime \(p\) can be written as \(p = a^2+b^2\) for \(a,b \in \Z\) if and only if \(p = 2\) or \(p \cong 1 \pmod{4}\). The representation of \(p\) as the sum of two squares is unique.
+\end{thm}
+This is the last key piece we need to classify all prime elements of Gaussian integers.
+\begin{thm}[Prime elements of Gaussian integers]
+	All Gaussian primes take on the form:
+	\begin{itemize}
+		\item \(\varepsilon(1+i)\) 
+		\item \(\varepsilon q\), where \(q\) is prime and \(q \equiv 3 \pmod{4}\) 
+		\item \(\pi\) where \(N(\pi)\) is a prime with \(N(\pi ) \equiv 1 \pmod{4}\)
+	\end{itemize}
+	where \(\varepsilon\) is a unit.
+\end{thm}
+Why is it important to classify all prime elements of \(\Z[i]\)? We will see shortly that this allows us to approach number theory questions by factoring primes in \(\Z[i]\).
+
+\begin{prop}[Disjoint Partitions of Fields]
+	Let \(F\) be a field. Then we can partition \(F\) into disjoint sets by taking all sets of the form
+	\begin{align*}
+		\left\{ a, -a, a^{-1}, (-a)^{-1} \right\} 
+	\end{align*}
+	where \(a\in F\) is non-zero. The union of all sets of this form with \(\left\{ 0 \right\} \) forms a partition of \(F\).
+\end{prop}
+
+\begin{thm}[Two Squares Theorem]
+Consider the equation \(x^2+y^2 = n\), and let \(n = 2^{\alpha}p_1^{\beta_1}\ldots p_r^{\beta_r}q_1^{\gamma_1}\ldots q_s^{\gamma_s}\) be the Gaussian factorization of \(n\). Then, \(x^2+y^2 = n\) is solvable in \(\Z\) if and only if all \(\gamma_j\) are even. Furthermore, the number of solutions is
+\begin{align*}
+	4 \prod_{j=1}^{r} (\beta_j + 1) 
+\end{align*}
+\end{thm}
+\begin{proof}
+	First, we write \(n = x^2+y^2 = (x+yi)(x-yi)\). Using the Gaussian factorization, we rewrite
+	\begin{align*}
+		n = 2^{\alpha}p_1^{\beta_1}\cdot \ldots\cdot q_1^{\gamma_1}\cdot \ldots = (-i)^{\alpha}(1+i)^{2\alpha}\pi_1^{\beta_1}\overline{\pi_1}^{\beta_1}\cdot \ldots\cdot q_1^{\gamma_1}
+	\end{align*}
+	Now observe that
+	\begin{align*}
+		(x+yi)\mid n \implies x+yi = \varepsilon (1+i)^{\alpha'}\pi_1^{\beta_1'}\overline{\pi_1}^{\beta_1''}\cdot \ldots\cdot q_1^{\gamma_1'}\cdot \ldots \\
+		\implies x-yi = \overline{\varepsilon}(1-i)^{\alpha'}\overline{\pi_1}^{\beta_1'}\pi_1^{\beta_1'}\cdot \ldots\cdot q_1^{\gamma_1}
+	\end{align*}
+	Then because
+	\begin{align*}
+		n = (x+yi)(x-yi)
+	\end{align*}
+	We have
+	\begin{align*}
+		  2\alpha = \alpha' + \alpha' \iff\alpha' = \alpha\\
+		\beta_1 = \beta_1' + \beta_1'' \iff \beta_1' = 0,1,\ldots,\beta_1; \beta_1'' = \beta_1-\beta_1' \\
+		\gamma_1 = \gamma_1' + \gamma_1' \iff \gamma_1 \text{ even}, \gamma_1' = \frac{\gamma_1}{2}\\
+		(-i)^{\alpha} = \varepsilon \overline{\varepsilon}(-i)^{\alpha} \iff 1 = \varepsilon \overline{\varepsilon} \text{ which always holds}
+	\end{align*}
+	Thus, the equation is always solvable if all the \(\gamma\) are even. Looking at the above, the number of solutions will be
+	\begin{align*}
+		1 \cdot (\beta_j+1) \cdot 1 \cdot 4 = 4 \prod_{j=1}^{r} (\beta_j + 1) 
+	\end{align*}
+\end{proof}
+
+%\subsection{Fermat's Last Theorem}
+%\label{subsec:fermat_s_last_theorem}
+%\begin{thm}[Fermat's Last Theorem]
+%	Let \(n\geq 3\). Does \(x^{n}+y^{n}=z^{n}\) have positive integer solutions?
+%\end{thm}
+%It is clear that if it is true for \(n  = 4\), \(n= p\) prime, then it holds, as of course it will hold for any multiples. We can rewrite this as
+%\begin{align*}
+%	x^{p} = z^{p}-y^{p}
+%\end{align*}
+%\(y\) is a parameter, so the roots are
+%\begin{align*}
+%	z^{p} = y^{p} \implies z = (y^{p})^{\frac{1}{p}} = z, z\rho, z\rho^2,\ldots,z\rho^{p-1} \text{ where } \rho = \cos \frac{\pi}{p} + i \sin^2 \frac{2\pi}{p}
+%\end{align*}
+%So we can rewrite this as
+%\begin{align*}
+%	x^{p} = z^{p}-y^{p} = (z-y)(z-\rho y)\ldots(z-\rho y^{p-1})
+%\end{align*}
+%Observe that each prime must be a \(p\)-th power as they cannot share factors. Let
+%\begin{align*}
+%	H_p = \left\{ a_0 + a_1\rho + \ldots + a_{p-2}\rho^{p-2} \right\}, a_j \in \Z \\
+%	\rho^{p-1}+\rho^{p-2} + \ldots + \rho + 1 = 0
+%\end{align*}
+%If the factors on the RHS are pairwise coprime, then \(z-y = \varepsilon_0 \theta_0^{p}\), \(z-y\rho = e_1 \theta_1^{p}\)
+%BUT the units are non-trivial for these types of coefficients, AND we don't have UFT.\\
+%
+%Then Kummer did a different direction. Note that ~"if there is a gcd then it is UFT" (not exactly, but dw about it). Then consider for \(a,b \in \Z\)
+%\begin{align*}
+%	\textrm{gcd}(a,b) = d \implies d = au + bv
+%\end{align*}
+%Consider the set
+%\begin{align*}
+%	\left\{ak + bl \mid k,l \in \Z \right\} = \left\{dn \mid n \in \Z \right\} 
+%\end{align*}
+%Now consider
+%\begin{align*}
+%	\left\{ak + bl \mid k,l \in H_p \right\} 
+%\end{align*}
+%If \( \exists \textrm{gcd}(a,b) \implies\) this set is the set of multiples of gcd. So for "ideal numbers" UFT holds and the proof holds. So for "ideal numbers" UFT holds and the proof holds.
+
+% \printindex
+\end{document}

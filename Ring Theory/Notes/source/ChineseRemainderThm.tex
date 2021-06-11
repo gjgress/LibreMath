@@ -1,0 +1,71 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 06/05/21
+
+All rings are assumed to be commutative in this section.\\
+
+An important question in number theory is the notion in \(\Z\) of two integers \(n,m\) being relatively prime. In the integers, it turns out that this question is equivalent to the equation \(nx+my=1\) having solutions in \(\Z\). We can extend this question to arbitrary rings, and if we view \(\Z\) as an ideal, then the problem is equivalent to \(n\Z+m\Z=\Z\) as ideals. This motivates a more general definition:
+\begin{defn}[Comaximal]
+	The ideals \(A,B\triangleleft R\) are said to be \textbf{comaximal} if \(A+B = R\).
+\end{defn}
+
+Recall that if \(A = (a)\) and \(B = (b)\), then the product of the ideals can be calculated to be \(AB = (ab)\).
+
+\begin{thm}[Chinese Remainder Theorem]
+	Let \(A_1,A_2,\ldots,A_k\) be ideals in \(R\). The map
+	\begin{align*}
+		R \to R / A_1 \times R / A_2 \times  \ldots \times R / A_k\\
+		r\mapsto (r+A_1,r+A_2,\ldots,r+A_k)
+	\end{align*}
+	is a ring homomorphism with \(\textrm{Ker}\varphi = A_1 \cap A_2 \cap \ldots \cap A_k\). If or each \(i,j \in \left\{ 1,\ldots,k \right\} \) with \(i\neq j\) the ideals \(A_i\) and \(A_j\) are comaximal, then this map is surjective and
+	\begin{align*}
+		A_1\cap A_2\cap \ldots\cap A_k &= A_1A_2\ldots A_k\\
+			&\implies R / (A_1A_2\ldots A_k) \cong R / A_1 \times R / A_2 \times \ldots\times R / A_k.
+	\end{align*}
+\end{thm}
+\begin{proof}
+	
+\end{proof}
+
+Since the isomorphism is an isomorphism of rings, it follows that the units on both sides must be isomorphic. Because the units in direct products of rings are the elements with units in all coordinates, it follows that we have an isomorphism on the group of units.
+
+\begin{cor}
+	Let \(n \in \Z_+\) and let \(p_1^{\alpha_1}p_2^{\alpha_2}\ldots p_k^{\alpha_k}\) be its factorization into powers of distinct primes. Then
+	\begin{align*}
+		\Z / n\Z \cong (\Z / p_1^{\alpha_1}\Z) \times (\Z / p_2^{\alpha_2}\Z) \times \ldots\times (\Z / p_k^{\alpha_k}\Z)
+	\end{align*}
+	by ring isomorphism, and so
+	\begin{align*}
+		(\Z / n\Z)^{\times }\cong (\Z / p_1^{\alpha_1}\Z)^{\times } \times (\Z / p_2^{\alpha_2}\Z)^{\times } \times \ldots\times (\Z / p_k^{\alpha_k}\Z)^{\times }
+	\end{align*}
+\end{cor}
+We can use this to prove some remarkable results. For example, it directly gives us the formula for the Euler \(\varphi \)-function:
+\begin{align*}
+	\varphi (n) = \varphi (p_1^{\alpha_1})\varphi(p_2^{\alpha _2})\ldots\varphi (p_k^{\alpha _k})
+\end{align*}
+and hence shows that \(\varphi \) is a multiplicative function when \(a\) and \(b\) are relatively prime positive integers. Combining the above with the simple fact that
+\begin{align*}
+	\varphi (p^{\alpha }) = p^{\alpha -1}(p-1)
+\end{align*}
+gives us the value of \(\varphi \) on all positive integers.
+
+% \printindex
+\end{document}

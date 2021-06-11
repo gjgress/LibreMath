@@ -1,0 +1,55 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+
+\subsection{Normal Subgroups}
+\label{sec:normal_subgroups}
+
+Cosets are such a vital construction to visualize subgroups, as they will become key to understanding quotient groups. However, we notice one flaw that makes this characterization difficult-- left and right cosets of a subgroup are not necessarily equivalent. This property is important enough to earn itself a name.
+
+\begin{defn}[Normal Subgroup]
+	A subgroup \(N\) of \(G\) is \textbf{normal} if the left and right cosets are the same; i.e.
+\begin{align*}
+	N\leq G \text{ and }gN = Ng
+\end{align*}
+for every \(g \in G\). We denote this by \(N \triangleleft G\).
+\end{defn}
+We can also think of this as \(Ng \subset gN\) and \(gN \subset Ng\), or in other words, \(g^{-1}ng \in N\) and \(gng^{-1} \in N\).
+\begin{align*}
+	N \triangleleft G \iff N \leq G \text{ and } g^{-1}ng \in N \text{for every }g \in G, n \in N
+\end{align*}
+We call \(g^{-1}ng\) a \textbf{conjugate} of \(n\).\\
+
+Observe that, because the trivial subgroups are trivially normal, then all subgroups \(H\) of index 2 are normal.
+
+\begin{thm}
+	Let \(N \leq G\) be a subgroup of a group \(G\). The following are equivalent:
+	\begin{itemize}
+		\item \(N \triangleleft G\) 
+		\item \(gN = Ng\) for all \(g \in G\) 
+		\item The left cosets of \(N\) in \(G\) form a group by the natural group operation
+			\begin{align*}
+				gN \cdot g'N = (gg')N
+			\end{align*}
+		\item \(gNg^{-1} \subset N\) for all \(g \in G\)
+	\end{itemize}
+\end{thm}
+
+Every group also has a special normal subgroup called the \textbf{center}.
+
+\begin{defn}[Center]
+	The \textbf{center} of a group is the normal subgroup given by
+\begin{align*}
+	Z(G) = \left\{g \in G \mid xg = gx \text{ for every }x \in G \right\} .
+\end{align*}
+\end{defn}
+Every subgroup of the center is normal.
+\end{document}

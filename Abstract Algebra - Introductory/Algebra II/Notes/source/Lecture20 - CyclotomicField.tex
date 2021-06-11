@@ -1,0 +1,59 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 03/22/21
+
+We now focus on the splitting field of \(x^{n}-1\) in \(\Q[x]\). Roots of \(x^{n}-1\) are of the form \(\left\{e^{2\pi i k / n} \mid k = 0,1,\ldots,n-1 \right\} \). Some useful notation:
+\begin{enumerate}
+	\item \(\zeta _n := e^{2\pi i / n}\), the primitive \(n\)-th root of 1
+	\item \(\mu_n := \langle \zeta _n \rangle \), the cyclic group of order \(n\) under multiplication with identity 1
+	\item \(\varphi (n)\) is the number of integers between \(1,\ldots,n\) that are coprime-- the Euler-Phi function.
+\end{enumerate}
+
+\begin{defn}[Cyclotomic Field]
+	The \textbf{cyclotomic field of \(n\)-th roots of unity} or the \textbf{\(n\)-th cyclotomic field} is \(\Q(\zeta_n)\).\\
+
+	The \textbf{\(n\)-th cyclometric polynomial} is
+	\begin{align*}
+		\Phi_n(x) = \prod_{\zeta \text{primitive} \in \mu_n} (x-\zeta ). 
+	\end{align*}
+\end{defn}
+Recall that an \(n\)-th root of \(1\) (that is, \(e^{2\pi ik / n}\)) is primitive if and only if \((k,n) = 1\). We conventionally choose \(1\) to be a primitive.
+
+\begin{thm}
+	\begin{enumerate}[(a).]
+		\item \(\Phi_n(x)\) is a monic polynomial in \(\Z[x]\) of degree \(\varphi (n)\) 
+		\item \(\Phi_n(x) \in \Z[x]\) is irreducible
+		\item The minimal polynomial of a primitive \(n\)-th root of unity over \(\Q\) is \(\Phi_n(x)\) 
+		\item \([\Q(\zeta_n):\Q] = \varphi(n)\)
+	\end{enumerate}
+\end{thm}
+
+These will be proved in various ways by later constructions.
+
+\begin{cor}
+	\begin{align*}
+		\Phi_n(x) = (x^{n}-1) \big/ \prod_{d|n, d<n} \Phi_d(x) 
+	\end{align*}
+	We can compute \(\Phi_n(x)\) inductively.
+\end{cor}
+As an example, for a prime \(p\):
+\begin{align*}
+	\Phi_p(x) = \frac{x^{p}-1}{x-1} = x^{p-1}+ x^{p-2} + \ldots + x^2 + x + 1
+\end{align*}
+\end{document}

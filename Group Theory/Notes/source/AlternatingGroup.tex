@@ -1,0 +1,86 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+\subsection{Alternating Group}
+\label{subsec:alternating_group}
+
+Our initial description of even and odd permutations was left intentionally vague. A careful reader might question the robustness of our definition, and the correspondence between the combinatiorial definition of even/odd permutations and the group definition.\\
+
+This section will answer these questions in better detail.\\
+
+Recall that every element of \(S_n\) can be written uniquely as a product of disjoint cycles. However, if we remove the requirement that the cycles are disjoint, we are launched into disarray, as we find multitudes of various ways to write the same product of cycles. We will find that one thing remains constant between these variations-- if we write our element as a product of 2-cycles, then the quantity of 2-cycles maintains a parity.
+\begin{defn}[Transposition]
+	A \(2\)-cycle is called a \textbf{transposition}.
+\end{defn}
+
+\begin{hw}
+	Prove that every permutation of \(\left\{ 1,2,\ldots,n \right\} \) can be written by a succession of transpositions.\\
+
+	Conclude from this that every element of \(S_n\) can be written as a product of transpositions.
+\end{hw}
+
+While there are many different ways to represent the product of transpositions, one will notice that the number of terms remains the same. We will now show this more formally.\\
+
+Let \(\Delta \) be the polynomial on variables \(\left\{ x_i \right\}_i^{n}\) given by
+\begin{align*}
+	\Delta (x_1,x_2,\ldots,x_n) = \prod_{i<j} (x_i - x_j). 
+\end{align*}
+Now let \(\sigma  \in S_n\) be a permutation. We say that \(\sigma \) acts on \(\Delta \) by
+\begin{align*}
+	\sigma (\Delta ) = \prod_{i<j} (x_{\sigma (i)} - x_{\sigma (j)}) 
+\end{align*}
+\begin{prop}[Even and odd permutations]
+	Let \(\sigma,\tau  \) be two permutations with \(\rho =\sigma \tau \). Then
+	\begin{itemize}
+		\item \(\sigma (\Delta ) = \pm \Delta \) 
+		\item \(\rho (\Delta ) = \sigma (\tau (\Delta ))\) 
+		\item \(\sigma (\Delta ) = -\Delta \) whenever \(\sigma \) is a transposition.
+	\end{itemize}
+\end{prop}
+This allows us to formally define even and odd permutations.
+\begin{defn}
+	Let \(\sigma \) be a permutation so that \(\sigma (\Delta ) = (-1)^{k}\Delta \) for some \( \in \N\). If \(k\) is even, we say that \(\sigma \) is an \textbf{even permutation}, and if \(k\) is odd, we say that \(\sigma \) is an \textbf{odd permutation}.\\
+
+	In general, \((-1)^{k}\) is the \textbf{sign} of a permutation.
+\end{defn}
+
+\begin{prop}
+There is a surjective homomorphism given by
+\begin{align*}
+	\varphi :S_n \to \Z_2\\
+	\varphi (\sigma ) = \textrm{sign}(\sigma )
+\end{align*}
+The kernel of the surjective homomorphism is the \textbf{alternating group \(A_n\)} and consists of the even transpositions.
+\end{prop}
+
+The alternating group has a fascinating property that it only has non-trivial normal subgroups for \(n=4\). Otherwise, any proper normal subgroups are trivial.
+
+\begin{defn}[Simple]
+	A group \(G\) is \textbf{simple} if the only normal subgroups are the trivial ones.
+\end{defn}
+
+\begin{thm}
+	Suppose that \(n\neq 4\). Then \(A_n\) is a simple group.
+\end{thm}
+
+% \printindex
+\end{document}

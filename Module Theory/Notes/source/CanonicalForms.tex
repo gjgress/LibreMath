@@ -1,0 +1,168 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 06/09/21
+
+Let \(V\) be a finite dimensional vector space over \(F\) with dimension \(n\), and \(T\) a fixed linear transformation of \(V\). Recall that we can view \(V\) as an \(F[x]\)-module where \(x\) acts on \(V\) as the linear transformation \(T\).\\
+
+Because \(V\) has finite dimension over \(F\), it must be a torsion \(F[x]\)-module. Hence \(V\) is isomorphic as an \(F[x]\)-module to the direct sum of cyclic, torsion \(F[x]\)-modules.\\
+
+When we decompose \(V\) into the invariant factor decomposition basis, we obtain the rational canonical form for the matrix for \(T\). When we use the elementary divisor decomposition, we obtain the Jordan canonical form.
+
+\begin{defn}[Minimal Polynomial]
+ The \textbf{minimal polynomial of \(T\)} is the unique monic polynomial \(m_T(x) \in F[x]\) that generates the ideal \(\textrm{Ann}(V)\) in \(F[x]\).\\
+
+ Let \(A\) be a matrix. The \textbf{minimal polynomial of \(T\)} is the unique monic polynomial of smallest degree \(m_A(x)\) that yields the zero matrix when evaluated at \(A\).
+\end{defn}
+
+The \textbf{rational canonical form} of the linear transformation \(T\) is the isomorphism
+\begin{align*}
+	V \cong F[x] / (a_1(x)) \oplus F[x] / (a_2(x)) \oplus \ldots \oplus F[x] / (a_m(x))
+\end{align*}
+where \(a_1(x),a_2(x),\ldots,a_m(x)\) are polynomials in \(F[x]\) of positive degree such that
+ \begin{align*}
+	 a_1(x) \mid a_2(x) \mid \ldots\mid a_m(x)
+\end{align*}
+Of course, the annihilator of \(V\) is the ideal \((a_m(x))\), and so we obtain:
+\begin{prop}
+	The minimal polynomial \(m_T(x)\) is the largest invariant factor of \(V\).
+\end{prop}
+
+Observe that we can get a basis for the vector space \(F[x] / (a(x))\) for a fixed
+\begin{align*}
+	a(x) = x^{k}+ b_{k-1}x^{k-1} + \ldots + b_1 x + b_0
+\end{align*}
+by defining \(\overline{x}^{k}= (x \pmod{a(x)})^{k}\). The basis is then \(\left\{ 1,\overline{x},\overline{x}^2,\ldots,\overline{x}^{k-1} \right\} \) which has an action under multiplication by \(x\) given by:
+\begin{align*}
+	1 \mapsto \overline{x}\\
+	\overline{x} \mapsto \overline{x}^2\\
+	\vdots\\
+	\overline{x}^{k-2}\mapsto \overline{x}^{k-1}\\
+	\overline{x}^{k-1}\mapsto \overline{x}^{k} = -b_0 - b_1\overline{x} - \ldots - b_{k-1}\overline{x}^{k-1}
+\end{align*}
+which follows because
+\begin{align*}
+	\overline{x}^{k} + b_{k-1}\overline{x}^{k-1} + \ldots + b_1\overline{x}+b_0 = 0
+\end{align*}
+This gives us a matrix for multiplication by \(x\):
+\begin{defn}[Companion Matrix]
+	Let \(a(x) = x^{k}+ b_{k-1}x^{k-1}+ \ldots + b_1x + b_0\) be a monic polynomial in \(F[x]\). The \textbf{companion matrix} of \(a(x)\) is the \(k\times k\) matrix representing the matrix for multiplication by \(x\), and is of the form
+	\begin{align*}
+		\begin{pmatrix} 
+			0 & 0 & \ldots & \ldots & -b_0\\
+			1 & 0 & \ldots & \ldots & -b_1 \\
+			0 & 1 & \ldots & \ldots & -b_2\\
+			\vdots & \vdots &   & \ddots & \vdots\\
+			0 & 0 & \ldots & 1 & -b_{k-1}
+	\end{pmatrix}
+	\end{align*}
+	We denote the companion matrix of \(a(x)\) by \(\mathcal{C}_{a(x)}\).
+\end{defn}
+
+Now we will apply this to each of the cyclic modules in the rational canonical form of \(V\). Let \(\mathcal{B}_i\) be the set of basis elements for each cyclic factor \(F[x] / (a_i(x))\). The linear transformation \(T\) acts on \(\mathcal{B}_i\) by the companion matrix for \(a_i(x)\), and hence the union \(\mathcal{B} = \cup_{i} \mathcal{B}_i\) and the matrix of the transformation on \(V\) is the direct sum of the companion matrices.
+
+\begin{defn}[Rational Canonical Form]
+	A matrix is said to be in \textbf{rational canonical form} if it is the direct sum of companion matrices for monic polynomials \(a_1(x),\ldots,a_m(x)\) with
+	\begin{align*}
+		a_1(x) \mid a_2(x) \mid \ldots \mid a_m(x).
+	\end{align*}
+	The matrix is then of the form
+	\begin{align*}
+		\begin{pmatrix} 
+			\mathcal{C}_{a_1(x)} & & & \\
+			& \mathcal{C}_{a_2(x)} & & \\
+			& & \ddots & \\
+			& & & \mathcal{C}_{a_m(x)}
+		\end{pmatrix}.
+	\end{align*}
+	The polynomials are called the \textbf{invariant factors} of the matrix, and the matrix is said to be a \textbf{block diagonal matrix} with the blocks being the companion matrices for \(a_i(x)\).\\
+
+	A \textbf{rational canonical form} for a linear transformation \(T\) is a matrix representing \(T\) in rational canonical form.
+\end{defn}
+One can check that every linear transformation \(T\) has a rational canonical form that is unique.
+
+\begin{thm}[Rational Canonical Form for Linear Transformation]
+	Let \(V\) be a finite dimensional vector space over the field \(F\) and let \(T\) be a linear transformation of \(V\). Thne there is a basis for \(V\) and the matrix of \(T\) is in rational canonical form with respect to this basis. Furthermore, the rational canonical form for \(T\) is unique.
+\end{thm}
+We will see that this exists for every \(T\), but Jordan canonical form may not.\\
+
+For linear transformations \(S\) and \(T\), the following are equivalent:
+\begin{itemize}
+	\item \(S\) and \(T\) are similar linear transformations
+	\item The \(F[x]\)-modules obtained from \(V\) via \(S,T\) are isomorphic
+	\item \(S\) and \(T\) have the same rational canonical form
+\end{itemize}
+Of course, any matrix can be translated into a rational canonical form, as each matrix corresponds to a linear transformation. The \textbf{invariant factors} of an \(n\times n\) matrix over a field \(F\) are the invariant factors of its rational canonical form.
+
+\begin{lemma}
+	Let \(a(x) \in F[x]\) be any monic polynomial. The characteristic polynomial of the companion matrix of \(a(x)\) is \(a(x)\), and if  \(M\) is given by
+	\begin{align*}
+		M = 
+		\begin{pmatrix}
+			A_1 & 0 & \ldots & 0 \\
+			0 & A_2 & \ldots & 0\\
+			\vdots & \vdots & \ddots & \vdots \\
+			0 & 0 & \ldots & A_k
+		\end{pmatrix} 
+	\end{align*}
+	then the characteristic polynomial of \(M\) is the product of the characteristic polynomials of \(A_1,A_2,\ldots,A_k\).
+\end{lemma}
+
+\begin{thm}[Cayley-Hamilton Theorem]
+	Let \(A\) be an \(n\times n\) matrix over the field \(F\). The minimal polynomial of \(A\) divides the characteristic polynomial of \(A\).
+\end{thm}
+In fact, the characteristic polynomial of \(A\) divides some power of the minimal polynomial of \(A\).
+
+\begin{thm}
+	Let \(A\) be an \(n\times n\) matrix over the field \(F\). The \(n\times n\) matrix \(xI - A\) can be put into the diagonal form
+	\begin{align*}
+		\begin{pmatrix} 
+			1 & & & & &\\
+			  & \ddots & & & &\\
+			  & & 1 & & &\\
+			  & & & a_1(x) & &\\
+			  & & & & \ddots & \\
+			  & & & & & a_m(x)
+		\end{pmatrix}
+	\end{align*}
+	with monic nonzero elements
+	\begin{align*}
+		a_1(x) \mid a_2(x) \mid \ldots \mid a_m(x).
+	\end{align*}
+	via the operations
+	\begin{itemize}
+		\item interchanging two rows or columns
+		\item adding a multiple of one row or column to another
+		\item multiplying any column or row by a unit in \(F[x]\)
+	\end{itemize}
+	The elements \(a_1(x),\ldots,a_m(x)\) are the invariant factors of \(A\).
+\end{thm}
+
+\subsection{Invariant Factor Decomposition Algorithm}
+\label{sub:invariant_factor_decomposition_algorithm}
+
+%% Fill in
+
+\subsection{Converting an \(n\times n\) Matrix to Rational Canonical Form}
+\label{sub:converting_an_n_by_n_matrix_to_rational_canonical_form}
+
+
+% \printindex
+\end{document}

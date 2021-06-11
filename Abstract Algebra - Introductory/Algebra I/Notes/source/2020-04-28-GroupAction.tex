@@ -1,0 +1,298 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+
+\section{Group Actions}	
+
+By this point, the reader should have a solid foundation in the basic ideas of group theory. There are richer details to follow, but some of them rely on more advanced ideas in algebra. In particular, group actions are fundamentally connected to permutation groups and group presentations. More details on these topics can be found elsewhere, but one can also get a basic understanding of group actions without this prerequisite knowledge.
+
+\begin{defn}[(Left) Action]
+	A (left) \textbf{action} of a group \(G\) on a set \(\Omega\) is a function \(\mu:G \times \Omega  \to \Omega\) with the following two properties:
+	\begin{itemize}
+		\item \(\mu(g_1,\mu(g_2,x)) = \mu(g_1g_2,x)\) for all \(x \in \Omega\), \(g_1,g_2 \in G\).
+		\item \(\mu(e,x) = x\) for all \(x \in \Omega\).
+	\end{itemize}
+\end{defn}
+It immediately follows that \(\mu(g^{-1},\mu(g,x)) = \mu(g,\mu(g^{-1},x)) = x\) for all \(x \in \Omega, g \in G\).\\
+
+While \(\mu (e,x) = x\), it doesn't have to be the only element which does so. The \textbf{kernel} of the action is the set of elements of \(G\) that act trivially on \(\Omega \):
+\begin{align*}
+	\textrm{Ker}\mu  = \left\{g \in G \mid g \cdot x = x \quad \forall x \in \Omega  \right\} 
+\end{align*}
+If this set is trivial, then we say the action is \textbf{faithful}. Regardless, the kernel forms a normal subgroup, as we will see later.
+
+\begin{prop}
+	\begin{itemize}
+		\item For any \(g \in G\), the map \(\sigma _g:\Omega\to \Omega\) defined by \(\sigma _g x = \mu(g,x)\) is a permutation.
+		\item The map \(\theta:G\to S_n\) defined by \(\theta (g) = \sigma _g\) is a homomorphism (where \(S_n\) is the set of permutations of \(\Omega\), so \(n = \left| \Omega \right| \) )
+		\item Conversely, given a homomorphism \(\theta:G\to S_n\), there is an action \(\mu\) of \(G\) on \(\Omega\) given by \(\mu(g,x) = \theta (g)x\).
+	\end{itemize}
+\end{prop}
+
+Viewing group actions via permutations is a good way to get a grasp of group actions. One can view group actions of \(G\) on \(\Omega \) as each element \(g \in G\) permuting the set \(\Omega \). We call the homomorphism \(G\to S_{\Omega }\) given by \(\theta (g) = \sigma_g\) to be the \textbf{permutation representation} associated to the given action.
+
+\begin{exmp}
+	\begin{itemize}
+		\item Let \(H\) be a subgroup of \(G\). Let \(\Omega\) be the set of all left cosets of \(H\) in \(G\) (written as \(gH\) for some \(g \in G\)). Define an action by \(\mu(g,g'H) = (gg')H\). This is the action of \textbf{left multiplication}.
+		\item Define an action of \(G\) on itself (\(\Omega = G\) ) by the rule \(\mu(g,x) = gxg^{-1}\). This is the action of \textbf{conjugation}.
+		\item Let \(\Omega\) be the set of all subgroups of \(G\). Then \(G\) acts on \(\Omega\) by \textbf{conjugation}: \(\mu(g,H) = gHg^{-1}\).
+	\end{itemize}
+\end{exmp}
+An equivalence relation on \(\Omega\) is formed by a group action via the rule that \(x \sim y\) if there exists \(g \in G\) with \(\mu(g,x) = y\). The equivalence classes are called \textbf{orbits}. The set \(\Omega\) decomposes into a disjoint union of orbits.
+\begin{defn}[Transitivity]
+	We say that an action is \textbf{transitive} if there is just one orbit, and \textbf{intransitive} otherwise.
+\end{defn}
+Left multiplication is transitive, but conjugation is in general not. The orbits for conjugation of \(G\) onto itself are the \textbf{conjugacy classes} of \(G\).
+\begin{defn}[Stabilizer]
+	The \textbf{stabilizer} of an element \(x \in \Omega\) is the set
+	\begin{align*}
+		\left\{g \in G \mid \mu(g,x) = x \right\} 
+	\end{align*}
+	of elements of \(G\) for which the corresponding permutation fixes \(x\). It is denoted \(G_x\).
+\end{defn}
+Notice that the union of all stabilizers on \(\Omega \) is exactly the kernel of the action.
+
+\begin{exmp}
+	Let \(A\) be a subset of \(G\). Consider the action of \(G\) on \(A\) by conjugation, i.e. \(\mu (g,a) = gag^{-1}\). Then the stabilizer of an element \(a \in A\) is called the \textbf{centralizer of \(a\)} denoted by \(C_G(a)\). Considering the entire subset \(A\), we define
+	\begin{align*}
+		C_G(A) = \left\{g \in G \mid gag^{-1} = a \forall a \right\} 
+	\end{align*}
+	to be the \textbf{centralizer of \(A\)}.\\
+
+	It turns out that \(C_G(A) \leq G\) is a subgroup.
+\end{exmp}
+One will find that abelian groups prove not to be good examples for centralizers, as one will quickly see that in an abelian group \(G\), \(C_G(A) = G\) for all subsets \(A\). However, one can check that
+\begin{align*}
+	C_{Q_8}(i) = \left\{ \pm 1, \pm i \right\} .
+\end{align*}
+There are some similar subgroups that will be of interest soon.\\
+
+Recall the center subgroup of \(G\) denoted by
+	\begin{align*}
+		Z(G) = \left\{g \in G \mid gx = xg \; x \in G \right\} .
+	\end{align*}
+The center plays an important role with these new ideas, as one can see that \(Z(G) = C_G(G)\) (and hence we already know that \(Z(G)\) is a subgroup).\\
+
+One might recall that we also defined conjugation by subgroups earlier. This also corresponds to a variation of a centralizer.
+
+\begin{defn}[Normalizer]
+	Let \(A\) be a subset of \(G\), and consider the action of \(G\) on \(A\) by coset conjugation, i.e. \(\mu (g,A) = gAg^{-1} = \left\{gag^{-1}  \mid a \in A \right\} \). Then the set of elements which fix \(A\) is called the \textbf{normalizer} of \(A\) in \(G\), denoted by
+	\begin{align*}
+		N_G(A) = \left\{g \in G \mid gAg^{-1} = A \right\} .
+	\end{align*}
+\end{defn}
+This is actually a larger subgroup containing the centralizer-- if \(g \in C_G(A)\), then \(gag^{-1} = a \in A\), and so \(C_G(A) \leq N_G(A)\). One can show that \(N_G(A)\) is a subgroup as well.
+
+\begin{prop}
+	Let \(N\leq G\) be a subgroup of \(G\). Then \(N \triangleleft G\) is a normal subgroup of \(G\) if and only if \(N_G(N) = G\).
+\end{prop}
+
+There are some other nice properties of subgroups that come about from the normalizer.
+
+\begin{prop}
+	If \(H,K \leq G\) are subgroups of \(G\), and \(H\leq N_G(K)\), then \(HK \leq G\).\\
+
+	Thus, if \(K \triangleleft G\) then \(HK \leq G\) for any \(H\leq G\).
+\end{prop}
+
+\begin{defn}
+	If \(A\) is any subset of \(N_G(K)\), we say \(A\) \textbf{normalizes} \(K\).
+\end{defn}
+
+\begin{exmp}
+	Consider \(G = S_4\) and \(H = D_8\). Let \(K = \langle (123) \rangle \). We can view \(D_8\) as a subgroup of \(S_4\) by identifying each symmetry by its permutation on the four vertices. Lagrange's Theorem tells us that \(H\cap K = 1\) (as their orders are relatively prime), and hence \(\left| HK \right| =24\) and hence \(HK = S_4\).\\
+
+	Furthermore, \(H\) nor \(K\) normalizes the other.
+\end{exmp}
+It is worthwhile to notice that if we take \(S = \mathcal{P}(G)\), then the action of \(G\) on \(S\) by coset conjugation admits a stabilizer on its elements \(A\) by \(N_G(A)\).\\
+
+Finally, we can also let \(N_G(A)\) act on \(A\) by conjugation \(a\mapsto gag^{-1}\). Then the centralizer \(C_G(A)\) is precisely the kernel of this action, and so we have now conceptualized these main definitions via group actions.\\
+
+Now we will state some theorems that formalize these ideas.
+
+\begin{thm}[Second Isomorphism Theorem]
+	Let \(G\) be a group with \(A,B \leq G\). Assume \(A \leq N_G(B)\). Then
+\begin{itemize}
+	\item \(AB \leq G\) 
+	\item \(B \triangleleft AB\) 
+	\item \(A\cap B \triangleleft A\) 
+	\item \(AB / B \cong A / (A\cap B)\)
+\end{itemize}
+\end{thm}
+Note that \(AB / A\) is not necessarily a group, i.e. \(A\) is not necessarily normal in \(AB\).
+
+
+\begin{thm}[Orbit-Stabilizer Theorem]
+	Given an action of \(G\) onto \(\Omega\), and \(x \in \Omega\), the stabilizers \(G_x\) form a subgroup of \(G\). Furthermore, there is a bijection between the orbit of \(x\) and the set of left cosets of \(G_x\) in \(G\) given by
+	\begin{align*}
+		\mu^{i}x \mapsto \mu^{i}G_x.
+	\end{align*}
+\end{thm}
+If \(G\) is finite, the size of the orbit of \(x\) is equal to \( \left| G:G_x \right| = \left| G \right| / \left| G_x \right| \).
+
+\begin{cor}
+	Every transitive action is isomorphic to an action by left multiplication on the left cosets of a subgroup. Furthermore, the actions on the left cosets of two subgroups \(H,K\) are isomorphic if and only if \(H,K\) are conjugate.
+\end{cor}
+
+Note: Let \( \textrm{fix}(g)\) denote the number of elements in \(\Omega\) that are mapped to themselves when \(g\) is applied to them as an action.
+
+\begin{thm}[Orbit-Counting Lemma]
+	The number of orbits of \(G\) on \(\Omega\) is given by
+	\begin{align*}
+	\frac{1}{\left| G \right| } \sum_{g\in G} \textrm{fix}(g).	
+\end{align*}
+\end{thm}
+
+\begin{lemma}[Burnside's Lemma]
+	The number of orbits is equal to the average number of fixed points. We can write this by
+	\begin{align*}
+		\left| G \right| \cdot \text{(number of orbits)} = \sum_{g\in G} \left| S^{g} \right| 
+	\end{align*}
+\end{lemma}
+
+We can get some interesting results by considering the action of \(G\) on itself, or subsets of itself. This corresponds to the notion of permutations of a group.
+
+\begin{thm}
+	Let \(H\leq G\) be a subgroup and let \(G\) act by left multiplication on the set \(A\) of left cosets of \(H\) in \(G\). We denote this action by \(\sigma_H\), the associated permutation representation. Then
+	\begin{itemize}
+		\item \(G\) acts transitively on \(A\) 
+		\item The stabilizer in \(G\) of \(eH \in A\) is the subgroup \(H\) 
+		\item The kernel of \(\sigma_H\) is \(\bigcap_{x \in G} xHx ^{-1}\), and \(\textrm{Ker}\sigma_H\) is the largest normal subgroup of \(G\) contained in \(H\)
+	\end{itemize}
+\end{thm}
+
+\begin{cor}[Jordan's Theorem]
+\begin{itemize}
+	\item Let \(G\) act transitively on the finite set \(\Omega\), where \(\left| \Omega \right| >1\). Then there is an element of \(G\) which fixes no point of \(\Omega\).
+	\item Let \(H\) be a proper subgroup of a finite group \(G\). Then
+		\begin{align*}
+			\bigcup_{g \in G} g^{-1}Hg \neq G.
+		\end{align*}
+\end{itemize}
+\end{cor}
+
+\begin{thm}[Cayley's Theorem]
+	Every group of size \(n\) is isomorphic to a subgroup of \(S_n\).
+\end{thm}
+\begin{proof}
+	Let \(S_n\) be all permutations of the group \(G = \left\{ e,g_2,\ldots,g_n \right\} \) and define \(\varphi:G\to S_n\) by \(g \mapsto {g_i}\choose{gg_i}\). In other words, we assign to \(g\in G\) the permutation of \(G\) onto itself; we multiply every \(g_i\) by the given \(g\) from the left. One can check that \(\varphi\) is an injective homomorphism, and so \(G \cong \textrm{Image}(\varphi)\leq S_n\).
+\end{proof}
+
+Cayley's theorem can also be seen as a consequence of the above theorem, as one can simply take \(H\) to be trivial to get the result.
+\begin{prop}
+	If \(G\) is a finite group with \(\left| G \right| =n\), and \(p\) is the smallest prime that satisfies \(p\mid n\), then any subgroup of index \(p\) is normal.
+\end{prop}
+This can be proven via Cayley's Theorem.
+
+\subsection{Conjugacy Classes}
+\label{sub:conjugacy_classes}
+
+Earlier, we obtained interesting results such as Cayley's theorem by having \(G\) act on itself via left multiplication. We can also get some interesting results by letting \(G\) act on itself by conjugation:
+\begin{align*}
+	g \cdot a = gag^{-1} \quad \forall g,a \in G.
+\end{align*}
+
+\begin{defn}[Conjugates]
+	Two elements \(a,b \in G\) are said to be \textbf{conjugate in \(G\)} if there is some \(g \in G\) such that \(b = gag^{-1}\). The orbits of \(G\) acting on itself by conjugation are called the \textbf{conjugacy classes of \(G\)}.
+\end{defn}
+One can clearly see that \(a,b\) are conjugate in \(G\) if they are contained in the same orbit.
+
+\begin{exmp}
+	Observe that if \(G\) is abelian, then the action of \(G\) on itself by conjugation is trivial, and hence not interesting.\\
+
+If \(G\) is non-trivial, then \(G\) will never act transitively on itself by conjugation. This is because the identity will always have its own orbit.\\
+
+As an example, the conjugacy classes of \(S_3\) are
+\begin{align*}
+	\left\{ 1 \right\} , \left\{ (12),(13),(23) \right\} , \left\{ (123),(132) \right\} 
+\end{align*}
+\end{exmp}
+
+\(G\) can act on subsets of itself by conjugation, as well. We define this for \(S\subset G\) by:
+\begin{align*}
+	gSg^{-1} = \left\{gsg^{-1} \mid s \in S \right\} .
+\end{align*}
+We can even use this to define a group action on a higher level-- that is, we can define an action of \(G\) on \(\mathcal{P}(G)\) by \(g\cdot S\).
+
+\begin{defn}[Set Conjugates]
+	Two subsets \(S,T \subset G\) are said to be \textbf{conjugate in \(G\)} if there is some \(g \in G\) such that \(T = gSg^{-1}\), i.e. they are in the same orbit of \(G\) acting on its subsets by conjugation.
+\end{defn}
+
+Our previous propositions give us the index of these conjugates within the group:
+\begin{prop}
+	The number of conjugates of \(S\subset G\) is the index of the normalizer of \(S\) 
+	\begin{align*}
+		\left| G : N_G(S) \right| .
+	\end{align*}
+	The number of conjugates of an element \(s\) of \(G\) is hence
+	\begin{align*}
+		\left| G:C_G(s) \right| .
+	\end{align*}
+\end{prop}
+
+\begin{thm}
+	Let \(G\) be a finite group and let \(g_1,\ldots,g_n\) be representatives of the distinct conjugacy classes of \(G\) not contained in the center \(Z(G)\leq G\). Then
+	\begin{align*}
+		\left| Z(G) \right| + \sum_{i=1}^{n} \left| G : C_G(g_i) \right| = \left| G \right| .
+	\end{align*}
+\end{thm}
+This essentially partitions the order of \(G\) into its abelian and non-abelian parts. 
+
+This has a lot of useful consequences naturally. For example, we can use this to help classify groups of prime power order.
+
+\begin{cor}
+	Let \(G\) be a group with \(\left| G \right| = p^{\alpha }\) for some \(p\) prime, \(\alpha \geq 1\). Then \(G\) has a nontrivial center.
+\end{cor}
+\begin{proof}
+	The class equation tells us that
+	\begin{align*}
+		\left| G \right|  = \left| Z(G) \right| + \sum_{i=1}^{n} \left| G:C_G(g_i) \right| 
+	\end{align*}
+	Because \(C_G(g_i)\) are non-central conjugacy classes they cannot be the full group \(G\). Thus, \(p\mid \left| G:C_G(g_i) \right| \), and hence divides the sum. Thus \(p\mid \left| Z(G) \right| \), proving the result desired.
+\end{proof}
+
+\begin{cor}
+	If \(\left| G \right| = p^2\) for some prime \(p\), then \(G\) is abelian and isomorphic to \(\Z_{p^2}\) or \(\Z_p \times \Z_p\).
+\end{cor}
+
+Now we will look at the specific case of \(S_n\).
+
+\begin{prop}
+	Let \(\sigma ,\tau \) be elements of the symmetric group \(S_n\) and suppose \(\sigma \) has cycle decomposition
+	\begin{align*}
+		(a_1a_2\ldots a_{k_1})(b_1b_2\ldots b_{k_2})\ldots
+	\end{align*}
+	Then \(\tau \sigma \tau ^{-1}\) has cycle decomposition
+	\begin{align*}
+		(\tau (a_1)\tau (a_2)\ldots \tau (a_{k_1})) \ldots (\tau (b_1) \tau (b_2) \ldots \tau (b_{k_2})).
+	\end{align*}
+\end{prop}
+This provides an easy means of computing conjugation in \(S_n\) of course, but moreover it tells us that conjugation doesn't change the general structure of cycles.
+
+\begin{defn}[Cycle lengths and partitions]
+	If \(\sigma  \in S_n\) is the product of disjoint cycles of length \(n_1,n_2,\ldots,n_r\) with
+	\begin{align*}
+		n_1\leq n_2\leq \ldots\leq n_r,
+	\end{align*}
+	then the integers \(\left\{ n_i \right\}_{i=1}^{r}\) are called the \textbf{cycle type of \(\sigma \)}.
+\end{defn}
+	If \(n \in \Z_+\), a \textbf{partition of \(n\)} is any nondecreasing sequence of positive integers whose sum is \(n\).\\
+
+	The previous proposition tells us that the cycle type of a permutation is unique.
+	\begin{prop}
+		Two elements of \(S_n\) are conjugate in \(S_n\) if and only if they have the same cycle type.\\
+
+		The number of conjugacy classes of \(S_n\) is the number of partitions of \(n\).
+	\end{prop}
+
+	We can use these results to prove important ideas-- for example, one can give a combinatorial proof that \(A_5\) is a simple group.
+
+\end{document}

@@ -1,0 +1,49 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+
+
+\chapter{Divisibility, Congruences, Euler's Function}
+All numbers are assumed to be \(\Z\)\\
+\begin{align*}
+	a\mid b := \quad \exists c \text{ s.t. } ac = b
+\end{align*}
+\begin{defn}
+	We say that \(a \equiv b\) (mod \(m\)) (a is equivalent to b)  if \(m|a-b\) 
+\end{defn}
+\begin{defn}[Euler's Function]
+	\(\varphi(n)\) is defined as the number of integers coprime to \(n\) in \(\left\{ 1,2,\ldots,n \right\} \). In other words, it is the magnitude of \(\left\{ c \mid 1\leq c\leq n, (c,n) = 1 \right\} \)
+\end{defn}
+Note that if \(p\) is prime, then \(\varphi(p) = p-1\).
+\begin{thm}
+	\(n = p_1^{k_1}\cdot\ldots\cdotp_r^{k_r}\), \(p_i \neq p_j\), \(p\) prime, \(k_i > 0\) \(\implies \varphi(n) = (p_1^{k_1-1}-p_1^{k_1-1})\cdot\ldots\cdot (p_r^{k_r}-p_r^{k_r-1})\)
+\end{thm}
+\begin{thm}[Euler-Fermat Theorem]
+	If \(c,m\) are coprime, then \(c^{\varphi(m)} \equiv 1\) (mod \(m\)).
+\end{thm}
+\begin{thm}[Linear Congruence]
+	A linear congruence \(ax \equiv b\) (mod \(m\)) is solvable if and only if \((a,m) \mid b\). Furthermore, the number of pairwise incongruent solutions is \((a,m)\).
+\end{thm}
+\begin{defn}[Linear Diophantine equation]
+	A linear Diophantine equation in two variables is \(Ax+By=C\) where \(A,B,C\) are given integers, \(A,B\) not both zero, with integer solutions for  \(x,y \).
+\end{defn}
+A linear Diophantine equation is solvable if and only if \((A,B)\mid C\), in which case there are infinite solutions.\\
+Note that a linear Diophantine equation can be transformed into a linear congruence \(Ax \equiv C \pmod {\left| B \right|}\) or \(By \equiv C \pmod {\left| A \right|} \)
+\begin{defn}[Binary Operation]
+	A binary operation assigns every ordered pair of a set \((a,b)\in S\times S\) a unique element \(c \in S\), which can have the following properties:
+	\begin{itemize}
+		\item For every \(a,b,c \in S\), \(a(bc) = (ab)c\) (associative)
+		\item For every \(a,b \in S\), we have \(ab = ba\) (commutative)
+		\item There is an element \(e \in S\) satisfying \(ea  = ae = a\) for every \(a \in S\) 
+		\item If \(S\) has an identity \(e\), then there is an inverse of \(a \in S\), or \(a^{-1}\) satisfying \(aa^{-1} = a^{-1}a = e\) (left and right inverses, in particular)
+	\end{itemize}
+\end{defn}
+\end{document}

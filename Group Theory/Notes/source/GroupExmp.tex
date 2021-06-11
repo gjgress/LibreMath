@@ -1,0 +1,55 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+\subsection{Matrix Groups}
+\label{sub:matrix_groups}
+
+For each \(n \in \Z^{+}\), let \(GL_n(F)\) be the set of all \(n\times n\) matrices whose entries are from a field \(F\) and whose determinant is nonzero, i.e.
+\begin{align*}
+	GL_n(F) = \left\{A \mid A \text{ is an \(n\times n\) matrix with entries from \(F\) and } \textrm{det}(A) \neq 0 \right\} 
+\end{align*}
+The definitions of fields, matrices, and determinants can be read from a standard linear algebra resource. The product and sum of matrices forms a group operation, and because
+\begin{align*}
+	\textrm{det}(AB) = \textrm{det}(A) \textrm{det}(B)
+\end{align*}
+it follows that the set is closed under the grouo operation. Hence, \(GL_n(F)\) forms a group called the \textbf{general linear group of degree \(n\)}.
+
+\subsection{Quaternion Group}
+\label{sub:quaternion_group}
+
+The \textbf{quaternion group \(Q_8\)} is defined by
+\begin{align*}
+	Q_8 = \left\{ 1,-1,i,-i,j,-j,k,-k \right\} 
+\end{align*}
+with the group operation computed as follows:
+\begin{align*}
+	1\cdot a = a\cdot 1 = a\\
+	(-1) \cdot (-1) = 1, \quad (-1)\cdot a = a \cdot (-1) = -a
+\end{align*}
+for all \(a \in Q_8\), and
+\begin{align*}
+	i\cdot i = j\cdot j = k\cdot k = -1\\
+	i\cdot j = k \quad j\cdot i = -k\\
+	j\cdot k = i \quad k\cdot j = -i\\
+	k\cdot i = j \quad i \cdot k = -j
+\end{align*}
+One can check as an exercise that this in fact satisfies the group axioms. Notice that \(Q_8\) is non-abelian of order \(8\).
+
+
+% \printindex
+\end{document}

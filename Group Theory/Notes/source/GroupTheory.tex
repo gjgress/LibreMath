@@ -1,0 +1,54 @@
+\documentclass{memoir}
+
+\usepackage{notestemplate}
+\usetikzlibrary{arrows,chains,matrix,positioning,scopes}
+
+\makeatletter
+\tikzset{join/.code=\tikzset{after node path={%
+\ifx\tikzchainprevious\pgfutil@empty\else(\tikzchainprevious)%
+edge[every join]#1(\tikzchaincurrent)\fi}}}
+\makeatother
+
+\tikzset{>=stealth',every on chain/.append style={join},
+every join/.style={->}}
+
+\logo{~/LibreMath/Auxiliary Resources/resources/png/logo.png}
+\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+\department{Department of Mathematics}
+\title{Group Theory}
+\subtitle{A deep introduction to groups}
+\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+\date{\today}
+%\makeindex
+\begin{document}
+% \section{}	
+
+\maketitle
+
+\tableofcontents
+\input{~/LibreMath/Abstract Algebra - Introductory/Algebra I/Notes/source/2020-03-24-IntroGroups}
+\input{~/LibreMath/Abstract Algebra - Introductory/Algebra I/Notes/source/2020-03-25-Subgroups}
+\input{~/LibreMath/Abstract Algebra - Introductory/Algebra I/Notes/source/2020-03-31-NormalSubgroups}
+\input{~/LibreMath/Abstract Algebra - Introductory/Algebra I/Notes/source/2020-04-01-QuotientGroup+Homo}
+\input{~/LibreMath/Abstract Algebra - Introductory/Algebra I/Notes/source/2020-04-07-GroupProd}
+\input{~/LibreMath/Abstract Algebra - Introductory/Algebra I/Notes/source/2020-03-26-CyclicGroups}
+\input{~/LibreMath/Abstract Algebra - Introductory/Algebra I/Notes/source/2020-04-08-PermGroup}
+\input{GroupExmp}
+\input{GroupRepresentations}
+\input{AlternatingGroup}
+\input{~/LibreMath/Abstract Algebra - Introductory/Algebra I/Notes/source/2020-04-28-GroupAction}
+\input{Automorphisms}
+\input{GroupRepresentations2}
+\input{Sylow}
+\input{~/LibreMath/Abstract Algebra - Introductory/Algebra I/Notes/source/2020-04-09-ClassificationThms}
+\input{NilpotentSolvableGroups}
+\input{ExactSequencesGroups}
+%\input{ProofFundThmFinAbelGrps}
+
+
+%\printindex
+
+\end{document}

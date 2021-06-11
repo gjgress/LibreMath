@@ -1,0 +1,83 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+
+\section{Automorphisms}
+\label{sub:automorphisms}
+
+\begin{defn}[Automorphism]
+	Let \(G\) be a group. An isomorphism from \(G\) onto itself is called an \textbf{automorphism} of \(G\). The set of all automorphisms of \(G\) is denoted \(\textrm{Aut}(G)\).
+\end{defn}
+One can check that the set of automorphisms of a group forms a group under composition. Furthermore, it is easy to see that automorphisms of \(G\) are permutations of \(G\), and hence a subgroup of \(S_G\).
+
+\begin{prop}
+	Let \(H \triangleleft G\) be a normal subgroup. Then \(G\) acts by conjugation on \(H\) as automorphisms of \(H\). That is, the action defined by
+	\begin{align*}
+		h\mapsto ghg^{-1}
+	\end{align*}
+	is an automorphism of \(H\). If \(g \in C_G(H)\), then the automorphism will be the trivial automorphism-- and hence \(G / C_G(H)\) is isomorphic to a subgroup of \(\textrm{Aut}(H)\).
+\end{prop}
+This shows us that conjugation on normal subgroups are structure preserving permutations. Notice that because \(G\) is normal in itself, then for any \(K\leq G\) and \(g \in G\) then \(K \cong g K g^{-1}\). Furthermore, conjugate elements and conjugate subgroups have the same order.
+
+\begin{cor}
+	For any subgroup \(H\leq G\), the quotient group \(N_G(H) / C_G(H)\) is isomorphic to a subgroup of \(\textrm{Aut}(H)\). It follows that \(G / Z(G)\) is isomorphic to a subgroup of \(\textrm{Aut}(G)\).
+\end{cor}
+
+\begin{defn}
+	Let \(G\) be a group. Then conjugation by \(g \in G\) is called an \textbf{inner automorphism} of \(G\), and the subgroup of \(\textrm{Aut}(G)\) consisting of all inner automorphisms is denoted \(\textrm{Inn}(G)\).
+\end{defn}
+Of course, it holds then that \(\textrm{Inn}(G) \cong G / Z(G)\). In some sense, the inner automorphisms capture the non-abelianity of a group, as there are more inner automorphisms the smaller the center is.\\
+
+This gives us really helpful properties to characterize normal subgroups. We can quickly see how \(G\) acts by conjugation on \(H \triangleleft G\) by looking at the automorphism group of \(H\), which in turn gives us information on \(G\).
+
+\begin{defn}
+	A subgroup \(H\leq G\) is called \textbf{characteristic in \(G\)}, denoted \(H \textrm{char}G\), if every automorphism of \(G\) maps \(H\) to itself; that is, \(\sigma (H) = H\) for all \(\sigma  \in \textrm{Aut}(G)\).
+\end{defn}
+
+\begin{hw}
+	Show that
+	\begin{itemize}
+		\item Characteristic subgroups are normal
+		\item If \(H\) is the unique subgroup of \(G\) of a given order, then \(H \textrm{char}G\)
+		\item If \(K \textrm{char}H\) and \(H \triangleleft G\), then \(K \triangleleft G\).
+	\end{itemize}
+\end{hw}
+The third part shows that while normality is not transitive, it is in the case that the smaller subgroup is characteristic in the larger subgroup.
+\begin{prop}
+	The automorphism group of the cyclic group of order \(n\) is isomorphic to \((\Z / n\Z)^{\times }\), which is an abelian group of order \(\varphi (n)\).
+\end{prop}
+
+\begin{prop}
+	\begin{itemize}
+		\item If \(p\) is an odd prime and \(n \in \Z_+\), then the automorphism group of the cyclic group of order \(p\) is cyclic of order \(p-1\). Moreover, the automorphism group of the cyclic group of order \(p^{n}\) is cyclic of order \(p^{n-1}(p-1)\).
+		\item For all \(n\geq 3\), the automorphism group of the cyclic group of order \(2^{n}\) is isomorphic to \(\Z_2 \times \Z_{2^{n-2}}\), and hence is not cyclic (but has cyclic subgroup of index 2)
+		\item Let \(p\) be a prime and let \(V\) be an abelian group with the property that \(pv = 0\) for all \(v \in V\) (where \(pv = (v+v+\ldots^{p}+v)\)). If \(\left| V \right| = p^{n}\), then \(V\) is an \(n\)-dimensional vector space over the bielf \(\mathbb{F}_p\). The automorphisms of \(V\) are then
+			\begin{align*}
+				\textrm{Aut}(V) \cong GL(V) \cong GL_N(\mathbb{F}_p).
+			\end{align*}
+		\item For all \(n\neq 6\) we have \(\textrm{Aut}(S_n) = \textrm{Inn}(S_n) \cong S_n\). For \(n=6\), \(\left| \textrm{Aut}(S_6) : \textrm{Inn}(S_6) \right| =2\).
+		\item \(\textrm{Aut}(D_8) \cong D_8\) and \(\textrm{Aut}(Q_8) \cong S_4\).
+	\end{itemize}
+\end{prop}
+
+% \printindex
+\end{document}

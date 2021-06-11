@@ -1,0 +1,76 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 02/26/21
+
+\section{G-homomorphisms}
+\label{sec:g_homomorphisms}
+
+Let \(K\) be a field and \(G\) be a group. We are going to look at a structure of interest: we define \(K\)-linear representations of \(G\) as a \(K\)-vector space \(V\) equipped with a group homomorphism
+\begin{align*}
+	\rho:G\to GL(V)\\
+	g\mapsto [\rho g:V\to V]
+\end{align*}
+
+\begin{defn}[\(G\)-homomorphism]
+	Let \((V',\rho')\) and \((V'',\rho'')\) be representations of \(G\) over \(K\). A \textbf{\(G\)-homomorphism from \((V',\rho')\) to \(V'',\rho'')\)} is a \(K\) linear map \(\varphi:V'\to V''\) which intertwines with the action of \(G\) :
+	\begin{align*}
+		\varphi(\rho'g(v')) = \rho''g(\varphi(v')) \quad \forall g \in G, v' \in V'
+	\end{align*}
+	We denote the collection of \(G\)-homomorphisms from \((V', \rho')\) to \((V'', \rho'')\) by \( \textrm{Hom}_G(V',V'')\), and \(\textrm{End}_G(V') := \textrm{Hom}_G(V',V')\). Finally, a \textbf{\(G\)-isomorphism} is an invertible \(G\)-homomorphism.
+\end{defn}
+
+This is really just a change in basis.
+
+\begin{prop}
+	If \(\varphi \in \textrm{Hom}_G(V,W)\), then \(\varphi^{-1} \in \textrm{Hom}_G(W,V)\).
+\end{prop}
+\begin{prop} %Exercise 1 on HW 5
+	Take \(\varphi \in \textrm{Hom}_G(V,W)\). Then
+	\begin{enumerate}[(a).]
+		\item \(\textrm{Ker}\varphi \) is a subrepresentation of \(V\), and
+		\item \(\textrm{Im}\varphi\) is a subrepresentation of \(W\).
+	\end{enumerate}
+\end{prop}
+For the rest of the section, we take \(K = \C\).
+
+\begin{lemma}[Schur's Lemma]
+	Let \((V,\rho)\) be an irreducible representation of \(G\). If \(\varphi \in \textrm{End}_G(V)\), then \(\varphi\) is a scalar multiple of \(\textrm{Id}V\) :
+	\begin{align*}
+		\exists \lambda \in \C \; s.t. \; \varphi(v) = \lambda v \quad \forall v \in V
+	\end{align*}
+\end{lemma}
+This result has many applications.
+\begin{thm}
+	All nonzero complex irreducible representations of an abelian group \(G\) have degree 1.
+\end{thm}
+Using these tools, we now can complete a few problems.
+
+\begin{hw}
+	Given a finite abelian group \(G\), describe its irreducible representations, up to equivalence. Illustrate this for the Klein-four group \(G = C_2\times C_2\).
+\end{hw}
+Moreover, one can apply Schur's lemma to complete the following problem:
+\begin{hw}
+	Let \(V\) and \(W\) be irreducible representations of \(G\), and take \(\varphi \in \textrm{Hom}_G(V,W)\). Show that
+	\begin{enumerate}[(a).]
+		\item If \(V \not\cong W\), then \(\varphi\) is the zero map.
+		\item If \(V \cong W\) and \(\varphi\neq 0\), then \(\varphi\) is a \(G\)-isomorphism.
+	\end{enumerate}
+\end{hw} % Hint: hw5 exercise 1
+
+\end{document}

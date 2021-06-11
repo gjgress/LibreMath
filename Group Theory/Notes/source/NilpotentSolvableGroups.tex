@@ -1,0 +1,223 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 06/03/21
+
+\section{Nilpotent and Solvable Groups}
+\label{sec:nilpotent_and_solvable_groups}
+
+\begin{defn}[Nilpotence]
+	For any group \(G\), define the following subgroups inductively:
+	\begin{align*}
+		Z_0(G) = 1, \quad Z_1(G) = Z(G),\\
+		Z_i(G) \subset Z_{i+1}(G) < G \quad Z_{i+1}(G) / Z_i(G) = Z(G / Z_i(G))
+	\end{align*}
+	That is, \(Z_{i+1}(G)\) is a subgroup of \(G\) containing \(Z_i(G)\) that is the complete preimage in \(G\) of the center of \(G / Z_i(G)\) under the natural projection. We call the chain of subgroups
+	\begin{align*}
+		Z_0(G) \leq Z_1(G) \leq Z_2(G) \leq \ldots
+	\end{align*}
+	the \textbf{upper central series} of \(G\).\\
+
+	A group \(G\) is called \textbf{nilpotent} if \(Z_c(G) = G\) for some \(c \in \Z\); the smallest such \(c\) is called the \textbf{nilpotence class of \(G\)}.
+\end{defn}
+Nilpotence is a more general form of being abelian-- a group may not be abelian, but when one quotients out abelian elements, the quotient might have abelian elements within itself-- if we can iterate this process until all elements are abelian under some quotient of centers, then our group is nilpotent.
+
+\begin{rmrk}
+	If \(G\) is abelian, then \(G\) is nilpotent with nilpotence class \(1\). This holds because \(Z(G) = G\). Furthermore, we will show the following hierarchy:
+	\begin{align*}
+		\text{cyclic groups}\subset \text{abelian groups}\subset \text{nilpotent groups}\subset \text{solvable groups}\subset \text{all groups}
+	\end{align*}
+	If \(G\) is finite, there must be an integer \(N\) so that for all \(n\geq N\),
+	\begin{align*}
+		Z_n(G) = Z_{n+1}(G) = \ldots
+	\end{align*}
+	If there is a point such that \(Z_n(G) = Z_{n+1}(G)\), then the upper limit has been reached.\\
+
+	Infinite groups act a little bit differently with nilpotency; for example, \(Z_i(G) < G\) might all be proper subgroups of \(G\) (i.e \(G\) is not nilpotent), yet
+	\begin{align*}
+		G = \bigcup_{i=0} ^{\infty}Z_i(G).
+	\end{align*}
+	We call these groups \textbf{hypernilpotent}.
+\end{rmrk}
+\begin{prop}
+	Let \(p\) be a prime and let \(P\) be a group of order \(p^{a}\). Then \(P\) is nilpotent of nilpotence class at most \(a-1\).
+\end{prop}
+\begin{proof}
+	Observe that for \(i\geq 0\), \(P / Z_i(P)\) is a \(p\)-group. Hence, if \(\left| P / Z_i(P) \right| >1\), then \(Z(P / Z_i(P)) \neq 1\).\\
+
+	Assume that \(Z_i(P) \neq G\). Then 
+	\begin{align*}
+	\left| Z_{i+1}(P)  \right| \geq p \left| Z_i(P) \right| 
+	\end{align*}
+	and so \(\left| Z_{i+1}(P) \right| \geq p^{i+1}\). Thus, 
+\begin{align*}
+\left| Z_a(P) \right| \geq p^{a} \implies P = Z_a(P)
+\end{align*}
+	This is just an upper bound however-- \(P\) is only nilpotence of class \(a\) if \(\left| Z_i(P) \right| = p^{i}\). This cannot occur, however, as \(Z_{a-2}(P)\) would have index \(p^2\) in \(P\), and hence be abelian (in which case \(Z_{a-1}(P) = P\)). Hence, the class of \(P\) is at most \(a-1\).
+\end{proof}
+
+\begin{exmp}
+	Both \(D_8\) and \(Q_8\) are nilpotent of class \(2\). Moreover, \(D_{2^{n}}\) is nilpotent of class \(n-1\). This can be proven inductively by showing \(\left| Z(D_{2^{n}}) \right| =2\) and \(D_{2^{n}}/ Z(D_{2^{n}}) \cong D_{2^{n-1}}\) for \(n\geq 3\).\\
+
+	If \(n\) is not a power of 2, then \(D_{2n}\) is not nilpotent.
+\end{exmp}
+
+\begin{thm}
+	Let \(G\) be a finite group, and let \(p_1,p_2,\ldots,p_s\mid \left| G \right| \) be distinct primes that divide its order. Let \(P_i \in \textrm{Syl}_{p_i}(G)\). The following are equivalent:
+	\begin{itemize}
+		\item \(G\) is nilpotent
+		\item if \(H<G\), then \(H <  N_G(H)\)
+		\item \(P_i \triangleleft G\) for all \(1\leq i\leq s\) 
+		\item \(G \cong P_1\times P_2\times \ldots\times P_s\)
+	\end{itemize}
+\end{thm}
+This theorem proves part of the fundamental theorem of finite abelian groups.
+
+\begin{cor}
+	A finite abelian group is the direct product of its Sylow subgroups.
+\end{cor}
+
+\begin{prop}
+	If \(G\) is a finite group such that, for all \(n\mid \left| G \right| \) positive, \(G\) has at most \(n\) elements that satisfy \(x^{n}=1\), then \(G\) is cyclic.
+\end{prop}
+\begin{prop}[Frattini's Argument]
+	Let \(G\) be a finite group and \(H \triangleleft G\), and let \(P\) be a Sylow \(p\)-subgroup of \(H\). Then
+	\begin{align*}
+		G = HN_G(P)\\
+		\left| G : H \right| \mid \left| N_G(P) \right| .
+	\end{align*}
+\end{prop}
+
+\begin{prop}
+	A finite group is nilpotent if and only if every maximal subgroup is normal.
+\end{prop}
+\begin{proof}
+	Let \(G\) be a finite nilpotent group and let \(M\) be the maximal subgroup of \(G\). Because \(M < N_G(M)\), by maximality, \(N_G(M) = G\) and hence \(M \triangleleft G\).\\
+
+	For the reverse direction, assume every maximal subgroup of the finite group \(G\) is normal. Let \(P\) be a Sylow \(p\)-subgroup of \(G\). For the sake of contradiction, assume that \(P \not\triangleleft G\), and let \(M\) be a maximal subgroup of \(G\) containing \(N_G(P)\). Frattini's argument tells us that \(G = MN_G(P)\). But \(N_G(P) \leq M\) and so \(MN_G(P) = M\) giving us a contradiction. Hence \(P \triangleleft G\) which is equivalent to nilpotency.
+\end{proof}
+
+\begin{defn}[Lower central series]
+	Let \(G\) be a group, and define the following subgroups inductively:
+	\begin{align*}
+		G^{0} = G, \quad G^{1}= [G,G],\\
+		G^{i+1}= [G,G^{i}].
+	\end{align*}
+	Then the chain of groups
+	\begin{align*}
+		G^{0}\geq G^{1}\geq G^2\geq \ldots
+	\end{align*}
+	is called the \textbf{lower central series} of \(G\).
+\end{defn}
+\begin{hw}
+	Prove that \(G^{i}\) is a characteristic subgroup of \(G\) for all \(i\).
+\end{hw}
+
+\begin{thm}
+	A group \(G\) is nilpotent of class \(c\) if and only if \(c\) is the smallest nonnegative integer such that \(G^{c}=1\). If \(G\) is nilpotent of class \(c\) then
+	\begin{align*}
+		Z_i(G) \leq G^{c-i-1}\leq Z_{i+1}(G) \quad \forall i \in \left\{ 0,1,\ldots,c-1 \right\} .
+	\end{align*}
+\end{thm}
+The terms in the upper and lower central series do not necessarily coincide (although this does happen sometimes).
+
+\begin{rmrk}
+	If \(G\) is abelian, then \(G' = G^{1} = 1\) and so the lower central series is identity after one term. Similar to the upper central series, for any finite group there is some integer \(N\) so that for all \(n\geq N\),
+	\begin{align*}
+		G^{n}= G^{n+1} = G^{n+2} = \ldots
+	\end{align*}
+	For non-nilpotent groups, \(G^{n}\) is a nontrivial subgroup of \(G\). Once equality holds for some \(G^{n}= G^{n+1}\), it holds for all terms after.
+\end{rmrk}
+
+\begin{thm}[Krull-Schmidt Theorem]
+	We say that a group \(G\) satisfies the \textbf{ascending chain condition} on subgroups if every sequence of subgroups of \(G\)
+	\begin{align*}
+		1 = G_0\leq G_1\leq G_2\leq \ldots
+	\end{align*}
+	is eventually constant. Likewise, we say that \(G\) satisfies the \textbf{descending chain condition} on subgroups if
+	\begin{align*}
+		G = G_0 \geq G_1 \geq G_2 \geq \ldots
+	\end{align*}
+	is eventually constant.\\
+
+	Assume \(G\) is a group that satisfies one of these chain conditions on normal subgroups. Then there is a unique way to write \(G\) by
+	\begin{align*}
+		G \cong G_1 \times G_2 \times \ldots\times G_k
+	\end{align*}
+	where \(G_k\) are indecomposable (i.e. cannot be written as a direct product of two proper subgroups).
+\end{thm}
+Note that the decomposition could be non-trivial-- all the theorem gives is uniqueness.
+\subsection{Solvable Groups}
+\label{sub:solvable_groups}
+
+\begin{defn}
+	Let \(G\) be a group. A \textbf{subnormal series} is a sequence of subgroups satisfying:
+	\begin{align*}
+		1 = H_0 \triangleleft H_1 \triangleleft \ldots \triangleleft H_s = G
+	\end{align*}
+	If moreover \(H_i \triangleleft G\) for all \(i\), then we say it is a \textbf{normal series}.\\
+
+	A \textbf{solvable group} is a group with a subnormal series such that  \(H_{i+1} / H_i\) is abelian.
+\end{defn}
+We will see that in fact the subnormal series of a solvable group is actually a normal series.
+
+
+We will shortly see that this is related to the notions described above.
+
+\begin{defn}
+	Let \(G\) be a group. We define the following sequence of subgroups inductively:
+	\begin{align*}
+		G^{(0)}= G, \quad G^{(1)} = [G,G]\\
+		G^{(i+1)}= [G^{(i)}, G^{(i)}]
+	\end{align*}
+	This series of subgroups is called the \textbf{derived} or \textbf{commutator} series of \(G\).
+\end{defn}
+Note that sometimes we notate \(G^{(1)}= G'\), \(G^{(2)} = G''\), and so on. One can show that \(G^{(i)}\) is characteristic in \(G\).\\
+
+Caution must be used here-- \(G^{(0)} = G^{0}\), \(G^{(1)}= G^{1}\), but this does not hold necessarily for all \(i\). The terms are noticably smaller, so \(G^{(i)}\leq G^{i}\).
+
+\begin{thm}
+	A group \(G\) is solvable if and only if \(G^{(n)}=1\) for some \(n\geq 0\).\\
+
+	If \(G\) is solvable, the smallest nonnegative \(n\) for which \(G^{(n)}=1\) is called the \textbf{solvable length} of \(G\).
+\end{thm}
+
+\begin{prop}
+	Let \(G, K\) be groups, let \(H\leq G\), and let \(\varphi :G\to K\) be a surjective homomorphism. Then
+	\begin{itemize}
+		\item \(H^{(i)}\leq G^{(i)}\)-- thus if \(G\) is solvable, then \(H\) is solvable
+		\item \(\varphi (G^{(i)} = K^{(i)}\)-- homomorphic images and quotient groups of solvable groups are solvable
+		\item If \(N \triangleleft G\) and \(N\), \(G / N\) are solvable, then so is \(G\).
+	\end{itemize}
+\end{prop}
+
+\begin{thm}
+	Let \(G\) be a finite group.
+	\begin{itemize}
+		\item If \(\left| G \right| = p^{a}q^{b}\) for some primes \(p,q\), then \(G\) is solvable (Burnside)\\
+		\item If for every prime \(p \mid \left| G \right| \) we factor the order of \(G\) as \(\left| G \right| = p^{a}m\) where \((p,m) = 1\), and \(G\) has a subgroup of order \(m\), then \(G\) is solvable (Philip Hall)
+		\item If \(\left| G \right| \) is odd then \(G\) is solvable (Feit-Thompson)
+		\item If for every pair of elements \(x,y \in G\), \(\langle x,y \rangle \) is a solvable group, then \(G\) is solvable.
+	\end{itemize}
+\end{thm}
+
+
+% \printindex
+\end{document}

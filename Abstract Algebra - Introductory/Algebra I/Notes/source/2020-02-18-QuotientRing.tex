@@ -1,0 +1,69 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+\begin{defn}[Ring Homomorphism]
+	Let \(R,S\) be rings. A map \(\varphi:R\to S\) that preserves operations is a \textbf{ring homomorphism}. In other words,
+	\begin{align*}
+		\varphi(a+b) = \varphi(a)+\varphi(b) \\
+		\varphi(ab) = \varphi(a)\varphi(b)
+	\end{align*}
+\end{defn}
+Note that \(\varphi(0) = 0\) and \(\varphi(-a) = -\varphi(a)\). Furthermore, the kernel of a ring homomorphism is an ideal
+\begin{defn}[Isomorphism]
+	Let \(R,S\) be rings. A function \(\varphi:R\to S\) that is bijective and a ring homomorphism is a \textbf{isomorphism}. If there exists a isomorphism between two rings, we say the rings are \textbf{isomorphic}. 
+\end{defn}
+\begin{prop}[Equivalence of Isomorphism]
+	A ring homomorphism \(\varphi:R\to S\) is an isomorphism if and only if \( \textrm{Ker}\varphi = \left\{ 0 \right\} \) and \( \textrm{Im}\varphi = S\)
+\end{prop}
+This is of course equivalent to \(\varphi\) being bijective.
+\begin{defn}[Residue Class]
+The equivalence class of the integer \(a\) with the congruence relation, denoted by \(\overline{a}_n\), is the set
+\begin{align*}
+	\left\{ \ldots,a-2n,a-n,a,a+n,a+2n,\ldots \right\} 
+\end{align*}
+In other words, the set of integers congruent to \(a \pmod n\) is the \textbf{residue class} of the integer \(a\) modulo \(n\). 
+\end{defn}
+
+We can arbitrarily pick an element from a residue class as our representative when working with other residue classes-- this greatly simplifies calculations.
+
+\begin{defn}[Coset]
+	Let \(I \triangleleft R	\). A \textbf{coset} denoted \(r + I\) is the set
+	\begin{align*}
+	\left\{r+i \mid i \in I \right\} .
+	\end{align*}
+\end{defn}
+
+\begin{prop}
+	Two cosets are either equal or disjoint.
+\end{prop}
+
+We define addition and multiplication of cosets by
+\begin{align*}
+	(r+I) + (s+I) = (r+s) + I \\
+	(r+I)(s+I) = rs + I
+\end{align*}
+
+\begin{defn}[Sum and Products of Ideals]
+	Let \(I,J \triangleleft R\). Then we define:
+	\begin{align*}
+		I + J := \left\{a+b \mid a \in I,\, b \in J \right\},\\
+		IJ := \left\{ a_1b_1 + a_2b_2 + \ldots + a_nb_n \mid a_i \in I,\, b_i \in J,\, n \in \Z_+ \right\} \\
+		I^{n} = \left\{\sum_{j=1}^{m} \left\{ a_1a_2\ldots a_n \mid a_i \in I \right\}_j  \mid m \in \Z_+ \right\} 
+	\end{align*}
+	Equivalently, we can inductively define \(I^{n}= II^{n-1}\).
+\end{defn}
+% Fix this, need better notation
+
+
+\begin{defn}[Quotient Ring]
+	Let \(I \triangleleft R\). We notate by \(R / I\) the \textbf{quotient ring}, which is the ring with all of the cosets of \(I\) as elements, using the coset addition and multiplication defined above.
+\end{defn}
+\end{document}

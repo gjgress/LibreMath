@@ -1,0 +1,85 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{./resources/pdf/logo.pdf}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 02/05/21
+
+\section{Substructures of Modules}
+\label{sec:substructures_of_modules}
+
+\begin{defn}[Submodule]
+	Let \(R\) be a ring, let \(\prescript{}{R}M\) be a left \(R\)-module, and let \(N\leq M\) be a subgroup of \(M\). A \textbf{\(R\)-submodule of \(\prescript{}{R}M\)} is the \(R\)-module \(\prescript{}{R}N\) with the same \(R\)-action from \(\prescript{}{R}M\).\\
+
+	In other words, it is a subgroup with closure under the \(R\)-action.
+\end{defn}
+
+\begin{prop}[Submodule Criterion]
+	Take a ring \(R\) with \(1_R\), and left \(R\)-module \(M\). A subset \(N\) of \(M\) can be made into a \(R\)-submodule of \(M\) if and only if
+	\begin{itemize}
+		\item \(N \neq \emptyset\) and
+		\item \(n+rn' \in N\) for all \(r \in R\), \(n,n' \in N\).
+	\end{itemize}
+\end{prop}
+
+\begin{prop}
+	Let \(M\) be an \(R\)-module, and let \(\prescript{}{R}N_{i}\) with \(i \in I\) be \(R\)-submodules of \(M\). Then
+	\begin{enumerate}
+		\item \(\bigcap_{i \in  I} \prescript{}{R}N_i\) is an \(R\)-submodule of \(M\) 
+		\item \(\bigcup_{i \in  I} \prescript{}{R}N_i\) is not necessarily an \(R\)-submodule of \(\prescript{}{R}M\)
+		\item If \(\prescript{}{R}N_1\subset \prescript{}{R}N_2\subset \prescript{}{R}N_3\subset \ldots\) is an increasing chain of \(R\)-submodules of \(M\), then \(\bigcup_{i \in \N} \prescript{}{R}N_i\) is an \(R\)-submodule of \(\prescript{}{R}M\)
+		\item Let \(N_1+N_2 = \left\{n_1+n_2 \mid n_1 \in N_1, n_2 \in N_2 \right\} \) be the sum of \(N_1\) and \(N_2\). Then \(N_1+N_2\) can be made into an \(R\)-submodule of \(M\).
+	\end{enumerate}
+\end{prop}
+
+\begin{hw}
+	The submodules of the \(R\)-module \(\prescript{}{R}R\) are \(\prescript{}{R}I\) where \(I \triangleleft R\) is an ideal.
+\end{hw}
+
+\section{R-module homomorphisms}
+\label{sec:r_module_homomorphisms}
+
+\begin{defn}
+	Let \(R\) be a ring, and let \(\prescript{}{R}M\) and \(\prescript{}{R}N\) be \(R\)-modules. An \textbf{\(R\)-module homomorphism} is a group homomorphism
+	\begin{align*}
+		\varphi:M\to N \quad [\varphi(m+m') = \varphi(m) + \varphi(m')]
+	\end{align*}
+	so that \(R\)-action is preserved. That is, for all \(r \in R\), \(m,m' \in M\), the group homomorphism satisfies:
+	\begin{align*}
+		[\varphi(rm) = r\varphi(m)]
+	\end{align*}
+	for all \(r \in R\), \(m,m' \in M\).\\
+
+The \textbf{kernel} of \(\varphi\) is 
+\begin{align*}
+\textrm{Ker}\varphi = \left\{m \in M \mid \varphi(m) = 0 \right\},
+\end{align*}
+ and the \textbf{image} of \(\varphi\) is 
+\begin{align*}
+	\textrm{Im}(\varphi) = \left\{\varphi(m) \mid m \in M \right\} .
+\end{align*}
+\end{defn}
+The set of \(R\)-module homomorphisms from \(\prescript{}{R}M\) to \(\prescript{}{R}N\) is denoted by \( \textrm{Hom}_R(M,N)\). An \textbf{\(R\)-module isomorphism} is a bijective \(R\)-module homomorphism (trivial kernel and full range).\\
+
+\begin{exmp}[\(\Z\)-submodules]
+	
+Recall that any group homomorphism between abelian groups can be represented as a \(\Z\)-module homomorphism. Hence, if \(\prescript{}{\Z}N\) is a submodule of \(\prescript{}{\Z}M\), then \(N\leq M\).
+\end{exmp}
+
+\begin{hw}
+	If \(\varphi \in \textrm{Hom}_R(M,N)\) and \(\psi \in \textrm{Hom}_R(N,P)\) then \(\psi \circ \varphi \in \textrm{Hom}_R(M,P)\).
+\end{hw}
+\end{document}

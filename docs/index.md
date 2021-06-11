@@ -21,8 +21,14 @@ LibreMath is a personal education project created and developed by Gabriel Gress
       - Topological Groups (under construction)
   - Algebra
     - [Linear Algebra](resources/LinearAlgebra.pdf)
-    - [Abstract Algebra I](resources/AlgebraI.pdf)
-    - [Abstract Algebra II](resources/AlgebraII.pdf)
+    - Introductory Algebra
+      - [Abstract Algebra I](resources/AlgebraI.pdf)
+      - [Abstract Algebra II](resources/AlgebraII.pdf)
+    - Advanced Algebra
+      - [Group Theory](resources/GroupTheory.pdf)
+      - [Ring Theory](resources/RingTheory.pdf)
+      - [Module Theory](resources/ModuleTheory.pdf)
+      - [Field Theory](resources/FieldTheory.pdf)
     - Lie Theory (under construction)
   - Differential Equations
     - Ordinary Differential Equations (under construction)

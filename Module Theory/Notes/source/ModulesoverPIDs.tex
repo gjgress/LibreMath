@@ -1,0 +1,164 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+\begin{defn}[Rank]
+	Let \(R\) be an integral domain. The \textbf{rank} of an \(R\)-module \(\prescript{}{R}M\) is the maximum number of \(R\)-linearly independent elements of \(M\).
+\end{defn}
+
+In general, an \(R\)-module of finite rank may not have a basis-- this only holds when the module is a free \(R\)-module.
+
+\begin{exmp}
+	
+\end{exmp}
+
+\begin{prop}
+	Let \(R\) be an integral domain and let \(\prescript{}{R}M\) be a free \(R\)-module of rank \(n< \infty\). Then any \(n+1\) elements of \(M\) are \(R\)-linearly dependent:
+	\begin{align*}
+		\forall (y_1,y_2,\ldots,y_{n+1}) \in M^{n+1} \; \exists (r_1,r_2,\ldots,r_{n+1})\neq (0,0,\ldots,0) \in \R^{n+1} \text{ such that}\\
+		r_1y_1 + r_2y_2 + \ldots r_{n+1}y_{n+1} = 0.
+	\end{align*}
+\end{prop}
+In other words, the rank of a submodule of \(M\) is bounded by the rank of \(M\).
+
+\begin{defn}[Torsion Module]
+	If \(R\) is an integral domain and \(\prescript{}{R}M\) an \(R\)-module, we define the \textbf{torsion module} to be the submodule of \(M\) given by
+	\begin{align*}
+		\textrm{Tor}(M) = \left\{x \in M \mid rx = 0 \, r\in R \text{ nonzero} \right\} .
+	\end{align*}
+	If \(N \leq \textrm{Tor}(M)\) is a submodule, then we say \(N\) is a \textbf{torsion submodule of \(M\)}.\\
+
+	If \(\textrm{Tor}(M) = 0\), then \(M\) is said to be \textbf{torsion free}.
+\end{defn}
+\begin{defn}[Annihilator]
+	For any submodule \(N\leq M\) over a ring \(R\), the \textbf{annihilator of \(N\)} is the ideal of \(R\) defined by
+	\begin{align*}
+		\textrm{Ann}(N) = \left\{r \in R \mid rn = 0 \quad \forall n \in N \right\} .
+	\end{align*}
+\end{defn}
+If \(N\) is not a torsion submodule of \(M\), then \(\textrm{Ann}(N) = 0\). If \(N,L \leq M\) as submodules with \(N\subset L\), then \(\textrm{Ann}(L) \subset \textrm{Ann}(N)\).\\
+
+Observe that if \(R\) is a PID and \(N\subset L\subset M\) with \(\textrm{Ann}(N) = (a)\) and \(\textrm{Ann}(L) = (b)\), then \(a\mid b\). Hence, the annihilator of any element \(x \in M\) divides the annihilator of \(M\).
+
+\begin{thm}
+	Let \(R\) be a Principal Ideal Domain, let \(\prescript{}{R}M\) be a free \(R\)-module of rank \(n\), and let \(N\leq M\) be a submodule. Then \(N\) is free with rank \(m\leq n\), and there exists a basis \((y_1,y_2,\ldots,y_n) \in M^{n}\) so that
+	\begin{align*}
+		(a_1y_1,a_2y_2,\ldots,a_my_m)
+	\end{align*} is a basis of \(N\) where \(a_1,a_2,\ldots,a_m \in R\) are nonzero. Furthermore, they satisfy the divisibility relationship:
+	\begin{align*}
+		a_1 \mid  a_2 \mid \ldots \mid a_m.
+	\end{align*}
+\end{thm}
+
+\begin{proof}
+	
+\end{proof}
+
+\begin{thm}[Fundamental Theorem of Invariant Factors]
+	Let \(R\) be a PID and let \(\prescript{}{R}M\) be a finitely generated \(R\)-module.
+	\begin{itemize}
+		\item \(M\) is isomorphic to the direct sum of finitely many cyclic modules:
+			\begin{align*}
+				M \cong R^{r} \oplus R / (a_1) \oplus R / (a_2) \oplus \ldots \oplus R / (a_m)
+			\end{align*}
+			for some \(r \in \N\) and nonzero elements \(a_1,a_2,\ldots,a_m\) of \(R\) which are nonunital and satisfy
+			\begin{align*}
+				a_1 \mid a_2 \mid \ldots \mid a_m.
+			\end{align*}
+		\item \(M\) is torsion free if and only if \(M\) is free
+		\item In the decomposition
+			\begin{align*}
+				M \cong R^{r} \oplus R / (a_1) \oplus R / (a_2) \oplus \ldots \oplus R / (a_m)
+			\end{align*}
+			the torsion module is given by
+			\begin{align*}
+				\textrm{Tor}(M) \cong R / (a_1) \oplus R / (a_2) \oplus \ldots \oplus R / (a_m)
+			\end{align*}
+			and hence \(M\) is a torsion module if and only if \(r = 0\), in which case the annihilator of \(M\) is the ideal \((a_m)\).
+	\end{itemize}
+\end{thm}
+This decomposition is unique due to the divisibility condition.
+
+\begin{defn}[Free Rank]
+	The integer \(r\) in the decomposition of an \(R\)-module \(\prescript{}{R}M\) is called the \textbf{free rank} or \textbf{Betti number} of \(M\) and the elements \(a_1,a_2,\ldots,a_m \in R\) are the \textbf{invariant factors} of \(M\).
+\end{defn}
+
+We can apply the Chinese Remainder Theorem here to decompose the cyclic modules into cyclic modules with simple annihilators.
+
+\begin{thm}[Fundamental Theorem of Elementary Divisors]
+	Let \(R\) be a PID and let \(\prescript{}{R}M\) be a finitely generated \(R\)-module. Then
+	\begin{align*}
+		M \cong R^{r} \oplus R / (p_1^{\alpha _1}) \oplus R / (p_2^{\alpha 2}) \oplus \ldots \oplus R / (p_t ^{\alpha _t}
+	\end{align*}
+	where \(r \in \N\) and \(p_1^{\alpha_1},\ldots,p_t ^{\alpha _t}\) are positive powers of primes in \(R\).\\
+
+	The prime powers \(p_1^{\alpha _1},\ldots,p_t ^{\alpha _t}\) are called the \textbf{elementary divisors}.
+\end{thm}
+The elementary divisors of a module are unique.\\
+
+Notice that the primes are not necessarily distinct. If we group together the distinct factors we can restate the theorem in a form that is also satisfied by infinitely generated modules.
+
+\begin{thm}[Primary Decomposition Theorem]
+	LLet \(R\) be a PID and let \(\prescript{}{R}M\) be a nonzero torsion \(R\)-module with nonzero annihilator \(a\). Suppose the factorization of \(a\) into distinct prime powers in \(R\) is
+	\begin{align*}
+		a = u p_1^{\alpha _1}p_2^{\alpha_2}\ldots p_n^{\alpha _n}
+	\end{align*}
+	and let
+	\begin{align*}
+		N_i = \left\{x \in M \mid p_i^{\alpha _i}x = 0 \right\} .
+	\end{align*}
+	Then \(N_i\leq M\) is a submodule with annihilator \(p_i^{\alpha _i}\) and is the submodule of \(M\) of all elements annihilated by some power of \(p_i\). Furthermore,
+	\begin{align*}
+		M = N_1 \oplus N_2 \oplus \ldots \oplus N_n.
+	\end{align*}
+	If \(M\) is finitely generated then each \(N_i\) is the direct sum of finitely many cyclic modules whose annihilators are divisors of \(p_i^{\alpha _i}\).\\
+
+	We call the submodule \(N_i\) the \textbf{\(p_i\)-primary component of \(M\)}.
+\end{thm}
+Notice that the elementary divisors of a finitely generated module \(M\) are the invariant factors of the primary components of \(\textrm{Tor}(M)\).\\
+
+\begin{lemma}
+	Let \(R\) be a PID and let \(p\) be a prime in \(R\). Let \(F\) denote the field \(R / (p)\).
+	\begin{itemize}
+		\item If \(M = R^{r}\), then \(M / pM \cong F^{r}\).
+		\item If \(M = R / (a)\) with \(a\in R\) nonzero, then if \(p\mid a\) 
+			\begin{align*}
+				M / pM \cong F
+			\end{align*}
+			Otherwise, \(M / pM \cong 0\).
+		\item If
+			\begin{align*}
+				M = R / (a_1) \oplus R / (a_2) \oplus \ldots \oplus R / (a_k)
+			\end{align*}
+			where \(p\mid a_i\), then \(M / pM \cong F^{k}\).
+	\end{itemize}
+\end{lemma}
+This is what gives us uniqueness. Tht is, two finitely generated \(R\)-modules are isomorphic if and only i they have the same free rank and lst of invariant factors (or elementary divisors).
+
+\begin{cor}
+	Let \(R\) be a PID and let \(M\) be a finitely generated \(R\)-module. The elementary divisors of \(M\) are the prime power factors of the invariant factors of \(M\). Furthermore, the largest invariant factor of \(M\) is the product of the largest distinct prime powers among the elementary divisors of \(M\).
+\end{cor}
+In fact, the second largest invariant factor is the product of the largest of distinct prime powers among the remaining elementary divisors of \(M\), and so on...\\
+
+The Fundamental Theorem of Finitely Generated Abelian Groups follows directly from this by taking \(R = \Z\).
+
+% \printindex
+\end{document}

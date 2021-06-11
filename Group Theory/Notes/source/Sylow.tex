@@ -1,0 +1,102 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+
+\begin{defn}
+	Let \(G\) be a group and \(p\) prime. If \(\left| G \right| = p^{\alpha }\) for \(\alpha \geq 1\) then \(G\) is called a \textbf{\(p\)-group}. Even if \(G\) has different order, if a subgroup has order \(p^{\alpha }\), then we call the subgroups \textbf{\(p\)-subgroups}.\\
+
+	In the specific case where \(\left| G \right| = p^{\alpha }m\) for \(p \not\mid m\), then a subgroup of \(G\) of order \(p^{\alpha }\) is called a \textbf{Sylow \(p\)-subgroup of \(G\)}.
+\end{defn}
+We denote the set of Sylow \(p\)-subgroups of \(G\) by \(\textrm{Syl}_p(G)\), and the number of Sylow \(p\)-subgroups of \(G\) by \(n_p(G)\).
+
+\begin{thm}[Sylow's Theorem]
+	Let \(G\) be a group of order \(n = p^{a}m\), where \(p\) is prime and \(p \not\mid m\). Then
+	\begin{itemize}
+		\item G contains a Sylow \(p\)-subgroup.
+		\item The number of Sylow \(p\)-subgroups of order \(p^{a}\) is congruent to \(1 \pmod p\) and all these subgroups are conjugate. Furthermore, \(n_p\mid m\) as \(n_p\) is the index in \(G\) of the normalizer of any Sylow \(p\)-subgroup.
+		\item Any \(p\)-subgroup is a subgroup of a Sylow \(p\)-subgroup.
+	\end{itemize}
+\end{thm}
+Moreover, Sylow \(p\)-subgroups are not only conjugate, but isomorphic.
+
+\begin{cor}
+	Let \(P\) be a Sylow \(p\)-subgroup of \(G\). The following are equivalent:
+	\begin{itemize}
+		\item \(P\) is the unique Sylow \(p\)-subgroup of \(G\) ; \(n_p = 1\) 
+		\item \(P \triangleleft G\)
+		\item \(P \textrm{char}G\) 
+		\item If \(X\subset G\) such that \(\left| x \right| = p^{k_x}\)for all \(x \in X\), then \(\langle X \rangle \) is a \(p\)-group.
+	\end{itemize}
+\end{cor}
+
+\begin{exmp}
+	Let \(G\) be finite and \(p\) prime.
+	\begin{itemize}
+		\item If \(p \not\mid \left| G \right| \), the Sylow \(p\)-subgroup of \(G\) is trivial. If \(\left| G \right| = p^{\alpha }\), then \(G\) is the unique Sylow \(p\)-subgroup of \(G\).
+		\item A finite abelian group has a unique Sylow \(p\)-subgroup for each prime \(p\) called the \textbf{\(p\)-primary component} of the abelian group. It consists of all elements \(g\) such that \(\left| g \right| = p^{k_g}\).
+		\item \(S_3\) has three Sylow 2-subgroups:
+			\begin{align*}
+				\langle (12) \rangle , \langle (23) \rangle , \langle (13) \rangle .
+			\end{align*}
+			It has a unique (hence normal) Sylow 3-subgroup \(\langle (123) \rangle = A_3\).
+		\item \(A_4\) has a unique Sylow 2-subgroup \(\langle (12)(34),(13)(24) \rangle \cong V_4\). It has four Sylow 3-subgroups:
+			\begin{align*}
+				\langle (123) \rangle , \langle (124) \rangle , \langle (134) \rangle , \langle (234) \rangle .
+			\end{align*}
+		\item \(S_4\) has  \(n_2 = 3\) and \(n_3 = 4\). Furthermore, \(S_4\) has a subgroup isomorphic to \(D_{8}\), and hence by conjugacy properties every \(2\)-subgroup of \(S_4\) is isomorphic to \(D_8\).
+	\end{itemize}
+\end{exmp}
+
+Sylow's theorem is incredibly useful for showing that groups of a particular order cannot be simple. For example, it can be used to show that if a group is of order 60 and has more than one Sylow 5-subgroup, it must be simple, and hence proves easier that \(A_5\) is simple (and its uniqueness as a simple group of order 60).\\
+
+Before we get into some nice applications of Sylow's theorem, we will construct some properties for \(p\)-groups that will be useful later.
+
+\begin{defn}[Maximal Subgroup]
+	A \textbf{maximal subgroup} of a group \(G\) is a proper subgroup \(M<G\) such that there ar eno subgroups \(H<G\) that satisfy
+	\begin{align*}
+		M < H < G.
+	\end{align*}
+\end{defn}
+We can easily see that every proper subgroup of a finite group is contained in a maximal subgroup, but infinite groups need not have maximal subgroups.
+
+\begin{thm}[Properties of \(p\)-groups]
+	Let \(p\) be a prime and let \(P\) be a group of order \(p^{a}\) for \(a\geq 1\). Then
+	\begin{itemize}
+		\item \(Z(P) \neq 1\) 
+		\item If \(H \triangleleft P\) is nontrivial, then \(H\cap Z(P) \neq 1\). Furthermore, every normal subgroup of order \(p\) is contained in \(Z(P)\).
+		\item If \(H \triangleleft P\) then \(H\) contains a subgroup \(H'\) of order \(p^{b}\) so that \(H' \triangleleft P\) for each divisor \(p^{b}\mid \left| H \right| \).
+		\item If \(H<P\) then \(H< N_P(H)\) (every proper subgroup of \(P\) is a proper subgroup of its normalizer in \(P\))
+		\item Every maximal subgroup \(M<P\) is of index \(p\) and \(M \triangleleft P\).
+	\end{itemize}
+\end{thm}
+
+\begin{thm}[Cauchy's Theorem]
+	If a prime number \(p\) divides the order of a group \(G\), then \(G\) contains an element of order \(p\).
+\end{thm}
+A group of \(p\)-power order, acting on a set of size divisible by \(p\), has the property that the number of fixed points is divisible by \(p\). Hence, if there is at least one fixed point, then there are at least \(p\).
+
+\begin{thm}
+	Let \(G\) be a group of order \(p^{a}m\), where \(p\) is prime not dividing \(m\). Then, for \(0\leq i\leq a\),
+	\begin{itemize}
+		\item \(G\) contains a subgroup of order \(p^{i}\) 
+		\item if \(i<m\), then any subgroup of order \(p^{i}\) is contained normally in a subgroup of order \(p^{i+1}\).
+	\end{itemize}
+\end{thm}
+
+\begin{thm}
+	The center of a non-trivial \(p\)-group is non-trivial. Furthermore, if \(\left| P \right| = p^{a}\), then \(P\) has a chain
+	\begin{align*}
+		P_0<P_1<\ldots<P_a=P
+	\end{align*}
+	of subgroups, where \(\left| P_i \right| =p^{i}\) and each is a normal subgroup of \(P\). Moreover, \(P_{i+1} / P_i \cong C_p\).
+\end{thm}
+
+\end{document}

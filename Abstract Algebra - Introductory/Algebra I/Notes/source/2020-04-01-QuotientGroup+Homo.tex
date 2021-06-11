@@ -1,0 +1,76 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+
+\subsection{Quotient Groups}
+\label{subsec:quotient_groups}
+
+
+\begin{defn}[Group Homomorphism]
+	We call a map \(\varphi:G_1\to G_2\) a \textbf{group homomorphism} if it preserves the operation; \(\varphi(gh) = \varphi(g)\varphi(h)\) for every \(g,h \in G_1\).
+\end{defn}
+If the homomorphism is bijective, then it is an \textbf{isomorphism}. A homomorphism \(\varphi\) is an isomorphism if and only if \( \textrm{Ker}\varphi = e_1\) and \( \textrm{Im}\varphi = G_2\).
+
+\begin{prop}
+	Let \(G\) and \(H\) be groups and let \(\varphi :G\to H\) be a homomorphism.
+	\begin{itemize}
+		\item \(\varphi (1_G) = 1_H\) 
+		\item \(\varphi (g^{-1}) = \varphi (g)^{-1}\)
+		\item \(\varphi (g^{n}) = \varphi (g)^{n}\) 
+		\item \(\textrm{Ker}\varphi \triangleleft G\)
+		\item \(\textrm{Im}\varphi \leq H\)
+	\end{itemize}
+\end{prop}
+In fact, a subgroup \(N \triangleleft G\) is normal if and only if it is the kernel of a group homomorphism.
+
+\begin{defn}[Quotient Group]
+	We denote by \(G / N\) the \textbf{quotient group}, whose elements are the cosets of the normal subgroup \(N\), with operations defined by \((aN)(bN) = (abN)\)
+\end{defn}
+\begin{thm}[First Isomorphism Theorem]
+If \(\varphi:G_1\to G_2\) is a homomorphism, then
+\begin{align*}
+	\textrm{Im}\varphi \cong G_1 / \textrm{Ker}\varphi.
+\end{align*}
+\end{thm}
+This tells us that \(\varphi \) is injective if and only if the kernel is trivial, and we can also see that \(\left| G : \textrm{Ker}\varphi  \right|  = \left| \varphi (G) \right| \).\\
+
+This key theorem allows us to fully connect the notion of normal subgroups partitioning a group.
+
+\begin{defn}[Natural Homomorphism]
+	If \(N \triangleleft G\), then \(\psi:G \to G / N\) defined by \(\psi(g) = gN\) is the natural homomorphism with \( \textrm{Ker}\psi = N\) and \( \textrm{Im}\psi = G / N\).
+\end{defn}
+
+
+\begin{thm}[Third Isomorphism Theorem]
+	Let \(G\) be a group, and let \(H,K \triangleleft G\) with \(H\leq K\). Then \(K / H \triangleleft G / H\) and
+	\begin{align*}
+		(G / H) / (K / H) \cong G /K
+	\end{align*}
+\end{thm}
+
+The point of this theorem is that quotients of quotient groups provide little additional information.
+
+\begin{thm}[Fourth Isomorphism Theorem]
+	Let \(N \triangleleft G\) be a normal subgroup of \(G\). There is a bijection from the set of subgroups A satisfying \(N \leq A\leq G\) onto the set of subgroups \(A/N \leq G / N\).\\
+
+	That is, every subgroup of \(G / N\) can be viewed as some \(A / N\) for some subgroup \(A\) containing \(N\). Furthermore, for all \(A,B \leq G\) with \(N\leq A,B\),
+	\begin{itemize}[(i).]
+		\item \(A\leq B \iff A / N \leq B / N\) 
+		\item \(A\leq B \implies \left| B : A \right| = \left| B / N : A / N \right| \) 
+		\item \(\langle A,B \rangle / N = \langle A / N, B / N \rangle \) 
+		\item \(A \triangleleft G \iff A / N \triangleleft G / N\)
+	\end{itemize}
+\end{thm}
+This theorem really just tells us that we can get isomorphisms beween structures via lattices-- if two group structures have a certain lattice structure, there is a natural isomorphism between each other.
+
+% Include some example of lattices here
+
+\end{document}

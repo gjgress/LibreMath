@@ -1,0 +1,48 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+\begin{defn}[Rings]
+	A ring is a non-empty set with two operations, \(+\) and \(\cdot \). The \(+\) operation is commutative, associative, has an identity, and inverses for all elements. The \(\cdot \) operation is associative. Both operations have two distributive rules, namely, for all \(a,b,c\),
+	\begin{align*}
+		(a+b)c = ac + bc\\
+		a(b+c) = ab+ac 
+	\end{align*}
+\end{defn}
+If multiplication is commutative, then it is a commutative ring. If in addition, multiplication has an identity, and an inverse for all except the additive inverse, then it is a field.\\
+
+Unless specified otherwise, we will assume our rings have a multiplicative identity.
+\begin{defn}[Zero Divisors and Units]
+	Let \(R\) be a ring. A nonzero element \(a \in R\) is called a \textbf{zero divisor} if there exists a nonzero element \(b \in R\) such that \(ab=0\) or \(ba=0\).\\
+
+	An element \(u \in R\) is called a \textbf{unit} in \(R\) if there is a \(v \in R\) such that \(uv = vu = 1\)-- that is, \(u\) has a multiplicative inverse. The set of units in \(R\) is denoted \(R^{X}\).
+\end{defn}
+Every element besides \(0\) is a unit in a field. We can also see that units form a group under multiplication.\\
+
+Notice that zero divisors and units are distinct concepts-- a zero divisor can never be a unit.
+
+\begin{defn}[Integral Domain]
+	A commutative ring is called an \textbf{integral domain} if it has no zero divisors.
+\end{defn}
+
+\begin{prop}
+	Let \(a,b,c \in R\) be elements of a ring with \(a\) not a zero divisor. Then
+	\begin{align*}
+		ab = ac \implies a=0\text{ or } b = c
+	\end{align*}
+	In particular, if \(R\) is an integral domain this always holds.
+\end{prop}
+
+\begin{hw}
+	Prove that any finite integral domain is a field.\\
+	(Hint: consider \(x\mapsto ax\) for \(a\) nonzero)
+\end{hw}
+
+\end{document}

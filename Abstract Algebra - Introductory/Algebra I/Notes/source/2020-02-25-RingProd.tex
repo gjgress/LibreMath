@@ -1,0 +1,51 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+\section{Direct Sums of Rings}
+\label{sec:direct_sums_of_rings}
+\begin{defn}[Direct Sum]
+	The \textbf{direct sum} of two rings \(R_1\oplus R_2\) (or direct product \(R_1\times R_2\)) is the ring of all ordered pairs \((r_1,r_2)\), with \(r_i \in R_i\), with addition and multiplication defined by adding and multiplying the components:
+	\begin{align*}
+		(r_1,r_2) + (s_1,s_2) = (r_1+s_1,r_2+s_2) \quad (r_1,r_2)(s_1,s_2) = (r_1s_1,r_2s_2).
+	\end{align*}
+\end{defn}
+One can check that this indeed satisfies the properties of a ring.
+\begin{defn}[Projection]
+	The \textbf{projection} subsets are defined by
+	\begin{align*}
+		R_1^* := \left\{(r_1,0) \mid r_1 \in R_1 \right\} \\
+		R_2^* := \left\{(0,r_2) \mid r_2 \in R_2 \right\} 
+	\end{align*}
+\end{defn}
+These projection subsets are isomorphic to \(R_1,R_2\) respectively. Furthermore, \(R_1^{*},R_2^{*}\) are ideals in \(R_1\oplus R_2\), and every \(c \in R_1 \oplus R_2\) has a unique decomposition \(c = c_1 + c_2\) with \(c_i \in R_i\).
+\begin{prop}[Unique Decompositions]
+	If \(I,J\) are ideals in a ring \(R\) such that every \(r \in R\) can be uniquely written as \(r = i + j\), with \(i \in I\), \(j \in J\), then \(R \cong I\oplus J\)
+\end{prop}
+
+\begin{thm}[More Isomorphism Theorems]
+	Let \(R\) be a ring.
+	\begin{itemize}
+		\item \textit{(Second Isomorphism Theorem for Rings)} Let \(A\leq R\) and \(B \triangleleft R\). Then
+			\begin{align*}
+				A+B \leq R\\
+				A\cap B \triangleleft A\\
+				(A+B) / B \cong A / (A\cap B)
+			\end{align*}
+	\item \textit{(Third Isomorphism Theorem for Rings} Let \(I,J \triangleleft R\) with \(I\subset J\). Then 
+		\begin{align*}
+			J / I \triangleleft R / I\\
+			(R / I) / (J / I) \cong R / J
+		\end{align*}
+	\item Let \(I \triangleleft R\). Then there is a correspondence between subrings \(A<R\) that contain an ideal \(I\) and the subrings of \(R / I\) by \(A \leftrightarrow A / I\). Furthermore, if \(A\leq R\) contains \(I\), then \(A \triangleleft R\) if and only if \(A / I \triangleleft R / I\).
+	\end{itemize}
+\end{thm}
+
+\end{document}

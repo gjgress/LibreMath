@@ -10,45 +10,64 @@
 \usepackage{hyperref}
 \hypersetup{pdftex,colorlinks=true,allcolors=blue}
 \usepackage{hypcap}
+\usetikzlibrary{matrix,arrows.meta}
 
 \logo{~/LibreMath/Auxiliary Resources/resources/png/logo.png}
 \institute{Rice University}
 %\faculty{Faculty of Whatever Sciences}
 \department{Department of Mathematics}
-\title{Introduction to Rings, Fields, and Groups}
+\title{Introduction to Groups, Rings, and Fields}
 \subtitle{A first exposure to core concepts in abstract algebra}
 \author{\textit{Author}\\Gabriel \textsc{Gress}}
 %\supervisor{Linus \textsc{Torvalds}}
 %\context{Well, I was bored...}
 \date{\today}
+
+%\makeindex
+
 \begin{document}
 % \section{}	
 
 \maketitle
 
 \tableofcontents
-\input{02-04-20}
-\input{02-05-20}
-\input{02-12-20}
-\input{02-18-20}	
-\input{02-19-20}	
-\input{02-25-20}	
-\input{02-26-20}
-\input{03-03-20}
-\input{03-04-20}
-\input{03-10-20}
-\input{03-11-20}
-\input{03-24-20}
-\input{03-25-20}
-\input{03-31-20}
-\input{04-01-20}
-\input{04-07-20}
-\input{04-08-20}
-\input{04-28-20}
-\input{04-29-20}
-\input{05-06-20}
-\input{05-12-20}
-\input{ModuleTheory}
+\input{2020-02-04-NumThryPrelim}
+\input{2020-03-24-IntroGroups}
+\input{2020-03-25-Subgroups}
+\input{2020-03-31-NormalSubgroups}
+\input{2020-04-01-QuotientGroup+Homo}
+\input{2020-04-07-GroupProd}
+\input{2020-03-26-CyclicGroups}
+\input{2020-04-08-PermGroup}
+%\input{GroupRepresentations}
+%\input{AlternatingGroup}
+\input{2020-04-28-GroupAction}
+%\input{Automorphisms}
+%\input{GroupRepresentations2}
+%\input{Sylow}
+\input{2020-04-09-ClassificationThms}
+%\input{NilpotentSolvableGroups}
+%\input{ProofFundThmFinAbelGrps}
+
+\chapter{Rings}
+\label{cha:rings}
+
+\input{2020-02-05-IntroRings}
+\input{2020-02-12-Subrings}
+
+\section{Ring Homomorphisms and Quotient Rings}
+
+\input{2020-02-18-QuotientRing}
+\input{2020-02-19-RingHomo}
+\input{2020-02-25-RingProd}
+\input{2020-02-26-DivisioninRings}
+\input{2020-03-03-GaussianInt}
+\input{2020-03-04-GaussianInt2}
+\input{2020-03-10-GaussInt3}
+\input{2020-03-11-FiniteFields}
+%\input{ModuleTheory}
+
+%\printindex
 
 \end{document}
 

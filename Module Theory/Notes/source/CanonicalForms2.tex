@@ -1,0 +1,101 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+
+Of course, we can create a similar representation of elementary divisors, which we will refer to as the Jordan canonical form. Unlike invariant factors however, we have to make an additional assumption-- the field \(F\) contains all the eigenvalues of the linear transformation \(T\). This is equivalent to assuming all plynomials factor completely into linear factors.\\
+
+It follows that \(V\) is a direct sum of finitely many cyclic  \(F[x]\)-modules of the form \(F[x] / (x-\lambda)^{k}\).\\
+
+We will choose as our basis
+\begin{align*}
+	\left\{ (\overline{x}-\lambda )^{k-1}, (\overline{x}-\lambda )^{k-2}, \ldots, \overline{x}-\lambda , 1 \right\} 
+\end{align*}
+in the quotient \(F[x] / (x-\lambda)^{k}\). Then the linear transformation of multiplication by \(x\) acts as follows:
+\begin{align*}
+	(\overline{x}-\lambda )^{k-1} \mapsto \lambda (\overline{x}-\lambda)^{k-1} + (\overline{x}-\lambda)^{k} = \lambda (\overline{x}-\lambda)^{k-1}\\
+	(\overline{x}-\lambda )^{k-2}\mapsto \lambda (\overline{x}-\lambda)^{k-2} + (\overline{x}-\lambda)^{k-1}\\
+	\vdots\\
+	\overline{x}-\lambda \mapsto \lambda (\overline{x}-\lambda ) + (\overline{x}-\lambda)^2\\
+	1 \mapsto \overline{x}
+\end{align*}
+This linear map has a corresponding matrix, of course.
+
+\begin{defn}[Jordan Blocks]
+	The \textbf{\(k\times k\) elementary Jordan matrix with eigenvalue \(\lambda \)} is the \(k\times k\) matrix corresponding to the linear transformation of multiplication by \(x\) on the Jordan canonical basis:
+	\begin{align*}
+		\begin{pmatrix} 
+			\lambda & 1 & & & \\
+				& \lambda  & \ddots & &\\
+			  &  & \ddots & 1 & \\
+			  &  &   & \lambda & 1\\
+			  & & & & \lambda 
+		\end{pmatrix} 
+	\end{align*}
+	We refer to a matrix of this form as a \textbf{Jordan block}.
+\end{defn}
+
+We can apply this to each of the cyclic factors of \(V\) in its elementary divisor decomposition to obtain a basis for \(V\), with respect to which the matrix for \(T\) has a special form.
+
+\begin{defn}[Jordan Canonical Form]
+	A matrix is in \textbf{Jordan canonical form} if it is of the form
+\begin{align*}
+	\begin{pmatrix} 
+	J_1 & & &\\
+	    & J_2 & & \\
+	    & & \ddots & \\
+	    & & & J_t
+	\end{pmatrix} 
+\end{align*}
+where \(J_i\) are Jordan blocks.
+\end{defn}
+The linear transformation \(T\) is in Jordan canonical form with respect to the elementary divisor basis.
+
+\begin{thm}
+	Let \(V\) be a finite dimensional vector space over \(F \) and \(T\) a linear transformation of \(V\). If \(F\) contains all the eigenvalues of \(T\), then there is a basis for \(V\) with respect to which the matrix for \(T\) is in Jordan canonical form. Furthermore, this matrix is unique up to permutation.
+\end{thm}
+
+\begin{cor}
+	If a matrix \(A\) is similar to a diagonal matrix \(D\), then \(D\) is the Jordan canonical form. Hence, two diagonal matrices are similar if and only if their diagonal entries are the same up to permutation.
+\end{cor}
+
+\begin{cor}
+	If \(A\) is an \(n\times n\) matrix with entries from \(F\), and \(F\) contains all the eigenvalues of \(A\), then \(A\) is similar to a diagonal matrix over \(F\) if and only if the minimal polynomial of \(A\) has no repeated roots.
+\end{cor}
+
+\begin{exmp}
+	
+\end{exmp}
+
+\subsection{Changing from one canonical field to another}
+\label{sub:changing_from_one_canonical_field_to_another}
+
+\subsection{Elementary Divisor Decomposition Algorithm}
+\label{sub:elementary_divisor_decomposition_algorithm}
+
+\subsection{Converting an \(n\times n\) matrix to Jordan canonical form}
+\label{sub:converting_an_n_by_n_matrix_to_Jordan_canonical_form}
+
+
+
+
+% \printindex
+\end{document}

@@ -1,0 +1,87 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+
+\begin{prop}
+	The following conditions on an \(R\)-module \(V\) are equivalent:
+	\begin{itemize}
+		\item Every submodule of \(V\) is finitely generated
+		\item There is no infinite strictly increasing chain \(W_1 < W_2 < \ldots\) of submodules of \(V\).
+	\end{itemize}
+\end{prop}
+
+We formalize this notion via Noetherian rings and modules.
+
+\begin{defn}[Noetherian Modules]
+A left \(R\)-module \(\prescript{}{R}M\) is said to be a \textbf{Noetherian \(R\)-module} if it satisfies the ascending chain condition on submodules. That is, for any increasing chain of submodules of \(M\) 
+\begin{align*}
+	M_1\subset M_2 \subset M_3 \subset \ldots
+\end{align*}
+there is a positive integer \(m\) such that, for all \(k\geq m\), \(M_k = M_m\).\\
+
+	A ring \(R\) is \textbf{Noetherian} if it is Noetherian as a left module over itself. That is, there are no infinite increasing chains of left ideals of \(R\).
+\end{defn}
+\begin{cor}
+	If \(R\) is Noetherian then every ideal of \(R\) is finitely generated.
+\end{cor}
+
+\begin{thm}[Submodules of Noetherian]
+	Let \(R\) be a ring and \(\prescript{}{R}M\) a left \(R\)-module. Then the following are equivalent:
+	\begin{itemize}
+		\item \(M\) is a Noetherian \(R\)-module
+		\item Every nonempty set of submodules of \(M\) contains a maximal element under inclusion
+		\item Every submodule of \(M\) is finitely generated
+	\end{itemize}
+\end{thm}
+Notice that these conditions also imply that \(R\) is a Noetherian ring, and furthermore that every proper ideal of \(R\) is a maximal ideal.
+
+\begin{cor}
+	If \(R\) is a PID then every collection of ideals of \(R\) has a maximal element, and \(R\) is Noetherian.
+\end{cor}
+
+\begin{lemma}
+	Let \(\varphi:V\to V'\) be a homomorphism of \(R\)-modules.
+	\begin{itemize}
+		\item If \(V\) is finitely generated and \(\varphi\) is surjective, then \(V'\) is finitely generated.
+		\item If the kernal and image of \(\varphi\) are finitely generated, then \(V\) is finitely generated.
+		\item Let \(W\) be a submodule of an \(R\)-module \(V\). If both \(W\) and \(\overline{V} = V / W\) are finitely generated, then \(V\) is finitely generated. If \(V\) is finitely generated, so is \(\overline{V}\).
+	\end{itemize}
+\end{lemma}
+
+\begin{thm}[Hilbert Basis Theorem]
+	Let \(R\) be a Noetherian ring. The polynomial ring \(R[x]\) is Noetherian.
+\end{thm}
+
+\begin{prop}[Quotients of Noetherian]
+	Let \(R\) be a Noetherian ring, and let \(I\) be an ideal of \(R\). Any ring that is isomorphic to the quotient ring \(\overline{R} = R / I\) is Noetherian.
+\end{prop}
+\begin{cor}
+	Let \(P\) be a polynomial ring in a finite number of variables over the integers/field. Any ring \(R\) that is isomorphic to the quotient ring \(P / I\) is Noetherian.
+\end{cor}
+\begin{lemma}
+	Let \(R\) be a ring, let \(I\) be an ideal of the polynomial ring \(R[x]\). The set \(A\) whose elements are the leading coefficients of the nonzero polynomials in \(I\), together with the zero element of \(R\), is an ideal of \(R\), the \textbf{ideal of leading coefficients}.
+\end{lemma}
+
+
+
+% \printindex
+\end{document}

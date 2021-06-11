@@ -1,0 +1,106 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+
+\section{Groups of Symmetries}
+\label{sec:groups_of_symmetries}
+
+While the abstract definition of groups seems very natural, the construction of groups actually originated as a way to capture certain notions of physical systems. One important natural group arises from symmetries of geometric objects.\\
+
+Let \(n \in \Z_+\) be a positive integer with \(n\geq 3\), and denote by \(D_{2n}\) the set of symmetries of a regular \(n\)-gon (the \textbf{dihedral group}). We consider a symmetry to be any rigid motion that maintains the same locations of nodes of the \(n\)-gon (but the ordering of the nodes might differ).\\
+
+We can uniquely describe a symmetry \(s\) by defining the permutation \(\sigma \) on \(\left\{ 1,2,\ldots,n \right\} \) that permutes the nodes. Notice, however, that not every permutation is allowed-- rotations do not change the relative ordering of the nodes, and reflections merely reverse the ordering of the nodes. In short, instead of the \(n!\) possible permutations, we are actually restricting ourselves to \(2n\) permutations-- the \(n\) permutations obtained by cycling the list, and the \(n\) permutations obtained by reversing each of those permutations.\\
+
+We can make \(D_{2n}\) into a group by defining the oberation \(st\) for \(s,t \in D_{2n}\), which is the symmetry obtained by first applying the transformations of \(t\), and then the transformations of \(s\). This is associative because it is the composition of functions; the identity is given by the identity permutation (fixing all vertices in place), and the inverse symmetry is the transformations that undoes the symmetries.\\
+
+In fact, for any \(n\)-gon, all symmetries can be described as an element of \(D_{2n}\), and hence we will show some properties of \(D_{2n}\) that will allow us to utilize it better as group. We denote by \(r\) the transformation given by the rotation clockwise about the origin by \(\sfrac{2\pi }{n}\) radians, and \(s\) to be the reflection about the line of symmetry from the first index through the origin. Then \(D_{2n}\) has the following properties:
+\begin{itemize}
+	\item \(1,r,r^2,\ldots,r^{n-1}\) are all distinct, \(r^{n}=1\) and so \(\left| r \right| =n\)
+	\item \(\left| s \right| =2\) 
+	\item \(s \neq r^{i}\) for any \(i\) 
+	\item \(sr^{i}\neq sr^{j}\) for all \(i\neq j\), \(i,j<n\)
+\end{itemize}
+These properties allow us to explicitly view the symmetry group by
+\begin{align*}
+	D_{2n}= \left\{1,r,r^2,\ldots,r^{n-1}, s,sr, s r^2,\ldots,s r^{n-1} \right\} 
+\end{align*}
+Furthermore, we have that \(rs = s r ^{-1}\), and \(r^{i}s = s r^{-i}\). These properties allow us to combine elements and simplify quickly, and hence are good to be familiar with.
+
+\begin{exmp}
+	Consider \(n=12\), and hence \(D_{24}\). To compose the symmetries given by \((sr^{9})\) and \((s r^{6})\), we get
+	\begin{align*}
+		(s r^{9}) (s r^{6}) = s (r^{9}s)r^{6} = s(s r^{-9})r^{6} = s^{2}(r^{-3}) = r^{-3} = r^{9}
+	\end{align*}
+\end{exmp}
+
+\section{Groups of Permutations}
+\label{sec:permutation_groups}
+
+When considering the construction of the dihedral group, one might be curious what occurs if one allows all permutations of nodes within the set. This in fact results in a group as well-- the permutaton group.
+
+\begin{defn}[Permutation Group]
+	Let \(\Omega \) be a nonempty set and let \(S_\Omega \) denote the set of all bijections from \(\Omega \) to itself. \(S_\Omega \) is a group under the operation of composition, and is referred to as the \textbf{symmetric group on the set \(\Omega \)}.\\
+
+	If \(\Omega  = \left\{ 1,2,3,\ldots,n \right\} \), the \textbf{symmetric group of degree \(n\)} is denoted \(S_n\).
+\end{defn}
+
+One learns in combinatorics that the number of permutations of a set of size \(n\) is \(n!\), and so \(\left| S_n \right| = n!\).\\
+
+Now we will describe a clever notation that can be used to write elements \(\sigma \) of \(S_n\) referred to as cycle decomposition.
+
+\begin{defn}[Cycle Decomposition]
+	A \textbf{cycle} is a string of integers representing the elements of \(S_n\) which cyclically permutes these integers (and fixes all other integers). For example, the cycle \((a_1a_2\ldots a_m)\) sends \(a_1\) to \(a_2\), \(a_2\) to \(a_3\), and so on, finally sending \(a_m\) to \(a_1\). Every element \(\sigma \in S_n\) can be described by following the rearrangement of integers until a cycle forms-- and then looking for the cycles in the remaining numbers. Thus, we can write a permutation in the form
+	\begin{align*}
+		(a_1a_2\ldots a_{m_1}) (a_{m_1+1}a_{m_1+2}\ldots a_{m_2})\ldots(a_{m_{k-1}+1}a_{m_{k-1}+2}\ldots a_{m_k})
+	\end{align*}
+	which represents \(k\) different cycles that \(\sigma \) partitions \(\Omega \) into.\\
+
+This allows us to quickly see how \(\sigma \) acts on elements in \(S_n\). To calculate \(\sigma (x)\), find \(x\) in the list, and if there is an integer to the right of it, then \(\sigma (x)\) equals that integer. Otherwise, it is the end of the cycle and hence \(\sigma (x)\) is the first element in the list.\\
+
+The product of all the cycles is called the \textbf{cycle decomposition} of \(\sigma \).
+\end{defn}
+The \textbf{length} of a given cycle is the number of integers that appears in it. A cycle of length \(t\) is called a \(t\)-cycle. Finally, two cycles are called \textbf{disjoint} if they have no numbers in common (in a symmetric group, all cycles are disjoint).\\
+
+This also makes it simple to find inverses, as the cycle decomposition of \(\sigma ^{-1}\) is obtained by reversing the order of elements within each cycle. To compute compositions, first follow the cycle given in the first permutation, then the cycle in the second permutation.\\
+
+As one works with more examples, they will quickly see that \(S_n\) is non-abelian for all \(n\geq 3\). But of course, disjoint cycles commute, and so one can rearrange the cycles in any product of disjoint cycles without changing the permutation.\\
+
+Exercise caution-- one will see that a permutation can be written via many different decompositions of cycles. However, there is only one unique decomposition into \textit{disjoint} cycles.
+
+\begin{cor}
+With the combinatorial construction of a permutation, we say a permutation is even or odd based on the number of inversions. With this definition, we say that a permutation is even if and only if the permutation is the product of an even number of transpositions.
+\end{cor}
+Thus we can check if a permutation is even or odd by counting the number of even cycles. An odd cycle does not change parity, but an even cycle will. Thus, if a permutation has an even number of even cycles, it is even (parity of one). If instead the number of even cycles is odd, then it is an odd permutation (parity of negative one).\\
+
+\begin{defn}[Permutation Groups]
+	Permutation groups are subgroups of \(S_n\).
+\end{defn}
+For example, the dihedral group is merely one of many permutation groups.\\
+
+Let \(A_n\) denote the set of even permutations. This is clearly a subgroup of \(S_n\). 
+
+\begin{prop}
+\begin{align*}
+	\left| S_n : A_n \right| =2.
+\end{align*}
+\end{prop}
+
+\begin{proof}
+Observe that there is a bijection from the even permutations to the odd permutations by simply transposing the first two elements.
+\end{proof}
+
+We will discuss the alternating group \(A_n\) momentarily.
+
+\begin{hw}
+The order of an element \(g \in S_n\) is the LCM of the lengths of disjoint cycles.
+\end{hw}
+
+\end{document}

@@ -1,0 +1,30 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+\begin{thm}[First Isomorphism Theorem]
+	Let \(\varphi:R\to S\) be a ring homomorphism. Then \(R / \textrm{Ker}\varphi \cong \textrm{Im}\varphi\).
+\end{thm}
+\begin{proof}
+We know that
+\begin{align*}
+	a + \textrm{Ker}\varphi = b + \textrm{Ker}\varphi \iff \varphi(a) = \varphi(b).
+\end{align*}
+Let \(\psi:R / \textrm{Ker}\varphi \to \textrm{Im}\varphi\) be the map defined by \(a+I \mapsto \varphi(a)\). This map is well-defined and bijective. Now it suffices to show that \(\psi\) is a ring homomorphism.
+\begin{align*}
+	\psi\left( (a+ \textrm{Ker}\varphi) + (b + \textrm{Ker}\varphi) \right) = \psi\left( (a+b)+ \textrm{Ker}\varphi \right) = \varphi(a+b) = \varphi(a) + \varphi(b) 
+\end{align*}
+which is equivalent to the sum of elements of \(\psi\), as desired. One can check that multiplication holds the same as well.
+\end{proof}
+This means that the homomorphism is completely determined by \(R\).
+\begin{defn}[Natural Homomorphism]
+	Let \(I \triangleleft R\) be an ideal of \(R\). There exists a \textbf{natural homomorphism}  \(\varphi:R\to R / I\) defined by \(\varphi:a\mapsto a+I\).
+\end{defn}
+\end{document}

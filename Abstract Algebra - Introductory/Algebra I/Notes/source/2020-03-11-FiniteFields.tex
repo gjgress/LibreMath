@@ -1,0 +1,87 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+
+\section{Finite Fields}
+\label{sec:finite_fields}
+\begin{thm}
+	Let \(F\) be a finite field. \(\left| F \right| = p^{k}\), \(p\) prime. Conversely, for every \(p^{k}\) there exists exactly one \(F\) such that \(\left| F \right| = p^{k}\)
+\end{thm}
+\begin{proof}
+We will show that the \( \textrm{dim} = k\); namely that there exists a basis \(b_1,\ldots,b_k\) that generates all elements in \(F\) uniquely by 
+\begin{align*}
+	a = \lambda_1 b_1 + \ldots + \lambda_k b_k
+\end{align*}
+where \(\lambda_1,\ldots,\lambda_k \in \Z_p\), which by our other theorem is a subfield. This is isomorphic to \(\Z_p[x] / (g)\) which is \(F\). Observe that \( \textrm{deg}g = k\)These are the residues mod \(g\), or
+\begin{align*}
+	a_0 + a_1x + \ldots + a_{k-1}x^{k-1}
+\end{align*}
+Each \(a_i\) can be chosen \(p\) ways, so then \(\left| F \right| = p^{k}\), as desired.
+\end{proof}
+\begin{thm}
+	For any element \(a \in F\) a finite field,
+	\begin{align*}
+		a + \ldots + a = 0
+	\end{align*}
+	where \(a\) is added exactly \(p\) times.
+\end{thm}
+\begin{proof}
+For all \(a\) there exists an \(n\) such that
+\begin{align*}
+	a+\ldots+a = 0
+\end{align*}
+when \(a\) is added \(n\) times, because eventually the sequence \(a, a+a, a+a+a, \ldots\) must repeat, and then you'll have your \(n\). There are infinite solutions, but finitely many elements in \(F\). This implies that
+\begin{align*}
+	a + \ldots + a = a + \ldots + a
+\end{align*}
+where on the LHS, \(a\) is added \(i\) times, and on the RHS added \(j\) times.\\
+Assume that \(i < j\). Observe that
+\begin{align*}
+	a + \ldots + a = 0
+\end{align*}
+for \(j-i\) additions. Now assume that \(a \neq 0\). Then multiply both sides by \(b\) implies
+\begin{align*}
+	\forall b, b + \ldots + b = 0
+\end{align*}
+because we can factor. Thus the assumption holds. Now we want to find the smallest \(n>0\). Assume for the sake of contradiction that \(n = kl\), both greater than \(1\) (not prime). Then we can separate the sum into blocks of \(k\) and blocks of \(l\). Then
+\begin{align*}
+	\underbrace{a+\ldots+a}_k + \underbrace{\ldots}_{l} + \underbrace{a+\ldots+a}_k = 0
+\end{align*}
+By assumption  \(a+\ldots+a\) is non-zero, so it is some \(b \in F\). But then \(\underbrace{b+\ldots+b}_l = 0\), which is a contradiction. So it has to be prime, as desired.
+\end{proof}
+\begin{thm}
+	Let \(F\) be a finite field. Then
+	\begin{align*}
+		F = \left\{ 0,1,\alpha,\alpha^2,\ldots,\alpha ^{\left| F \right| -2}\right\} 
+	\end{align*}
+	and \(\alpha ^{\left| F \right| -1} = 1\)
+\end{thm}
+\begin{thm}[Finite Field Extensions]
+	For all finite fields \(F\),there exists an \(H\leq F\) such that \(H \cong \Z_p\) for some \(p\). Furthermore, \(F\) is a vector space over \(\Z^{p}\).
+\end{thm}
+\(F\) is then a field extension of \(H\).
+Consider
+\begin{align*}
+	H = \left\{ 0,1,1+1,\ldots,\underbrace{1+\ldots+1}_{p-1} \right\} 
+\end{align*}
+Observe that adding and multiplying elements works like traditional addition and subtraction; namely that
+\begin{align*}
+(t\cdot 1)+(s\cdot 1) = (s+t) \pmod p \cdot 1
+\end{align*}
+for \(0\leq t\leq p-1\) and
+\begin{align*}
+	(\underbrace{1+\ldots+1}_t)\cdot (\underbrace{1+\ldots+1}_s) = ( ts) \pmod p \cdot 1
+\end{align*}
+and so the isomorphism to \(\Z_p\) holds, as all the elements can then be written by multiplication of \(0\leq t\leq p-1\) and \(1\).
+\begin{thm}
+	For any finite field \(F\), \(F \cong \Z_{p[x]} / (g)\) where \(g\) is a polynomial over \(\Z_p\), \( \textrm{deg }g = k\), \(g\) irreducible over \(\Z_p\)
+\end{thm}
+\end{document}

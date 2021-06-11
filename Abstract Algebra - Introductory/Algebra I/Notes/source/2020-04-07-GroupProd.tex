@@ -1,0 +1,34 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+\subsection{Direct Product of Groups}	
+\begin{defn}[Direct Product]
+	The \textbf{direct product} \(G_1\times G_2\) of groups \(G_1,G_2\) is the group of all ordered pairs \((g_1,g_2)\) where \(g_i \in G_i\), with the usual definition of multiplication:
+	\begin{align*}
+		(g_1,g_2)(h_1,h_2) = (g_1h_1,g_2h_2).
+	\end{align*}
+\end{defn}
+	It is clearly a group, and the projection subsets \(G_1^{*}= \left\{(g_1,e_2) \mid g_1 \in G_1 \right\} \) and \(G_2^{*}=\left\{(e_1,g_2) \mid g_2 \in G_2 \right\} \) are isomorphic to their respective groups. This in turn tells us that \(\left| G_1\times G_2 \right| = \left| G_1 \right| \left| G_2 \right| \).\\
+	\begin{prop}
+\(G_1^{*},G_2^{*} \triangleleft G_1\times G_2\) are normal subgroups, and every \(u \in G_1\times G_2\) can be decomposed as \(u = u_1u_2\), \(u_i \in G_i^{*}\).\\
+
+The converse holds as well; if \(N,M\) are normal subgroups of a group \(G\), and every \(g \in G\) can be written as \(g = nm\), \(n \in N, m \in M\), then \(G \cong N\times M\).
+	\end{prop}
+Of course, \((G_1\times G_2) / G_1^{*} \cong G_2\) and vice versa.\\
+
+We can even take the direct product of more than two groups:
+\begin{align*}
+	g = (g_1,g_2,\ldots,g_n) \in G_1\times G_2\times \ldots \times G_n\\
+	(g_1,g_2,\ldots,g_n)(h_1,h_2,\ldots,h_n) = (g_1h_1,g_2h_2,\ldots,g_nh_n).
+\end{align*}
+
+We will later see that direct products provide us a means of characterizing all finitely generated abelian groups.
+\end{document}

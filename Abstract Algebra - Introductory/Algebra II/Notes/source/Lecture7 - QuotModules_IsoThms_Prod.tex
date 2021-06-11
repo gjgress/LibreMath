@@ -1,0 +1,132 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{./resources/pdf/logo.pdf}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 02/08/21
+
+\section{Quotient Modules and Isomorphism Theorems}
+\label{sec:quotient_modules_and_isomorphism_theorems}
+
+\begin{prop}[Modules of homomorphisms]
+	Let \(R\) be a ring, and take \(R\)-modules \(\prescript{}{R}M\) and \(\prescript{}{R}N\).
+	\begin{enumerate}
+		\item If \(\varphi,\psi \in \textrm{Hom}_R(M,N)\), then define
+			\begin{align*}
+				(\varphi+\psi)(m) := \varphi(m) + \psi(m) \quad \forall m \in M\\
+				(r \varphi) (m) := r \varphi(m) \quad \forall r \in R, m \in M
+			\end{align*}
+		This gives \( \textrm{Hom}_R(M,N)\) the structure of an \(R\)-module, which we denote by \(\prescript{}{R}{\textrm{Hom}_R(M,N)}\).
+		\item We denote \( \textrm{Hom}_R(M,M)\) by \( \textrm{End}_R(M)\). We get that \( \textrm{End}_R(M)\) is a ring with addition defined as above, and multiplication as defined in the exercise. We call this the \textbf{endomorphism ring of \(M\)}, and elements are \textbf{endomorphisms}.
+	\end{enumerate}
+\end{prop}
+There is a structure that combines being an \(R\)-module and a ring, which we call \(R\)-algebras.
+
+\begin{defn}[\(R\)-algebra]
+	Let \(R\) be a commutative ring with \(1_R\). A \textbf{(unital) \(R\)-algebra} is a unital ring \(A\) equipped with a unital ring homomorphism \(f:R\to A\) such that the subring \(f(R)\leq A\) is contained in the center \(Z(A)\). 
+\end{defn}
+It is easy to see that \(A\) has a natural \(R\)-module structure given by \(ra \mapsto f(r)a\). This is not the only module structure, but it is the most natural.\\
+
+\begin{exmp}[Endomorphism]
+If \(R\) is commutative, then \(\prescript{}{R}{\textrm{End}}_R(M)\) is an \(R\)-algebra via the action of function composition \(r\varphi \mapsto r(\varphi (m))\).\\
+
+	The unital ring homomorphism from \(R\to \textrm{End}_R(M)\) is given by \(r\mapsto r\cdot \textrm{Id}\), where \(\textrm{Id}\) is the identity endomorphism. When \(R\) has an identity, this gives \(\textrm{End}_R(M)\) an \(R\)-algebra structure, as the image is clearly in the center of \(\textrm{End}_R(M)\).
+\end{exmp}
+Notice that it isn't necessarily injective, as \(rm=0\) is possible. If \(R\) is a field, however, it will be injective in which case the image is the \textbf{subring of scalar transformations}.
+
+\begin{defn}[\(R\)-algebra homomorphism]
+	If \(A,B\) are two \(R\)-algebras, an \textbf{\(R\)-algebra homomorphism} is a ring homomorphism \(\varphi :A\to B\) such that, for all \(r \in R\) and \(a \in A\):
+	\begin{align*}
+		\varphi (r\cdot a) = r\cdot \varphi (a).
+	\end{align*}
+\end{defn}
+It follows that if \(A\) is an \(R\)-algebra, then it satisfies \(r\cdot (ab) = (r\cdot a)b = a(r\cdot b)\) for all \(r \in R\) and \(a,b \in A\) because \(f(r)\) is in the center. If these conditions hold for a ring, then it defines an \(R\)-algebra-- hence it can be considered an alternate definition.
+
+\subsection{Quotient Modules}
+\begin{prop}
+	Take \(R\) as a ring, and \(\prescript{}{R}M\) an \(R\)-module with \(R\)-submodule \(\prescript{}{R}N\).
+	\begin{enumerate}
+		\item The quotient group \(M / N\) can be made into an \(R\)-module \(\prescript{}{R}(M / N)\) via
+			\begin{align*}
+				R\times M / N \to M / N\\
+				(r,m+N) \mapsto rm + N \quad \forall r \in R, \; m+N \in M / N
+			\end{align*}
+		\item The canonical projection map of groups
+			\begin{align*}
+				\pi:M\to M / N\\
+				m\mapsto m+N \quad \forall m \in M
+			\end{align*}
+			is a surjective \(R\)-module map, with \( \textrm{Ker}\pi = N\).
+	\end{enumerate}
+\end{prop}
+
+\begin{thm}[Module Isomorphism Theorems]
+	Let \(R\) be a ring, and \(\prescript{}{R}M, \prescript{}{R}N\) to be \(R\)-modules.
+	\begin{enumerate}[(i).]
+		\item If \(\varphi \in \textrm{Hom}_R(M,N)\), then \( \prescript{}{R}{\textrm{Ker}}\varphi\) is a \(R\)-submodule of \(M\), and \(M / \textrm{Ker}\varphi \stackrel{R}{\cong} \varphi(M)\) as \(R\)-modules (by \(R\)-module isomorphism).
+		\item If \(\prescript{}{R}A,\prescript{}{R}B\) are \(R\)-submodules of \(M\), then \((A+B) / B \stackrel{R}{\cong} A / (A\cap B)\) as \(R\)-modules.
+		\item If \(\prescript{}{R}A,\prescript{}{R}B\) are \(R\)-submodules of \(M\) and \(A\subset B\), then
+			\begin{align*}
+			(M / A) / (B / A) \stackrel{R}{\cong} M / B
+			\end{align*}
+			as \(R\)-modules.
+		\item Suppose \(\prescript{}{R}N\) is an \(R\)-submodule of \(\prescript{}{R}M\). Then there exists a bijection:
+			\begin{align*}
+				\left\{ \text{submodules } \prescript{}{R}A \text{ of \(\prescript{}{R}M\) containing \(\prescript{}{R}N\)} \right\} \iff \left\{ \text{submodules \(\prescript{}{R}(A / N)\) of \(\prescript{}{R}(M/N)\)} \right\} .
+			\end{align*}
+	\end{enumerate}
+\end{thm}
+
+\subsection{Direct Products}
+\label{sub:direct_products}
+
+Let \(R\) be a ring with \(1_R\).
+\begin{prop}
+	Let \(\prescript{}{R}M\) be an \(R\)-module, with \(\prescript{}{R}N_1,\ldots,\prescript{}{R}N_t\) as \(R\)-submodules. Then
+	\begin{enumerate}[(i).]
+		\item The sum of \(\left\{ N_i \right\}_{i=1}\) is
+			\begin{align*}
+				N_1+\ldots+N_t = \left\{n_1+\ldots+n_t \mid n_i \in N_i, \; i=1,\ldots,t \right\} 
+			\end{align*}
+			and forms an \(R\)-module.
+		\item The direct product of \(\left\{ N_i \right\} \) is
+			\begin{align*}
+				N_1\times \ldots\times N_t = \left\{(n_1,\ldots,n_t) \mid n_i \in N_i, \; i=1,\ldots,t \right\} 
+			\end{align*}
+			and forms an \(R\)-module.
+	\end{enumerate}
+\end{prop}
+One can also define the direct product of \(R\)-modules (i.e. not just submodules).
+
+\begin{prop}
+	Let \(\prescript{}{R}N_1,\ldots,\prescript{}{R}N_t\) be \(R\)-submodules of an \(R\)-module \(\prescript{}{R}M\). Then the following are equivalent:
+	\begin{enumerate}[(i).]
+		\item
+			\begin{align*}
+				\varphi:N_1\times \ldots\times N_t \to N_1+\ldots+N_t\\
+				(n_1,\ldots,n_t) \mapsto n_1+\ldots+n_t
+			\end{align*}
+			is an \(R\)-module isomorphism
+		\item \(N_j \cap (N_1+\ldots+N_{j-1}+N_{j+1} + \ldots N_t) = 0\) for all \(j=1,\ldots,t\)
+		\item Every \(x \in N_1+\ldots+N_t\) can be written as \(n_1+\ldots+n_t\) uniquely for some \(n_i \in N_i\) for all \(i=1,\ldots,t\)
+	\end{enumerate}
+\end{prop}
+If the proposition holds, then
+\begin{align*}
+	N_1\times \ldots\times N_t \stackrel{R}{\cong} N_1+\ldots+N_t
+\end{align*}
+and we refer to the structure as the direct sum of \(R\)-modules.
+\end{document}
