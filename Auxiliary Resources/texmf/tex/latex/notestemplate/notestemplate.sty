@@ -1,5 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{notestemplate}[01-19-21 Commands and Packages for General Notes]
+\ProvidesPackage{notestemplate}[07-16-21 Commands and Packages for LibreMath notes produced by Gabriel Gress]
+
+% This style file is a catch-all that contains all the core packages and environments that I (Gabriel Gress) use to create my notes for LibreMath. Feel free to use this style file yourself-- although I highly encourage you to modify this based on your needs.
 
 \def\R{\mathbb{R}}
 \def\N{\mathbb{N}}
@@ -21,7 +23,7 @@
 \RequirePackage[protrusion=true,expansion=true]{microtype}
 \RequirePackage{comment}
 \RequirePackage{graphicx}
-\RequirePackage[framemethod=TikZ]{mdframed} %% for colored framed boxes
+\RequirePackage[framemethod=TiKZ, nobreak=true]{mdframed} %% for colored framed boxes
 \RequirePackage{framed}
 \RequirePackage{amsthm}
 \RequirePackage[nomessages]{fp}
@@ -34,18 +36,10 @@
 \RequirePackage[colorlinks, linkcolor=teal]{hyperref}
 \RequirePackage{hypcap}
 \RequirePackage{xfrac}
+\RequirePackage[numbered]{bookmark}
+\RequirePackage{mathtools}
 
-\graphicspath{{./figures/}} % ensures that figures are found for inkscape svgs
-
-%\newtheorem{defn}{Definition}
-%\newtheorem{prop}{Proposition}
-%\newtheorem{lemma}{Lemma}
-%\newtheorem{thm}{Theorem}
-%\newtheorem{exmp}{Example}
-%\newtheorem{proof}{Proof}
-%\newtheorem{cor}{Corollary}
-%\newtheorem{hmwk}{Homework}
-%\newtheorem{remark}{Remark}
+\graphicspath{{./figures/}} % ensures that figures are found for inkscape svgs - default folder from Castel's inkscape script
 
 \newcommand{\incfig}[1]{%
     \def\svgwidth{\columnwidth}
@@ -173,6 +167,30 @@
 %  Environments  %
 %%%%%%%%%%%%%%%%%%
 
+% TO-DO: 
+%  - Recolor boxes to a standardized palette
+
+%%%%%%%%%%%%%%%% GENERAL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{general}[1][]{%
+	\ifstrempty{#1}%
+	{\mdfsetup{%
+			frametitle={%
+				\tikz[baseline=(current bounding box.east),outer sep=0pt]
+				\node[anchor=east,rectangle,fill=gray!20]
+				{\strut};}}
+	}%
+	{\mdfsetup{%
+			frametitle={%
+				\tikz[baseline=(current bounding box.east),outer sep=0pt]
+				\node[anchor=east,rectangle,fill=gray!20]
+				{\strut #1};}}%
+	}%
+	\mdfsetup{innertopmargin=10pt,linecolor=gray!20,%
+		linewidth=2pt,topline=true,%
+		frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+	}
+	\begin{mdframed}[]\relax%
+		}{\end{mdframed}}
 %%%%%%%%%%%%%%%% THEOREM %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcounter{theo}[section] \setcounter{theo}{0} %% counter
 \renewcommand{\thetheo}{\arabic{chapter}.\arabic{section}.\arabic{theo}}
@@ -380,6 +398,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+%%%%%%%%%%%%%%%%%%%
+%  Miscellaneous  %
+%%%%%%%%%%%%%%%%%%%
+
+% Sets TOC depth to subsections
+\setcounter{tocdepth}{2}
+% Sets numbering to subsections
+\setcounter{secnumdepth}{2}
+
+
 %%% Custom Anki Environment
 
 %\newenvironment{anki}
@@ -388,7 +416,7 @@
 %    }{}
 % Use this to format it however you like
 
-% Currently I am using anki as a comment, which works best with the commend environment. This will have to be removed before it can have any other environment
+% Currently I am using anki as a comment, which works best with the comment environment. This will have to be removed before it can have any other environment
 
 \excludecomment{anki}
 
