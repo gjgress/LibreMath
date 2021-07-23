@@ -1,0 +1,292 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+%\section{Prototypical Examples}
+%\label{sec:prototypical_examples}
+%Let us consider two analytic functions on \(\R\) :
+%\begin{itemize}
+%	\item \(f(x) = \frac{1}{1+x^2}\)
+%	\item \(g(x) = e^{-x^2}\)
+%\end{itemize}
+%Their graphs look similar, but they are very different. Consider their Taylor series:
+%\begin{align*}
+%	f(x) = 1-x^2+x^3-x^{6}+\ldots
+%\end{align*}
+%and
+%\begin{align*}
+%	g(x) = 1-x^2+\frac{x^{4}}{2!}-\frac{x^{6}}{3!}+\ldots
+%\end{align*}
+%Observe that the Taylor Series of \(f(x)\) only converges for \(|x|<1\), due to the denominators. However, the Taylor Seris of \(g(x)\) converges for all \(x \in \R\).\\
+%The reason \(f(x)\) has issues is the complex plane. \(g(x)\) is well-defined on the complex plane, but \(f(x)\) has holes at \(i,-i\).\\
+%
+%Now consider \(h(x) = \begin{cases}
+%	e^{\frac{-1}{x^2}}, & x\neq 0\\
+%	0, & x=0
+%\end{cases}\)\\
+%Once again, on the real line it looks fine, and seems perfectly differentiable. But this cannot be extended to the complex plane because as you approach zero from the imaginary axis, the function blows up.
+%
+
+\subsection{Formal Definition}
+\label{sub:formal_definition}
+
+First, we construct the field \(\C\) so that the addition and multiplication operations correspond to natural geometric transformations.
+
+\begin{defn}[Complex Field]
+	We define the \textbf{complex field} \(\C\) to be the field of ordered pairs
+	\begin{align*}
+		(\alpha ,\beta )
+	\end{align*}
+	where \(\alpha ,\beta  \in \R\). The addition and multiplication operations on \(\C\) are defined by
+	\begin{align*}
+		(\alpha_1,\beta_1) + (\alpha_2,\beta_2) &= (\alpha_1+\alpha_2,\beta_1+\beta_2)\\
+		(\alpha_1,\beta_1)\cdot (\alpha_2,\beta_2) &= (\alpha_1\beta_1 - \alpha_2\beta_2, \alpha_1\beta_2+\alpha_2\beta_1)
+	\end{align*}
+	Elements of \(\C\) are called \textbf{complex numbers}. We refer to the first element of the ordered pair as the \textbf{real part} (denoted \(\textrm{Re}(\alpha ,\beta )\)), and the second element as the \textbf{imaginary part} (denoted \(\textrm{Im}(\alpha ,\beta )\) of the complex number.\\
+
+	The identities of \(\C\) are hence
+	\begin{align*}
+		0_{\C} &= (0_\R,0_\R)\\
+		1_\C &= (1_\R,0_\R)
+	\end{align*}
+	and the inverses of an element are given by
+	\begin{align*}
+		-(\alpha,\beta ) &= (-\alpha ,-\beta )\\
+		(\alpha ,\beta)^{-1} &= \left( \frac{\alpha }{\alpha^2+\beta^2}, \frac{-\beta }{\alpha^2+\beta^2} \right) 
+	\end{align*}
+\end{defn}
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: We define the **complex field** \(\C\) to be the field of ordered pairs
+\(\begin{align*}
+  	(\alpha ,\beta )
+  \end{align*}\)
+where \(\alpha ,\beta  \in \R\). The addition and multiplication operations on \(\C\) are defined by
+{{c1::\(\begin{align*}
+        	(\alpha_1,\beta_1) + (\alpha_2,\beta_2) &= (\alpha_1+\alpha_2,\beta_1+\beta_2)\\
+        	(\alpha_1,\beta_1)\cdot (\alpha_2,\beta_2) &= (\alpha_1\beta_1 - \alpha_2\beta_2, \alpha_1\beta_2+\alpha_2\beta_1)
+        \end{align*}\)}}
+Elements of \(\C\) are called **complex numbers**. We refer to the first element of the ordered pair as the **real part**, and the second element as the **imaginary part** of the complex number.
+
+The identities of \(\C\) are hence
+\(\begin{align*}
+  	0_{\C} &= (0_\R,0_\R)\\
+  	1_\C &= (1_\R,0_\R)
+  \end{align*}\)
+and the inverses of an element are given by
+ {{c2::\(\begin{align*}
+        	-(\alpha,\beta ) &= (-\alpha ,-\beta )\\
+        	(\alpha ,\beta)^{-1} &= \left( \frac{\alpha }{\alpha^2+\beta^2}, \frac{-\beta }{\alpha^2+\beta^2} \right) 
+        \end{align*}\)}} 
+Extra: Sometimes, we might write a complex number \((\alpha ,\beta )\) as the sum
+\(\begin{align*}
+	\alpha + i\beta .
+\end{align*}\)
+Tags: analysis complex_analysis complex_numbers defn
+<!--ID: 1624142599825-->
+END
+\end{anki}
+
+\begin{hw}
+	Check that the identities and inverses above indeed satisfy the necessary conditions to be identities and inverses of a field. Furthermore, verify that the addition and multiplication operations are associative, commutative, and satisfy the distributive property.
+\end{hw}
+
+Sometimes, we might write a complex number \((\alpha ,\beta )\) as the sum
+\begin{align*}
+	\alpha + i\beta .
+\end{align*}
+In other words, we choose to define
+\begin{align*}
+	i:= (0,1)
+\end{align*}
+and will often use \(i\) for shorthand in formulas.\\
+
+If \(\beta=0\), we say a number is \textbf{real}, and if \(\alpha=0\), we say a number is \textbf{imaginary}. There is a natural isomorphism from the set of real complex numbers to the real numbers, as well as a natural isomorphism from the set of imaginary complex numbers to the real numbers.\\
+
+Of course, this construction does not give an intuition for why the operations above are defined so. One should first observe that the definition gives a field structure to the set, unlike the standard operations of \(\R^2\). Later, we will also show that the field is algebraically closed, and is in fact the algebraic extension of \(\R\).\\
+
+If we graph the real part of a complex number onto an \(x\)-axis of an \(xy\)-grid, and the imaginary part to the \(y\)-axis, then the addition and multiplication operations correspond to geometric translations:
+\begin{itemize}
+	\item Adding a fixed complex number to a complex variable is geometrically a translation:
+		\begin{align*}
+			(\alpha ,\beta ) + (x,y) = (\alpha +x,\beta +y)
+		\end{align*}
+		% Figure
+	\item Multiplying a fixed positive number to a complex variable is geometrically a dilation:
+	\begin{align*}
+		a(x+yi) = ax + ayi
+	\end{align*}
+	% Figure
+	\item Multiplying by a fixed complex number of length 1 and an argument or angle \(t\) is geomerically a rotation by \(t\):
+		\begin{align*}
+			e^{it} = \cos(t) + i \sin(t)
+		\end{align*}
+	% Figure
+	This definition allows us to add angles when we multiply by \(e^{it'}\)
+\end{itemize}
+This geometric interpretation immediately gives us new intuition when working with complex numbers. For example, a natural question arises-- is there a polar form for complex numbers in a similar sense as \(\R^2\)?\\
+
+In fact, every non-zero complex number has a unique decomposition into a product of a positive number and a number of unit length, given by \(z = re^{it}\). Then, in a formula, complex multiplcation is defined by
+\begin{align*}
+	re^{it} \cdot r'e^{it'} = (r\cdot r')e^{i(t+t')}
+\end{align*}
+% Figure
+
+\begin{hw}
+	Show that the square root of a complex number is given by
+	\begin{align*}
+		(\alpha ,\beta )^{\sfrac{1}{2}} = \pm \left( \sqrt{ \frac{\alpha + \sqrt{\alpha^2+\beta^2} }{2}} , \frac{\beta }{\left| \beta  \right| } \sqrt{ \frac{-\alpha + \sqrt{\alpha^2+\beta^2} }{2}} \right) .
+	\end{align*}
+	where the square roots of positive numbers are taken to be the positive root. Furthermore, use this to show that the square root of any complex number always exists and has two opposite values, coinciding only if \((\alpha ,\beta )=0 \)
+\end{hw}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: The square root of a complex number is given by
+ {{c1::\(\begin{align*}
+         	(\alpha ,\beta )^{\sfrac{1}{2}} = \pm \left( \sqrt{ \frac{\alpha + \sqrt{\alpha^2+\beta^2} }{2}} , \frac{\beta }{\left| \beta  \right| } \sqrt{ \frac{-\alpha + \sqrt{\alpha^2+\beta^2} }{2}} \right) .
+         \end{align*}\)}}
+where the square roots of positive numbers are taken to be the positive root. 
+Extra: The square root of any complex number always exists and has two opposite values, coinciding only if \((\alpha ,\beta )=0 \)
+Tags: analysis complex_analysis complex_numbers
+<!--ID: 1624142599862-->
+END
+\end{anki}
+
+This exercise has some subtle deep implications. Recall that in \(\R\), a polynomial equation may not have all its roots in \(\R\). However, in \(\C\) this holds-- hence if we apply the natural isomorphism on polynomials in \(\R\) to polynomials in \(\C\), the polynomials will have all its solutions in \(\C\). In fact, \(\C\) is the smallest field for which this isomorphism is possible, and hence \(\C\) is the algebraic completion of \(\R\).\\
+
+There is much to be shown in order to demonstrate that the algebraic completion of \(\R\) corresponds to the construction of \(\C\) above. For brevity, this will be skipped, but for first-time readers, the author highly encourages one to read this construction in detail elsewhere.
+
+\subsection{Conjugation in \(\C\)}
+\label{sub:conjugation_in_c}
+
+While there are infinitely many automorphisms of \(\C\) (of which we will discuss in detail later), there is a special automorphism that is worth discussing first.\\
+
+\begin{defn}[Complex Conjugation]
+	Let \((\alpha ,\beta ) \in \C\) be a complex number. Then we define the \textbf{complex conjugate of \((\alpha ,\beta )\)} to be the complex number given by the transformation:
+	\begin{align*}
+		\overline{(\alpha ,\beta )} = (\alpha ,-\beta )
+	\end{align*}
+	Furthermore, complex conjugation satisfies the following:
+	\begin{align*}
+		\overline{a+b} = \overline{a} + \overline{b}\\
+		\overline{ab} = \overline{a}\cdot \overline{b}.
+	\end{align*}
+	Finally, complex conjugation is an \textbf{involuntary transformation}. That is, it satisfies
+	\begin{align*}
+		\overline{ \left( \overline{(\alpha ,\beta )} \right) } = (\alpha ,\beta )
+	\end{align*}
+\end{defn}
+\begin{anki}
+% Up to 5 consequences
+START
+Definition
+Name: Complex Conjugate
+Premise 1: Let \(a = (\alpha ,\beta ) \in \C\)
+Consequence 1: The complex conjugate is \(\overline{a} := (\alpha ,-\beta )\)
+Tags: analysis complex_analysis complex_numbers defn 
+<!--ID: 1624237478645-->
+END
+\end{anki}
+
+One can check that we can obtain formulas
+\begin{align*}
+	\textrm{Re}(a) = \frac{a + \overline{a}}{2}, \quad \textrm{Im}(a) = \frac{a - \overline{a}}{2}
+\end{align*}
+
+\begin{defn}[Modulus]
+	Let \(a = (\alpha ,\beta ) \in \C\). The \textbf{absolute value} or \textbf{modulus} of \(a\) is defined as
+	\begin{align*}
+		\left| a \right| := (a \overline{a})^{\sfrac{1}{2}} = (\alpha^2+\beta^2)^{\sfrac{1}{2}}.
+	\end{align*}
+\end{defn}
+	Notice that \(\left| a \right| \geq 0\) for all \(a \in \C\), and furthermore, \(\left| a \right| = 0\) if and only if \(a=0\). It also holds that \(\left| \overline{a} \right| = \left| a \right| \) and 
+	\begin{align*}
+		\left| ab \right| = \left| a \right| \cdot \left| b \right| 
+	\end{align*}
+	This has the properties of a norm, and hence for sums we have
+	\begin{align*}
+		\left| a + b \right|^2 &= \left| a \right|^2 + \left| b \right|^2 + 2 \textrm{Re}a \overline{b}\\
+		\left| a-b \right|^2 &= \left| a \right|^2 + \left| b \right|^2 - 2 \textrm{Re} a \overline{b}\\
+				     &\implies \left| a+b \right|^2 + \left| a-b \right|^2 = 2\left( \left| a \right|^2 + \left| b \right|^2 \right) 
+	\end{align*}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(a = (\alpha ,\beta ) \in \C\). The **absolute value** or **modulus** of \(a\) is defined as
+{{c1::\(\begin{align*}
+        	\left| a \right| := (a \overline{a})^{\sfrac{1}{2}} = (\alpha^2+\beta^2)^{\sfrac{1}{2}}.
+        \end{align*}\)}} 
+Extra: Notice that \(\left| a \right| \geq 0\) for all \(a \in \C\), and furthermore, \(\left| a \right| = 0\) if and only if \(a=0\). It also holds that \(\left| \overline{a} \right| = \left| a \right| \) and 
+\(\begin{align*}
+  	\left| ab \right| = \left| a \right| \cdot \left| b \right| 
+  \end{align*}\)
+	This has the properties of a norm, and hence for sums we have
+	\(\begin{align*}
+	  	\left| a + b \right|^2 &= \left| a \right|^2 + \left| b \right|^2 + 2 \textrm{Re}a \overline{b}\\
+	  	\left| a-b \right|^2 &= \left| a \right|^2 + \left| b \right|^2 - 2 \textrm{Re} a \overline{b}\\
+	  			     &\implies \left| a+b \right|^2 + \left| a-b \right|^2 = 2\left( \left| a \right|^2 + \left| b \right|^2 \right) 
+	  \end{align*}\)
+Tags: analysis complex_analysis complex_numbers defn
+<!--ID: 1624237478679-->
+END
+\end{anki}
+
+
+\begin{thm}[Triangle Inequality]
+Let \(a,b \in \C\). Then
+\begin{align*}
+	\left| a + b \right| \leq \left| a \right| + \left| b \right|.
+\end{align*}
+The equation is an equality if and only if \(a \overline{b}\) is real and non-negative. In fact, this holds for extended finite sums if the ratio of any two nonzero terms is positive.
+\end{thm}
+
+\begin{anki}
+% Up to 4 premises
+% Up to 4 equivalences
+START
+Theorem
+Name: Complex Triangle Inequality
+Premise 1: Let \(a,b \in \C\)
+Consequence 1: \(\left| a+b \right| \leq \left| a \right| + \left| b \right| \) 
+Consequence 2: \(\left| a+b \right| = \left| a \right| + \left| b \right| \) if and only if \(a \overline{b}\) is real and non-negative
+Tags: analyis complex_analysis complex_numbers
+<!--ID: 1624237478709-->
+END
+\end{anki}
+
+\begin{thm}[Cauchy's Inequality]
+	Let \(a_i,b_i \in \C\) for \(i \in \left\{ 1,\ldots,n \right\} \). Then
+	\begin{align*}
+		\left| \sum_{i=1}^{n} a_ib_i \right|^2 \leq \sum_{i=1}^{n} \left| a_i \right|^2 \sum_{i=1}^{n} \left| b_i \right|^2.
+	\end{align*}
+\end{thm}
+
+\begin{anki}
+% Up to 4 premises
+% Up to 4 equivalences
+START
+Theorem
+Name: Complex Cauchy's Inequality
+Premise 1: Let \(a_i, b_i \in \C\) for \(i \in \left\{ 1,\ldots,n \right\} \)
+Consequence 1: \(\left| \sum_{i=1}^{n} a_ib_i \right|^2 \leq \sum_{i=1}^{n} \left| a_i \right|^2 \sum_{i=1}^{n} \left| b_i \right|^2\)
+Tags: analysis complex_analysis complex_numbers
+<!--ID: 1624237478740-->
+END
+\end{anki}
+
+
+\end{document}

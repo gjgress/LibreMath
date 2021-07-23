@@ -1,0 +1,113 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+
+In short, Cauchy's theorem tells us that the integral of a holomorphic function on the boundary of an open region in \(\C\) is zero. Proving this statement is non-trivial and requires a lot of intermediate theorems which will later be superceded by Cauchy's Theorem. Understanding the development of these intermediate theorems is important, but not necessary to commit to memory. We state and prove the intermediate steps for posteriety, but note that many of the theorems will go unused after this section.
+
+\subsection{Goursat's Theorem}
+\label{sec:goursat_s_theorem}
+\begin{thm}
+	Let \(\Omega \subset \C\) be an open set, and \(T\subset \Omega \) a triangle with interior in \(\Omega \), and let \(f\) be a holomorphic function on \(\Omega \). Then
+	\begin{align*}
+		\int_T f(z) \,d z = 0.
+	\end{align*}
+\end{thm}
+
+This will be a useful start in the direction of proving Cauchy's Theorem. We can infer from Goursat's Theorem that holomorphic functions integrate to zero on convex polygons, as we can partition convex polygons into triangles. We will use this style of construction to build torwards Cauchy's Theorem.
+
+\begin{proof}% Stein Shakarchi pg 34
+	
+\end{proof}
+
+\subsection{Local existence of primitives and Cauchy's theorem in a disc}
+\label{sub:local_existence_of_primitives_and_cauchy_s_theorem_in_a_disc}
+
+We mentioned that holomorphicity of a function does not give existence of a primitive alone. However, we do have local existence-- this will prove to be a crucial step to obtaining Cauchy's Theorem.
+
+\begin{thm}[Existence of Local Primitives]
+	Let \(f\) be a complex-valued function. If \(f\) is holomorphic on an open disc \(D_r(z_0)\), then \(f\) has a primitive in \(D_r(z_0)\).
+\end{thm}
+
+\begin{cor}[Cauchy's theorem for a disc]
+	If \(f\) is holomorphic in an open disc, then
+	\begin{align*}
+		\int_\gamma f(z) \,d z = 0
+	\end{align*}
+	for any closed curve \(\gamma\) in that disc.
+\end{cor}
+
+\begin{proof}[Proof on Open Discs]% Stein Shakarchi p.39
+	
+\end{proof}
+
+As the proof indicates, we can extend this to simply connected regions. This brings us to the full generality of Cauchy's Theorem.
+
+\begin{thm}[Cauchy's Theorem]
+	Let \(\Omega \subset \C\) be an open set, and let \(f\) be a holomorphic function on \(\Omega \). Suppose that \(\gamma \) is a smooth closed curve in \(\Omega \). If \(\gamma \) is homotopic to a constant curve, then
+	\begin{align*}
+		\int_\gamma f \,d t = 0.
+	\end{align*}
+\end{thm}
+
+In fact, we can state Cauchy's Theorem in slightly more generality that will allow us to construct and fully utilize Cauchy's Integral Formulas.
+
+\begin{cor}
+	Let \(\Omega \subset \C\) be an open set, and let \(f\) be a holomorphic function on \(\Omega \). Suppose that \(\gamma_0,\gamma_1\) are two closed curves in \(\Omega \) that are freely homotopic to each other. Then
+	\begin{align*}
+		\int_{\gamma_0} = \int_{\gamma_1}f.
+	\end{align*}
+\end{cor}
+
+Before we see what results Cauchy's theorem gives us, we want to clarify to what degree we are able to extend holomorphic functions.
+
+\begin{prop}[Removable Singularities]
+	Let \(\Omega \subset \C\) be an open bounded set in \(\C\). Suppose that \(f\) is holomorphic in a subset \(\Omega \setminus \left\{ z_i \right\}_{i=1}^{\infty}\) where \(\left\{ z_i \right\}_{i=1}^{\infty}\) is isolated within \(\Omega \). Then provided that
+	\begin{align*}
+		\lim_{z \to z_i} (z-z_i)f(z) = 0
+	\end{align*}
+	then \(f\) can be analytically continued onto \(\Omega \). Furthermore, Cauchy's theorem applies for \(f\) on \(\Omega \).
+\end{prop}
+We call these points \textbf{removable singularities} because \(f\) can be effortlessly extended onto these singularities, and hence we can mostly ignore them.
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: **Cauchy's Theorem**
+{{c1::Let \(\Omega \subset \C\) be an open set, and let \(f\) be a holomorphic function on \(\Omega \). Suppose that \(\gamma \) is a smooth closed curve in \(\Omega \). If \(\gamma \) is homotopic to a constant curve, then
+      \(\begin{align*}
+        	\int_\gamma f \,d t = 0.
+        \end{align*}\)}} 
+Extra: In fact, we can state Cauchy's Theorem in slightly more generality.
+Let \(\Omega \subset \C\) be an open set, and let \(f\) be a holomorphic function on \(\Omega \). Suppose that \(\gamma_0,\gamma_1\) are two closed curves in \(\Omega \) that are freely homotopic to each other. Then
+\(\begin{align*}
+  	\int_{\gamma_0} = \int_{\gamma_1}f.
+  \end{align*}\)
+Tags: analysis complex_analysis complex_integration
+<!--ID: 1625364556702-->
+END
+\end{anki}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) be an open bounded set in \(\C\). Suppose that \(f\) is holomorphic in a subset \(\Omega \setminus \left\{ z_i \right\}_{i=1}^{\infty}\) where \(\left\{ z_i \right\}_{i=1}^{\infty}\) is isolated within \(\Omega \). Then provided that
+ {{c1::\(\begin{align*}
+         	\lim_{z \to z_i} (z-z_i)f(z) = 0
+         \end{align*}\)}} 
+	then \(f\) can be analytically continued onto \(\Omega \). Furthermore, Cauchy's theorem applies for \(f\) on \(\Omega \). We call the points \(\left\{ z_i \right\}_{i=1}^{\infty}\) **removable singularities**.
+Tags: analysis complex_analysis singularities_residues defn
+END
+\end{anki}
+
+
+\end{document}

@@ -1,0 +1,343 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+\subsection{Riemann Sphere}
+\label{sub:riemann_sphere}
+
+
+%% ADD RIEMANN SPHERE
+
+
+\subsection{Linear Transformations}
+\label{sub:linear_transformations}
+
+\begin{defn}[Linear Fractional Transformation]
+	A \textbf{linear fractional transformation} or \textbf{Möbius transformation} is a linear transformation of the complex plane given by
+	\begin{align*}
+		S(z) := \frac{az+b}{cz+d}
+	\end{align*}
+	for complex numbers \(a,b,c,d \in \C\) with one of \(c,d\) non-zero.\\
+
+	We extend \(S\) to \(\overline{\C}\) by defining the following values:
+\begin{align*}
+	S(\infty) = \begin{cases}
+		\sfrac{a}{c} & c\neq 0\\
+		\infty & c=0
+	\end{cases}\\
+	S(-\sfrac{d}{c}) = \infty \text{ if }c\neq 0.
+\end{align*}
+	This extends the mapping so that \(S\) is a topological mapping of the extended plane onto itself, with the topology of distances on the Riemannian sphere.
+\end{defn}
+This is the generalized form of all linear transformations on \(\overline{\C}\)-- translations, reflections, rotations, and more can be represented as linear fractional transformations.
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: A **linear fractional transformation** or **Möbius transformation** is a linear transformation of the complex plane given by
+{{c1::\(\begin{align*}
+        	S(z) := \frac{az+b}{cz+d}
+        \end{align*}\)}}
+for complex numbers \(a,b,c,d \in \C\) with one of \(c,d\) non-zero.
+
+If we write \(z = \frac{z_1}{z_2}\), we can express \(S(z)\) as a matrix via
+{{c1::\(\begin{align*}
+		\begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} z_1 \\ z_2 \end{pmatrix} = \begin{pmatrix} w_1 \\ w_2 \end{pmatrix} 
+	\end{align*}\)}} 
+where \(w := \frac{w_1}{w_2} = S(z)\). If {{c1::\(ad-bc = 1\)}}, we say the linear fractional transformation is **normalized**.
+
+Extra: We extend \(S\) to \(\overline{\C}\) by defining the following values:
+\(\begin{align*}
+  	S(\infty) = \begin{cases}
+  		\sfrac{a}{c} & c\neq 0\\
+  		\infty & c=0
+  	\end{cases}\\
+  	S(-\sfrac{d}{c}) = \infty \text{ if }c\neq 0.
+  \end{align*}\)
+This extends the mapping so that \(S\) is a topological mapping of the extended plane onto itself, with the topology of distances on the Riemannian sphere.
+Tags: analysis complex_analysis complex_geometry defn
+<!--ID: 1624827134946-->
+END
+\end{anki}
+
+\begin{prop}
+	Let \(S\) be a linear fractional transformation
+	\begin{align*}
+		S(z) = \frac{az+b}{c z + d}
+	\end{align*}
+	with \(ad-bc\neq 0\). Then
+	\begin{align*}
+		S:\overline{\C}\to \overline{\C}
+	\end{align*}
+	is an isomorphism. Furthermore, the inverse of \(S\) is given by
+	\begin{align*}
+		S^{-1}(z) = \frac{dz -b}{a-cz}.
+	\end{align*}
+	If \(ad-bc = 1\), then we say the linear fractional transformation is \textbf{normalized}.
+\end{prop}
+
+Every linear fractional transformation admits a normalized form. In fact, there are exactly two, which are obtained from each other by changing the sign of the coefficients.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(S\) be a linear fractional transformation
+\(\begin{align*}
+  	S(z) = \frac{az+b}{c z + d}
+\end{align*}\)
+	with \(ad-bc\neq 0\). Then
+{{c1::\(\begin{align*}
+	S:\overline{\C}\to \overline{\C}
+      \end{align*}\)}} 
+	is {{c1::an isomorphism}}. Furthermore, the inverse of \(S\) is given by
+{{c1::\(\begin{align*}
+	S^{-1}(z) = \frac{dz -b}{a-cz}.
+      \end{align*}\)}}
+	If {{c1::\(ad-bc = 1\)}}, then we say the linear fractional transformation is \textbf{normalized}.
+Extra: Every linear fractional transformation admits a normalized form. In fact, there are exactly two, which are obtained from each other by changing the sign of the coefficients.
+Tags: analysis complex_analysis complex_geometry
+<!--ID: 1626152754001-->
+END
+\end{anki}
+
+
+\begin{general}[Matrix Formulation of Linear Fractional Transformations]
+	Let \(z = \frac{z_1}{z_2}\) be an arbitrary complex number and
+	\begin{align*}
+		S(z) = \frac{az+b}{cz+d}.
+	\end{align*}
+	Then we can express this linear fractional translation by
+	\begin{align*}
+		\begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} z_1 \\ z_2 \end{pmatrix} = \begin{pmatrix} w_1 \\ w_2 \end{pmatrix} 
+	\end{align*}
+	where \(w := \frac{w_1}{w_2} = S(z)\). This representation as matrices is useful as it satisfies the standard matrix operations when it comes to addition, composition, inversion, and so on.\\
+
+	Hence, the set of linear fractional transformations forms a (matrix) group. The identity transformation is given by the identity matrix. The rest of the group properties we leave to be checked by the reader.\\
+
+	In fact, if we restrict ourselves to normalized representations, this matrix group is isomorphic to \(SL(2,\C)\). If furthermore we form an equivalence class on normalized representations, then the group is isomorphic to the \textbf{projective special linear group} \(PSL_2(\C)\).
+\end{general}
+
+If
+\begin{align*}
+	A = \begin{pmatrix} a & b \\ c & d \end{pmatrix} 
+\end{align*}
+then we may denote the linear fractional transformation
+\begin{align*}
+	S(z) = \frac{az+b}{cz+d}
+\end{align*}
+simply by \(S_A\).
+
+\begin{prop}[Equivalence of Fractional Linear Transformations]
+	Let \(A,A' \in \C^{2\times 2}\) with \(\textrm{det}(A)\neq 0\) and \(\textrm{det}(A') \neq 0\). Then
+	\begin{align*}
+		S_A = S_{A'} \iff A' = \lambda A
+	\end{align*} 
+	for some \(\lambda \in \C\) non-zero.
+\end{prop}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Equivalence of Fractional Linear Transformations**
+Let \(A,A' \in \mathbb{C}^{2\times 2}\) with \(\textrm{det}(A)\neq 0\) and \(\textrm{det}(A') \neq 0\). Then
+{{c1::\(\begin{align*}
+        	S_A = S_{A'} \iff A' = \lambda A
+        \end{align*} \)}}
+	for some \(\lambda \in \C\) non-zero.
+Tags: analysis complex_analysis complex_geometry
+<!--ID: 1626152754018-->
+END
+\end{anki}
+
+
+\begin{defn}[Important Classes of Linear Transformations]
+	The linear fractional transformations of the form
+	\begin{align*}
+		T_\alpha (z) := \begin{pmatrix} 1 & \alpha \\ 0 & 1 \end{pmatrix} 
+	\end{align*}
+	for \(\alpha  \in \C\) are called \textbf{parallel translations}, as they correspond to the transformation \(S(z) = z + \alpha \).\\
+
+	The linear fractional transformations of the form
+	\begin{align*}
+		R_\alpha (z) := \begin{pmatrix} \alpha  & 0 \\ 0 & 1 \end{pmatrix} 
+	\end{align*}
+	are referred to as \textbf{rotations} if \(\left| \alpha  \right| = 1\), or a \textbf{homothetic transformation} if \(\alpha \) is real with \(\alpha >0\). For arbitrary complex \(\alpha \neq 0\), we can write
+	\begin{align*}
+		\alpha  = \left| \alpha  \right| \frac{\alpha }{\left| \alpha  \right| }
+	\end{align*}
+	and hence the general form can be viewed as a composition of a homothetic transformation with a rotation.\\
+
+	The linear fractional transformation
+	\begin{align*}
+	(z)^{-1} := \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} 
+	\end{align*}
+	is referred to as an \textbf{inversion}, as it represents \(S(z) = \frac{1}{z}\).
+\end{defn}
+In some sense, we can view these classes of translations as the fundamental linear transformations. If \(S(z)\) is given by
+\begin{align*}
+	\frac{az+b}{cz+d}
+\end{align*}
+with \(c\neq 0\), then we can write
+\begin{align*}
+	S(z) &= \frac{az+b}{c z+d} = \frac{bc-ad}{c^2(z+\frac{d}{c})}+ \frac{a}{c}\\
+	&=  T_{\sfrac{a}{c}}\circ R_{\frac{bc-ad}{c^2}}\circ (\cdot)^{-1} \circ T_{\sfrac{d}{c}}
+\end{align*}
+In the simpler case where \(c=0\), we have
+\begin{align*}
+	S(z) &= \frac{az+b}{d}\\
+	&= T_{\sfrac{b}{d}}\circ R_{\sfrac{a}{d}}
+\end{align*}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: The linear fractional transformations of the form
+ {{c1::\(\begin{align*}
+         	T_\alpha (z) := \begin{pmatrix} 1 & \alpha \\ 0 & 1 \end{pmatrix} 
+         \end{align*}\)}} 
+for \(\alpha  \in \C\) are called **parallel translations**, as they correspond to the transformation {{c1::\(S(z) = z + \alpha \)}}.
+
+The linear fractional transformations of the form
+ {{c2::\(\begin{align*}
+         	R_\alpha (z) := \begin{pmatrix} \alpha  & 0 \\ 0 & 1 \end{pmatrix} 
+         \end{align*}\)}}
+are referred to as **rotations** if {{c2::\(\left| \alpha  \right| = 1\)}}, or a **homothetic transformation** if {{c2::\(\alpha \) is real with \(\alpha >0\)}}. For arbitrary complex \(\alpha \neq 0\), we can write
+ {{c2::\(\begin{align*}
+        	\alpha  = \left| \alpha  \right| \frac{\alpha }{\left| \alpha  \right| }
+        \end{align*}\)}} 
+and hence the general form can be viewed as {{c2::a composition of a homothetic transformation with a rotation}}.
+
+The linear fractional transformation
+ {{c3::\(\begin{align*}
+        (z)^{-1} := \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} 
+        \end{align*}\)}} 
+is referred to as an **inversion**, as it represents {{c3::\(S(z) = \frac{1}{z}\)}} .
+Extra: If \(S(z)\) is given by
+\(\begin{align*}
+  	\frac{az+b}{cz+d}
+  \end{align*}\)
+with \(c\neq 0\), then we can write
+\(\begin{align*}
+  	S(z) &= \frac{az+b}{c z+d} = \frac{bc-ad}{c^2(z+\frac{d}{c})}+ \frac{a}{c}\\
+  	&=  T_{\sfrac{a}{c}}\circ R_{\frac{bc-ad}{c^2}}\circ (\cdot)^{-1} \circ T_{\sfrac{d}{c}}
+  \end{align*}\)
+In the simpler case where \(c=0\), we have
+\(\begin{align*}
+  	S(z) &= \frac{az+b}{d}\\
+  	&= T_{\sfrac{b}{d}}\circ R_{\sfrac{a}{d}}
+  \end{align*}\)
+Tags: analysis complex_analysis complex_geometry defn
+<!--ID: 1624827135038-->
+END
+\end{anki}
+
+\begin{thm}
+	A fractional linear transformation maps straight lines and circles onto straight lines and circles.
+\end{thm}
+\begin{proof}
+	
+\end{proof}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: A fractional linear transformation \(S(z) = \frac{az+b}{c z + d}\), \(ac-bd\neq 0\) maps straight lines and circles onto {{c1::straight lines and circles}}.
+Tags: analysis complex_analysis complex_geometry
+<!--ID: 1626152754035-->
+END
+\end{anki}
+
+\begin{lemma}
+	Let \(S\) be a fractional linear map. If \(S(\infty) = \infty\), then
+	\begin{align*}
+		S(z) = az+b
+	\end{align*}
+	for \(a,b \in \C\).
+\end{lemma}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(S\) be a fractional linear map. If \(S(\infty) = \infty\), then
+{{c1::\(\begin{align*}
+        	S(z) = az+b
+        \end{align*}\)
+      	for \(a,b \in \C\)}}.
+Tags: analysis complex_analysis complex_geometry
+<!--ID: 1626152754052-->
+END
+\end{anki}
+
+
+\begin{thm}
+	Given any three distinct points \(\left\{ z_1,z_2,z_3 \right\} \) with \(z_i \in \overline{\C}\) and three distinct points \(\left\{ w_1,w_2,w_3 \right\} \) with \(w_i \in \overline{\C}\), there exists a unique fractional linear map \(S\) with
+	\begin{align*}
+		S(z_i) = w_i.
+	\end{align*}
+	If \(\left\{ w_1,w_2,w_3 \right\} = \left\{ 0,\infty,1 \right\} \) then the map is given by
+	\begin{align*}
+		S(z) = \frac{z-z_1}{z-z_2}\cdot \frac{z_3-z_2}{z_3-z_1}.
+	\end{align*}
+	We can apply this to the general case to get the relation
+	\begin{align*}
+		\frac{w-w_1}{w-w_2}\cdot \frac{w_3-w_2}{w_3-w_1} = \frac{z-z_1}{z-z_2}\cdot \frac{z_3-z_2}{z_3-z_1}.
+	\end{align*}
+	We can use this relation to derive an explicit formula for specific values.
+\end{thm}
+
+\begin{lemma}
+	If \(S\) is a fractional linear map with three fixed points, then \(S\) is the identity map.
+\end{lemma}
+
+\begin{proof}
+	
+\end{proof}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Given any three distinct points \(\left\{ z_1,z_2,z_3 \right\} \) with \(z_i \in \overline{\C}\) and three distinct points \(\left\{ w_1,w_2,w_3 \right\} \) with \(w_i \in \overline{\C}\), there exists a {{c1::unique fractional linear map \(S\)::map}} with
+{{c1::\(\begin{align*}
+        	S(z_i) = w_i.
+        \end{align*}\)}}
+If \(\left\{ w_1,w_2,w_3 \right\} = \left\{ 0,\infty,1 \right\} \) then the map is given by
+ {{c1::\(\begin{align*}
+        	S(z) = \frac{z-z_1}{z-z_2}\cdot \frac{z_3-z_2}{z_3-z_1}.
+        \end{align*}\)}}
+We can apply this to the general case to get the relation
+ {{c1::\(\begin{align*}
+        	\frac{w-w_1}{w-w_2}\cdot \frac{w_3-w_2}{w_3-w_1} = \frac{z-z_1}{z-z_2}\cdot \frac{z_3-z_2}{z_3-z_1}.
+        \end{align*}\)}} 
+We can use this relation to derive an explicit formula for specific values.
+Extra: If \(S\) is a fractional linear map with three fixed points, then \(S\) is the identity map.
+Tags: analysis complex_analysis complex_geometry
+<!--ID: 1626152754068-->
+END
+\end{anki}
+
+
+%% Lots more details can be filled here, TBD based on later content
+
+
+% \printindex
+\end{document}

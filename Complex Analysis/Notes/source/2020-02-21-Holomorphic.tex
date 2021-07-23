@@ -1,0 +1,454 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+
+\begin{defn}[Holomorphic] % Testing
+\label{defn:Holomorphic}
+	Let \(\Omega\subset \C\) be open. A complex-valued function \(f:\Omega\to \C\) is \textbf{holomorphic} (or \textbf{regular}, \textbf{complex differentiable}) if for every \(z\in \Omega\), the limit exists:
+	\begin{align*}
+		\lim_{h \to 0} \frac{f(z+h)-f(z)}{h} := f'(z)
+	\end{align*}
+	\(f'\) is called the \textbf{complex derivative} of \(f\).
+\end{defn}
+Note that \(h\) is a non-zero complex number in \(\Omega\). Hence the derivative has to exist and be equal for any possible direction that \(h\) may approach zero.\\
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: Let \(\Omega\subset \C\) be open. A complex-valued function \(f:\Omega\to \C\) is **holomorphic** (or **regular**, **complex differentiable**) if for every \(z\in \Omega\), the limit exists:
+ {{c1::\(\begin{align*}
+         	\lim_{h \to 0} \frac{f(z+h)-f(z)}{h} := f'(z)
+         \end{align*}\)}} 
+	\(f'\) is called the **complex derivative** of \(f\).
+Extra: Note that \(h\) is a non-zero complex number in \(\Omega\). Hence the derivative has to exist and be equal for any possible direction that \(h\) may approach zero.
+Tags: analysis complex_analysis complex_analyticity defn
+<!--ID: 1624408998120-->
+END
+\end{anki}
+
+\begin{exmp}[Holomorphic and non-holomorphic functions]
+	Any polynomial \(p \in \C[z]\) defined by
+	\begin{align*}
+		p(z) = a_0 + a_1z + \ldots + a_n z^{n}
+	\end{align*}
+	is holomorphic in the entire complex plane with
+	\begin{align*}
+		p'(z) = a_1 + \ldots + na_n z^{n-1}.
+	\end{align*}
+	However, \(f(z) = 1 / z\) is only holomorphic on open sets that do not contain the origin.\\
+
+	For an example of a function that is never holomorphic, consider the involuntary transformation
+	\begin{align*}
+		f(z) = \overline{z}.
+	\end{align*}
+	One can see that
+	\begin{align*}
+		\frac{f(z_0+h) - f(z_0)}{h} = \frac{\overline{h}}{h}
+	\end{align*}
+	which has no limit as \(h\to 0\), as if \(h\) approaches zero on the real axis, then \(\frac{\overline{h}}{h} = 1\), and if it approaches zero on the imaginary axis, then \(\frac{\overline{h}}{h}= -1\).
+\end{exmp}
+
+It is useful to review the definition of real differentiation in \(\R^2\). At first, it seems there should be no reason to view complex and real differentiation differently, but we will start to see some subtle and important differences soon.
+\begin{defn}[Real Differentiation]
+	Let \(\Omega\subset \R^2\) be open. Let \(F:\Omega\to \R^2\). Then \(F\) is real-differentiable if there exists a linear transformation \(J:\R^2\to \R^2\) such that, for every \(z \in \Omega\)
+	\begin{align*}
+		\lim_{\left| h \right|  \to 0} \frac{\left| F(z+h)-F(z)-J_F(h) \right| }{\left| h \right| } = 0
+	\end{align*}
+	where \(h \in \R^2\). \(J_F\) is called the Jacobian and is exactly the \(2\times 2\) real matrix of partial derivatives
+\begin{align*}
+	J = J_F(x,y) = \begin{pmatrix} \sfrac{\partial u}{\partial x} & \sfrac{\partial u}{\partial y} \\ \sfrac{\partial v}{\partial x} & \sfrac{\partial v}{\partial y}  \end{pmatrix} 
+\end{align*}
+\end{defn}
+When \(F\) is a complex function, there is a special relation between the entries of the Jacobian, if it is holomorphic.
+
+\begin{prop}[Cauchy-Riemann Equations]
+	Let \(f\) be a complex function with \(f = u + iv\) for \(u,v\) real-valued functions. If \(f\) is holomorphic, then \(f\) satisfies the \textbf{Cauchy-Riemann equations}:
+\begin{align*}
+	\frac{\partial f}{\partial x} = \frac{1}{i}\frac{\partial f}{\partial y} &\implies \\
+	\frac{\partial u}{\partial x} &= \frac{\partial v}{\partial y} \quad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x} 
+\end{align*}
+where \((x,y)\) is a complex variable.
+\end{prop}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(f\) be a complex function with \(f = u + iv\) for \(u,v\) real-valued functions. If \(f\) is holomorphic, then \(f\) satisfies the **Cauchy-Riemann equations**:
+ {{c1::\(\begin{align*}
+         	\frac{\partial f}{\partial x} = \frac{1}{i}\frac{\partial f}{\partial y} \implies \\
+         	\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \quad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x} 
+         \end{align*}\)}} 
+where \((x,y)\) is a complex variable.
+Extra: The reverse direction holds: \(f\) is complex-differentiable iff \(f\) is real-differentiable and satisfies the Cauchy-Riemann equation.
+Tags: analysis complex_analysis complex_analyticity
+<!--ID: 1624408998160-->
+END
+\end{anki}
+
+
+\begin{proof}[Construction of Cauchy-Riemann Equations]
+	Recall that any complex-valued function \(f\) can be parametrized by some mapping
+	\begin{align*}
+		f = F(x,y) = (u(x,y), v(x,y))
+	\end{align*}
+	where \(x,y\) represent the real and imaginary coordinate respectively, and \(u,v\) are real-valued functions. If \(F\) is real-differentiable, then the partial derivatives of \(u,v\) exist and hence
+	\begin{align*}
+		J_F(x,y) = \begin{pmatrix} \sfrac{\partial u}{\partial x} & \sfrac{\partial u}{\partial y} \\ \sfrac{\partial v}{\partial x} & \sfrac{\partial v}{\partial y}  \end{pmatrix}
+	\end{align*}
+	satisfies the necessary properties as \(h\to 0\). However, there is an implicit relation imposed, as we utilize the parametrization \(h = (h_1,h_2)\). Observe that we can treat \(x\) or \(y\) as fixed when approaching from the imaginary or real axes respectively, and get
+	\begin{align*}
+		f'(z) &= \lim_{h_1 \to 0} \frac{f(x+h_1,y) - f(x,y)}{h_1} = \frac{\partial f}{\partial x} (z)\\
+		f'(z) &= \lim_{h_2 \to 0} \frac{f(x,y+h) - f(x,y)}{i h_2} = \frac{1}{i} \frac{\partial f}{\partial y} (z)
+	\end{align*}
+	Hence, if \(f\) is holomorphic, these limits must be equal and thus
+	\begin{align*}
+		\frac{\partial f}{\partial x} = \frac{1}{i} \frac{\partial f}{\partial y} 
+	\end{align*}
+	Substituting \(f = u + iv\), we get the relations
+	\begin{align*}
+		\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \quad \frac{\partial u}{\partial y} = - \frac{\partial v}{\partial x} 
+	\end{align*}
+\end{proof}
+
+\begin{thm}
+	Let \(\Omega\subset \C\) be open. Let \(f:\Omega\to \C\). Express \(z = x+yi\) and \(f = u+vi\) in the usual way. Then \(f\) is complex-differentiable if and only if \(f\) is real-differentiable and the Cauchy-Riemann equations are satisfied:
+	\begin{align*}
+		\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \quad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x} 
+	\end{align*}
+\end{thm}
+This follows directly from the work above.
+
+\begin{prop}[Properties of Complex Differentiation]\label{prop:properties_of_complex_differentiation}
+	Let \(f,g:\Omega \to \C\) be holomorphic complex-valued functions. Then
+	\begin{align*}
+		(f+g)' &= f'+g'\\
+		(fg)' &= f'g + fg'\\
+		\left( \frac{f}{g} \right)' &= \frac{f'g-fg'}{g^2} \text{ at all \(g(z)\neq 0\)}\\
+		(f \circ g)' &= (f'\circ g)\cdot g' \text{ at all \(g(z) \in \Omega\)}
+	\end{align*}
+	and hence all of these compositions are holomorphic functions.
+\end{prop}
+
+\begin{hw}
+	Prove \ref{prop:properties_of_complex_differentiation}.
+\end{hw}
+
+\subsection{Complex Differential Forms}
+\label{sub:complex_differential_forms}
+
+When first encountering the complex plane and complex functions, it is tempting to "view" these structures as a variant on \(\R^2\). While this interpretation is not wrong, it can be restrictive at times. While it is true that a complex function is a parametrization \(f = (u,v)\) where each component represents the real and imaginary coordinate, the underlying relation between the real and imaginary coordinate can be hidden.\\
+
+Thus, we encourage the reader to view complex functions \(f:\C\to \C\) as mappings \(f:z\mapsto f(z)\). This interpretation comes in handy when working with differential forms on \(\C\). Let \(f(z) = f((x,y))\) be given. Then the differential \(df\) can be given by
+\begin{align*}
+	df = \frac{\partial f}{\partial x} \,d x + \frac{\partial f}{\partial y} \,d y.
+\end{align*}
+This form is perfectly valid, but can be clunky depending on how \(f\) is defined. Instead, let \(z = (x,y)\). Then we have a relation given by
+\begin{align*}
+	z &= (x,y) &\quad x &= (\sfrac{1}{2},0)(z+\overline{z})\\
+	\overline{z}&=(x,-y) &\quad y &= (0,\sfrac{1}{2})(z-\overline{z})
+\end{align*}
+
+These identities carry over to the differentials \(dx, \,d y\) so that
+\begin{align*}
+	dz &= (dx,dy) & \quad dx &= (\sfrac{1}{2},0)(dz + d\overline{z}) \\
+	d \overline{z} &= (dx,-dy) &\quad \,d y &= (0,\sfrac{1}{2})(dz - d \overline{z})
+\end{align*}
+This change of variable offers a few distinct advantages, but first we point out its limitations. One convenience offered by \(dx,\,d y\) is that they are independent of one another, unlike \(z\) and \(\overline{z}\). We cannot treat \(dz,\,d \overline{z}\) as independent variables-- however, we do have a form of independence:
+\begin{prop}
+	Let \(g,h\) be complex-valued functions. Then
+	\begin{align*}
+		g \,d z + h \,d \overline{z} = 0 \iff g= h = 0.
+	\end{align*}
+\end{prop}
+
+This differential form is not particularly useful if we cannot define the differential \(df\) in the form
+\begin{align*}
+	df = \frac{\partial f}{\partial z} \,d z + \frac{\partial f}{\partial \overline{z}} \,d \overline{z}.
+\end{align*}
+We can already obtain
+\begin{align*}
+	df &= \frac{\partial f}{\partial x} \,d x + \frac{\partial f}{\partial y} \,d y\\
+	   &= \frac{\partial f}{\partial x} \left( (\sfrac{1}{2},0)(dz + d \overline{z} ) \right) + \frac{\partial f}{\partial y} \left( (0,\sfrac{1}{2})(dz - d \overline{z} \right) \\
+	   &= \frac{1}{2}\left( \frac{\partial f}{\partial x} , - \frac{\partial f}{\partial y}  \right) \,d z + \frac{1}{2} \left( \frac{\partial f}{\partial x} , \frac{\partial f}{\partial y}  \right) \,d \overline{z}.
+\end{align*}
+This makes it clear what a natural definition for \(\frac{\partial }{\partial z} \) and \(\frac{\partial }{\partial \overline{z}} \) should look like. With this, we formally define what we have just discussed:
+
+\begin{defn}[Complex Differential 1-form]
+	Let \((x,y)\) be complex variables with corresponding differentials \(dx , \,d y\) and partial derivatives \(\frac{\partial }{\partial x} , \frac{\partial }{\partial y} \). Then taking \(z = (x,y)\), we define the \textbf{complex differential 1-form} by
+	\begin{align*}
+		dz = (dx, dy)\\
+		d \overline{z} = (dx,-dy)
+	\end{align*}
+	so that
+	\begin{align*}
+		dx = (\sfrac{1}{2},0) (dz + d \overline{z})\\
+		dy = (0, \sfrac{1}{2}) (dz - d \overline{z})
+	\end{align*}
+	is satisfied. Furthermore, we define the **complex differential operators** by
+	\begin{align*}
+		\frac{\partial }{\partial z} &= \frac{1}{2}\left( \frac{\partial }{\partial x} , \frac{\partial }{\partial y}  \right)\\
+		\frac{\partial }{\partial \overline{z}} &= \frac{1}{2} \left( \frac{\partial }{\partial x} , - \frac{\partial }{\partial y}  \right) 
+	\end{align*}
+	so that
+	\begin{align*}
+		df = \frac{\partial f}{\partial z} \,d z + \frac{\partial f}{\partial \overline{z}} \,d \overline{z}
+	\end{align*}
+	is satisfied.
+\end{defn}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \((x,y)\) be complex variables with corresponding differentials \(dx , \,d y\) and partial derivatives \(\frac{\partial }{\partial x} , \frac{\partial }{\partial y} \). Then taking \(z = (x,y)\), we define the **complex differential 1-form** by
+\(\begin{align*}
+  	dz = (dx, dy)\\
+  	d \overline{z} = (dx,-dy)
+  \end{align*}\)
+so that
+{{c1::\(\begin{align*}
+      	dx = (\sfrac{1}{2},0) (dz + d \overline{z})\\
+      	dy = (0, \sfrac{1}{2}) (dz - d \overline{z})
+        \end{align*}\)}}
+is satisfied. Furthermore, we define the \textbf{complex differential operators} by
+{{c2::\(\begin{align*}
+        	\frac{\partial }{\partial z} &= \frac{1}{2}\left( \frac{\partial }{\partial x} , \frac{\partial }{\partial y}  \right)\\
+        	\frac{\partial }{\partial \overline{z}} &= \frac{1}{2} \left( \frac{\partial }{\partial x} , - \frac{\partial }{\partial y}  \right) 
+        \end{align*}\)}} 
+so that
+\(\begin{align*}
+  	df = \frac{\partial f}{\partial z} \,d z + \frac{\partial f}{\partial \overline{z}} \,d \overline{z}
+  \end{align*}\)
+is satisfied.
+Extra: One convenience offered by \(dx,\,d y\) is that they are independent of one another, unlike \(z\) and \(\overline{z}\). We cannot treat \(dz,\,d \overline{z}\) as independent variables-- however, we do have a form of independence. If \(g,h\) are complex functions, then:
+\(\begin{align*}
+  	g \,d z + h \,d \overline{z} = 0 \iff g= h = 0.
+  \end{align*}\)
+Tags: analysis complex_analysis complex_analyticity defn
+<!--ID: 1626483183627-->
+END
+\end{anki}
+
+
+\begin{exmp}
+	What is the derivative of \(f(z) = z^2 \)?
+\end{exmp}
+
+\begin{prop}
+	A complex-valued function \(f\) is holomorphic if and only if
+	\begin{align*}
+		\frac{\partial f}{\partial \overline{z}} = 0.
+	\end{align*}
+\end{prop}
+This follows directly from applying \(\frac{\partial }{\partial \overline{z}} \) to \(f = (u,v)\). We encourage the reader to compute this by hand as a short exercise if it is not immediately apparent.\\
+
+\begin{anki}
+START
+MathJaxCloze
+Text: A complex-valued function \(f\) is holomorphic if and only if
+ {{c1::\(\begin{align*}
+        	\frac{\partial f}{\partial \overline{z}} = 0.
+        \end{align*}\)::complex differential operator}} 
+Tags: analysis complex_analysis complex_analyticity defn
+<!--ID: 1626483183638-->
+END
+\end{anki}
+
+
+One should also verify that \(\frac{\partial }{\partial z} \) and \(\frac{\partial }{\partial \overline{z}} \) commute as one expects partial derivatives to commute from real analysis. Furthermore, they satisfy the product rule and chain rule.\\
+
+We conclude the discussion on the complex differential with one last identity of note. We will use this tool throughout, although we will not see the full scope of the complex differential operator until we discuss harmonic functions.
+\begin{prop}
+If \(f = (u,v)\), then we can express the complex derivative by
+\begin{align*}
+	f'(z) = 2 \frac{\partial u}{\partial z} = \frac{\partial u}{\partial x} - i \frac{\partial u}{\partial y} .
+\end{align*}
+\end{prop}
+
+% Info on potential functions??
+
+\subsection{Analytic Continuity}
+\label{sub:analytic_continuity}
+
+We briefly mentioned that the set of zeroes of a non-constant holomorphic function is discrete. This property is a remarkably strong statement on holomorphic functions. First, we state it a bit more formally.
+
+\begin{thm}[Discreteness of Holomorphic Zeroes]
+	Let \(\Omega \subset \C\) be a connected open set. If \(f:\Omega \to \C\) is holomorphic on \(\Omega \) and non-constant, then \(U = f^{-1}(\left\{ 0 \right\}\subset \Omega  )\) is discrete.\\
+
+	In particular, if \(f,g\) are holomorphic on \(\Omega \), and there exists \(U\subset \Omega \) non-discrete so that \(f(z)=g(z)\) for \(z \in U\), then \(f(z)=g(z)\) for \(z \in \Omega \).
+\end{thm}
+
+\begin{proof}
+	The second statement follows from the first by observing that \(f-g \) is holomorphic and hence must have a discrete set of zeroes. Hence, if \(f-g=0\) on a non-discrete set, \(f-g\) must be constant.\\
+
+	We will prove the first part once we introduce the notion of locally constant.
+\end{proof}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) be a connected open set. If \(f\) is holomorphic on \(\Omega \) and non-constant, then the set of zeroes of \(f\) on \(\Omega \) is {{c1::discrete}}.
+
+	In particular, if \(f,g\) are holomorphic on \(\Omega \), and there exists \(U\subset \Omega \) {{c1::non-discrete}} so that \(f(z)=g(z)\) for \(z \in U\), then {{c1::\(f(z)=g(z)\) for \(z \in \Omega \)}}.
+Tags: analysis complex_analysis complex_analyticity
+<!--ID: 1625191420102-->
+END
+\end{anki}
+
+
+The theorem above is so powerful because it gives us a uniqueness of holomorphic functions.
+
+\begin{defn}[Analytic Continuation]
+	Let \(f\) be a holomorphic function on an open set \(U\) with \(U\subset \Omega \subset \C \) for some \(\Omega \) open. Suppose \(g\) is a holomorphic function on \(\Omega \) with \(f(z)=g(z)\) for \(z \in U\). Then \(g\) is the \textbf{analytic continuation} of \(f\) to \(\Omega \).\\
+
+	Instead, suppose there exists an open set \(V \subset \C\), \(U,V\) connected, with \(U\cap V \neq \emptyset\). Then if \(g\) is holomorphic on \(V\) and equal to \(f\) on \(U\cap V\), then we also say that \(g\) is the analytic continuation of \(f\) to \(V\).
+\end{defn}
+In general, there are many ways to extend \(f\) depending on the structure of our sets by ensuring it agrees on non-isolated sets. We may refer to any of these extensions as analytic continuations. The theorem above guarantees that these extensions are unique.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(f\) be a holomorphic function on an open set \(U\) with \(U\subset \Omega \subset \C \) for some \(\Omega \) open. Suppose \(g\) is {{c1::a holomorphic function}} on \(\Omega \) with {{c1::\(f(z)=g(z)\)}} for \(z \in U\). Then \(g\) is the **analytic continuation** of \(f\) to \(\Omega \).
+Extra: Another form of analytic continuity: suppose there exists an open set \(V \subset \C\), \(U,V\) connected, with \(U\cap V \neq \emptyset\). Then if \(g\) is holomorphic on \(V\) and equal to \(f\) on \(U\cap V\), then we also say that \(g\) is the analytic continuation of \(f\) to \(V\).
+Tags: analysis complex_analysis complex_analyticity defn
+<!--ID: 1625191420112-->
+END
+\end{anki}
+
+
+\subsection{Conformality of Holomorphic Functions}
+\label{sub:conformality_of_holomorphic_functions}
+
+
+Holomorphic functions play an important role with regard to curves.\\
+
+We will ask that curves in \(\C\) are differentiable (and not, say, holomorphic). This is because we cannot construct a concept of holomorphicity that makes sense with complex curves at the moment (why?).\\
+
+Hence, we merely say that a curve \(\gamma \) is differentiable provided its components are differentiable. That is, if \(\gamma = (x,y)\) for real-valued curves \(x,y\), then \(\gamma \) is holomorphic if and only if \(x,y\) are differentiable. Differentiable curves get a special name.
+
+\begin{defn}[Smooth]
+	Let \(\gamma =(x,y)\) be a curve in \(\C\), where \(x,y\) are real-valued curves. Then \(\gamma \) is \textbf{smooth} if it is component-wise \(C^{1}\)-- that is, \(x,y \in C^{1}\), and define
+	\begin{align*}
+		\gamma '(t) = (x'(t),y'(t)).
+	\end{align*}
+	Furthermore, we require that \(\gamma'(t) \neq 0\) for any time \(t\).
+\end{defn}
+A smooth curve is \textbf{closed} if \(\gamma(t_0) = \gamma (t_1)\), and \textbf{simple} if \(\gamma(t) \neq \gamma(s)\) for \(t\neq s\), where \(t,s\) are not both endpoints.
+
+\begin{defn}[Tangent Vectors]
+	Let \(\gamma ,\eta \) be smooth curves passing through a point \(z_0 \in \C\), that is:
+	\begin{align*}
+		\gamma (\tau_1) = \eta (\tau_2) = z_0
+	\end{align*}
+	for some \(\tau_1,\tau_2 \in \R\). Then \(\gamma '(\tau_1)\) is the \textbf{tangent vector of \(\gamma \) at \(z_0\)}.\\
+
+	The \textbf{angle between \(\gamma ,\eta \)} is defined to be the angle between \(\gamma'(\tau_1)\) and \(\eta'(\tau_2)\), that is
+	\begin{align*}
+		\theta_{z_0} (\gamma ,\eta ) = \theta (\gamma'(\tau_1), \eta'(\tau_2))
+	\end{align*}
+\end{defn}
+
+\begin{prop}[Preservation of Angles]
+	Let \(\gamma ,\eta \) be smooth curves passing through a point \(z_0 \in \Omega\subset \C\), and let \(f:\Omega \to \C\) be holomorphic. Then
+	\begin{align*}
+		\frac{\partial }{\partial t} f(\gamma (t)) = f'(\gamma (t)) \gamma '(t). 
+	\end{align*}
+	and
+	\begin{align*}
+		\theta_{z_0}(\gamma,\eta ) = \theta_{f(z_0)}(f\circ \gamma , f\circ \eta ).
+	\end{align*}
+\end{prop}
+In other words, holomorphic functions preserve the angles between curves.\\
+
+Any isomorphism between metric spaces with curves that satisfies
+\begin{align*}
+	\theta_{z_0}(\gamma ,\eta ) = \theta_{f(z_0)}(f\circ \gamma , f\circ \eta )
+\end{align*}
+is called \textbf{conformal}. Hence, the proposition above states that all holomorphic isomorphisms are conformal.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Any isomorphism between metric spaces with curves that satisfies for every \(z_0\) in the metric space and \(\gamma ,\eta \) curves within the space:
+ {{c1::\(\begin{align*}
+        	\theta_{z_0}(\gamma ,\eta ) = \theta_{f(z_0)}(f\circ \gamma , f\circ \eta )
+        \end{align*}\)}}
+is called \textbf{conformal}.
+Tags: analysis complex_analysis defn
+<!--ID: 1624675761922-->
+END
+\end{anki}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Holomorphic isomorphisms in \(\C\) are {{c1::conformal}} maps.
+Tags: 
+<!--ID: 1624675761966-->
+END
+\end{anki}
+
+
+\begin{proof}
+	The derivative of the composition follows from the rule of complex differentiation on compositions. For the second part, let \(f'(z_0) = \alpha \). Then
+	\begin{align*}
+		\langle \alpha z, \alpha w \rangle = \textrm{Re}(\alpha z \overline{\alpha } \overline{w}) = \alpha \overline{\alpha } \textrm{Re}(z \overline{w}) = \left| \alpha  \right|^2 \langle z,w \rangle .
+	\end{align*}
+	Hence
+	\begin{align*}
+		\langle (f\circ \gamma)' , (f\circ \eta)'  \rangle = \langle \alpha \gamma' , \alpha \eta'  \rangle \\
+		\left| (f\circ \gamma)'  \right| = \left| \alpha  \right|\left| \gamma ' \right| 
+	\end{align*}
+	which implies that
+	\begin{align*}
+		\theta ( (f\circ \gamma)' , (f \circ \eta )') = \theta (\alpha \gamma , \alpha \eta )
+	\end{align*}
+	One can check that scalar multiplication of complex vectors does not change the angle between complex vectors, and hence it holds that \(f\) is conformal.
+\end{proof}
+The reverse is false in general.\\
+
+This gives an interesting new light to holomorphic functions. We can instead treat functions that are holomorphic on \(\C\) as isomorphisms of \(\C\). Hence we can view functions as holomorphic transformations of the complex plane. This equivalence allows us to infer a lot of information of geometric transformations of the complex plane.\\
+
+Furthermore, one can show that \(\overline{f}\) is \textbf{indirectly conformal}-- that is, angles are preserved but reversed in direction. In general, holomorphic transformations scale continuously the area of sets. That is, let \(E\subset \C\) be a measurable set. Then
+\begin{align*}
+	A(E) &= \int_{E} 1 \,d \mu \\
+	     &\implies A(f(E)) = \int_E \left| f' \right| \,d \mu .
+\end{align*}
+This holds because in general for any real-differentiable isomorphism \(f = u+iv\)
+\begin{align*}
+	A(f(E)) = \int_E \left| u_x v_y - u_y v_x \right| \,d x \,d y
+\end{align*}
+When \(f\) is conformal, we have \(u_xv_y - u_yv_x = \left| f'(z) \right|^2\) and hence the statement holds.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: One can show that \(\overline{f}\) is **indirectly conformal**-- that is, {{c1::angles are preserved but reversed in direction}}. 
+
+Holomorphic transformations {{c2::scale continuously the area of sets}} . That is, let \(E\subset \C\) be a measurable set. Then
+ {{c2::\(\begin{align*}
+        	A(E) &= \int_{E} 1 \,d \mu \\
+        	     &\implies A(f(E)) = \int_E \left| f' \right| \,d \mu .
+        \end{align*}\)}} 
+
+Extra: In general, for any real-differentiable isomorphism \(f = u+iv\)
+\(\begin{align*}
+  	A(f(E)) = \int_E \left| u_x v_y - u_y v_x \right| \,d x \,d y
+  \end{align*}\)
+When \(f\) is conformal, we have \(u_xv_y - u_yv_x = \left| f'(z) \right|^2\) and hence the statement holds.
+Tags: analysis complex_analysis defn complex_analyticity
+<!--ID: 1624675762007-->
+END
+\end{anki}
+
+
+\end{document}

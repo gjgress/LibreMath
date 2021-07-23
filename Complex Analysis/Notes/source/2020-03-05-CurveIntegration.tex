@@ -1,0 +1,139 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+
+\begin{document}
+
+Before we define the complex line integral, we will construct a few definitions that will allow us to work in more generality.
+\begin{defn}[Piecewise-smooth curve]
+	A curve \(\gamma :[t_0,t_1]\to \C\) is piecewise-smooth if \(\gamma \) is continuous on \([t_0,t_1]\) and if there exist a set of points
+	\begin{align*}
+		t_0 = a_0<a_1<\ldots<a_n = t_1
+	\end{align*}
+	where \(\gamma \) is smooth on the intervals \([a_k,a_{k+1}]\).
+\end{defn}
+Because line integrals tend to have decomposability as a property, we only need piecewise-smooth curves to define integration, as we can choose our intervals so each integral is over smooth segments.
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: A curve \(\gamma :[t_0,t_1]\to \C\) is piecewise-smooth if \(\gamma \) is continuous on \([t_0,t_1]\) and if there exist a set of points
+ {{c1::\(\begin{align*}
+         	t_0 = a_0<a_1<\ldots<a_n = t_1
+         \end{align*}\)}}
+where \(\gamma \) is {{c1::smooth on the intervals \([a_k,a_{k+1}]\)}}.
+Tags: analysis complex_analysis complex_analyticity defn
+<!--ID: 1625192000546-->
+END
+\end{anki}
+
+\begin{defn}[Length]
+	The length of a smooth curve \(\gamma:[t_0,t_1]\to \C\) is defined by
+	\begin{align*}
+		\textrm{length}(\gamma) = \int_{t_0}^{t_1} \left| \gamma '(t) \right| \,d t 
+	\end{align*}
+\end{defn}
+Of course, this extends to piecewise-smooth curves if we integrate along the partition. That is, if \(\gamma \) is piecewise-smooth via a partition of the interval \([t_0,t_1]\) by \(\left\{ a_i \right\}_{i=0}^{n}\), then
+\begin{align*}
+	\textrm{length}(\gamma ) = \int_{t_0}^{t_1} \left| \gamma'(t) \right| \,d t = \sum_{i=0}^{n-1} \int_{a_i}^{a_{i+1}} \left| \gamma'(t) \right| \,d t.
+\end{align*}
+This construction is perfectly valid as we are using the real line integral to define these notions, and we urge the reader to review real line integrals if these notions are troubling.\\
+
+We may choose to extend the notion of length to all curves \(\gamma \), and say that a curve is \textbf{unrectifiable} if \(\textrm{length}(\gamma ) = \infty\). Otherwise, if the curve has finite length, it is \textbf{rectifiable}. For a more formal construction, we refer the reader to the real analysis line integral construction once again.\\
+
+\begin{anki}
+START
+MathJaxCloze
+Text: The length of a smooth curve \(\gamma:[t_0,t_1]\to \C\) is defined by
+ {{c1::\(\begin{align*}
+        	\textrm{length}(\gamma) = \int_{t_0}^{t_1} \left| \gamma '(t) \right| \,d t 
+        \end{align*}\)}}
+Extra: Of course, this extends to piecewise-smooth curves if we integrate along the partition. That is, if \(\gamma \) is piecewise-smooth via a partition of the interval \([t_0,t_1]\) by \(\left\{ a_i \right\}_{i=0}^{n}\), then
+\(\begin{align*}
+  	\textrm{length}(\gamma ) = \int_{t_0}^{t_1} \left| \gamma'(t) \right| \,d t = \sum_{i=0}^{n-1} \int_{a_i}^{a_{i+1}} \left| \gamma'(t) \right| \,d t.
+  \end{align*}\)
+Tags: analysis complex_analysis complex_integration defn
+<!--ID: 1625192000556-->
+END
+\end{anki}
+
+One may be concerned that there may be curves for which this notion is not well-defined, but it turns out that line integrals are equivalent over reparametrizations, and with some other properties we assure the reader that the line integral is well-defined.
+
+\begin{defn}[Equivalence]
+	Two curves \(\gamma_1:[t_0,t_1]\to \C\) and \(\gamma_2:[\tau_1,\tau_2]\to \C\) are \textbf{equivalent} if there exists a strictly increasing, continuously differentiable bijection \(\varphi \) from \([t_0,t_1]\) onto \([\tau_1,\tau_2]\) so that
+	\begin{align*}
+		\gamma_1(t) = \gamma_2(\varphi (t)).
+	\end{align*}
+\end{defn}
+This forms an equivalence class, with elements called \textbf{reparametrizations}.
+\begin{lemma}
+	Equivalent curves have the same length.
+\end{lemma}
+\begin{defn}[Reverse]
+	The \textbf{reverse} of a curve \(\gamma:[t_0,t_1]\to \C\) is \(\gamma^{-}:[t_0,t_1]\to \C\) defined by 
+\begin{align*}
+	\gamma^{-}(t) := \gamma (t_0+t_1-t).
+\end{align*}
+\end{defn}
+
+Now that we have established a standard for our curves, we finally introduce the complex line integral.
+
+\begin{defn}[Complex Line Integral]
+	Let \(\gamma :[t_0,t_1]\to \C\) be a piecewise-smooth curve and \(f\) a complex-valued function continuous on \(\gamma \). We define the \textbf{line integral of \(f\) on \(\gamma \)} by
+	\begin{align*}
+		\int_\gamma f \,d t := \int_{t_0}^{t_1} f(\gamma (t)) \gamma'(t)\,d t .
+	\end{align*}
+\end{defn}
+One might object that the above definition is ill-defined, as we have not explicitly stated how to evaluate the right-hand side. We omit this in the definition above simply because we evaluate it piecewise. That is, if \(F:[a,b]\to \C\) is continuous with \(F = (u,v)\), then
+\begin{align*}
+	\int_{a}^{b} F \,d t = \left( \int_{a}^{b} u \,d t, \int_{a}^{b} v \,d t \right)  .
+\end{align*}
+Hence, for the above definition, \(f(\gamma (t))\gamma'(t)\) is a continuous function on the interval and decomposes into real and imaginary-valued parts, and so is well-defined.\\
+
+Of course, actually computing this by hand is difficult at best and impossible at worst-- even if both \(f\) and \(\gamma \) are nice, there is no guarantee that \((f\circ \gamma )\gamma'\) will be nice.\\
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\gamma :[t_0,t_1]\to \C\) be a piecewise-smooth curve and \(f\) a complex-valued function continuous on \(\gamma \). We define the **line integral of \(f\) on \(\gamma \)** by
+ {{c1::\(\begin{align*}
+         	\int_\gamma f \,d t := \int_{t_0}^{t_1} f(\gamma (t)) \gamma'(t)\,d t .
+         \end{align*}\)}}
+Extra: Computing this directly requires splitting each function into real and imaginary parts.
+Tags: analysis complex_analysis complex_integration defn
+<!--ID: 1625192000566-->
+END
+\end{anki}
+
+The component-wise integral definition is convenient because it inherits the properties of the real line integral by construction. For posteriety, we include them here, but omit the proof.
+
+\begin{prop}[Properties of Complex Line Integrals]
+	Let \(\gamma\) be a piecewise-smooth curve and \(f,g\) complex-valued functions continuous on \(\gamma \). Then
+	\begin{itemize}
+		\item If \(\alpha ,\beta  \in \C\), then
+			\begin{align*}
+				\int _{\gamma }(\alpha f + \beta g) = \alpha \int_{\gamma }f + \beta \int_{\gamma }g.
+			\end{align*}
+		\item If \(\gamma^{-}\) is the reverse of \(\gamma \), then
+			\begin{align*}
+				\int_\gamma f = - \int_{\gamma^{-}}f.
+			\end{align*}
+		\item 
+			\begin{align*}
+				\left| \int_\gamma f(z) \,d z \right| \leq \sup_{z \in \gamma } \left| f(z) \right| \cdot \textrm{length}(\gamma ).
+			\end{align*}
+	\end{itemize}
+\end{prop}
+
+As we have seen previously, a curve has many different reparametrizations. In order to make sure our line integral definition behaves properly, we must check that the integral is independent of reparametrization.
+
+\begin{hw}
+	Let \(\gamma:[t_0,t_1] \to \C\) be a smooth curve and \(f\) a complex-valued function continuous on \(\gamma \). Let \(\overline{\gamma }\) be a reparametrization of \(\gamma \)-- prove that
+	\begin{align*}
+		\int_{\gamma }f \,d t = \int_{\overline{\gamma }}f \,d t.
+	\end{align*}
+\end{hw}
+
+\end{document}

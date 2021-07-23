@@ -1,0 +1,62 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+Recall that if a function \(f\) is meromorphic with a pole at \(z_0\) of order \(k\), then \(f\) has a Laurent expansion at \(z_0\) of the form
+\begin{align*}
+	f(z) = \sum_{n=-k}^{\infty} a_n (z-z_0)^{n}
+\end{align*}
+and we refer to the partial sum
+\begin{align*}
+	\sum_{n=-k}^{-1} a_n (z-z_0)^{n}
+\end{align*}
+as the principal part of \(f\) at \(z_0\).
+
+\begin{thm}[Mittag-Leffler Theorem]
+	Let \(\left\{ z_n \right\} \subset \C\) be a sequence of distinct complex numbers with \( \lim_{n \to \infty} \left| z_n \right|= \infty \). Let \(\left\{ p_n(z) \right\} \) be a sequence of polynomials with \(p_n(0)=0\). Then there exists a function \(f\) meromorphic on the complex plane with poles exclusively at \(\left\{ z_n \right\} \) whose principal part at each \(z_n\) is \(p_n(\frac{1}{z-z_n})\). In fact, every meromorphic function \(f\) with poles at \(\left\{ z_n \right\} \) is of the form
+	\begin{align*}
+		f(z) = \sum_{n=1}^{\infty} \left[ p_n\left( \frac{1}{z-z_n} \right) - q_n(z) \right] + \varphi (z)
+	\end{align*}
+	for some polynomials \(\left\{ q_n \right\} \) and an entire function \(\varphi \). The sum converges absolutely and uniformly on all \(K\subset \C\) compact with \(K \cap \left\{ z_n \right\} = \emptyset\).
+\end{thm}
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: **Mittag-Leffler Theorem**
+Let \(\left\{ z_n \right\} \subset \C\) be a sequence of distinct complex numbers with \( \lim_{n \to \infty} \left| z_n \right|= \infty \). Let \(\left\{ p_n(z) \right\} \) be a sequence of polynomials with \(p_n(0)=0\). Then there exists a function \(f\) meromorphic on the complex plane with poles exclusively at \(\left\{ z_n \right\} \) whose principal part at each \(z_n\) is \(p_n(\frac{1}{z-z_n})\). In fact, every meromorphic function \(f\) with poles at \(\left\{ z_n \right\} \) is of the form
+{{c1::\(\begin{align*}
+        	f(z) = \sum_{n=1}^{\infty} \left[ p_n\left( \frac{1}{z-z_n} \right) - q_n(z) \right] + \varphi (z)
+        \end{align*}\)}}
+for some polynomials \(\left\{ q_n \right\} \) and an entire function \(\varphi \). The sum converges {{c1::absolutely}} and {{c1::uniformly}} on all \(K\subset \C\) compact with {{c1::\(K \cap \left\{ z_n \right\} = \emptyset\)}}.
+Tags: analysis complex_analysis entire_meromorphic
+<!--ID: 1626995970482-->
+END
+\end{anki}
+
+
+\begin{proof}
+\end{proof}
+
+% \printindex
+\end{document}

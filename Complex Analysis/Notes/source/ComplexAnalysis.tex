@@ -1,0 +1,196 @@
+\documentclass[oneside]{memoir}
+
+\usepackage{notestemplate}
+
+\logo{~/LibreMath/Auxiliary Resources/resources/png/logo.png}
+\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+\department{Department of Mathematics}
+\title{Introduction to Complex Analysis}
+%\subtitle{Based on MATH xxx}
+\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{The Complex Field}
+\label{cha:the_complex_field}
+
+\section{Arithmetic of \(\C\)}
+\label{sec:arithmetic_and_geometry_of_c}
+
+\input{2020-02-06-ComplexNumbers}
+
+\section{Geometry in \(\C\)}
+\label{sec:geometry_in_c}
+
+\input{2020-02-07-GeometryinC}
+
+\section{Riemannian Sphere and Its Linear Transformations}
+\label{sec:riemannian_sphere_and_its_linear_transformations}
+
+\input{RiemannSphere}
+
+\section{Topology of \(\C\)}
+\label{sec:topology_of_c}
+
+\input{2020-02-13-ComplexTopology}
+
+\subsection{Sequences in \(\C\)}
+\label{sub:sequences_in_c}
+
+\input{2020-02-14-ComplexSequences}
+
+\chapter{Complex Functions}
+\label{cha:complex_functions}
+
+\input{2020-02-20-ComplexContinuity}
+
+\section{Differentiability in \(\C\)}
+\label{sec:differentiability_in_c}
+
+\input{2020-02-21-Holomorphic}	
+\input{InverseOpenMapping}
+
+\section{Power Series}
+\label{sec:power_series}
+
+\input{2020-02-28-PowerSeries}
+
+
+\chapter{Complex Integration}
+\label{cha:complex_integration}
+
+\section{Integration on Curves}
+\label{sec:integration_on_curves}
+
+\input{2020-03-05-CurveIntegration}
+
+\section{Integration on Closed Curves}
+\label{sec:integration_on_closed_curves}
+
+\input{2020-03-06-ClosedCurveInt}
+
+
+
+\section{Cauchy's Theorem}
+\label{sec:cauchy_s_theorem}
+
+\input{CurveHomotopy}
+
+\input{2020-04-02-CauchysThm}
+
+\section{Cauchy's Integral Formulas}
+\label{sec:cauchy_s_integral_formulas}
+
+\input{CauchysIntFormulas}
+
+\input{CauchysIntApplications}
+
+\chapter{Singularities and Residues}
+\label{cha:singularities_and_residues}
+
+\input{PolesMotivation}
+
+\section{Zeroes and Singularities}
+\label{sec:zeroes_and_singularities}
+
+\input{Singularities}
+
+\section{Calculus of Residues}
+\label{sec:calculus_of_residues}
+
+\input{Residues}
+
+% Section on partial fractions? Ahlfors 5.2
+
+\chapter{Conformal Mappings}
+\label{cha:conformal_mappings}
+
+\section{Automorphisms in the Complex Plane}
+\label{sec:automorphisms_in_the_complex_plane}
+
+\input{ConformalMappings}
+
+\section{Riemann Mapping Theorem}
+\label{sec:riemann_mapping_theorem}
+
+\input{RiemannMappingThm}
+
+\chapter{Harmonic Functions}
+\label{cha:harmonic_functions}
+
+In real analysis, harmonic functions form a relatively rigid class of functions, sharing many properties which are similar to holomorphic functions in many ways-- such as the mean value property and maximum modulus principle. It comes as no surprise that harmonic functions have an intimate connection to holomorphic functions. In this chapter, we will explore the connection between holomorphic and harmonic functions, and how it can be applied to learn more about the other. But-- we will also see where they differ, to better understand the kinds of functions which are harmonic but not holomorphic, and vice versa.
+
+\section{Decomposability of Holomorphic Functions}
+\label{sec:decomposability_of_holomorphic_functions}
+
+
+\input{HarmonicFunctions}
+
+%\chapter{Analytic Continuation} Cool, but not necessary for exam, so putting it on hold. May want to use it for reference later?
+%\label{cha:analytic_continuation}
+
+\section{Continuation via Reflection}
+\label{sec:continuation_via_reflection}
+
+\input{SchwarzReflection}
+
+\chapter{Entire and Meromorphic Functions}
+\label{cha:entire_and_meromorphic_functions}
+
+\section{Infinite Products}
+\label{sec:infinite_products}
+
+
+
+\input{InfiniteProducts}
+
+\section{Entire Functions of Finite Order}
+\label{sub:entire_functions_of_finite_order}
+
+\input{FiniteOrder}
+
+\section{Meromorphic Functions}
+\label{sec:meromorphic_functions}
+
+% Maybe partial fraction stuff?
+
+\input{Meromorphic}
+
+%\chapter{Special Functions}
+%\label{cha:special_functions}
+
+
+
+%\section{Subharmonic Functions}
+%\label{sec:subharmonic_functions}
+
+%\subsection{Dirichlet's Problem}
+%\label{sub:dirichlet_s_problem}
+
+
+%\section{Elliptic Functions}
+%\label{sec:elliptic_functions}
+
+%\subsection{Fourier Transform}
+%\label{sub:fourier_transform}
+%\input{FourierTransform}
+
+
+%\section{Riemann Zeta Function}
+%\label{sec:riemann_zeta_function}
+
+%\subsection{Gamma Function}
+%\label{sub:gamma_function}
+
+
+
+\end{document}

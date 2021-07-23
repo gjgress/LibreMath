@@ -1,0 +1,365 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+\subsection{Meromorphic Functions and Residues}
+\label{sub:meromorphic_functions_and_residues}
+
+
+
+\begin{defn}[Meromorphic Function]
+	Let \(\Omega \subset \C\) be an open subset. Suppose that a function \(f\) has poles at \(\left\{ z_i \right\}_{i=1}^{\infty}\). Then \(f\) is \textbf{meromorphic} if \(f\) is holomorphic on \(\Omega \setminus\left\{ z_i \right\}_{i=1}^{\infty}\).
+\end{defn}
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) be an open subset. Suppose that a function \(f\) has {{c1::poles at \(\left\{ z_i \right\}_{i=1}^{\infty}\)}}. Then \(f\) is **meromorphic** if {{c1::\(f\) is holomorphic on \(\Omega \setminus\left\{ z_i \right\}_{i=1}^{\infty}\)}}.
+Tags: analysis complex_analysis singularities_residues defn
+<!--ID: 1626125582286-->
+END
+\end{anki}
+
+
+\begin{exmp}[Polynomials]
+	Let \(p \in \C[z]\) be a polynomial. Then \(f(z) = \frac{1}{p(z)}\) is a meromorphic function with poles at the zeros of \(p\).
+\end{exmp}
+
+Earlier, we showed that a function holomorphic on \(\Omega \) is analytic on \(\Omega \), and hence is equal to a unique power series within \(\Omega \). Because poles are isolated, if \(f\) is meromorphic on a region \(\Omega \), then there exists a Laurent expansion at each pole \(\left\{ z_i \right\}_{i=1}^{\infty}\) which is valid on some open neighborhood of each pole. The Laurent expansion carries useful information about the pole, which we capture with the notion of \textit{residues}.
+
+\begin{defn}[Residue]
+	Let \(\Omega \subset \C\) be an open subset and let \(f\) be meromorphic on \(\Omega \) with a pole at \(z_0\) of order \(k\), with Laurent expansion
+	\begin{align*}
+		f(z) = \sum_{n=-k}^{\infty} a_n (z-z_0)^{n}.
+	\end{align*}
+	The coefficient \(a_{-1}\) is the \textbf{residue} of \(f\) at \(z_0\), which we will denote \(\textrm{Res}_{z_0}f := a_{-1}\). Furthermore, the partial sum
+	\begin{align*}
+		\sum_{n=-k}^{-1} a_n (z-z_0)^{n}
+	\end{align*}
+	is called the \textbf{principal part} of \(f\) at \(z_0\).
+\end{defn}
+
+We can use residues to calculate integrals rather easily.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) be an open subset and let \(f\) be meromorphic on \(\Omega \) with a pole at \(z_0\) of order \(k\), with Laurent expansion
+\(\begin{align*}
+  	f(z) = \sum_{n=-k}^{\infty} a_n (z-z_0)^{n}.
+  \end{align*}\)
+The {{c1::coefficient \(a_{-1}\)}} is the **residue** of \(f\) at \(z_0\), which we will denote {{c1::\(\textrm{Res}_{z_0}f := a_{-1}\)}}. Furthermore, the partial sum
+{{c1::\(\begin{align*}
+      	\sum_{n=-k}^{-1} a_n (z-z_0)^{n}
+        \end{align*}\)}} 
+is called the **principal part** of \(f\) at \(z_0\).
+Tags: analysis complex_analysis singularities_residues defn
+<!--ID: 1626125582303-->
+END
+\end{anki}
+
+
+\begin{thm}
+	Let \(z_0 \in \C\) be given, and suppose \(f\) is a complex-valued function meromorphic on \(D_r(z_0)\) for some \(r>0\) with exactly one pole at \(z_0\). Then
+	\begin{align*}
+		\int_{\partial D_r(z_0)}f \,d t = 2\pi i \textrm{Res}_{z_0}f. 
+	\end{align*}
+\end{thm}
+
+We can extend this to a more general residue formula.
+
+\begin{cor}[Residue Formula]
+	Let \(\Omega \subset \C\) be an open set and let \(\gamma \) be a closed piecewise-smooth curve in \(\Omega \) homologous to a point. Suppose \(f\) is a meromorphic function on \(\Omega \) with poles \(\left\{ z_i \right\}_{i=1}^{n}\). Then
+	\begin{align*}
+		\int_{\gamma } f \,d t = 2\pi i \sum_{j=1}^{n} n(\gamma ,z_j) \textrm{Res}_{z_j}f. 
+	\end{align*}
+\end{cor}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) be an open set and let \(\gamma \) be a closed piecewise-smooth curve in \(\Omega \) homologous to a point. Suppose \(f\) is a meromorphic function on \(\Omega \) with poles \(\left\{ z_i \right\}_{i=1}^{n}\). Then
+{{c1::\(\begin{align*}
+        	\int_{\gamma } f \,d t = 2\pi i \sum_{j=1}^{n} n(\gamma ,z_j) \textrm{Res}_{z_j}f. 
+        \end{align*}\)::residue formula}} 
+Tags: analysis complex_analysis singularities_residues
+<!--ID: 1626125582321-->
+END
+\end{anki}
+
+\begin{exmp}
+	\(\int_{-\infty}^{\infty} \frac{1}{1+x^2}\,d x = \pi \)
+\end{exmp}
+
+\begin{exmp}
+	
+\end{exmp}
+
+\begin{lemma}[Tools to Help Calculate Residues]
+	\begin{itemize}
+		\item Let \(f\) be a meromorphic function with a simple pole at \(z_0\), and suppose \(g\) is a function holomorphic at \(z_0\). Then
+			\begin{align*}
+				\textrm{Res}_{z_0}(fg) = g(z_0) \textrm{Res}_{z_0}(f).
+			\end{align*}
+		\item Let \(f\) be a function with a simple zero at \(z_0\). Then \(\sfrac{1}{f}\) has a simple pole at \(z_0\) with residue \(\sfrac{1}{f'(z_0)}\).
+		\item Let \(f\) be a function with a pole of order \(n\) at \(z_0\). Then
+			\begin{align*}
+				\textrm{Res}_{z_0}f = \lim_{z \to z_0} \frac{1}{(n-1)!} \left( \frac{d}{\,d z} \right)^{n-1}(z-z_0)^{n}f(z).
+			\end{align*}
+	\end{itemize}
+\end{lemma}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: 
+* Let \(f\) be a meromorphic function with a simple pole at \(z_0\), and suppose \(g\) is a function holomorphic at \(z_0\). Then
+ {{c1::\(\begin{align*}
+         	\textrm{Res}_{z_0}(fg) = g(z_0) \textrm{Res}_{z_0}(f).
+         \end{align*}\)::residue of product}} 
+* Let \(f\) be a function with a simple zero at \(z_0\). Then {{c2::\(\sfrac{1}{f}\)}} has a simple pole at \(z_0\) with residue {{c2::\(\sfrac{1}{f'(z_0)}\)}} .
+* Let \(f\) be a function with a pole of order \(n\) at \(z_0\). Then
+{{c1::\(\begin{align*}
+        	\textrm{Res}_{z_0}f = \lim_{z \to z_0} \frac{1}{(n-1)!} \left( \frac{d}{\,d z} \right)^{n-1}(z-z_0)^{n}f(z).
+        \end{align*}\)::residue of point via higher derivatives}} 
+Tags: analysis complex_analysis singularities_residues
+<!--ID: 1626125582338-->
+END
+\end{anki}
+
+
+%\begin{defn}[Bounding]
+%	A cycle \(\gamma\) is said to bound the region \(M\) if and only if \(n(\gamma,a)\) is defined and equal to \(1\) for all points \(a \in M\) and either undefined or equal to zero for all points \(a\) not in \(M\).
+%\end{defn}
+
+\subsection{Argument Principle}
+\label{sub:argument_principle}
+
+There is a deep connection between residues, winding numbers, and the complex logarithm. It turns out that all of these notions capture in some form the change in argument of a meromorphic function-- the theorem that ties these ideas together is what we refer to as the \textit{argument principle}.\\
+
+Recall that the goal of the complex logarithm is to provide an inverse function for \(e^{x}\). In other words, we define the logarithm so that
+\begin{align*}
+	\ln(\left| z \right| e^{i \theta }) = \ln_\R (\left| z \right| ) + i \theta .
+\end{align*}
+We refer to \(\theta \) as \(\textrm{Arg}(z)\) more generally. The imaginary term alone captures in its entirety the angle of the input \(z\)-- this observation leads us to utilize the logarithm as an intermediate tool to capture more generally the change in angle of a function.
+
+\begin{general}[Logarithmic Derivative]
+	Let \(f\) be a complex-valued meromorphic function. Consider the composition \(\ln(f)\). Observe that
+	\begin{align*}
+		\frac{\partial }{\partial z} \ln(f(z)) = \frac{f'(z)}{f(z)}.
+	\end{align*}
+	We refer to \(\frac{f'}{f}\) as the \textbf{logarithmic derivative} of \(f\). \\
+
+	Notably, the logarithmic derivative carries an additive formula:
+	\begin{align*}
+		\frac{\partial }{\partial z} \ln\left( \prod_{n=\infty}^{N} f_n  \right) = \sum_{n=1}^{N} \frac{f'_n}{f_n}.
+	\end{align*}
+\end{general}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(f\) be a complex-valued meromorphic function. Consider the composition \(\ln(f)\). Observe that
+ {{c1::\(\begin{align*}
+         	\frac{\partial }{\partial z} \ln(f(z)) = \frac{f'(z)}{f(z)}.
+         \end{align*}\)}} 
+We refer to {{c1::\(\frac{f'}{f}\)}} as the **logarithmic derivative** of \(f\). 
+
+Notably, the logarithmic derivative carries an additive formula:
+{{c1::\(\begin{align*}
+        	\frac{\partial }{\partial z} \ln\left( \prod_{n=\infty}^{N} f_n  \right) = \sum_{n=1}^{N} \frac{f'_n}{f_n}.
+        \end{align*}\)}}
+Extra: What is the connection between the logarithm and residues? Suppose \(f\) is holomorphic with a zero of order \(n\) at \(z_0\). Then
+\(\begin{align*}
+  	f(z) = (z-z_0)^{n}g(z)
+  \end{align*}\)
+for \(g\) holomorphic and non-vanishing in a neighborhood of \(z_0\). The logarithmic derivative of \(f\) is hence
+\(\begin{align*}
+  	\frac{f'(z)}{f(z)} = \frac{n}{z-z_0}+ \frac{g'(z)}{g(z)}
+  \end{align*}\)
+by the additive property of the logarithmic derivative. But \(g\) and \(g'\) are holomorphic and non-vanishing-- and hence the logarithmic derivative has transformed \(f\) into a meromorphic function with a simple pole at \(z_0\) with residue \(\textrm{Res}_{z_0} = n\). Likewise, if \(f\) is meromorphic with a pole of order \(n\) at \(z_0\), then
+\(\begin{align*}
+  	f(z) = (z-z_0)^{-n}h(z)
+  \end{align*}\)
+for \(h\) holomorphic and non-vanishing. One can see the above follows but with \(-n\).
+Tags: analysis complex_analysis singularities_residues defn
+<!--ID: 1626125582356-->
+END
+\end{anki}
+
+
+At this point, the connection between the logarithm and winding number is clear-- by performing a \(w\)-substitution with \(w = f(z)\), we see that that the logarithmic derivative is merely another way to write
+\begin{align*}
+	\frac{f'}{f} \,d z = \frac{dw}{w}
+\end{align*}
+and hence when integrated on a closed curve, captures the winding numbers of singularities of \(f\) inside the curve. Furthermore, we have the identity
+\begin{align*}
+	\int_\gamma \,d \ln(f(z)) = \int_\gamma \,d \left[ \ln \left| f(z) \right| + i \textrm{arg}(f(z)) \right] = \int_\gamma \,d \ln\left| f(z) \right| + \int_\gamma \,d \textrm{arg}(f(z)).
+\end{align*}
+Because the first integral always evaluates to zero (verify this), we see that the logarithmic derivative allows us to capture the change in argument of a function.\\
+
+What is the connection between the logarithm and residues? Suppose \(f\) is holomorphic with a zero of order \(n\) at \(z_0\). Then
+\begin{align*}
+	f(z) = (z-z_0)^{n}g(z)
+\end{align*}
+for \(g\) holomorphic and non-vanishing in a neighborhood of \(z_0\). The logarithmic derivative of \(f\) is hence
+\begin{align*}
+	\frac{f'(z)}{f(z)} = \frac{n}{z-z_0}+ \frac{g'(z)}{g(z)}
+\end{align*}
+by the additive property of the logarithmic derivative. But \(g\) and \(g'\) are holomorphic and non-vanishing-- and hence the logarithmic derivative has transformed \(f\) into a meromorphic function with a simple pole at \(z_0\) with residue \(\textrm{Res}_{z_0} = n\). Likewise, if \(f\) is meromorphic with a pole of order \(n\) at \(z_0\), then
+\begin{align*}
+	f(z) = (z-z_0)^{-n}h(z)
+\end{align*}
+for \(h\) holomorphic and non-vanishing. One can see the above follows once more but with \(-n\).\\
+
+In summary-- the logarithmic derivative transforms \textit{singularities of algebraic order \(n\)} into \textit{simple poles with residue \(n\)}. Thus, a contour integral of the logarithmic derivative will sum the algebraic orders of the singularities contained. This remarkable conclusion is the argument principle.
+
+\begin{thm}[Argument Principle]
+	If \(f\) is meromorphic in \(\Omega\subset \C \) with zeros \(\left\{ z_j \right\}\) and the poles \(\left\{ w_k \right\} \), then
+	\begin{align*}
+		\frac{1}{2\pi i} \int_{\gamma} \frac{f'}{f} \,d t = \sum_{j} n(\gamma,z_j) - \sum_{k} n(\gamma,w_k) 
+	\end{align*}
+	for every closed piecewise-smooth curve \(\gamma\) which is homologous to zero in \(\Omega \) and does not pass through any of the zeros or poles.
+\end{thm}
+In light of our earlier discussion, we refer to
+\begin{align*}
+	\frac{1}{2\pi i} \int_\gamma \frac{f'}{f}\,d t
+\end{align*}
+as the \textbf{winding number of \(f\) along \(\gamma \)}. We urge the reader to appreciate how remarkable it is that the change in angle of a meromorphic function can be captured so simply via its zeros and poles!
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Argument Principle**
+If \(f\) is meromorphic in \(\Omega\subset \C \) with zeros \(\left\{ z_j \right\}\) and the poles \(\left\{ w_k \right\} \), then
+{{c1::\(\begin{align*}
+        	\frac{1}{2\pi i} \int_{\gamma} \frac{f'}{f} \,d t = \sum_{j} n(\gamma,z_j) - \sum_{k} n(\gamma,w_k) 
+        \end{align*}\)}}
+	for every closed piecewise-smooth curve \(\gamma\) which is homologous to zero in \(\Omega \) and does not pass through any of the zeros or poles.
+Extra: We refer to
+\(\begin{align*}
+  	\frac{1}{2\pi i} \int_\gamma \frac{f'}{f}\,d t
+  \end{align*}\)
+as the \textbf{winding number of \(f\) along \(\gamma \)}.
+Tags: analysis complex_analysis singularities_residues
+<!--ID: 1626125582372-->
+END
+\end{anki}
+
+
+\begin{cor}[Rouche's Theorem]
+	Let \(\Omega \subset \C\) be an open bounded subset with \(\partial \Omega \) piecewise-smooth. Let \(f,g\) be holomorphic functions on \(\overline{\Omega }\) with \(\left| g(z) \right| < \left| f(z) \right| \) for all \(z \in \partial\Omega \). Then \(f\) and \(f+g\) have the same number of zeros in \(\Omega \).
+\end{cor}
+We can interpret \(g\) as a "holomorphic perturbation" of \(f\) in \(\Omega \)-- and hence the theorem really states that if the perturbation is bounded above by \(f\) along the boundary, then it cannot perturb any zero outside \(\Omega \). To see why this should be true, recall that the maximum principle tells us that \(g\) globally and locally achieves its maxima on the boundary. If \(g\) were to "push" a zero \(z_0\) of \(f\) outside \(\Omega \), then \(g\) would have to exceed \(f\) somewhere on the boundary for the maximum principle to hold. Formalizing this argument is difficult, however. The argument principle simplifies this process greatly.
+\begin{proof}
+	Note that the hypothesis implicitly requires that \(f\) and \(f+g\) are non-zero on \(\gamma \). Thus, we can rewrite
+	\begin{align*}
+		f+g &= f\left( 1+ \frac{g}{f} \right)
+	\end{align*}
+	Applying the logarithmic derivative gives us
+	\begin{align*}
+		\int_\gamma \frac{(f+g)'}{f+g}\,d t = \int_\gamma \frac{f'}{f} \,d t + \int_{\gamma }\frac{(1+\sfrac{g}{f})'}{1+\sfrac{g}{f}} \,d t.
+	\end{align*}
+	But we have that \(\left| \frac{g}{f} \right|<1\) on \(\gamma \), and so there are no zeros of \(\frac{g}{f}\) within \(\gamma \), and likewise no poles (because \(\frac{g}{f}\) is holomorphic). Hence, the argument principle tells us that the right-hand integral is zero, and hence
+	\begin{align*}
+		\int_\gamma \frac{(f+g)'}{f+g} \,d t = \int_\gamma \frac{f'}{f}\,d t
+	\end{align*}
+	which implies they must have the same zeros.
+\end{proof}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Rouche's Theorem**
+Let \(\Omega \subset \C\) be an open bounded subset with \(\partial \Omega \) piecewise-smooth. Let \(f,g\) be holomorphic functions on \(\overline{\Omega }\) with \(\left| g(z) \right| < \left| f(z) \right| \) for all \(z \in \partial\Omega \). Then {{c1::\(f\) and \(f+g\) have the same number of zeros in \(\Omega \)}}.
+Extra: We can interpret \(g\) as a "holomorphic perturbation" of \(f\) in \(\Omega \)-- and hence the theorem really states that if the perturbation is bounded above by \(f\) along the boundary, then it cannot perturb any zero outside \(\Omega \).
+Tags: analysis complex_analysis singularities_residues
+<!--ID: 1626125582389-->
+END
+\end{anki}
+
+Now we will look at some applications of the two powerful theorems here to evaluating integrals.
+
+%% Deal with later
+
+% \subsection{Definite Integrals}
+% \label{sec:definite_integrals}
+% 
+% First, note that all integrals of the form
+% \begin{align*}
+% 	\int_{0}^{2\pi} R(\cos(\theta),\sin(\theta)) \,d \theta 
+% \end{align*}
+% where the integrand is a rational function of the two trigonometric functions can be done via residues. Substituting \(z = e^{i\theta}\) yields
+% \begin{align*}
+% 	-i \int_{\left| z \right| =1} R \left[ \frac{1}{2}\left( z+ \frac{1}{z} \right) , \frac{1}{2i}\left( z-\frac{1}{z} \right)  \right] \frac{\,d z}{z}.
+% \end{align*}
+% 
+% --
+% 
+% An integral of the form
+% \begin{align*}
+% 	\int_{-\infty}^{\infty} R(x) \,d x 
+% \end{align*}
+% converges if and only if the rational function \(R(x)\) the degree of the denomination is at least 2 degrees higher tahn taht of the numerator, and if there is no pole ON the real axis. We do this by integrating the complex function \(R(z)\) over a closed curve consisting of a line segment \((-p,p)\) and the semicircle from \(p,-p)\) in the upper half plane. Choosing \(p\) large enough  encloses all poles in the upper half plane, and so the integral is equal to \(2\pi i\) times the sum of the residues in the upper half plane. So,
+% \begin{align*}
+% 	\int_{-\infty}^{\infty} R(x) \,d x = 2\pi i \sum_{y>0} \textrm{Res}R(z) 
+% \end{align*}
+% 
+% -
+% 
+% We can do this same method for integrals of the form
+% \begin{align*}
+% 	\int_{-\infty}^{\infty} R(x) e^{ix} \,d x 
+% \end{align*}
+% whose real and imaginary parts determine the integrals
+% \begin{align*}
+% 	\int_{-\infty}^{\infty} R(x) \cos(x) \,d x, \quad \int_{-\infty}^{\infty} R(x) \sin(x) \,d x  
+% \end{align*}
+% Because \(e^{-y}\) is bounded in the upper half plane, so the integral over the semicircle tends to zero (as long as \(R(z)\) has a zero of at least order two at infinity). Thus
+% \begin{align*}
+% 	\int_{-\infty}^{\infty} R(x) e^{ix}\,d x = 2\pi i \sum_{y>0} \textrm{Res}R(z) e^{ix} .
+% \end{align*}
+% This holds when \(R(z)\) only has order one zero at infinity, but not by the semicircle argument.\\
+% 
+% Note that we assumed that \(R(z)\) has no poles on the real axis; however, if it coincides with zeros of \(\sin(x)\), then it very well can be evaluated! It will work out to yield
+% \begin{align*}
+% 	\int_{-\infty}^{\infty} R(x)e^{ix}\,d x = 2\pi i \sum_{y>0} \textrm{Res}R(z) e^{iz} + \pi i \sum_{y=0} \textrm{Res}R(z)e^{iz} 
+% \end{align*}
+% Often, integrals containing powers of cosine and sine can be written as linear combinations via double angle identities, and hence
+% \begin{align*}
+% 	\int_{-\infty}^{\infty} R(x) e^{imx}\,d x = \frac{1}{m} \int_{-\infty}^{\infty} R\left( \frac{x}{m} \right) e^{ix} \,d x.  
+% \end{align*}
+% 
+% -
+% 
+% Now consider
+% \begin{align*}
+% 	\int_{0}^{\infty} x^{\alpha}R(x) \,d x 
+% \end{align*}
+% with \(\alpha \in (0,1)\subset \R\). This only converges if \(R(z)\) has a zero of at least order two at \(\infty\) and at most a simple pole at the origin. Using the substitution of \(x = t^2\) and then omitting the negative imaginary axis, we can apply the residue theorem to yield
+% \begin{align*}
+% 	(1-e^{2\pi i \alpha}) \int_{0}^{\infty} z^{2\alpha+1}R(z^2) \,d z 
+% \end{align*}
+% Thus we determine the residues of the integrand in the upper hlaf plane. This is the same as the residues of \(z^{\alpha}R(z)\) in the whole plane.
+% \printindex
+\end{document}

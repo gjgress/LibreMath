@@ -1,0 +1,330 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+We finally arrive at the cornerstone of conformal mappings.
+
+\begin{thm}[Riemann Mapping Theorem]
+	Let \(\Omega \subsetneq \C\) be a  simply connected region which is not the whole plane, and let a point \(z_0 \in \Omega \) be given. There exists a unique holomorphic isomorphism \(f:\Omega \to D_1\) satisfying
+	\begin{align*}
+		f(z_0) = 0\\
+		f'(z_0)>0.
+	\end{align*}
+	We call holomorphic isomorphisms \(f:\Omega \to D_1\) satisfying \(f(z_0) = 0\) \textbf{Riemann mappings}, and the Riemann mapping satisfying \(f'(z_0)>0\) is referred to as the \textbf{canonical Riemann mapping}.
+\end{thm}
+An isomorphism to the unit disc with \(f(z_0) = 0\) is unique up to rotation by \(e^{i\theta }\), and hence the second condition fixes a representation.\\
+
+Uniqueness can be easily shown from what we have proven earlier. However, we need to show the existence of injective holomorphic maps, the family's relative compactness, and finally that there is a maximum of \(f'(z_0)\), so that we obtain existence with the second condition.
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: **Riemann Mapping Theorem**
+Let \(\Omega \subsetneq \C\) be a  simply connected region which is not the whole plane, and let a point \(z_0 \in \Omega \) be given. There exists a unique {{c1::holomorphic isomorphism}} \(f:\Omega \to D_1\) satisfying
+ {{c1::\(\begin{align*}
+        	f(z_0) = 0\\
+        	f'(z_0)>0
+        \end{align*}\)}}
+We call {{c1::holomorphic isomorphisms}} \(f:\Omega \to D_1\) satisfying {{c1::\(f(z_0) = 0\)}} **Riemann mappings**, and the Riemann mapping satisfying \(f'(z_0)>0\) is referred to as the **canonical Riemann mapping**.
+Extra: An isomorphism to the unit disc with \(f(z_0) = 0\) is unique up to rotation by \(e^{i\theta }\), and hence the second condition fixes a representation.
+Tags: analysis complex_analysis conformal_mappings
+<!--ID: 1626294735091-->
+END
+\end{anki}
+
+
+\subsection{Compact Sets in Function Spaces}
+\label{sub:compact_sets_in_function_spaces}
+
+Let \(\Omega \subset \C\) be open. We refer to the space of holomorphic functions on \(\Omega \) by \(\textrm{Hol}(\Omega )\).
+
+\begin{defn}[Relatively Compact]
+	A subset \(\Omega \subset \C\) is \textbf{relatively compact} if \(\overline{\Omega }\) is compact. In other words, \(\Omega \) is relatively compact if and only if every sequence in \(\Omega \) has a convergent subsequence.\\
+
+	Similarly, let \(\Omega \subset \C\) be open and \(\mathcal{F}\subset \textrm{Hol}(\Omega )\) be a family of holomorphic functions on \(\Omega \). We say that \(\mathcal{F}\) is \textbf{relatively compact} if every sequence of functions \(\left\{ f_n \right\} \in \mathcal{F}\) contains a subsequence which converges uniformly on every \(K\subset \Omega \) compact.
+\end{defn}
+We note that \(\lim_{n \to \infty} \left\{ f_n \right\} \) need not be in \(\mathcal{F}\). Note that other texts often refer to relatively compact families as \textbf{normal families}-- we use the term relatively compact, as it better captures the properties without overloading an already bloated term.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: A subset \(\Omega \subset \C\) is **relatively compact** if {{c1::\(\overline{\Omega }\) is compact}}. In other words, \(\Omega \) is relatively compact if and only if {{c1::every sequence in \(\Omega \) has a convergent subsequence}}.
+
+Similarly, let \(\Omega \subset \C\) be open and \(\mathcal{F}\subset \textrm{Hol}(\Omega )\) be a family of holomorphic functions on \(\Omega \). We say that \(\mathcal{F}\) is **relatively compact** if every sequence of functions \(\left\{ f_n \right\} \in \mathcal{F}\) {{c2::contains a subsequence which converges uniformly on every \(K\subset \Omega \) compact}} .
+Extra: \(\lim_{n \to \infty} \left\{ f_n \right\} \) need not be in \(\mathcal{F}\).
+
+Another term for 'relatively compact families' is **normal families**.
+Tags: analysis complex_analysis complex_topology defn
+<!--ID: 1626294735110-->
+END
+\end{anki}
+
+
+\begin{defn}[Uniformly Bounded on Compact Sets]
+	Let \(\Omega \subset \C\) and consider a family of holomorphic functions \(\mathcal{F}\subset \textrm{Hol}(\Omega )\). We say \(\mathcal{F}\) is \textbf{uniformly bounded on compact subsets of \(\Omega \)} if for every \(K\subset \Omega \) compact, there exists a positive constant \(M_K\) such that
+	\begin{align*}
+		\left| f(z) \right| \leq M_K
+	\end{align*}
+	for all \(f \in \mathcal{F}\) and \(z \in K\).
+\end{defn}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) and consider a family of holomorphic functions \(\mathcal{F}\subset \textrm{Hol}(\Omega )\). We say \(\mathcal{F}\) is **uniformly bounded on compact subsets of \(\Omega \)** if for every \(K\subset \Omega \) compact, there exists {{c1::a positive constant \(M_K\)}} such that
+ {{c1::\(\begin{align*}
+        	\left| f(z) \right| \leq M_K
+        \end{align*}\)}}
+for all \(f \in \mathcal{F}\) and \(z \in K\).
+Tags: analysis complex_analysis complex_topology defn
+<!--ID: 1626294735137-->
+END
+\end{anki}
+
+\begin{defn}[Equicontinuous]
+	Let \(\Omega \subset \C\) and consider \(K\subset \Omega \) compact. We say that \(\mathcal{F}\subset \textrm{Hol}(\Omega )\) is \textbf{equicontinuous on \(K\)} if for all \(\varepsilon>0\) there exists a \(\delta >0\) so that, for all \(z,z' \in K\) with \(\left| z-z' \right| <\delta \):
+	\begin{align*}
+		\left| f(z) - f(z')\right| < \varepsilon
+	\end{align*}
+	for all \(f \in \mathcal{F}\).
+\end{defn}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) and consider \(K\subset \Omega \) compact. We say that \(\mathcal{F}\subset \textrm{Hol}(\Omega )\) is **equicontinuous on \(K\)** if for all {{c1::\(\varepsilon>0\)}} there exists {{c1::a \(\delta >0\)}} so that, for all {{c1::\(z,z' \in K\)}} with {{c1::\(\left| z-z' \right| <\delta \)}}:
+{{c1::\(\begin{align*}
+        	\left| f(z) - f(z')\right| < \varepsilon
+        \end{align*}\)}} 
+for all {{c1::\(f \in \mathcal{F}\)}}.
+Tags: analysis complex_analysis complex_topology defn
+<!--ID: 1626294735155-->
+END
+\end{anki}
+
+Now we will tie these three definitions together quite nicely:
+
+\begin{thm}
+	Let \(\Omega \subset \C\) and consider a family of functions \(\mathcal{F}\subset \textrm{Hol}(\Omega )\). If \(\mathcal{F}\) is uniformly bounded on all \(K\subset \Omega \) compact, then
+	\begin{itemize}
+		\item \(\mathcal{F}\) is equicontinuous on all \(K\subset \Omega \) compact.
+		\item \(\mathcal{F}\) is relatively compact.
+	\end{itemize}
+\end{thm}
+Note that the first part follows from the holomorphicity of the functions in \(\mathcal{F}\), while the second part is merely topological, and follows from the fact that \(\mathcal{F}\) is uniformly bounded and equicontinuous. The second part is often referred to as the Arzela-Ascoli theorem.
+
+\begin{proof}% By diagonalization in Lang p.309
+	
+\end{proof}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) and consider a family of functions \(\mathcal{F}\subset \textrm{Hol}(\Omega )\). If \(\mathcal{F}\) is uniformly bounded on all \(K\subset \Omega \) compact, then
+	\begin{itemize}
+		\item {{c1::\(\mathcal{F}\) is equicontinuous on all \(K\subset \Omega \) compact}}
+		\item {{c2::\(\mathcal{F}\) is relatively compact}}
+	\end{itemize}
+Extra: Note that the first part follows from the holomorphicity of the functions in \(\mathcal{F}\), while the second part is merely topological, and follows from the fact that \(\mathcal{F}\) is uniformly bounded and equicontinuous. The second part is often referred to as the Arzela-Ascoli theorem.
+Tags: analysis complex_analysis complex_topology
+<!--ID: 1626294735173-->
+END
+\end{anki}
+
+
+\begin{lemma}
+	Let \(\Omega \subset \C\) be open. Then \(\Omega \) has an exhaustion by compact sets.\\
+
+	That is, there exists a sequence \(\left\{ K_j \right\}_{j=1}^{\infty}\) of compact subsets \(K_j \subset \Omega \) with \(K_j \subset \textrm{Int}(K_{j+1})\) so that
+	\begin{align*}
+		\bigcup_{j=1}^{\infty}K_j = \Omega .
+	\end{align*}
+\end{lemma}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) be open. Then \(\Omega \) has {{c1::an exhaustion by compact sets}}.
+
+That is, there exists a sequence \(\left\{ K_j \right\}_{j=1}^{\infty}\) of compact subsets \(K_j \subset \Omega \) with {{c1::\(K_j \subset \textrm{Int}(K_{j+1})\)}} so that
+{{c1::\(\begin{align*}
+		\bigcup_{j=1}^{\infty}K_j = \Omega .
+	\end{align*}\)}}
+Tags: analysis complex_analysis complex_topology
+<!--ID: 1626294735193-->
+END
+\end{anki}
+
+
+\subsection{Proof of the Riemann Mapping Theorem}
+\label{sub:proof_of_the_riemann_mapping_theorem}
+
+Let us briefly outline the path which we intend to prove the Riemann mapping theorem.\\
+
+Consider a simply connected open set \(\Omega \subset \C\), and let \(z_0 \in \Omega \). Let \(\mathcal{F}\subset \textrm{Hol}(\Omega )\) be the family of injective holomorphic functions satisfying
+\begin{align*}
+	f:\Omega \to D_1\\
+	f(z_0) = 0
+\end{align*}
+for all \(f \in \mathcal{F}\). We will show this family is non-empty, and then verify that it is uniformly bounded. Then it remains to show the existence of a \(f \in \mathcal{F}\) so that \(\left| f'(z_0) \right| \) is maximal, and verify that it is indeed the isomorphism. We already know that automorphisms of \(D_1\) fixing the origin are rotations, and hence we can rotate \(f\) so that \(f'(z_0)\) is real and positive, obtaining uniqueness.\\
+
+Recall that holomorphic injective functions are isomorphic with their image, with non-zero derivative (this is the natural holomorphic isomorphism theorem \ref{sub:inverse_and_open_mapping_theorems}).
+
+\begin{lemma}
+\label{lemma:inj_or_const}
+	Let \(\Omega \subset \C\) be connected and open, and let \(\left\{ f_n \right\} \subset \textrm{Hol}(\Omega )\) be a sequence of injective holomorphic maps of \(\Omega \) which converge uniformly on every \(K\subset \Omega \) compact. Then
+	\begin{align*}
+		\lim_{n \to \infty} \left\{ f_n \right\} = f
+	\end{align*}
+	is injective or constant.
+\end{lemma}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) be connected and open, and let \(\left\{ f_n \right\} \subset \textrm{Hol}(\Omega )\) be a sequence of injective holomorphic maps of \(\Omega \) which converge uniformly on every \(K\subset \Omega \) compact. Then 
+\(\begin{align*}
+  	\lim_{n \to \infty} \left\{ f_n \right\} = f
+  \end{align*}\)
+is {{c1::injective or constant}}.
+Tags: analysis complex_analysis conformal_mappings
+<!--ID: 1626294735216-->
+END
+\end{anki}
+
+We will provide one more lemma which will reduce the main case sufficiently for us to prove the desired result.
+
+\begin{lemma}
+	Let \(\Omega \subsetneq \C\) be an simply connected open subset. Then there exists a {{c1::holomorphic isomorphism}} \(f:\Omega \to U\) where \(U\subset D_1\) is an open subset of the disc.
+\end{lemma}
+\begin{proof}
+	Let \(\alpha \in \C\) be a point with \(\alpha \not\in \Omega \). Because \(\Omega \) is simply connected, there is a branch of the complex logarithm so that
+	\begin{align*}
+		g(z) = \ln(z-\alpha )
+	\end{align*}
+	is holomorphic on \(\Omega \). We have then that \(g\) is injective:
+	\begin{align*}
+		g(z_1) = g(z_2) \implies e^{g(z_1)} = e^{g(z_2)} \implies z_1-\alpha  = z_2-\alpha \implies z_1=z_2.
+	\end{align*}
+	Because \(g\) is injective, then for any \(z_0 \in \Omega \)
+	\begin{align*}
+		g(z) \neq g(z_0) + 2\pi i
+	\end{align*}
+	for all \(z \in \Omega \). This holds because if equality were to hold, then exponentiation of the right-hand side would imply that \(z = z_0\) by the injectivity of \(g\), and hence \(g(z) = g(z_0)\), contradicting the equality.\\
+
+	Furthermore, there exists a \(D_r(g(z_0)+2\pi i)\) for some \(r>0\) so that \(g(\Omega ) \cap D_r(g(z_0)+2\pi i) = \emptyset\). Once again we argue by contradiction-- if this intersection is non-empty for all \(r>0\), then there is a sequence \(\left\{ w_n \right\} \) so that \(\lim_{n \to \infty} g(w_n) = g(z_0)\), which yields a contradiction. Thus
+	\begin{align*}
+		\frac{1}{g(z) - g(z_0) - 2\pi i}
+	\end{align*}
+	is bounded on \(\Omega \) and is a holomorphic injection. We can then apply elementary transformations of translation and multiplication by a real number to obtain a function with \(f(z_0) = 0\) and \(\left| f(z) \right| <1\) for all \(z \in \Omega \), proving the lemma.
+\end{proof}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Lemma for Riemann Mapping Theorem**
+Let \(\Omega \subsetneq \C\) be an simply connected open subset. Then there exists a {{c1::holomorphic isomorphism}} \(f:\Omega \to U\) where {{c1::\(U\subset D_1\) is an open subset of the disc}}.
+Extra: 
+Tags: 
+<!--ID: 1626294735236-->
+END
+\end{anki}
+
+
+Now we use this lemma to prove the Riemann mapping theorem, restated here for posterity:
+
+\begin{thm}[Riemann Mapping Theorem]
+	Let \(\Omega \subsetneq \C\) be a  simply connected region which is not the whole plane, and let a point \(z_0 \in \Omega \) be given. There exists a unique holomorphic isomorphism \(f:\Omega \to D_1\) satisfying
+	\begin{align*}
+		f(z_0) = 0\\
+		f'(z_0)>0.
+	\end{align*}
+\end{thm}
+
+\begin{proof}[Proof of Riemann Mapping Theorem]
+	Observe that by the previous lemma, we can prove the Riemann mapping theorem under the assumption that \(\Omega \subset D_1\) containing the origin. Let \(\mathcal{F}\subset \textrm{Hol}(\Omega )\) be the family of all injective holomorphic maps \(f:U\to D_1\) with \(f(0) = 0\). Observe that \(\textrm{Id}_\Omega \in \mathcal{F}\) and hence the family is not empty. Applying Cauchy's integral formula:
+	\begin{align*}
+		f'(0) = \frac{1}{2\pi i}\int_{\partial D_1} \frac{f(z)}{z^2}\,d z
+	\end{align*}
+	we see that \(\left| f'(0) \right| \) is bounded above for all \(f \in \mathcal{F}\) by upper bounds \(\mathcal{M}\), as \(\mathcal{F}\) is uniformly bounded on \(\overline{D_\varepsilon}\) with \(\varepsilon>0\) small. Recall that \(\C\) has the least upper bound property, and hence there is a sequence \(\left\{ f_n \right\} \) so that \(\lim_{n \to \infty} \left| f'_n(0) \right| = M\) and \(\left| f(z) \right| \leq 1\), where \(M\leq M'\) for all upper bounds \(M' \in \mathcal{M}\) and \(M\) upper bounds \(\left| f'(0) \right| \) for all \(f \in \mathcal{F}\).\\
+
+	By \ref{lemma:inj_or_const} it holds that \(f\) is injective. Furthermore, the maximum modulus principle already gives us
+	\begin{align*}
+		\left| f(z) \right| <1
+	\end{align*}
+	for all \(z \in \Omega \). Thus, we have proven that this \(f \in \mathcal{F}\) is maximal with regards to \(\left| f'(0) \right| \). Now we show that because \(f\) is maximal, \(f\) is additionally surjective onto the disk, proving the theorem.\\
+
+	It turns out that surjectivity and maximality are equivalent conditions for mappings of this type. Suppose for the sake of contradiction that \(f\) is not onto. Then consider \(w \in D_1\setminus f(\Omega )\). Recall that by Theorem \ref{thm:classification_of_automorphisms_of_the_unit_disc} there is a canonical automorphism \(\sigma_w\) of \(D_1\) given by
+	\begin{align*}
+		\sigma_w(z) = \frac{z-w}{1-\overline{w}z}.
+	\end{align*}
+	We assert that there exists an injective holomorphic square root function \(g:(\sigma_w\circ f)(\Omega) \to D_1\) satisfying
+	\begin{align*}
+		(g(z))^2 = \sigma_w(z).
+	\end{align*}
+	This holds because \(\sigma_w\) has no zeros on \((\sigma_w \circ f)(\Omega) \). Now we apply a canonical automorphism once more via \(\sigma_{g(w)}\) and define a function:
+	\begin{align*}
+		h = \sigma_{g(w)}\circ g \circ \sigma_w \circ f.
+	\end{align*}
+	One can verify that \(h \in \mathcal{F}\), as injectivity and holomorphicity follows through composition, and \(h(0) = 0\). Now we show that if \(h \) exists, it satisfies \(\left| \varphi'(0) \right| > \left| f'(0) \right| \), yielding a contradiction. This follows from the fact that
+	\begin{align*}
+		f = \sigma^{-1}_w \circ g^{-1} \circ \sigma^{-1}_{g(w)} \circ h,
+	\end{align*}
+	as
+	\begin{align*}
+		\Phi := \sigma^{-1}_w \circ g^{-1} \circ \sigma^{-1}_{g(w)}
+	\end{align*}
+	is not injective (because \(g^{-1}\) is not injective), and so \(\left| \Phi'(0) \right| <1\) by Schwarz' lemma. Thus
+	\begin{align*}
+		f'(0) = \Phi'(0) h'(0) \implies \left| f'(0) \right| < \left| h'(0) \right| 
+	\end{align*}
+	contradicting the maximality of \(f\). Thus we have shown that there cannot exist \(w \in D_1\setminus f(\Omega )\). Therefore, \(f\) is surjective. By Schwarz' lemma, we can multiply \(f\) by some \(e^{i\theta }\) to ensure \(f'(0) > 0\), obtaining the desired unique isomorphism.
+\end{proof}
+
+%% NOTE-- we can replace simply connected with holomorphically simply connected; try to define and replace
+%% Re: Not really. One can define holomorphically simply connected, but it turns out that the notion can be proven to be equivalent to simply connected. Not really worth mentioning (maybe to point out that such a concept is superfluous?)
+
+\subsection{Explicit Calculations of Riemann mappings}
+\label{sub:explicit_calculations_of_riemann_mappings}
+
+While having the existence and uniqueness of the canonical Riemann mapping is nice, the proof of the Riemann mapping theorem doesn't offer much help in constructing the function. We will derive an explicit form of the Riemann mappings for polygons, and discuss how to obtain others.
+
+%\begin{defn}[Polygons and Angles]
+%	
+%\end{defn}
+%
+%We can map each vertex of the polygon onto the boundary of \(D_1\) sequentially, so that the line segments between vertices map onto arcs between the vertices on \(\partial D_1\).
+
+\begin{thm}[Schwarz-Christoffel Formula]
+	For every polygon \(P\) with angles \(\alpha_k\pi \), there exists complex constants \(C_1,C_2 \in \C\) and sequence of points \(w_k \in \partial D_1\) so that the function \(z = F(w)\) given by
+	\begin{align*}
+		F(w) = C_1 \int_{0}^{w} \prod_{k=1}^{n} (w-w_k)^{-\beta_k} \,d w + C_2\\
+		\beta_k = 1-\alpha_k
+	\end{align*}
+	is a holomorphic isomorphism \(F:D_1\to P\).
+\end{thm}
+
+%Way more\ldots read 6.2 in Ahlfors
+
+% \printindex
+\end{document}

@@ -1,0 +1,330 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+\begin{defn}[Zero]
+	Let \(\Omega \subset \C\) and \(z_0 \in \Omega \) be given. Suppose \(f\) is a complex-valued function holomorphic on \(D_r(z_0)\).Then \(z_0\) is a \textbf{zero of order \(k\)} for a unique \(k \in \Z_+\) if
+	\begin{align*}
+		0 < \lim_{z \to z_0} \frac{f(z)}{(z-z_0)^{k}} < \infty.
+	\end{align*}
+	It follows that \((z-z_0)^{-k}f\) is holomorphic and non-vanishing. We say that \(z_0\) is \textbf{simple} if \(k=1\).
+\end{defn}
+Recall that by analytic continuation, all zeroes of non-constant holomorphic functions are isolated. Of course, it is equivalent to say that \(z_0\) is a zero if \(f(z_0) = 0\)-- but we state it as above to capture the notion of multiplicity.\\
+
+In general, we may write the order \(k\) of a point \(z_0\) by
+\begin{align*}
+	k_{z_0} := \textrm{ord}(z_0) := \textrm{order}(z_0)
+\end{align*}
+when the expression is unambiguous.
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) and \(z_0 \in \Omega \) be given. Suppose \(f\) is a complex-valued function holomorphic on \(D_r(z_0)\).Then \(z_0\) is a **zero of order \(k\)** for a unique \(k \in \Z_+\) if
+ {{c1::\(\begin{align*}
+         	0 < \lim_{z \to z_0} \frac{f(z)}{(z-z_0)^{k}} < \infty.
+         \end{align*}\)}}
+It follows that {{c1::\((z-z_0)^{-k}f\)}} is {{c1::holomorphic}} and {{c1::non-vanishing}}. We say that \(z_0\) is **simple** if {{c1::\(k=1\)}}.
+Extra: Recall that by analytic continuation, all zeroes of non-constant holomorphic functions are isolated. Of course, it is equivalent to say that \(z_0\) is a zero if \(f(z_0) = 0\)-- but we state it as above to capture the notion of multiplicity.
+Tags: analysis complex_analysis singularities_residues defn
+<!--ID: 1625609844275-->
+END
+\end{anki}
+
+\begin{thm}
+	Let \(\Omega \subset \C\) be a simply-connected open set. Suppose \(f\)  is a complex-valued function holomorphic on \(\Omega \) with isolated zeros \(\left\{ z_i \right\}_{i=1}^{\infty} \subset \C\). For every closed curve \(\gamma\) in \(\Omega \) with \(\gamma(t) \neq \left\{ z_i \right\}_{i=1}^{\infty}\) for all \(t \in [t_0,t_1]\):
+	\begin{align*}
+		\sum_{i=1}^{\infty} n(\gamma,z_i) k_{z_i} = \frac{1}{2\pi i} \int_{\gamma} \frac{f'(z )}{f(z )}\,d t, 
+	\end{align*}
+	when the sum consists of finitely many non-zero terms.
+\end{thm}
+If we know that \(n(\gamma,z_i)\) must be either 0 or 1, then this formula yields the total number of zeros enclosed by \(\gamma\). We can use this formula to solve equations as well-- applying the theorem to \(f(z)-a\) allows one to count the number of solutions within the curve.
+
+\begin{thm}[Local Correspondence]
+	Let \(z_0 \in \C\) and let \(f\) be a complex-valued function holomorphic at \(z_0\). Suppose \(f(z_0)=w_0\), so that \(f(z)-w_0\) has a zero of order \(n\) at \(z_0\). For all small \(\varepsilon>0\), there exists a \(\delta >0\) such that, for all \(w\) satisfying
+	\begin{align*}
+		\left| w-w_0 \right| <\delta 
+	\end{align*}
+	the equation \(f(z)=w\) has exactly \(k\) roots in the disk \(\left| z-z_0 \right| <\varepsilon\).
+\end{thm}
+This gives us another way to rederive the open mapping theorem, the global maximum principle, and more.
+
+There are a variety of circumstances under which a function may not be defined at a point. We first classify these singularities.\\
+
+For posterity, we restate the definition of a removable singularity:
+\begin{defn}[Removable Singularity]
+	Let \(\Omega \subset \C\) and \(z_0\in \Omega \) be given. Suppose \(f\) is a complex-valued function holomorphic on \(D_r(z_0)\setminus \left\{ z_0 \right\} \) for some \(r>0\). Then \(z_0\) is a \textbf{removable singularity} if
+	\begin{align*}
+		\lim_{z \to z_0} (z-z_0)f(z) = 0.
+	\end{align*}
+	Stated less formally, \(z_0\) is a removable singularity if \(f\) can be analytically continued onto \(\Omega \).
+\end{defn}
+
+It naturally follows that the other types of singularities will not limit to zero.
+
+\begin{defn}[Poles]
+	Let \(\Omega \subset \C\) and \(z_0 \in \Omega \) be given. Suppose \(f\) is a complex-valued function holomorphic on \(D_r(z_0)\setminus\left\{ z_0 \right\} \). Then \(z_0\) is a \textbf{pole} or \textbf{infinite singularity} if
+	\begin{align*}
+		\lim_{z \to z_0} (z-z_0)f(z) = \infty.
+	\end{align*}
+\end{defn}
+Note that this is equivalent to saying that
+\begin{align*}
+	\lim_{z \to z_0} f(z) = \infty.
+\end{align*}
+Furthermore, observe that by construction, poles are necessarily isolated.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) and \(z_0 \in \Omega \) be given. Suppose \(f\) is a complex-valued function holomorphic on \(D_r(z_0)\setminus\left\{ z_0 \right\} \). Then \(z_0\) is a **pole** or **non-essential singularity** if
+{{c1::\(\begin{align*}
+        	\lim_{z \to z_0} (z-z_0)f(z) = \infty.
+        \end{align*}\)}}
+Extra: Note that this is equivalent to saying that
+\(\begin{align*}
+  	\lim_{z \to z_0} f(z) = \infty.
+  \end{align*}\)
+Furthermore, observe that by construction, poles are necessarily isolated.
+Tags: analysis complex_analysis singularities_residues defn
+<!--ID: 1625609844293-->
+END
+\end{anki}
+
+\begin{prop}[Pole Equivalence and Order of Pole]
+	Let \(f\) be a complex-valued function defined on \(D_r(z_0)\setminus \left\{ z_0 \right\} \subset \C\) for some \(r>0\). Then \(f\) has a pole at \(z_0\) if and only if
+	\begin{align*}
+		g(z) := \begin{cases}
+			\frac{1}{f(z)} & z\neq z_0\\
+			0 & z=z_0
+		\end{cases}
+	\end{align*}
+	is holomorphic on \(D_r(z_0)\). Furthermore, there exists a unique positive integer \(k\) so that
+	\begin{align*}
+		0 < \lim_{z \to z_0} \frac{(z-z_0)^{k}}{f(z)}< \infty.
+	\end{align*}
+	We call \(k\) the \textbf{order of the pole}. If \(k=1\), then the pole is \textbf{simple}.
+\end{prop}
+Recall from our discussion on Cauchy's integral formula that \(f\) has a unique Laurent expansion locally at a pole \(z_0\). We point out that the above definition tells us that the Laurent expansion at \(z_0\) has finitely many negative terms-- in fact, it has negative terms up to \(-k\). That is, \(f\) can be expressed locally at \(z_0\) by
+\begin{align*}
+	f(z) = \sum_{i=-k}^{\infty} a_n (z-z_0)^{n}.
+\end{align*}
+
+Notice that our definition of a pole for rational functions falls under this definition now.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(f\) be a complex-valued function defined on \(D_r(z_0)\setminus \left\{ z_0 \right\} \subset \C\) for some \(r>0\). Then \(f\) has a pole at \(z_0\) if and only if
+ {{c1::\(\begin{align*}
+        	g(z) := \begin{cases}
+        		\frac{1}{f(z)} & z\neq z_0\\
+        		0 & z=z_0
+        	\end{cases}
+        \end{align*}\)}} 
+	is holomorphic on \(D_r(z_0)\). Furthermore, there exists a unique positive integer \(k\) so that
+	{{c1::\(\begin{align*}
+	        	0 < \lim_{z \to z_0} \frac{(z-z_0)^{k}}{f(z)}< \infty.
+	        \end{align*}\)}} 
+We call \(k\) the **order of the pole**. If {{c1::\(k=1\)}}, then the pole is **simple**.
+Extra: Recall from our discussion on Cauchy's integral formula that \(f\) has a unique Laurent expansion locally at a pole \(z_0\). We point out that the above definition tells us that the Laurent expansion at \(z_0\) has finitely many negative terms-- in fact, it has negative terms up to \(-k\). That is, \(f\) can be expressed locally at \(z_0\) by
+\(\begin{align*}
+  	f(z) = \sum_{i=-k}^{\infty} a_n (z-z_0)^{n}.
+  \end{align*}\)
+Tags: analysis complex_analysis singularities_residues defn
+<!--ID: 1625609844310-->
+END
+\end{anki}
+
+\begin{defn}[Essential Singularity]
+	Let \(\Omega \subset \C\) and \(z_0 \in \Omega \) be given. Suppose \(f\) is a complex-valued function holomorphic on \(D_r(z_0) \setminus\left\{ z_0 \right\} \). Then \(z_0\) is an \textbf{essential singularity} of \(f\) if it is neither a pole nor a removable singularity.\\
+
+	More formally, \(z_0\) is an essential singularity if
+	\begin{align*}
+		\lim_{z \to z_0} (z-z_0)f(z)
+	\end{align*}
+	does not exist.
+\end{defn}
+The definition is equivalent to the Laurent series of \(f\) at \(z_0\) having infinitely many negative terms.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) and \(z_0 \in \Omega \) be given. Suppose \(f\) is a complex-valued function holomorphic on \(D_r(z_0) \setminus\left\{ z_0 \right\} \). Then \(z_0\) is an **essential singularity** of \(f\) if {{c1::it is neither a pole nor a removable singularity}}.
+
+More formally, \(z_0\) is an essential singularity if
+{{c1::\(\begin{align*}
+        	\lim_{z \to z_0} (z-z_0)f(z)
+        \end{align*}\)
+does not exist.}} 
+Extra: The definition is equivalent to the Laurent series of \(f\) at \(z_0\) having infinitely many negative terms.
+Tags: analysis complex_analysis singularities_residues defn
+<!--ID: 1625609844327-->
+END
+\end{anki}
+
+
+Thus, we have officially classified all isolated singularities as either:
+\begin{itemize}
+	\item a removable singularity
+	\item an infinite singularity
+	\item an essential singularity
+\end{itemize}
+We can characterize all but the essential singularity very succinctly:
+\begin{defn}[Algebraic Order]
+	Let \(\Omega \subset \C\) and \(z_0 \in \Omega \) be given. Suppose \(f\) is a complex-valued function holomorphic on \(D_r(z_0)\setminus\left\{ z_0 \right\} \). Suppose that for some \(k \in \Z\) and \(M \in \C\)
+	\begin{align*}
+	\lim_{z \to z_0} (z-z_0)^{k}f(z) =M
+	\end{align*}
+	Then \(k\) is the \textbf{algebraic order} of \(f\) at \(z_0\). If \(k>0\) and \(M\neq 0\), then \(z_0\) is a zero. If \(k=1\) and \(M=0\), then \(z_0\) is a removable singularity (and may or may not be a zero). If \(k=0\), then \(f\) is analytic and non-vanishing at \(z_0\). Finally, if \(k<0\) then \(z_0\) is a pole. 
+\end{defn}
+Notice that we make no comment on situations where \(k \in \Q\)-- this is because, remarkably, this situation cannot occur! In order for the limit to converge, \(k\) must be an integer.\\
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) and \(z_0 \in \Omega \) be given. Suppose \(f\) is a complex-valued function holomorphic on \(D_r(z_0)\setminus\left\{ z_0 \right\} \). Suppose that for some \(k \in \Z\) and \(M \in \C\)
+ {{c1::\(\begin{align*}
+         \lim_{z \to z_0} (z-z_0)^{k}f(z) =M
+         \end{align*}\)}}
+	Then \(k\) is the **algebraic order** of \(f\) at \(z_0\). If {{c1::\(k>0\)}} and {{c1::\(M\neq 0\)}}, then \(z_0\) is a zero. If {{c1::\(k=1\)}} and {{c1::\(M=0\)}}, then \(z_0\) is a removable singularity (and may or may not be a zero). If {{c1::\(k=0\)}}, then \(f\) is analytic and non-vanishing at \(z_0\). Finally, if {{c1::\(k<0\)}} then \(z_0\) is a pole. 
+Extra: Notice that we make no comment on situations where \(k \in \Q\)-- this is because, remarkably, this situation cannot occur! In order for the limit to converge, \(k\) must be an integer.
+Tags: analysis complex_analysis singularities_residues defn
+<!--ID: 1625609844344-->
+END
+\end{anki}
+
+\begin{exmp}
+	\begin{itemize}
+		\item \(\frac{1}{z}\) 
+		\item \(\frac{1}{\sin(z)}\)
+	\end{itemize}
+\end{exmp}
+
+Essential singularities are naturally very difficult to characterize. To see this, we state a classical theorem of Weierstrass:
+\begin{thm}[Casorati-Weierstrass]
+	Let \(\Omega \subset \C\) and \(z_0 \in \Omega \) be given. Suppose \(f\) is a complex-valued function holomorphic on \(D_r(z_0)\setminus \left\{ z_0 \right\} \) with an essential singularity at \(z_0\). Then
+	\begin{align*}
+		\overline{f(D_r(z_0)\setminus\left\{ z_0 \right\} )} = \C.
+	\end{align*}
+	That is, the image of \(f\) in any neighborhood of \(z_0\) is dense in \(\C\)-- \(f\) comes arbitrarily close to every complex number.
+\end{thm}
+\begin{proof}
+	
+\end{proof}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Casorati-Weierstrass**
+Let \(\Omega \subset \C\) and \(z_0 \in \Omega \) be given. Suppose \(f\) is a complex-valued function holomorphic on \(D_r(z_0)\setminus \left\{ z_0 \right\} \) with an essential singularity at \(z_0\). Then
+ {{c1::\(\begin{align*}
+         	\overline{f(D_r(z_0)\setminus\left\{ z_0 \right\} )} = \C.
+         \end{align*}\)}}
+That is, the image of \(f\) in any neighborhood of \(z_0\) is {{c1::dense in \(\C\)}}-- \(f\) {{c1::comes arbitrarily close to every complex number}}.
+Tags: analysis complex_analysis singularities_residues
+<!--ID: 1625609844360-->
+END
+\end{anki}
+
+
+We state but do not prove a stronger result:
+\begin{thm}[Picard's Great Theorem]
+	Let \(\Omega \subset \C\) and \(z_0 \in \Omega \) be given. Suppose \(f\) is a complex-valued function holomorphic on \(D_r(z_0)\setminus \left\{ z_0 \right\} \) with an essential singularity at \(z_0\). Then for all \(z \in \C\) with at most one exception,
+	\begin{align*}
+		f^{-1}(z) \cap D_r(z_0) \neq \emptyset.
+	\end{align*}
+	Moreover, the intersection has infinitely many elements. In other words, \(f(z)\) takes on all possible complex values (with at most one exception) infinitely often in a neighborhood of \(z_0\).
+\end{thm}
+
+\begin{cor}
+	The only holomorphic automorphisms of \(\C\) are functions of the form \(f(z) = az+b\) for \(a,b \in \C\) with \(a\neq 0\).
+\end{cor}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Picard's Great Theorem**
+Let \(\Omega \subset \C\) and \(z_0 \in \Omega \) be given. Suppose \(f\) is a complex-valued function holomorphic on \(D_r(z_0)\setminus \left\{ z_0 \right\} \) with an essential singularity at \(z_0\). Then for all \(z \in \C\) with at most one exception,
+{{c1::\(\begin{align*}
+        	f^{-1}(z) \cap D_r(z_0) \neq \emptyset.
+        \end{align*}\)}}
+Moreover, the intersection has {{c1::infinitely many elements}}. In other words, \(f(z)\) {{c1::takes on all possible complex values (with at most one exception) infinitely often}} in a neighborhood of \(z_0\).
+Tags: analysis complex_analysis singularities_residues
+<!--ID: 1625609844377-->
+END
+\end{anki}
+
+
+Picard also gave a stronger version of Liouville's theorem, which we state now:
+\begin{thm}[Picard's Little Theorem]
+	If \(f\) is entire and non-constant, then \(f(\C) = \C\) or \(f(\C) = \C\setminus\left\{ z_0 \right\} \) for some \(z_0 \in \C\).
+\end{thm}
+Hence, if \(f\) omits even two points from its range, it must be constant. We do not have the tools to prove this yet, but the intuition behind this is that if \(f(z)\) doesn't hit a value \(z_0\), then \(f(z)-z_0 = e^{p(z)}\) for some polynomial \(p \in \C[z]\).\\
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Picard's Little Theorem**
+If \(f\) is entire and non-constant, then {{c1::\(f(\C) = \C\)}} or {{c1::\(f(\C) = \C\setminus\left\{ z_0 \right\} \)}} for some \(z_0 \in \C\).
+Extra: Hence, if \(f\) omits even two points from its range, it must be constant. We do not have the tools to prove this yet, but the intuition behind this is that if \(f(z)\) doesn't hit a value \(z_0\), then \(f(z)-z_0 = e^{p(z)}\) for some polynomial \(p \in \C[z]\).
+Tags: analysis complex_analysis singularities_residues
+<!--ID: 1625609844393-->
+END
+\end{anki}
+
+Before we look closer at functions with these singularities, we note that we can technically include \(z_0=\infty\) during the discussion of these singularities. This is the idea behind the Riemann sphere-- and hence all the discussion above is perfectly valid provided we clarify what some of our constructions mean at \(z_0 = \infty\).
+
+\begin{defn}[Singularity at Infinity]
+	Let \(f\) be a function holomorphic on \(\C\setminus D_R(0)\) for some \(R>0\). Then we say \(f\) has a \textbf{singularity at infinity} if
+	\begin{align*}
+		F(z) := f(\sfrac{1}{z})
+	\end{align*}
+	has a singularity at zero. Furthermore, the type of singularity \(f\) has at infinity is defined to be the type of singularity \(F\) has at zero.\\
+
+	If \(f\) has a non-essential singularity at infinity, then \(f\) is said to be \textbf{meromorphic in the extended complex plane}.
+\end{defn}
+
+\begin{prop}
+	If \(f\) is a function meromorphic in the extended complex plane, then \(f\) is a rational function of the form \(\frac{p(z)}{q(z)}\) for \(p,q \in \C[z]\).
+\end{prop}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(f\) be a function holomorphic on \(\C\setminus D_R(0)\) for some \(R>0\). Then we say \(f\) has a **singularity at infinity** if
+ {{c1::\(\begin{align*}
+         	F(z) := f(\sfrac{1}{z})
+         \end{align*}\)}}
+has {{c1::a singularity at zero}}. Furthermore, the type of singularity \(f\) has at infinity is defined to be the type of singularity \(F\) has {{c1::at zero}}.
+
+If \(f\) has a non-essential singularity at infinity, then \(f\) is said to be **meromorphic in the extended complex plane**.
+Extra: If \(f\) is a function meromorphic in the extended complex plane, then \(f\) is a rational function of the form \(\frac{p(z)}{q(z)}\) for \(p,q \in \C[z]\).
+Tags: analysis complex_analysis singularities_residues defn
+<!--ID: 1625688164963-->
+END
+\end{anki}
+
+
+% \printindex
+\end{document}

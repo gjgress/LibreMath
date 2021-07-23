@@ -1,0 +1,72 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+Cauchy's theorem gives us a rather detailed picture of holomorphic functions-- perhaps too detailed. While the properties we have shown are remarkable, they can be difficult to satisfy, and so holomorphic functions are too restrictive of a class. The problem is that many complex functions have isolated points-- singularities-- where the function is not well-defined. We can classify these singularities and deal with a larger class of complex functions-- meromorphic functions-- which behave nicely outside of these points, and are tameable near the singularities.
+
+\subsection{Motivation}
+\label{sub:motivation}
+
+Before we discuss more generally singularities, it will be helpful to develop an intuition on a simpler class of complex functions.
+
+\begin{defn}[Rational Functions]
+	Let \(p,q \in \C[z]\) be two polynomials with no common factors. Then
+	\begin{align*}
+		r(z) = \frac{p(z)}{q(z)}
+	\end{align*}
+	is a \textbf{rational function} in the extended plane-- if \(q(z) = 0\), then we assign \(r(z) = \infty\). This function is continuous. We call the zeros of \(q\) the \textbf{poles} of \(r\), and the \textbf{order of a pole} is the order of the corresponding zero of \(q\).
+\end{defn}
+Note that the derivative
+\begin{align*}
+	r'(z) = \frac{p'(z)q(z) - q'(z)p(z)}{q(z)^2}
+\end{align*}
+exists only when \(q(z) \neq 0\), but as a rational function, it has the same poles as \(r(z)\), but with one additional order on the poles. Furthermore, note that if \(\lambda \in \C\) is a constant, then \(\lambda r\) has the same poles as \(r\) and hence the same order. Therefore, a rational function \(r\) of order \(p\) has \(p\) zeros and \(p\) poles, and every equation \(r(z) = \lambda \) has exactly \(p\) roots.\\
+
+Finally, by partial fraction decomposition, there is a decomposition \(r(z) = g(z) + h(z)\), where \(g\) does not have a constant term, and \(h(z)\) is finite at infinity. The degree of \(g(z)\) is the order of the pole at \(\infty\) and so the polynomial is referred to the \textbf{singular part} of \(r(z)\) at \(\infty\). Another form that is useful is
+\begin{align*}
+	r(z) = g(z) + \sum_{j=1}^{q} g_j \left( \frac{1}{z-\beta_j} \right) 
+\end{align*}
+where \(\beta_j\) are the distinct finite poles of \(r(z)\).\\
+
+With this definition alone, we can already introduce a powerful statement that follows from a theorem of Runge's that will give us uniform approximation of holomorphic functions:
+
+\begin{thm}
+	Let \(f\) be a holomorphic function on a neighborhood of a compact set \(K\). Then \(f\) can be approximated uniformly on \(K\) by rational functions with poles in \(K^{c}\).\\
+
+	Furthermore, if \(K^{c}\) is connected, then \(f\) can be uniformly approximated by polynomials.
+\end{thm}
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: Let \(f\) be a holomorphic function on a neighborhood of a compact set \(K\). Then \(f\) can be {{c1::approximated uniformly}} on \(K\) by {{c1::rational functions with poles in \(K^{c}\)}}.
+
+Furthermore, if \(K^{c}\) is connected, then \(f\) can be {{c1::uniformly approximated by polynomials}}.
+Tags: analysis complex_analysis complex_analyticity
+<!--ID: 1625608497996-->
+END
+\end{anki}
+
+
+% \printindex
+\end{document}

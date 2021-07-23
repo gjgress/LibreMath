@@ -1,0 +1,362 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 07/14/21
+
+\begin{defn}[Harmonic Functions]
+	Let \(u \in C^2(\Omega)\) for \(\Omega\subset \R^{n}\) be a \textit{real-valued} multivariate function with continuous second-derivative. We say that \(u\) is \textbf{harmonic} if it satisfies
+	\begin{align*}
+		\Delta u := \sum_{i=1}^{n} \frac{\partial^2 u}{\partial x_i^2} = 0.
+	\end{align*}
+	We call the operator \(\Delta \) the \textbf{Laplacian} and the equation above \textbf{Laplace's equation}.
+\end{defn}
+Now suppose \(f = (u,v)\) is holomorphic on \(\Omega \subset \C\). We have shown that \(u,v \in C^{\infty}\) and the Cauchy-Riemann equations tell us that
+\begin{align*}
+	\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \\
+	\frac{\partial u}{\partial y} = - \frac{\partial v}{\partial x} .
+\end{align*}
+Applying \(\frac{\partial }{\partial x} \) or \(\frac{\partial }{\partial y} \) to both sides brings us to our first connection between holomorphic and harmonic functions.
+
+\begin{thm}
+	Let \(f=(u,v)\) be a holomorphic function. Then \(u,v\) are harmonic.
+\end{thm}
+
+Thus, we have seen that holomorphicity already implicitly requires two harmonic functions. But the Cauchy-Riemann equations give us additional structure on \(u,v\):
+
+\begin{defn}[Conjugate Harmonic Function]
+	If two harmonic functions \(u,v\) satisfy the Cauchy-Riemann equations
+\begin{align*}
+	\frac{\partial u}{\partial x} &= \frac{\partial v}{\partial y} \\
+	\frac{\partial u}{\partial y} &= - \frac{\partial v}{\partial x} 
+\end{align*}
+	then \(v\) is said to be the \textbf{conjugate harmonic function} of \(u\). 
+\end{defn}
+In fact, the Cauchy-Riemann equations provide us with the most structure we could expect-- a conjugate harmonic function \(v\) is uniquely determined (up to an additive constant). But exercise caution, as harmonic conjugacy is symmetric, not antisymmetric-- if \(v\) is the conjugate harmonic function of \(u\), then \(u\) is the conjugate harmonic function of \(-v\).\\
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: If two harmonic functions \(u,v\) satisfy {{c1::the Cauchy-Riemann equations
+\(\begin{align*}
+        	\frac{\partial u}{\partial x} &= \frac{\partial v}{\partial y} \\
+        	\frac{\partial u}{\partial y} &= - \frac{\partial v}{\partial x} 
+        \end{align*}\)}} 
+	then \(v\) is said to be the **conjugate harmonic function** of \(u\). 
+Extra: In fact, the Cauchy-Riemann equations provide us with the most structure we could expect-- a conjugate harmonic function \(v\) is uniquely determined (up to an additive constant). But exercise caution, as harmonic conjugacy is symmetric, not antisymmetric-- if \(v\) is the conjugate harmonic function of \(u\), then \(u\) is the conjugate harmonic function of \(-v\).
+Tags: analysis complex_analysis complex_analyticity defn 
+<!--ID: 1624560720227-->
+END
+\end{anki}
+
+Recall the complex differential forms:
+\begin{align*}
+	dz = (dx, dy)\\
+	d \overline{z} = (dx,-dy)
+\end{align*}
+defined so that
+\begin{align*}
+	dx = (\sfrac{1}{2},0) (dz + d \overline{z})\\
+	dy = (0, \sfrac{1}{2}) (dz - d \overline{z})
+\end{align*}
+is satisfied. We also defined the complex differential operator by:
+\begin{align*}
+	\frac{\partial }{\partial z} &= \frac{1}{2}\left( \frac{\partial }{\partial x} , \frac{\partial }{\partial y}  \right)\\
+	\frac{\partial }{\partial \overline{z}} &= \frac{1}{2} \left( \frac{\partial }{\partial x} , - \frac{\partial }{\partial y}  \right) 
+\end{align*}
+defined so that
+\begin{align*}
+	df = \frac{\partial f}{\partial z} \,d z + \frac{\partial f}{\partial \overline{z}} \,d \overline{z}
+\end{align*}
+is satisfied.
+
+\begin{prop}
+	\begin{align*}
+		\Delta = 4 \frac{\partial }{\partial z} \frac{\partial }{\partial \overline{z}} = 4 \frac{\partial }{\partial \overline{z}} \frac{\partial }{\partial z} .
+	\end{align*}
+\end{prop}
+This follows directly from computations.\\
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Consider the complex differential forms:
+\(\begin{align*}
+  	dz &= (dx,dy) & \quad dx &= (\sfrac{1}{2},0)(dz + d\overline{z}) \\
+  	d \overline{z} &= (dx,-dy) &\quad \,d y &= (0,\sfrac{1}{2})(dz - d \overline{z})
+  \end{align*}\)
+  and the corresponding operators
+  \(\begin{align*}
+    	\frac{\partial }{\partial z} &= \frac{1}{2}\left( \frac{\partial }{\partial x} , \frac{\partial }{\partial y}  \right)\\
+    	\frac{\partial }{\partial \overline{z}} &= \frac{1}{2} \left( \frac{\partial }{\partial x} , - \frac{\partial }{\partial y}  \right) 
+    \end{align*}\). Then we can write the Laplacian operator by:
+    {{c1::\(\begin{align*}
+	    	\Delta = 4 \frac{\partial }{\partial z} \frac{\partial }{\partial \overline{z}} = 4 \frac{\partial }{\partial \overline{z}} \frac{\partial }{\partial z} .
+	    \end{align*}\)}} 
+Tags: analysis complex_analysis harmonic_functions
+<!--ID: 1626993604616-->
+END
+\end{anki}
+
+Recall from real analysis that a harmonic function is defined by its value on the boundary:
+\begin{thm}
+	Let \(U\subset \R^n\) be a bounded open set. Let \(u:\overline{U}\to \R^{n}\) be a continuous function harmonic on \(U\). Suppose there exists a second continuous function \(v:\overline{U}\to \R^{n}\) harmonic on \(U\), so that \(u = v\) on \(\partial U\). Then \(u=v\) on \(\overline{U}\).
+\end{thm}
+This theorem has two main weaknesses. The first is that the set is required to be bounded. The second is that the functions must be continuous on the boundary.\\
+
+Complex analysis provides us with tools that can resolve these weaknesses. The Riemann mapping theorem allows us to obtain an isomorphism from most unbounded sets into a bounded region-- although we must be cautious that the boundary curves correspond to each other properly. We will need to build more theory to handle discontinuities on the boundary.\\
+
+One can show that if \(u\) is \textit{bounded everywhere on \(\partial U\)} and continuous on \(\partial U\)-- except for a finite number of points, then the theorem holds as expected. We omit the proof here.\\
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(U\subset \R^n\) be a bounded open set. Let \(u:\overline{U}\to \R^{n}\) be a continuous function harmonic on \(U\). Suppose there exists a second continuous function \(v:\overline{U}\to \R^{n}\) harmonic on \(U\), so that \(u = v\) on \(\partial U\). Then \(u=v\) on \(\overline{U}\).
+Extra: If \(u\) is \textit{bounded everywhere on \(\partial U\)} and continuous on \(\partial U\)-- except for a finite number of points, then the theorem holds as expected.
+Tags: analysis complex_analysis harmonic_functions
+<!--ID: 1626993604635-->
+END
+\end{anki}
+
+Recall that we can compute the complex derivative of a function \(f=(u,v)\) directly by
+\begin{align*}
+	f'(z) = 2 \frac{\partial u}{\partial z} .
+\end{align*}
+We have a converse provided that the underlying space is simply connected.
+ \begin{prop}
+	 Let \(\Omega \subset \C\) be a simply connected set, and let \(u\) be a real-valued harmonic function on \(U\). Then there exists a holomorphic function \(f \in \textrm{Hol}(\Omega )\) so that \(u= \textrm{Re}(f)\). Furthermore, this holomorphic function is unique up to an imaginary constant.
+\end{prop}
+To see that simply connectedness is necessary, consider \(\ln(\left| z \right| )\) on \(D_1 \setminus\left\{ 0 \right\} \).
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) be a simply connected set, and let \(u\) be a real-valued harmonic function on \(U\). Then there exists a holomorphic function \(f \in \textrm{Hol}(\Omega )\) so that {{c1::\(u= \textrm{Re}(f)\)}}. Furthermore, this holomorphic function is {{c1::unique up to an imaginary constant}}.
+Extra: To see that simply connectedness is necessary, consider \(\ln(\left| z \right| )\) on \(D_1 \setminus\left\{ 0 \right\} \).
+Tags: analysis complex_analysis harmonic_functions
+<!--ID: 1626993604652-->
+END
+\end{anki}
+Uniqueness will follow from a slightly more general lemma:
+\begin{lemma}
+	Let \(\Omega \subset \C\) be a connected open set, and \(f,g\) holomorphic functions on \(\Omega \). If \(\textrm{Re}(f) = \textrm{Re}(g)\), then
+	\begin{align*}
+		f = (g, K)
+	\end{align*}
+	for some constant \(K \in \R\).
+\end{lemma}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) be a connected open set, and \(f,g\) holomorphic functions on \(\Omega \). If \(\textrm{Re}(f) = \textrm{Re}(g)\), then
+\(\begin{align*}
+  	f = (g, K)
+  \end{align*}\)
+for some constant \(K \in \R\).
+Tags: analysis complex_analysis complex_analyticity
+<!--ID: 1626993604668-->
+END
+\end{anki}
+
+We will need some simple properties of composition, which we give now as an exercise.
+\begin{hw}
+	Let \(f:U\to V\) be a holomorphic function. Suppose \(g\) is harmonic on \(V\). Then \(g\circ f \) is harmonic on \(U\).\\
+
+	Suppose instead that \(g\) is harmonic on the set
+	\begin{align*}
+		V' = \left\{ \overline{z} \mid z \in V \right\} .
+	\end{align*}
+	Then the function
+	\begin{align*}
+		g(\overline{f(z)})
+	\end{align*}
+	is harmonic on \(U\).
+\end{hw}
+
+Now we prove the mean value theorem for harmonic functions via Cauchy's theorem.
+\begin{thm}[Mean Value Theorem]
+	Let \(\Omega \subset \C\) be an open set and \(u\) a harmonic function on \(\Omega \). Let \(z_0 \in U\) be given and consider \(\overline{D_r(z_0)}\subset \Omega \) for some \(r>0\) sufficiently small. Then
+	\begin{align*}
+		u(z_0) = \frac{1}{2\pi } \int_{0}^{2\pi } u(z_0+re^{i\theta }) \,d \theta . 
+	\end{align*}
+\end{thm}
+Naturally, the maximum principle for harmonic functions falls out from this.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Mean Value Theorem for Harmonic Functions**
+Let \(\Omega \subset \C\) be an open set and \(u\) a harmonic function on \(\Omega \). Let \(z_0 \in U\) be given and consider \(\overline{D_r(z_0)}\subset \Omega \) for some \(r>0\) sufficiently small. Then
+ {{c1::\(\begin{align*}
+         	u(z_0) = \frac{1}{2\pi } \int_{0}^{2\pi } u(z_0+re^{i\theta }) \,d \theta . 
+         \end{align*}\)}} 
+Tags: analysis complex_analysis harmonic_functions
+<!--ID: 1626993604684-->
+END
+\end{anki}
+
+\begin{thm}[Maximum Principle of Harmonic Functions]
+	Let \(\Omega \subset \C\) be a connected open set with \(u\) harmonic on \(\Omega \).
+\begin{itemize}
+	\item If \(u\) has a maximum at a point \(z_0 \in \Omega \), then \(u\) is constant.
+	\item If \(u\) is continuous on \(\overline{\Omega }\) and not constant on \(U\), then \(u\) obtains its maximum on \(\partial U\).
+\end{itemize}
+\end{thm}
+
+We can apply the maximum modulus principle in a lot of non-intuitive circumstances. In fact, the maximum modulus is not arbitrary-- we can bound the maximum modulus on a circle provided we have information on the maximum modulus of \(f\) on concentric circles near it.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Maximum Principle of Harmonic Functions**
+Let \(\Omega \subset \C\) be a connected open set with \(u\) harmonic on \(\Omega \).
+
+* If \(u\) has a maximum at a point \(z_0 \in \Omega \), then {{c1::\(u\) is constant}}.
+* If \(u\) is continuous on \(\overline{\Omega }\) and not constant on \(U\), then {{c1::\(u\) obtains its maximum on \(\partial U\)}}.
+Tags: analysis complex_analysis harmonic_functions
+<!--ID: 1626993604707-->
+END
+\end{anki}
+
+\begin{thm}[Hadamard's Three-Circle Theorem]
+	Let \(0<R_1<R_2<\infty\) be given and consider the annulus given by \(\Omega = D_{R_2} \setminus \overline{D_{R_1}}\). Let
+	\begin{align*}
+		\prescript{}{r}\|f\|_\infty := \textrm{max}_{z \in \partial D_r} \left| f(z) \right| .
+	\end{align*}
+	If a function \(f\) is holomorphic on the open annulus and continuous on the closure of the annulus, then
+	\begin{align*}
+		\prescript{}{r}\|f\|_{\infty} &\leq \prescript{}{R_1}\|f\|_{\infty}^{\alpha } \prescript{}{R_2}\|f\|_{\infty}^{1-\alpha }\\
+		\alpha &= \frac{\ln(\sfrac{R_2}{r})}{\ln(\sfrac{R_2}{R_1})}.
+	\end{align*}
+	In other words, the maximum modulus of \(f\) on a circle \(\partial D_r\) is bounded by a logarithmic interpolation between the maximum modulus of \(f\) on concentric circles surrounding \(\partial D_r\).
+\end{thm}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Hadamard's Three-Circle Theorem**
+Let \(0<R_1<R_2<\infty\) be given and consider the annulus given by \(\Omega = D_{R_2} \setminus \overline{D_{R_1}}\). Let
+\(\begin{align*}
+  	\prescript{}{r}\|f\|_\infty := \textrm{max}_{z \in \partial D_r} \left| f(z) \right| .
+  \end{align*}\)
+If a function \(f\) is holomorphic on the open annulus and continuous on the closure of the annulus, then
+{{c1::\(\begin{align*}
+      	\prescript{}{r}\|f\|_{\infty} &\leq \prescript{}{R_1}\|f\|_{\infty}^{\alpha } \prescript{}{R_2}\|f\|_{\infty}^{1-\alpha }\\
+      	\alpha &= \frac{\ln(\sfrac{R_2}{r})}{\ln(\sfrac{R_2}{R_1})}.
+        \end{align*}\)}}
+In other words, the maximum modulus of \(f\) on a circle \(\partial D_r\) is {{c1::bounded by a logarithmic interpolation}} between the {{c1::maximum modulus of \(f\) on concentric circles surrounding \(\partial D_r\)}}.
+Tags: analysis complex_analysis harmonic_functions
+<!--ID: 1626993604724-->
+END
+\end{anki}
+
+
+\subsection{Harmonic Functions on Annuli}
+\label{sub:harmonic_functions_on_annuli}
+
+The annulus is an interesting case because it is not simply connected, and hence we cannot utilize our previous theorems to induce a holomorphic function. However, it has plenty of structure that allows us to induce the holomorphic function a different way.
+
+\begin{thm}[Correspondence Between Harmonic and Holomorphic Functions (Annulus)]
+	Let \(0\leq R_1<R_2\) be given and consider the annulus given by \(\Omega = D_{R_2}\setminus \overline{D_{R_1}}\). Suppose \(u\) is a harmonic function on \(\Omega \). Then there exists a constant \(a \in \R\) and a holomorphic function \(f \in \textrm{Hol}(\Omega )\) such that
+	\begin{align*}
+		\textrm{Re}(f) = u - a \ln(\left| z \right| ).
+	\end{align*}
+\end{thm}
+Note that we allow \(R_1=0\) or \(R_2=\infty\) to include the special cases of the punctured plane \(\C\setminus\left\{ 0 \right\} \) and the punctured disk \(D_1\setminus\left\{ 0 \right\} \).
+
+\begin{proof}
+	
+\end{proof}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Correspondence between Harmonic and Holomorphic on the Annulus**
+Let \(0\leq R_1<R_2\) be given and consider the annulus given by \(\Omega = D_{R_2}\setminus \overline{D_{R_1}}\). Suppose \(u\) is a harmonic function on \(\Omega \). Then there exists a constant \(a \in \R\) and a holomorphic function \(f \in \textrm{Hol}(\Omega )\) such that
+{{c1::\(\begin{align*}
+        	\textrm{Re}(f) = u - a \ln(\left| z \right| ).
+        \end{align*}\)::real part of f}} 
+Extra: Note that we allow \(R_1=0\) or \(R_2=\infty\) to include the special cases of the punctured plane \(\C\setminus\left\{ 0 \right\} \) and the punctured disk \(D_1\setminus\left\{ 0 \right\} \).
+This also gives us a simple way to compute integrals of harmonic functions on the annulus:
+\(\begin{align*}
+  	\frac{1}{2\pi }\int_{0}^{2\pi } u(r,\theta )\,d \theta  = a \ln(\left| z \right| ) + b.
+  \end{align*}\)
+Tags: analysis complex_analysis harmonic_functions
+<!--ID: 1626993604740-->
+END
+\end{anki}
+
+This also gives us a simple way to compute integrals of harmonic functions on the annulus:
+\begin{cor}
+	Let \(0\leq R_1<R_2\) be given and consider the annulus given by \(\Omega  = D_{R_2}\setminus\left\{ D_{R_1} \right\} \). Let \(u\) be harmonic on \(\Omega \). Then there exists constants \(a,b\in \C\) so that
+	\begin{align*}
+		\frac{1}{2\pi }\int_{0}^{2\pi } u(r,\theta )\,d \theta  = a \ln(\left| z \right| ) + b.
+	\end{align*}
+\end{cor}
+
+Nevertheless, it will continue to prove difficult to unify our study of harmonic and holomorphic functions until we can find conditions under which we can extend harmonic functions on a domain that is not simply connected. We will prove a result that we will use to extend to the general case.
+\begin{lemma}[Extension of Bounded Harmonic Functions]
+	Let \(\Omega = D_1\setminus\left\{ 0 \right\} \) be the punctured disc and suppose that \(u\) is a bounded harmonic function on \(\Omega \). Then \(u\) extends to a harmonic function on \(D_1\).
+\end{lemma}
+
+This gives us hope that harmonic functions can extend on removable singularities, but first we will need one more lemma.
+
+\begin{lemma}[Analytic Continuation for Harmonic Functions]
+	Let \(\Omega \subset \C\) be a connected open set. Suppose \(u\) is a harmonic function on \(\Omega \) and \(f\) a holomorphic function on \(\Omega \). If \(u = \textrm{Re}(f)\) on some \(D_r\subset \Omega \) for \(r>0\), then \(u = \textrm{Re}(f)\) everywhere in \(\Omega \).
+\end{lemma}
+
+Finally, we obtain the desired result:
+\begin{thm}[Correspondence Between Harmonic and Holomorphic Functions (General)]
+	Let \(\Omega\subset \C \) be a simply connected open set, and let \(\left\{ z_i \right\}_{i=1}^{n}\) be a sequence of distinct points in \(\Omega \). Consider \(\Omega^{*}= \Omega \setminus] \left\{ z_i \right\}_{i=1}^{n}\), and let \(u\) be a real harmonic function on \(\Omega ^{*}\). Then there exists constants \(\left\{ a_i \right\}_{i=1}^{n}\subset \C\) and a holomorphic function \(f \in \textrm{Hol}(\Omega^{*})\) such that, for all \(z \in \Omega^{*}\),
+	\begin{align*}
+		\textrm{Re}(f(z)) = u(z) - \sum_{i=1}^{n} a_i \ln \left| z-z_i \right| .
+	\end{align*}
+\end{thm}
+In fact, we can actually consider deleted discs \(D_{r_i}(z_i)\) and obtain the same result, in which case our theorem on the annulus is a special case of the above theorem.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega\subset \C \) be a simply connected open set, and let \(\left\{ z_i \right\}_{i=1}^{n}\) be a sequence of distinct points in \(\Omega \). Consider \(\Omega^{*}= \Omega \setminus] \left\{ z_i \right\}_{i=1}^{n}\), and let \(u\) be a real harmonic function on \(\Omega ^{*}\). Then there exists constants \(\left\{ a_i \right\}_{i=1}^{n}\subset \C\) and a holomorphic function \(f \in \textrm{Hol}(\Omega^{*})\) such that, for all \(z \in \Omega^{*}\),
+\(\begin{align*}
+  	\textrm{Re}(f(z)) = u(z) - \sum_{i=1}^{n} a_i \ln \left| z-z_i \right| .
+  \end{align*}\)
+Extra: We can actually consider deleted discs \(D_{r_i}(z_i)\) and obtain the same result, in which case our theorem on the annulus is a special case of the above theorem.
+Tags: analysis complex_analysis harmonic_functions
+<!--ID: 1626993604756-->
+END
+\end{anki}
+
+
+\begin{proof}
+	
+\end{proof}
+
+%\subsection{Poisson Formula}
+%\label{sub:poisson_formula}
+
+%\subsection{Construction of Harmonic Functions}
+%\label{sub:construction_of_harmonic_functions}
+
+
+
+% \printindex
+\end{document}

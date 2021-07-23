@@ -1,0 +1,47 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+
+\begin{defn}[Primitive]
+	Let \(f\) be a function on the open set \(\Omega\). A \textbf{primitive} for \(f\) on \(\Omega\) is a function \(F\) that is holomorphic on \(\Omega\) such that \(F'(z) = f(z)\) for all \(z \in \Omega\).
+\end{defn}
+In other words, a primitive is an antiderivative. We use this nomenclature to prevent confusion with the real counterpart.
+
+\begin{thm}[Newton-Leibniz Formula]
+	If a continuous function \(f\) has a primitive \(F\) in \(\Omega\), and \(\gamma\) is a curve in \(\Omega\) that begins at \(z_0\) and ends at \(z_1\), then
+	\begin{align*}
+		\int_{\gamma} f(z) \,d z = F(z_1)-F(z_0)
+	\end{align*}
+\end{thm}
+Note that while \(F\) and hence \(f\) is necessarily holomorphic along \(\gamma \), holomorphicity of \(f\) is not sufficient to get the statement-- not all holomorphic functions have primitives.
+
+\begin{cor}
+	If \(\gamma\) is a closed curve in an open set \(\Omega\), and \(f\) is continuous and has a primitive in \(\Omega\), then
+	\begin{align*}
+		\int_{\gamma} f(z) \,d z = 0 
+	\end{align*}
+\end{cor}
+We can actually use this to show that a function does not have a primitive by integrating closed curves and getting non-zero values. In fact, if a function does integrate to \(0\) for every closed curve, then it must have an antiderivative.
+
+\begin{exmp}
+	Consider the function
+	\begin{align*}
+		f(z) = \frac{1}{z}
+	\end{align*}
+	on the domain \(\C\setminus \left\{ 0 \right\} \). If we take \(\gamma \) to be the boundary of the unit disc, that is, \(\gamma  = e^{it}\) on the interval \([0,2\pi ]\) then we observe that
+	\begin{align*}
+		\int_{\gamma } f \,d t = 2\pi i
+	\end{align*}
+	and hence \(f\) does not have a primitive in \(\C\setminus\left\{ 0 \right\} \). This exemplifies why we cannot define \(\log(z)\) on \(\C\setminus\left\{ 0 \right\} \)-- we have to specify a branch cut. If we integrate \(f\) over \(\gamma \) in the branch cut, we will indeed get zero once again, and hence \(f\) has a primitive within the branch cut.
+\end{exmp}
+
+
+\end{document}

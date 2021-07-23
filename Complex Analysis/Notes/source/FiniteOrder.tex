@@ -1,0 +1,117 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+
+In the statement of the Weierstrass Product Theorem, we implicitly assumed that
+\begin{itemize}
+	\item there exists a sequence \(\left\{ k_n \right\} \subset \N\) so that
+		\begin{align*}
+			\sum_{n=1}^{\infty} \left( \frac{a}{\left| z_n \right| } \right)^{k_n}
+		\end{align*}
+		converges
+	\item within the set of sequences that give convergence, there exists a "minimal" sequence.
+\end{itemize}
+We proved the first point in the proof of the theorem-- one can see that choosing \(k_n = n\) will guarantee convergence in all cases. As for the question of minimality, we explore in this section what a minimal sequence might be like, and how it reflects the underlying structure of our entire function.
+
+\begin{defn}[Order of Entire Function]
+	Let \(f\) be an entire function. We say that \(f\) is of \textbf{order \(\leq \rho \)} for real \(\rho >0\) if for all \(\varepsilon>0\), there exists a constant \(C_\varepsilon\) and a corresponding \(R_{C_\varepsilon} >0\) such that, for all \(R>R_{C_\varepsilon}\),
+	\begin{align*}
+		\sup_{z \in D_R} \left| f(z) \right| \leq C_\varepsilon^{R \raisebox{+4pt}{\scalebox{0.65}{\(\,\rho +\varepsilon\)} } }.
+	\end{align*}
+	We say that \(f\) is of \textbf{strict order \(\leq \rho \)} if the inequality holds without the \(\varepsilon\):
+	\begin{align*}
+		\sup_{z \in D_R} \left| f(z) \right| \leq C_\varepsilon^{R \raisebox{+4pt}{\scalebox{0.65}{\(\,\rho\)} } }.
+	\end{align*}
+	Finally, the function \(f\) is of \textbf{order \(\rho \)} or \textbf{strict order \(\rho \)} if \(\rho \) is the greatest lower bound to make the inequality valid.
+\end{defn}
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: Let \(f\) be an entire function. We say that \(f\) is of **order \(\leq \rho \)** for real \(\rho >0\) if for all \(\varepsilon>0\), there exists a constant \(C_\varepsilon\) and a corresponding \(R_{C_\varepsilon} >0\) such that, for all \(R>R_{C_\varepsilon}\),
+{{c1::\(\begin{align*}
+      	\sup_{z \in D_R} \left| f(z) \right| \leq C_\varepsilon^{R^{\rho +\varepsilon}} .
+        \end{align*}\)}}
+We say that \(f\) is of **strict order \(\leq \rho \)** if the inequality holds without the \(\varepsilon\):
+{{c1::\(\begin{align*}
+        	\sup_{z \in D_R} \left| f(z) \right| \leq C_\varepsilon^{R^{\rho} }.
+        \end{align*}\)}}
+Finally, the function \(f\) is of **order \(\rho \)** or **strict order \(\rho \)** if \(\rho \) is the {{c1::greatest lower bound}} to make the inequality valid.
+Tags: analysis complex_analysis entire_meromorphic
+<!--ID: 1626995840083-->
+END
+\end{anki}
+
+
+\begin{exmp}
+	The function \(e^{z}\) is strict order 1 because
+	\begin{align*}
+		\left| e^{z} \right| = e^{x} \leq e^{\left| z \right| }.
+	\end{align*}
+\end{exmp}
+
+For a more involved example, if we have a canonical Weierstrass product with \(\sup_{n} \left\{ k_n \right\} =k\), then for all \(\rho \) satisfying \(k-1<\rho <k\), the Weierstrass product is of order \(\leq \rho \). The following lemma allows us to obtain the converse.
+
+\begin{lemma}
+	Let \(f\) be an entire function of strict order \(\leq \rho \). Then for \(R\) sufficiently large,
+	\begin{align*}
+		\frac{1}{2\pi i}\int_{\partial D_R}\frac{f'}{f} \,d t \leq R^{\rho }.
+	\end{align*}
+	Of course because \(f\) is entire, the left-hand side represents the number of zeros within the disc of radius \(R\).
+\end{lemma}
+The following corollary immediately follows:
+\begin{cor}
+	Let \(f\) have strict order \(\leq \rho \), and let \(\left\{ z_n \right\} \subset \C\setminus\left\{ 0 \right\} \) be the zeros of \(f\) ordered by increasing modulus. Then for every \(\varepsilon>0\), the series
+	\begin{align*}
+		\sum_{n=1}^{\infty} \frac{1}{\left| z_n \right|^{\rho + \delta }}
+	\end{align*}
+	converges.
+\end{cor}
+This corollary then gives us the converse-- every entire function of strict order \(\leq \rho \) has a Weierstrass product form with \(\rho < \sup_{n} k_n < \rho +1\).
+We summarize these results into the minimum modulus theorem.
+\begin{thm}[Minimum Modulus Theorem]
+	Let \(f\) be an entire function of order \(\leq \rho \), and let \(\left\{ z_n \right\} \subset \C\) be its sequence of zeros ordered by increasing modulus. Then for all \(s>\rho \), \(\varepsilon>0\), there is a corresponding \(R_0\) so that, for all \(R > R_0\) and \(z \in \C\setminus \overline{D_s}\):
+	\begin{align*}
+		\left| f(z) \right| \geq e^{-R\raisebox{+4pt}{\scalebox{0.65}{\(\,\rho +\varepsilon\)} }}
+	\end{align*}
+\end{thm}
+This ensures the construction we gave in Hadamard's Theorem is valid and unique.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Minimum Modulus Theorem**
+Let \(f\) be an entire function of order \(\leq \rho \), and let \(\left\{ z_n \right\} \subset \C\) be its sequence of zeros ordered by increasing modulus. Then for all \(s>\rho \), \(\varepsilon>0\), there is a corresponding \(R_0\) so that, for all \(R > R_0\) and \(z \in \C\setminus \overline{D_s}\):
+{{c1::\(\begin{align*}
+        	\left| f(z) \right| \geq e^{-R ^{\rho +\varepsilon} }
+        \end{align*}\)}}
+Extra: This ensures the construction we gave in Hadamard's Theorem is valid and unique.
+Tags: analysis complex_analysis entire_meromorphic
+<!--ID: 1626995840102-->
+END
+\end{anki}
+
+
+% \printindex
+\end{document}

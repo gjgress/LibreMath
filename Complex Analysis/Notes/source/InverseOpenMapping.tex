@@ -1,0 +1,234 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 06/27/21
+
+\subsection{Inverse and Open Mapping Theorems}
+\label{sub:inverse_and_open_mapping_theorems}
+
+\begin{defn}[Analytic Isomorphism]
+	Let \(f\) be a holomorphic function on an open set \(X\subset \C\), and let \(f(X )=Y\). If \(Y\) is open and there exists a holomorphic function \(g:Y\to X\) with
+	\begin{align*}
+		f\circ g = \textrm{Id}_Y\\
+		g \circ f = \textrm{Id}_X
+	\end{align*}
+	then \(f\) and \(g\) are \textbf{analytic isomorphisms}.\\
+
+	If instead there is a point \(z_0 \in X\) such that \(f\) is an analytic isomorphism for some open neighborhood \(U_{z_0}\subset X\), then we say \(f\) is a \textbf{local analytic isomorphism} or \textbf{locally invertible} at \(z_0\).
+\end{defn}
+Note that the word "inverse" here always refers to the composition inverse. When the multiplicative and composition inverse differ, if we wish to refer to the multiplicative inverse, we will explicitly say "multiplicative inverse".
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: Let \(f\) be a holomorphic function on an open set \(X\subset \C\), and let \(f(X )=Y\). If \(Y\) is {{c1::open}} and there exists a {{c1::holomorphic function \(g:Y\to X\)}} with
+{{c1::\(\begin{align*}
+        	f\circ g = \textrm{Id}_Y\\
+        	g \circ f = \textrm{Id}_X
+        \end{align*}\)}} 
+	then \(f\) and \(g\) are **analytic isomorphisms**.
+
+	If instead there is a point \(z_0 \in X\) such that {{c2::\(f\) is an analytic isomorphism for some open neighborhood \(U_{z_0}\subset X\)}}, then we say \(f\) is a **local analytic isomorphism** or **locally invertible** at \(z_0\).
+Extra: The inverse function \(g\) of an analytic isomorphism is unique.
+Tags: analysis complex_analysis complex_analyticity defn
+<!--ID: 1624940600638-->
+END
+\end{anki}
+
+
+\begin{prop}
+	The inverse function \(g\) of an analytic isomorphism is unique.
+\end{prop}
+
+\begin{thm}[Complex Inverse Function Theorem]
+	Let \(f\) be a holomorphic function on an open set \(\Omega \subset \C\). Suppose that  \(f'(z_0)\neq 0\) for some \(z_0 \in \Omega \). Then \(f\) is a local analytic isomorphism at \(z_0\).
+\end{thm}
+
+This can be proven via formal power series. In fact, this can also be proven the standard route fron real analysis. If one assumes the real analysis version of the theorem, then this can be proven by simply decomposing \(f = u + iv\), in which case it applies to \(u,v\).\\
+
+% Proof via VI Theorem 1.7 in Lang?
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Complex Inverse Function Theorem**
+Let \(f\) be a holomorphic function on an open set \(\Omega \subset \C\). Suppose that  {{c1::\(f'(z_0)\neq 0\)}} for some \(z_0 \in \Omega \). Then {{c1::\(f\) is a local analytic isomorphism at \(z_0\)}}.
+Extra: This can be proven via formal power series. In fact, this can also be proven the standard route fron real analysis. If one assumes the real analysis version of the theorem, then this can be proven by simply decomposing \(f = u + iv\), in which case it applies to \(u,v\).
+Tags: analysis complex_analysis complex_analyticity
+<!--ID: 1624940600654-->
+END
+\end{anki}
+
+Recall from topology that \(f\) is an \textbf{open mapping} if for every open subset \(U\subset X\), \(f(U)\) is open.
+
+\begin{thm}[Open Mapping Theorem]
+	Let \(f\) be holomorphic on an open set \(X\subset C\). If for every \(z_0 \in X\), \(f\) is non-constant on every neighborhood \(U_{z_0}\subset X\), then \(f\) is an open mapping.
+\end{thm}
+\begin{proof}
+	
+\end{proof}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Open Mapping Theorem**
+Let \(f\) be holomorphic on an open set \(X\subset C\). If for every \(z_0 \in X\), \(f\) is {{c1::non-constant on every neighborhood \(U_{z_0}\subset X\)}}, then {{c1::\(f\) is an open mapping}}.
+Extra: Recall from topology that \(f\) is an **open mapping** if for every open subset \(U\subset X\), \(f(U)\) is open.
+Tags: analysis complex_analysis complex_analyticity
+<!--ID: 1624940600665-->
+END
+\end{anki}
+
+
+\begin{thm}[Change of Coordinates]
+	Let \(f\) be holomorphic at a point \(z_0\), with \(f(z_0)\neq 0\). Then there exists a local analytic isomorphism \(\varphi \) at 0 such that
+	\begin{align*}
+		f(z) = f(z_0) + (\varphi (z-z_0))^{m}
+	\end{align*}
+	where \(m\) is the smallest value (greater than \(0\)) for which \(f^{(m)}(z_0)\neq 0\).
+\end{thm}
+
+This theorem allows us to view functions holomorphic at a point \(z_0\) equivalently with functions holomorphic at \(0\). We can always find some \(\varphi \) that will "shift" our function so it is holomorphic at \(0\).
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(f\) be holomorphic at a point \(z_0\), with \(f(z_0)\neq 0\). Then there exists a {{c1::local analytic isomorphism}} \(\varphi \) at 0 such that
+{{c1::\(\begin{align*}
+         	f(z) = f(z_0) + (\varphi (z-z_0))^{m}
+         \end{align*}\)}}
+where \(m\) is the smallest value (greater than \(0\)) for which {{c1::\(f^{(m)}(z_0)\neq 0\)}}.
+Extra: This theorem allows us to view functions holomorphic at a point \(z_0\) equivalently with functions holomorphic at \(0\). We can always find some \(\varphi \) that will "shift" our function so it is holomorphic at \(0\).
+Tags: analysis complex_analysis complex_analyticity
+<!--ID: 1624940600673-->
+END
+\end{anki}
+
+
+\begin{thm}[The Natural Holomorphic Isomorphism]
+	Let \(f\) be holomorphic on an open set \(\Omega \subset \C\). If \(f\) is injective, then
+	\begin{align*}
+		f:\Omega \to f(\Omega )
+	\end{align*}
+	is a holomorphic isomorphism, and hence \(f'(z)\neq 0\) for all \(z \in \Omega \).
+\end{thm}
+The first part of the theorem should not be surprising to the reader. The injectivity of \(f\) gives us the non-degeneracy of the derivative-- in particular, \(f'(z)\) cannot be constant, and hence the complex inverse function theorem tells us its inverse is holomorphic at \(f(z_0)\), giving the second statement.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(f\) be holomorphic on an open set \(\Omega \subset \C\). If \(f\) is injective, then
+\(\begin{align*}
+  	f:\Omega \to f(\Omega )
+  \end{align*}\)
+is a {{c1::holomorphic isomorphism}}, and hence {{c1::\(f'(z)\neq 0\)}} for all \(z \in \Omega \).
+Extra: The first part of the theorem should not be surprising to the reader. The injectivity of \(f\) gives us the non-degeneracy of the derivative-- in particular, \(f'(z)\) cannot be constant, and hence the complex inverse function theorem tells us its inverse is holomorphic at \(f(z_0)\), giving the second statement.
+Tags: analysis complex_analysis complex_analyticity
+<!--ID: 1624940600682-->
+END
+\end{anki}
+
+
+\subsection{Local Maximum Modulus Principle}
+\label{sub:local_maximum_modulus_principle}
+
+\begin{defn}[Locally Constant]
+	A function \(f\) is \textbf{locally constant} at a point \(z_0\) if there exists an open neighborhood \(U_{z_0}\) such that \(f\) is constant on \(U_{z_0}\).
+\end{defn}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: A function \(f\) is **locally constant** at a point \(z_0\) if there exists {{c1::an open neighborhood \(U_{z_0}\)}} such that {{c1::\(f\) is constant on \(U_{z_0}\)}}.
+Tags: analysis complex_analysis complex_analyticity defn
+<!--ID: 1624940600690-->
+END
+\end{anki}
+
+
+\begin{thm}[Local Maximum Modulus Principle]
+	Let \(f\) be holomorphic on an open set \(\Omega \). Suppose that \(z_0 \in \Omega \) is a maximum for \(\left| f \right| \). Then \(f\) is locally constant at \(z_0\).
+\end{thm}
+
+\begin{proof}
+	Assume for the sake of contradiction that there does not exist an open neighborhood \(U_{z_0}\) for which \(f(z)=f(z_0)\) for \(z \in U_{z_0}\). By the open mapping theorem, \(f\) is an open mapping on \(U_{z_0}\), and hence the image \(f(U_{z_0})\) contains a disc \(D_{f(z_0)}(s)\subset f(U_{z_0})\). But then there must exist an element \(z_1 \in U_{z_0}\) for which
+	 \begin{align*}
+		 \left| f(z_1) \right| \geq \left| f(z_0) \right| 
+	\end{align*}
+	and hence \(z_0\) cannot be a maximum for \(\left| f \right| \), yielding a contradiction.
+\end{proof}
+
+\begin{cor}[Global Maximum Modulus Principle]
+Let \(f\) be a holomorphic function on an open connected set \(\Omega \). If \(z_0\in \Omega \) is a maximum for \(\left| f \right| \) for all \(z \in \Omega \), then \(f\) is constant on \(\Omega \).
+\end{cor}
+In other words, a non-trivial holomorphic function on an open connected set must attain its maximum on the boundary. In fact, if \(\overline{\Omega }\) is closed and bounded, then this maximum always exists.
+
+\begin{anki}
+% Up to 4 premises
+% Up to 4 equivalences
+START
+Theorem
+Name: Local Maximum Modulus Principle
+Premise 1: \(f\) holomorphic on \(\Omega \) open
+Premise 2: \(z_0 \in \Omega \) is maximum for \(\left| f \right| \)
+Consequence 1: \(f\) is locally constant at \(z_0\)
+Tags: analysis complex_analysis complex_analyticity
+<!--ID: 1624940600699-->
+END
+\end{anki}
+
+\begin{anki}
+% Up to 4 premises
+% Up to 4 equivalences
+START
+Theorem
+Name: Global Maximum Modulus Principle
+Premise 1: \(f\) holomorphic on \(\Omega \) open and connected
+Premise 2: \(z_0 \in \Omega \) is maximum for \(\left| f \right| \)
+Consequence 1: \(f\) is constant on \(\Omega \)
+Tags: analysis complex_analysis complex_analyticity
+<!--ID: 1624941073717-->
+END
+\end{anki}
+
+
+\begin{cor}
+	Let \(f\) be holomorphic on an open set \(\Omega \), and suppose that \(z_0 \in \Omega \) is a maximum for \(\textrm{Re}f\), that is,
+	\begin{align*}
+		\textrm{Re}f(z_0) \geq \textrm{Re}f(z)
+	\end{align*}
+	for all \(z \in \Omega \). Then \(f\) is locally constant at \(z_0\).
+\end{cor}
+
+This gives us a lot of powerful applications.
+\begin{thm}
+	Let
+	\begin{align*}
+		f(z) = \sum_{n=0}^{k} a_nz^{n} 
+	\end{align*}
+	be a non-constant complex polynomial with \(a_k\neq 0\). Then there exists \(z_0 \in \C\) so that \(f(z_0) = 0\).
+\end{thm}
+
+We will prove this later via power series.
+
+% \printindex
+\end{document}

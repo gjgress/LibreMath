@@ -1,0 +1,182 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 07/04/21
+
+\subsection{Applications of Cauchy's Integral Formulas}
+\label{sub:applications_of_cauchy_s_integral_formulas}
+
+\begin{defn}[Entire]
+	A complex function \(f\) is \textbf{entire} if it is holomorphic on \(\C\).
+\end{defn}
+
+\begin{cor}[Liouville's Theorem]
+	If \(f\) is entire and bounded, then \(f\) is constant.
+\end{cor}
+\begin{proof}
+	
+\end{proof}
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: **Liouville's Theorem**
+{{c1::If \(f\) is entire and bounded, then \(f\) is constant.}} 
+Extra: Recall that an entire function is a function that is holomorphic on \(\C\).
+
+We can use Liouville's theorem to prove the fundamental theorem of algebra.
+Tags: analysis complex_analysis complex_analyticity
+<!--ID: 1625527512323-->
+END
+\end{anki}
+
+
+We can use Liouville's theorem to prove the fundamental theorem of algebra.
+
+\begin{cor}
+	Every non-constant polynomial \(p \in \C[x]\) has a root in \(\C\).
+\end{cor}
+\begin{proof}
+	
+\end{proof}
+
+\begin{cor}
+	Every polynomial \(p \in \C[x]\) of degree \(n\geq 1\) has exactly \(n\) roots in \(\C\). If \(\left\{ w_i \right\}_{i=1}^{n}\) are the roots of \(p\) so that \(p(w_i) = 0\), then it holds that
+	\begin{align*}
+		p(z) = a_n \prod_{i=1}^{n} (z-w_i).
+	\end{align*}
+\end{cor}
+This follows by factoring \(p\) by the first root and then reapplying the fundamental theorem of algebra to the remaining polynomial.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Fundamental Theorem of Algebra**
+{{c1::Every non-constant polynomial \(p \in \C[x]\) has a root in \(\C\).}} 
+
+Every polynomial \(p \in \C[x]\) of degree \(n\geq 1\) has {{c1::exactly \(n\)}}  roots in \(\C\). If \(\left\{ w_i \right\}_{i=1}^{n}\) are the roots of \(p\) so that \(p(w_i) = 0\), then it holds that
+ {{c1::\(\begin{align*}
+         	p(z) = a_n \prod_{i=1}^{n} (z-w_i).
+         \end{align*}\)}}
+Extra: The second part follows by factoring \(p\) by the first root and then reapplying the fundamental theorem of algebra to the remaining polynomial.
+Tags: analysis complex_analysis complex_analyticity
+<!--ID: 1625527512341-->
+END
+\end{anki}
+
+
+\begin{cor}[Morera's Theorem]
+	If \(f\) is continuous in an open bounded set \(\Omega \subset \C\), and if \(\int_\gamma f \,d t = 0\) for all closed curves \(\gamma \) in \(\Omega \), then \(f\) is holomorphic.
+\end{cor}
+\begin{proof}
+	
+\end{proof}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Morera's Theorem**
+If \(f\) is {{c1::continuous}} in an open bounded set \(\Omega \subset \C\), and if {{c1::\(\int_\gamma f \,d t = 0\)}} for all closed curves \(\gamma \) in \(\Omega \), then \(f\) is holomorphic.
+Tags: analysis complex_analysis complex_integration
+<!--ID: 1625527512362-->
+END
+\end{anki}
+
+
+\begin{thm}[Weierstrass' Theorem]
+	Let \(\left\{ f_n \right\}_{n=1}^{\infty}\) be a sequence of holomorphic functions on \(\Omega \subset \C\) that converges uniformly to a function \(f\) in every compact subset \(\overline{U}\subset \Omega \):
+	\begin{align*}
+		\lim_{n \to \infty} \left\{ f_n \right\}_{n=1}^{\infty} = f \text{ uniformly}.
+	\end{align*}
+	Then \(f\) is holomorphic on \(\Omega \). Furthermore, the sequence \(\left\{ f^{(k)}_n \right\}_{n=1}^{\infty}\) satisfies
+	\begin{align*}
+		\lim_{n \to \infty} \left\{ f^{(k)}_n\right\}_{n=1}^{\infty} = f^{(n)} \text{ uniformly} 
+	\end{align*}
+	on every compact subset of \(\Omega \).
+\end{thm}
+
+Obviously this theorem does not apply in the real case-- a sequence of continuously differentiable functions may not be differentiable.\\
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Weierstrass' Theorem**
+Let \(\left\{ f_n \right\}_{n=1}^{\infty}\) be a sequence of holomorphic functions on \(\Omega \subset \C\) that converges uniformly to a function \(f\) in every compact subset \(\overline{U}\subset \Omega \):
+\(\begin{align*}
+  	\lim_{n \to \infty} \left\{ f_n \right\}_{n=1}^{\infty} = f \text{ uniformly}.
+  \end{align*}\)
+Then \(f\) is {{c1::holomorphic on \(\Omega \)}}. Furthermore, the sequence \(\left\{ f^{(k)}_n \right\}_{n=1}^{\infty}\) satisfies
+ {{c1::\(\begin{align*}
+        	\lim_{n \to \infty} \left\{ f^{(k)}_n\right\}_{n=1}^{\infty} = f^{(n)} \text{ uniformly} 
+        \end{align*}\)}}
+on every compact subset of \(\Omega \).
+Extra: Obviously this theorem does not apply in the real case-- a sequence of continuously differentiable functions may not be differentiable.
+Tags: analysis complex_analysis complex_analyticity
+<!--ID: 1625527512378-->
+END
+\end{anki}
+
+\begin{cor}
+	Let \(\left\{ f_n \right\}_{n=1}^{\infty}\) be a sequence of non-vanishing holomorphic functions on \(\Omega \subset \C\) that converges uniformly to a holomorphic function \(f\) in every compact subset \(\overline{U}\subset \Omega \):
+	\begin{align*}
+		\lim_{n \to \infty} \left\{ f_n \right\}_{n=1}^{\infty} = f \text{ uniformly}.
+	\end{align*}
+	Then \(f(z)(\) is either identically zero or non-vanishing.
+\end{cor}
+
+\begin{thm}[Integration of Holomorphic Functions]
+	Let \(F(z,t)\) be defined for \((z,t) \in \Omega  \times [0,1]\), where \(\Omega \subset \C\) is an open set. Suppose \(F\) satisfies the following properties:
+	\begin{itemize}
+		\item \(F(z,t)\) is holomorphic in \(z\) for each \(t\), and
+		\item \(F\) is continuous on \(\Omega  \times [0,1]\)
+	\end{itemize}
+	Then \(f\) defined on \(\Omega \) by
+	\begin{align*}
+		f(z) = \int_{0}^{1} F(z,t)\,d t 
+	\end{align*}
+	is holomorphic.
+\end{thm}
+Some functions can only be defined by this form of integral, hence the theorem's usefulness.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(F(z,t)\) be defined for \((z,t) \in \Omega  \times [0,1]\), where \(\Omega \subset \C\) is an open set. Suppose \(F\) satisfies the following properties:
+
+* \(F(z,t)\) is holomorphic in \(z\) for each \(t\), and
+* \(F\) is continuous on \(\Omega  \times [0,1]\)
+
+Then \(f\) defined on \(\Omega \) by
+ {{c1::\(\begin{align*}
+         	f(z) = \int_{0}^{1} F(z,t)\,d t 
+         \end{align*}\)}} 
+is holomorphic.
+Extra: Some functions can only be defined by this form of integral, hence the theorem's usefulness.
+Tags: analysis complex_analysis complex_integration
+<!--ID: 1625527512394-->
+END
+\end{anki}
+
+Cauchy's theorem has far more applications, but we will have to develop other tools first before we can explore this further. Nevertheless, the tools above give the reader more than enough to approach the integration of many complex functions, and so we end this section with a few problems that illustrate the power of these tools.
+
+% \printindex
+\end{document}

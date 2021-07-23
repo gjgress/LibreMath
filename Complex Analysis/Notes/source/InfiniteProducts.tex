@@ -1,0 +1,427 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+\begin{defn}[Convergence of Infinite Products]
+	Let \(\left\{ a_n \right\}_{n=1}^{\infty}\) be a sequence of non-zero complex numbers. We say that the **infinite produc**t
+	\begin{align*}
+		\prod_{n=1}^{\infty} a_n 
+	\end{align*}
+	\textbf{converges absolutely} if
+	 \begin{align*}
+		\lim_{n \to \infty} a_n = 1
+	\end{align*}
+	and if the corresponding series
+	\begin{align*}
+		\sum_{n=1}^{\infty} \ln(a_n)
+	\end{align*}
+	converges absolutely.
+\end{defn}
+The transformation between the products of \(a_n\) and the sum of \(\ln(a_n)\) is natural, as exponentiation gives equality for partial sums/products.
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: Let \(\left\{ a_n \right\}_{n=1}^{\infty}\) be a sequence of non-zero complex numbers. We say that the **infinite product**
+\(\begin{align*}
+  	\prod_{n=1}^{\infty} a_n 
+  \end{align*}\)
+**converges absolutely** if
+{{c1::\( \begin{align*}
+      	\lim_{n \to \infty} a_n = 1
+        \end{align*}\)::coefficients}}
+and if the corresponding power series
+{{c1::\(\begin{align*}
+        	\sum_{n=1}^{\infty} \ln(a_n)
+        \end{align*}\)}} 
+converges absolutely.
+Extra: The transformation between the products of \(a_n\) and the sum of \(\ln(a_n)\) is natural, as exponentiation gives equality for partial sums/products.
+Tags: analysis complex_analysis entire_meromorphic
+<!--ID: 1626995479520-->
+END
+\end{anki}
+An astute reader will notice that we need to be careful about our determination of \(\ln(a_n)\).
+For finitely many \(\ln(a_n)\), we can take any determination without concern-- but as \(a_n\) approaches 1, we will face some issues.
+Fortunately, there exists an \(N\) so that for all \(n\geq N\), we can express \(a_n = 1-\alpha_n\) for some \(\left| \alpha_n \right| <1\), for which the logarithm will remain well-defined for the rest of the sequence.
+Of course, we ought to verify this transformation won't affect convergence.
+
+\begin{lemma}
+	Let \(\left\{ a_n \right\}_{n=1}^{\infty}\) be a sequence of complex numbers with \(a_n\neq 1\) for all \(n\). Suppose that \(\left\{ a_n \right\} \) is absolutely convergent:
+	\begin{align*}
+		\sum_{n=1}^{\infty} \left| a_n \right| 
+	\end{align*}
+	Then
+	\begin{align*}
+		\prod_{n=1}^{\infty} (1-a_n) 
+	\end{align*}
+	converges absolutely.
+\end{lemma}
+This lemma makes our study of infinite products convenient, as it allows us to reduce infinite products to infinite sums, a case which we are already familiar with.\\
+
+If we consider infinite products of functions, we see something rather interesting.
+The lemma above already gives us conditions for uniform convergence of
+\begin{align*}
+	\prod_{n=1}^{\infty} (1-g_n(z)) .
+\end{align*}
+Furthermore, we can leverage our knowledge of the logarithmic derivative to obtain more information about uniformly convergent products of functions.
+\begin{lemma}
+	Let \(\Omega \subset \C\) be an open set and \(\left\{ f_n \right\}_{n=1}^{\infty}\) a sequence of holomorphic functions on \(\Omega \).
+	Consider the corresponding sequence \(\left\{ g_n \right\}_{n=1}^{\infty}\) determined so that \(f_n(z) = 1 + g_n(z)\), and suppose that
+	\begin{align*}
+		\sum_{n=1}^{\infty} g_n(z)
+	\end{align*}
+	converges uniformly and absolutely on \(\Omega \).
+	Let \(K\subset \Omega \) be a compact subset so that \(f_n^{-1}(0)\cap K = \emptyset\) for all \(n\).
+	Then the infinite product of \(f_n\) converges to a holomorphic function on \(\Omega \):
+	\begin{align*}
+		\prod_{n=1}^{\infty} f_n = f 
+	\end{align*}
+	and we have absolute and uniform convergence on \(K\) for the following sum:
+	\begin{align*}
+		\frac{f'}{f} = \sum_{n=1}^{\infty} \frac{f_n'}{f_n}.
+	\end{align*}
+\end{lemma}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) be an open set and \(\left\{ f_n \right\}_{n=1}^{\infty}\) a sequence of holomorphic functions on \(\Omega \).
+Consider the corresponding sequence \(\left\{ g_n \right\}_{n=1}^{\infty}\) determined so that \(f_n(z) = 1 + g_n(z)\), and suppose that
+\(\begin{align*}
+  	\sum_{n=1}^{\infty} g_n(z)
+  \end{align*}\)
+converges {{c1::uniformly and absolutely on \(\Omega \)}}.
+Let \(K\subset \Omega \) be a compact subset so that {{c1::\(f_n^{-1}(0)\cap K = \emptyset\)}} for all \(n\).
+Then the infinite product of \(f_n\) {{c1::converges to a holomorphic function}} on \(\Omega \):
+{{c1::\(\begin{align*}
+        	\prod_{n=1}^{\infty} f_n = f 
+        \end{align*}\)}}
+and we have absolute and uniform convergence on \(K\) for the following sum:
+{{c1::\(\begin{align*}
+        	\frac{f'}{f} = \sum_{n=1}^{\infty} \frac{f_n'}{f_n}.
+        \end{align*}\)::logarithmic derivative}} 
+Tags: analysis complex_analysis entire_meromorphic
+<!--ID: 1626995479539-->
+END
+\end{anki}
+
+
+\begin{hw}[Blaschke Products]
+	Let \(\left\{ a_n \right\} \subset D_1 \) be a sequence in the unit disc such that \(a_n\neq 0\) for all \(n\) and
+	\begin{align*}
+		\sum_{n=1}^{\infty} (1-\left| a_n \right| )
+	\end{align*}
+	converges.
+	Show that the \textbf{Blaschke product}
+	\begin{align*}
+		f(z) = \prod_{n=1}^{\infty} \frac{\left| a_n \right| }{a_n}\cdot \frac{a_n - z}{1 - \overline{a}_n z} 
+	\end{align*}
+	converges uniformly on \(\left| z \right| \leq r<1\) for some fixed \(r\) and defines a holomorphic function on \(D_1\) having only the zeros \(\left\{ a_n \right\} \).
+	Furthermore, show that  \(\left| f(z) \right| \leq 1\).\\
+
+	(Hint: prove that for \(0<\left| a \right| <1\) and for some fixed \(r\) and  \(\left| z \right| \leq r<1\), the inequality
+	\begin{align*}
+		\left| \frac{a + \left| a \right| z}{(1-\overline{a}z)a} \right| \leq \frac{1+r}{1-r}
+	\end{align*}
+	holds)
+\end{hw}
+One can use Blaschke products to construct some unusual functions.
+For example, if we choose \(a_n = 1-\sfrac{1}{n^2}\), then our resulting function is holomorphic on the unit disc with a zero at 1.
+Modifying this construction allows us to construct a bounded holomorphic function \(f\) on \(D_1\) for which each point of the unit circle is a singularity.
+(Note that this is a useful example that demonstrates that non-isolated singularities need not conform to our standard types of singularities-- we refer to this form of non-isolated singularity as a \textbf{natural boundary})
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\left\{ a_n \right\} \subset D_1 \) be a sequence in the unit disc such that \(a_n\neq 0\) for all \(n\) and
+\(\begin{align*}
+  	\sum_{n=1}^{\infty} (1-\left| a_n \right| )
+  \end{align*}\)
+converges.
+Then the **Blaschke product**
+\(\begin{align*}
+  	f(z) = \prod_{n=1}^{\infty} \frac{\left| a_n \right| }{a_n}\cdot \frac{a_n - z}{1 - \overline{a}_n z} 
+  \end{align*}\)
+  {{c1::converges uniformly}} on \(\left| z \right| \leq r<1\) for some fixed \(r\) and defines a {{c1::holomorphic function on \(D_1\) having only the zeros \(\left\{ a_n \right\} \)}}.
+Furthermore,  \(\left| f(z) \right| \leq 1\).
+Extra: One can use Blaschke products to construct some unusual functions. For example, if we choose \(a_n = 1-\sfrac{1}{n^2}\), then our resulting function is holomorphic on the unit disc with a zero at 1. Modifying this construction allows us to construct a bounded holomorphic function \(f\) on \(D_1\) for which each point of the unit circle is a singularity.
+Tags: analysis complex_analysis entire_meromorphic
+<!--ID: 1626995479562-->
+END
+\end{anki}
+
+\subsection{Weierstrass Products}
+\label{sub:weierstrass_products}
+
+Our goal will be to show that we can use infinite products to classify entire functions.
+We will classify a restricted class of entire functions, then utilize this to extend to the general case.
+
+\begin{thm}[Non-vanishing Entire Functions]
+	Let \(f\) be a non-vanishing entire function. Then there exists a second entire function \(g\) so that
+	\begin{align*}
+		f(z) = e^{g(z)}.
+	\end{align*}
+	Furthermore, \(g\) is unique up to an additive constant. That is, if
+	\begin{align*}
+		f(z) = \lambda e^{h(z)}
+	\end{align*}
+	for some \(\lambda \in \C\setminus\left\{ 1 \right\} \), then
+	\begin{align*}
+		h(z) = g(z) + \ln(\lambda ).
+	\end{align*}
+\end{thm}
+This follows from our logarithmic derivatives directly.
+We leave the verification as an exercise to the reader.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(f\) be a non-vanishing entire function. Then there exists a second entire function \(g\) so that
+{{c1::\(\begin{align*}
+        	f(z) = e^{g(z)}.
+        \end{align*}\)}}
+Furthermore, \(g\) is unique up to an additive constant. That is, if
+{{c1::\(\begin{align*}
+      	f(z) = \lambda e^{h(z)}
+        \end{align*}\)}}
+for some \(\lambda \in \C\setminus\left\{ 1 \right\} \) and distinct entire function \(h\), then
+{{c1::\(\begin{align*}
+      	h(z) = g(z) + \ln(\lambda ).
+        \end{align*}\)}}
+Extra: This follows from our logarithmic derivatives directly.
+Suppose \(f,g\) are two entire functions with the same zeros of equal multiplicity. Then it follows that
+\(\begin{align*}
+  	f(z) = g(z)e^{h(z)}
+  \end{align*}\)
+for some entire function \(h(z)\) (uniquely determined up to an additive constant).
+It also follows that for \(h\) entire,
+\(\begin{align*}
+  	g(z) = 0 \iff g(z)e^{h(z)} = 0
+  \end{align*}\)
+with the same multiplicities.
+Tags: analysis complex_analysis entire_meromorphic
+<!--ID: 1626995479580-->
+END
+\end{anki}
+
+Suppose \(f,g\) are two entire functions with the same zeros of equal multiplicity. Then it follows that
+\begin{align*}
+	f(z) = g(z)e^{h(z)}
+\end{align*}
+for some entire function \(h(z)\) (uniquely determined up to an additive constant).
+It also follows that for \(h\) entire,
+\begin{align*}
+	g(z) = 0 \iff g(z)e^{h(z)} = 0
+\end{align*}
+with the same multiplicities.
+Hence, we can construct a canonical entire function for a set of zeros of fixed multiplicity-- and thus all entire functions with those zeros of fixed multiplicity can be expressed in terms of the canonical form.\\
+
+We will now give the intuition for the canonical form.
+First, we should order our zeros by increasing absolute value, so that our zeros \(\left\{ z_n \right\} \) satisfy
+\begin{align*}
+	\left| z_1 \right| \leq \left| z_2 \right| \leq \ldots
+\end{align*}
+We'd like to define our function by the infinite product
+\begin{align*}
+	\prod_{n=1}^{\infty} \left( 1 - \frac{z}{z_n} \right)  
+\end{align*}
+but this product may not converge.
+To resolve this, we introduce a convergence factor which does not introduce any zeros-- an exponential.
+Our exponent in this term ought to be a polynomial whose degree is dependent on the term of the sequence (to ensure independence between terms).
+In other words, our convergence factor will be of the form
+\begin{align*}
+	e^{w_n + \frac{1}{2}w_n^2 + \ldots + \frac{1}{n-1}w_n^{n-1}}
+\end{align*}
+where \(w_n = \sfrac{z}{z_n}\). We combine the convergence term with our original terms and write
+\begin{align*}
+	E_n(w) = (1-w) e^{w_n + \frac{1}{2}w_n^2 + \ldots + \frac{1}{n-1}w_n^{n-1}}.
+\end{align*}
+The polynomial in the exponent is chosen because
+\begin{align*}
+	\ln(1-z) = \sum_{n=1}^{\infty} -\frac{z^{n}}{n}
+\end{align*}
+and so
+\begin{align*}
+	\ln \left( \prod_{n=1}^{\infty} E_n\left(\sfrac{z}{z_n}\right)  \right)\\
+	= \sum_{n=1}^{\infty} \ln \left(E_n\left(\sfrac{z}{z_n}\right) \right)\\
+	= \sum_{n=1}^{\infty} \left( \frac{z}{z_n} + \ldots + \frac{1}{n-1}\frac{z}{z_{n-1}} \right) + \ln \left( 1 - \frac{z}{z_n}\right) \\
+	= \sum_{n=1}^{\infty} \sum_{k=n}^{\infty} - \frac{1}{k} \left( \frac{z}{z_n} \right)^{k} 
+\end{align*}
+Of course, this identity is desirable as we want to show our infinite product converges absolutely.\\
+
+Now we formally justify the work we've shown thus far.
+First, we verify that convergence will occur as we expect.
+
+\begin{lemma}
+	If \(\left| w \right| \leq \frac{1}{2}\) then
+	\begin{align*}
+		\frac{\left| \ln E_n(w) \right| }{\left| w \right|^{n}} \leq 2.
+	\end{align*}
+	Furthermore, let a sequence of complex numbers \(\left\{ z_n \right\} \) be given with \(\left| z_1 \right| \leq \left| z_2 \right| \leq \ldots\). There exists a corresponding increasing sequence of positive integers \(\left\{ k_n \right\} \) so that, for all positive real \(a>0\) 
+	\begin{align*}
+		\sum_{n=1}^{\infty} \left( \frac{a}{\left| z_n \right| } \right)^{k_n} 
+	\end{align*}
+	converges. In fact, for every \(a>0\) there is a corresponding integer \(N_a>0\) so that for all \(k_n \geq N_a\):
+	\begin{align*}
+		\left( \frac{a}{\left| z_n \right| } \right)^{k_n} \leq \frac{1}{2^{k_n}}.
+	\end{align*}
+\end{lemma}
+
+Now that we have introduced this sequence \(\left\{ k_n \right\} \), we can finally connect the various ideas we've constructed together into a well-defined product with the properties desired.
+
+\begin{thm}[Weierstrass Product Theorem]
+	Let \(\left\{ z_n \right\}_{n=1}^{\infty} \subset \C\setminus\left\{ 0 \right\} \) be a sequence of complex numbers in the complex plane with
+	\begin{align*}
+		\left| z_1 \right| \leq \left| z_2 \right| \leq \ldots
+	\end{align*}
+	and let \(\left\{ k_n \right\} \subset \N\) be the corresponding smallest sequence of positive integers so that for all positive real \(a>0\)
+	\begin{align*}
+		\sum_{n=1}^{\infty} \left( \frac{a}{\left| z_n \right| } \right)^{k_n} 
+	\end{align*}
+	converges. Define
+	\begin{align*}
+		P_n(z) &= \sum_{k=1}^{k_n-1} \frac{z^{k}}{k}\\
+		E_n( \sfrac{z}{z_n}) &= \left( 1- \frac{z}{z_n} \right) e^{P_n(z / z_n)} .
+	\end{align*}
+	Then
+	\begin{align*}
+		\prod_{n=1}^{\infty} E_n( \sfrac{z }{z_n})   
+	\end{align*}
+	converges uniformly and absolutely on every disc \(D_a\), and hence defines an entire function with zeros exclusively at \(\left\{ z_n \right\} \).\\
+
+	If \(\sup_{n} k_n = k< \infty\), then we take the canonical sequence to be \(k_n = \sup_{n} k_n\). In this case, we refer to \(E_n(\sfrac{z}{z_n})\) as the \textbf{elementary form} and the product
+	 \begin{align*}
+		 z^{m} \prod_{n=1}^{\infty} E_n \left( \sfrac{z}{z_n} \right)
+	\end{align*}
+	as the \textbf{Weierstrass product} and take it to be the canonical form for a set of zeros \(\left\{ z_n \right\} \subset \C\setminus\left\{ 0 \right\} \).
+\end{thm}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Weierstrass Product Theorem**
+Let \(\left\{ z_n \right\}_{n=1}^{\infty} \subset \C\setminus\left\{ 0 \right\} \) be a sequence of complex numbers in the complex plane with
+\(\begin{align*}
+  	\left| z_1 \right| \leq \left| z_2 \right| \leq \ldots
+  \end{align*}\)
+and let \(\left\{ k_n \right\} \subset \N\) be the corresponding smallest sequence of positive integers so that for all positive real \(a>0\)
+\(\begin{align*}
+  	\sum_{n=1}^{\infty} \left( \frac{a}{\left| z_n \right| } \right)^{k_n} 
+  \end{align*}\)
+converges. Define
+\(\begin{align*}
+  	P_n(z) &= \sum_{k=1}^{k_n-1} \frac{z^{k}}{k}\\
+  	E_n( \sfrac{z}{z_n}) &= \left( 1- \frac{z}{z_n} \right) e^{P_n(z / z_n)} .
+  \end{align*}\)
+Then
+ {{c1::\(\begin{align*}
+        	\prod_{n=1}^{\infty} E_n( \sfrac{z }{z_n})   
+        \end{align*}\)}} 
+converges {{c1::uniformly}} and {{c1::absolutely}} on every disc \(D_a\), and hence defines an entire function with zeros {{c1::exclusively at \(\left\{ z_n \right\} \)}}.
+
+If \(\sup_{n} k_n = k< \infty\), then we take the canonical sequence to be \(k_n = \sup_{n} k_n\). In this case, we refer to \(E_n(\sfrac{z}{z_n})\) as the **elementary form** and the product
+{{c1::\( \begin{align*}
+        	 z^{m} \prod_{n=1}^{\infty} E_n \left( \sfrac{z}{z_n} \right)
+        \end{align*}\)}}
+as the \textbf{Weierstrass product} and take it to be the canonical form for a set of zeros \(\left\{ z_n \right\} \subset \C\setminus\left\{ 0 \right\} \).
+Tags: analysis complex_analysis entire_meromorphic defn
+<!--ID: 1626995479602-->
+END
+\end{anki}
+
+
+\begin{cor}[Hadamard's Theorem]
+	Every entire function \(f\) with zeros exactly at \(\left\{ z_n \right\}_{n=1}^{\infty}\subset \C\setminus\left\{ 0 \right\}\) and possibly at zero with order \(m\) can be written uniquely in the form
+	\begin{align*}
+	  	f(z) = e^{g(z)} z^{m} \prod_{n=1}^{\infty} E_n( \sfrac{z}{z_n})
+	  \end{align*}
+	where \(g\) is a polynomial of fixed degree \(\leq \sup_{n} k_n\) uniquely determined up to an additive constant.
+\end{cor}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Hadamard's Theorem**
+Every entire function \(f\) with zeros exactly at \(\left\{ z_n \right\}_{n=1}^{\infty}\subset \C\setminus\left\{ 0 \right\}\) and possibly at zero with order \(m\) can be written uniquely in the form
+{{c1::\(\begin{align*}
+      	f(z) = e^{g(z)} z^{m} \prod_{n=1}^{\infty} E_n( \sfrac{z}{z_n})
+        \end{align*}\)}}
+where \(g\) is a polynomial of fixed degree \(\leq \sup_{n} k_n\) uniquely determined up to an additive constant.
+Tags: analysis complex_analysis entire_meromorphic
+<!--ID: 1626995479618-->
+END
+\end{anki}
+
+
+\begin{proof}[Proof of Weierstrass Product Theorem]
+	
+\end{proof}
+
+Of course, we can immediately leverage our classification of entire functions to classify meromorphic functions on \(\C\).
+
+\begin{cor}[Classification of Meromorphic Functions on \(\C\)]
+	Every function \(F\) which is meromorphic in the whole plane can be expressed uniquely by:
+	\begin{align*}
+		F(z) = f(z)\frac{g(z)}{h(z)}
+	\end{align*}
+	where \(f(z)\) is a non-vanishing entire function, \(g(z)\) is the canonical Weierstrass product corresponding to the zeros of \(F\) and \(h(z)\) is the canonical Weierstrass product corresponding to the poles of \(F\).
+\end{cor}
+We can use either this form or equivalently the form
+\begin{align*}
+	F(z) = e^{f(z)} \frac{g(z)}{h(z)}
+\end{align*}
+as our canonical choice depending on the context.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Every function \(F\) which is meromorphic in the whole plane can be expressed uniquely by:
+{{c1::\(\begin{align*}
+        	F(z) = f(z)\frac{g(z)}{h(z)}
+        \end{align*}\)}} 
+where \(f(z)\) is a non-vanishing entire function, \(g(z)\) is the canonical Weierstrass product corresponding to the {{c1::zeros of \(F\)}} and \(h(z)\) is the canonical Weierstrass product corresponding to the {{c1::poles of \(F\)}}.
+Extra: We can use either this form or equivalently the form
+\(\begin{align*}
+  	F(z) = e^{f(z)} \frac{g(z)}{h(z)}
+  \end{align*}\)
+as our canonical choice depending on the context.
+Tags: analysis complex_analysis entire_meromorphic
+<!--ID: 1626995479636-->
+END
+\end{anki}
+While this form is natural, we will explore other constructions for meromorphic functions later that will prove more fruitful.\\
+
+First, we give an example of a few Weierstrass products and investigate the structure of \(\left\{ k_n \right\} \).
+
+\begin{exmp}
+	\begin{align*}
+		\sin(\pi z) = \pi z \prod_{n=1}^{\infty} \left( 1- \frac{z^2}{n^2} \right)  .
+	\end{align*}
+	so
+	\begin{align*}
+		\frac{\pi ^2}{\sin^2(\pi z)} = \sum_{n=-\infty}^{\infty} \frac{1}{(z-n)^{2}}
+	\end{align*}
+\end{exmp}
+
+
+% \printindex
+\end{document}

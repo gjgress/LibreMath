@@ -1,0 +1,185 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+\begin{defn}[Converging to a point]
+	Let \(\left\{ z_n \right\}  \subset \C\) be a sequence of complex numbers. Let \(z \in \C\) be a complex number. We say that \((z_n)\) \textbf{converges to \(z\)} if \(\lim_{n \to \infty} \left| z_n-z \right| =0\).
+\end{defn}
+Of course this is identical to the coordinate-wise convergence in \(\R^2\). In other words, a complex sequence converges if and only if the real part converges to the real part of \(z\) and the imaginary part converges to the imaginary part of \(z\).\\
+
+Note that \(\C\) is Hausdorff and thus if a sequence converges it only converges to one point in the complex plane.
+\begin{defn}[Convergent and Cauchy Sequences]
+	Let \(\left\{ z_n \right\} \subset \C\). Then
+	\begin{itemize}
+		\item \((z_n)\) is \textbf{convergent} if it converges to some \(z \in \C\).
+		\item \((z_n)\) is a \textbf{Cauchy sequence} if for all \(\varepsilon>0, \exists n\geq N\) such that \(\left| z_n-z_m \right|\leq \varepsilon\) for all \(n,m \geq N\).
+	\end{itemize}
+\end{defn}
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: Let \(\left\{ z_n \right\} \subset \C\). Then
+
+* \((z_n)\) is **convergent** if
+{{c1::\(\begin{align*}
+        	\lim_{n \to \infty} \left| z_n - z \right| = 0
+        \end{align*}\)}} 
+for some \(z \in \C\).
+* \((z_n)\) is a **Cauchy sequence** if for all \(\varepsilon>0\) there exists \( n\geq N\) such that
+ {{c2::\(\begin{align*}
+        	\left| z_n-z_m \right|\leq \varepsilon
+        \end{align*}\)}} 
+for all \(n,m \geq N\).
+Tags: analysis complex_analysis complex_convergence
+<!--ID: 1624245565291-->
+END
+\end{anki}
+
+
+\begin{thm}[Completeness of \(\C\) ]
+	\(\C\) is complete. That is, a sequence is convergent if and only if it is Cauchy.
+\end{thm}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: \(\C\) is {{c1::complete}}. That is, a sequence is convergent if and only if {{c1::it is Cauchy}}.
+Tags: analysis complex_analysis complex_convergence
+<!--ID: 1624245565361-->
+END
+\end{anki}
+
+
+\begin{prop}
+	Let \(z_n\to z,w_n\to w\) be two convergent sequences of complex numbers. Then:
+	\begin{itemize}
+		\item \(z_n+w_n \to z+w\) 
+		\item \(z_n - w_n = z-w\)
+		\item \(z_nw_n \to zw\) 
+		\item \(\frac{z_n}{w_n} \to \frac{z}{w}\) when \(w_n\neq 0\)
+	\end{itemize}
+	In other words, \(\C\) is a topological field.
+\end{prop}
+
+\begin{prop}
+	Let \(\Omega\subset \C\). Let \(z \in \C\). Then \(z \in \overline{\Omega}\) if and only if there is a convergent sequence in \(\Omega\) that converges to \(z\).
+\end{prop}
+
+\begin{cor}
+	Let \(\Omega\subset \C\). Then \(\Omega\) is closed if and only if, for every convergent sequence in \(\Omega\), the limit also lies in \(\Omega\).
+\end{cor}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega\subset \C\). Let \(z \in \C\). Then \(z \in \overline{\Omega}\) if and only if there is {{c1::a convergent sequence in \(\Omega\) that converges to \(z\)::sequence}} .
+Extra: \(\Omega\) is closed if and only if, for every convergent sequence in \(\Omega\), the limit also lies in \(\Omega\).
+Tags: analysis complex_analysis complex_convergence
+<!--ID: 1624245565405-->
+END
+\end{anki}
+
+
+\begin{defn}[Diameter and Boundedness]
+	Let \(\Omega\subset \C\). The \textbf{diameter} of \(\Omega\) is
+	\begin{align*}
+		\sup \left\{\left| w-z \right|  \mid w,z \in \Omega \right\} .
+	\end{align*}
+	We say that \(\Omega\) is \textbf{bounded} if the diameter is finite.
+\end{defn}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega\subset \C\). The **diameter** of \(\Omega\) is
+ {{c1::\(\begin{align*}
+         	\sup \left\{\left| w-z \right|  \mid w,z \in \Omega \right\} .
+         \end{align*}\)}} 
+We say that \(\Omega\) is **bounded** if {{c1::the diameter is finite}}.
+Tags: analysis complex_analysis complex_convergence
+<!--ID: 1624245565441-->
+END
+\end{anki}
+
+\begin{thm}
+	Let \(F_1 \supset F_2 \supset F_3 \supset \ldots\) be a decreasing chain of non-empty closed subsets of \(\C\). Assume that the diameter of \(F_n\to 0\). Then \(\bigcap_{n=1}^{\infty}F_n\) is a singular set \(\left\{ z \right\} \).
+\end{thm}
+This sequence converges if even one \(F_n\) is bounded, but the convergent set may not be singular.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(F_1 \supset F_2 \supset F_3 \supset \ldots\) be a decreasing chain of non-empty closed subsets of \(\C\). Assume that the diameter of \(F_n\to 0\). Then {{c1::\(\bigcap_{n=1}^{\infty}F_n\) is a singular set \(\left\{ z \right\} \)}}.
+Extra: The diameter converges if even one \(F_n\) is bounded, but the convergent set may not be singular.
+Tags: analysis complex_analysis complex_convergence
+<!--ID: 1624245565476-->
+END
+\end{anki}
+
+\begin{defn}[Compactness]
+	A set \(\Omega\subset \C\) is \textbf{compact} if every open cover of \(\Omega\) has a finite subcover.
+\end{defn}
+
+This is inherited from the topological compactness via the basis of open discs of \(\C\).
+
+\begin{thm}
+	Let \(\Omega \subset \C\). The following are equivalent:
+	\begin{itemize}
+		\item \(\Omega\) is compact
+		\item Every sequence in \(\Omega\) has a subsequence converging to a point in \(\Omega\)
+		\item \(\Omega\) is closed and bounded
+	\end{itemize}
+\end{thm}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: 
+Let \(\Omega \subset \C\). The following are equivalent:
+* {{c1::\(\Omega\) is compact}}
+* {{c2::Every sequence in \(\Omega\) has a subsequence converging to a point in \(\Omega\)}}
+* {{c3::\(\Omega\) is closed and bounded}} 
+Tags: analysis complex_analysis complex_convergence
+<!--ID: 1624245565513-->
+END
+\end{anki}
+
+\begin{defn}[Connected Set]
+	Let \(\Omega\subset \C\) be an open set. \(\Omega\) is \textbf{connected} if there does not exist two disjoint non-empty open sets \(\Omega_1,\Omega_2\subset \C\) such that
+	\begin{align*}
+		\Omega = \Omega_1\cup \Omega_2.
+	\end{align*}
+	A connected open set in \(\C\) is often referred to as a \textbf{region}.
+\end{defn}
+
+\begin{thm}
+	Let \(K\subset G\subset \C\), where \(K\) is compact and \(G\) is open. Then there is an \(r>0\) such that, for any \(z \in K\),
+	\begin{align*}
+		D(z,r) \subset G.
+	\end{align*}
+\end{thm}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(K\subset G\subset \C\), where \(K\) is compact and \(G\) is open. Then there is an \(r>0\) such that, for any \(z \in K\),
+ {{c1::\(\begin{align*}
+        	D(z,r) \subset G.
+        \end{align*}\)}}
+Tags: analysis complex_analysis complex_topology
+<!--ID: 1624845437350-->
+END
+\end{anki}
+
+
+\end{document}

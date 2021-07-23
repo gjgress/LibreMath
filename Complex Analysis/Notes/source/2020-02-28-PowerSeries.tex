@@ -1,0 +1,630 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+
+\begin{defn}[Power Series]
+A \textbf{power series} is an infinite sum of monomials
+\begin{align*}
+	\sum_{n=0}^{\infty} a_n (z-z_0)^{n}
+\end{align*}
+where \(\left\{ a_n \right\},z_0  \in \C\) and \(z\) is a complex variable. We call \(z_0\) the \textbf{center} of the power series.
+\end{defn}
+Notice that we make no statements thus far in terms of convergence. Furthermore, one can take \(a_n = 0\) for \(n\geq N\) in order to express a finite power series.\\
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: A **power series** is an infinite sum of monomials
+{{c1::\(\begin{align*}
+        	\sum_{n=0}^{\infty} a_n (z-z_0)^{n}
+        \end{align*}\)}}
+where \(\left\{ a_n \right\},z_0  \in \C\) and \(z\) is a complex variable. We call \(z_0\) the \textbf{center} of the power series.
+Extra: One can take \(a_n = 0\) for \(n\geq N\) in order to express a finite power series.
+Tags: analysis complex_analysis power_series defn
+<!--ID: 1624504053797-->
+END
+\end{anki}
+
+
+We briefly describe a stronger form of convergence before looking closer at the convergence of power series:
+\begin{defn}[Uniform Convergence]
+	Let \(\left\{ f_n \right\} \) be a sequence of complex-valued functions on a set \(\Omega\subset \C\). The sequence \(\left\{ f_n \right\} \) is \textbf{uniformly convergent} on \(E\) with
+	\begin{align*}
+		\lim_{n \to \infty} f_n = f
+	\end{align*}
+	if for every \(\varepsilon>0\), there exists an \(N \in \N\) such that, for all \(n\geq N\) and \(z \in \Omega\)
+	\begin{align*}
+		\left| f_n(z) - f(z) \right| \leq \varepsilon.
+	\end{align*}
+\end{defn}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\left\{ f_n \right\} \) be a sequence of complex-valued functions on a set \(\Omega\subset \C\). The sequence \(\left\{ f_n \right\} \) is **uniformly convergent** on \(E\) with
+\(\begin{align*}
+  	\lim_{n \to \infty} f_n = f
+  \end{align*}\)
+	if {{c1::for every \(\varepsilon>0\)}}, {{c1::there exists an \(N \in \N\)}} such that, {{c1::for all \(n\geq N\)}} and {{c1::\(z \in \Omega\)}}:
+	{{c1::\(\begin{align*}
+	        	\left| f_n(z) - f(z) \right| \leq \varepsilon.
+	        \end{align*}\)}} 
+Tags: analysis complex_analysis defn complex_convergence
+<!--ID: 1624504053886-->
+END
+\end{anki}
+
+Of course, there are less strong and more general notions of convergence:
+
+\begin{defn}[Absolute Convergence]
+	A sequence of complex numbers \(\left\{ z_n \right\}\subset \C \) \textbf{absolutely converges} if
+	\begin{align*}
+	\sum_{n=0}^{\infty} \left| z_n \right| 
+	\end{align*}
+	converges.
+\end{defn}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: A sequence of complex numbers \(\left\{ z_n \right\} \subset \C \) **absolutely converges** if
+ {{c1::\(\begin{align*}
+        \sum_{n=0}^{\infty} \left| z_n \right| 
+        \end{align*}\)}} 
+	converges.
+Extra: A power series is absolutely convergent at a point \(z_1\) if the power series evaluated at \(z_1\) is absolutely convergent.
+Tags: 
+<!--ID: 1624504053923-->
+END
+\end{anki}
+
+We urge the reader to be cautious. The sum above is not a power series, and so it does not make semantic sense for a power series to absolutely converge. However, if we fix \(z = z_1\), then we can ask if the power series (absolutely) converges for \(z = z_1\).\\
+
+\begin{prop}
+	Absolute convergence implies convergence.
+\end{prop}
+
+Observe that if \(z = z_1\) is fixed and the power series is absolutely convergent for that \(z\):
+\begin{align*}
+	\sum_{n=0}^{\infty} \left| a_n (z-z_0)^{n} \right| 
+\end{align*}
+then
+\begin{align*}
+	\sum_{n=0}^{\infty} \left| a_n (z-z_0)^{n} \right| = \sum_{n=0}^{\infty} \left| a_n \right| \left| z-z_0 \right|^{n}.
+\end{align*}
+We will use this form when discussing the absolute convergence of a power series at a point. One can verify that the first sum converges if and only if the second sum converges.
+
+\begin{prop}
+	Given a power series
+	\begin{align*}
+	\sum_{n=0}^{\infty} a_n (z-z_0)^{n},
+	\end{align*}
+	assume it converges absolutely for some \(z=z_1\). Then the power series converges for all \(z\) such that \(\left| z-z_0 \right| \leq \left| z_1-z_0 \right| \).
+\end{prop}
+This is a slight simplification. Absolute convergence is uniform in every closed subdisc-- that is, every compact subset within the disc is absolutely convergent. In other words, if a power series absolutely converges for \(z = z_1\), it convergences absolutely and locally uniformly within the disc determined by \(z_1-z_0 \).
+
+\begin{thm}
+	Given a power series \(\sum_{n=0}^{\infty} a_n (z-z_0)^{n}\) there exists \(0\leq R\leq \infty\) such that:
+	\begin{itemize}
+		\item If \(\left| z-z_0 \right| <R\) the series converges absolutely
+		\item If \(\left| z -z_0\right| >R\) the series diverges
+	\end{itemize}
+	Using the convention that \(\frac{1}{0}= \infty\) and \(\frac{1}{\infty}=0\), then \(R\) is given by Hadamard's formula:
+	\begin{align*}
+		\frac{1}{R}= \limsup \left| a_n \right|^{1 / n} .
+	\end{align*}
+	The number \(R\) is called the \textbf{radius of convergence} of the power series, and the region \(\left| z-z_0 \right| <R\) is the \textbf{disc of convergence}.
+\end{thm}
+
+Notice that the theorem above makes no statement as to convergence on the boundary. On the boundary, it is unclear whether we have convergence or divergence.
+
+\begin{proof}
+	
+\end{proof}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Given a power series \(\sum_{n=0}^{\infty} a_n (z-z_0)^{n}\) there exists \(0\leq R\leq \infty\) such that:
+
+* {{c1::If \(\left| z-z_0 \right| <R\) the series converges absolutely}}
+* {{c1::If \(\left| z -z_0\right| >R\) the series diverges}}
+
+Using the convention that \(\frac{1}{0}= \infty\) and \(\frac{1}{\infty}=0\), then \(R\) is given by Hadamard's formula:
+ {{c2::\(\begin{align*}
+        	\frac{1}{R}= \limsup \left| a_n \right|^{1 / n} .
+        \end{align*}\)}} 
+	The number \(R\) is called the \textbf{radius of convergence} of the power series, and the region {{c1::\(\left| z-z_0 \right| <R\)}}  is the \textbf{disc of convergence}.
+Tags: analysis complex_analysis power_series defn
+<!--ID: 1624504053960-->
+END
+\end{anki}
+
+
+\begin{exmp}[Trigonometric Functions]
+	Consider the power series given by
+	\begin{align*}
+		e^{z} &:= \sum_{n=0}^{\infty} \frac{1}{n!}z^{n}\\
+		\cos (z) &:= \sum_{n=0}^{\infty} a_n z^{n}\\
+		\sin (z) &:= \sum_{n=0}^{\infty} b_n z^{n}
+	\end{align*}
+	where
+	\begin{align*}
+		a_n &= \begin{cases}
+			\frac{(-1)^{n}}{(2n)!} & n \equiv 0 \pmod{2} \\
+			0 & n \equiv 1 \pmod{2}
+		\end{cases}\\
+		b_n &= \begin{cases}
+			0 & n \equiv 0 \pmod{2}\\
+			\frac{(-1)^{n}}{(2n+1)!} & n \equiv 1 \pmod{2}
+		\end{cases}.
+	\end{align*}
+	These power series are absolutely convergent in the whole complex plane. One can check that they agree with the usual exponential, cosine, and sine function of the real plane when \(z\) is real. Within the context of complex analysis, we instead choose to define the functions by the above series.
+\end{exmp}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Consider the power series given by
+	\begin{align*}
+		e^{z} &:= {{c1::\sum_{n=0}^{\infty} \frac{1}{n!}z^{n}}} \\
+		\cos (z) &:= \sum_{n=0}^{\infty} a_n z^{n}\\
+		\sin (z) &:= \sum_{n=0}^{\infty} b_n z^{n}
+	\end{align*}
+	where
+	\begin{align*}
+		a_n &= {{c2::\begin{cases}
+			\frac{(-1)^{n}}{(2n)!} & n \equiv 0 \pmod{2} \\
+			0 & n \equiv 1 \pmod{2}
+		\end{cases} }} \\
+		b_n &= {{c3::\begin{cases}
+			0 & n \equiv 0 \pmod{2}\\
+			\frac{(-1)^{n}}{(2n+1)!} & n \equiv 1 \pmod{2}
+		\end{cases} }} .
+	\end{align*}
+Extra: These power series are absolutely convergent in the whole complex plane. One can check that they agree with the usual exponential, cosine, and sine function of the real plane when \(z\) is real. Within the context of complex analysis, we instead choose to define the functions by the above series.
+Tags: analysis complex_analysis power_series
+<!--ID: 1624504053995-->
+END
+\end{anki}
+
+\begin{hw}
+	Show that \(e^{z}, \cos(z), \sin(z)\) converge for all \(z \in \C\). Then show that
+	\begin{align*}
+		\cos(z) = \frac{1}{2}\left( e^{iz} + e^{-iz} \right) \\
+		\sin(z) = \frac{1}{2i} \left( e^{iz} - e^{-iz} \right) .
+	\end{align*}
+	We call the above formulas the \textbf{Euler formulas} for the cosine and sine functions.
+\end{hw}
+
+\begin{hw}
+	Show that \(e^{z}\) is the only solution to
+	\begin{align*}
+		f'(z) = f(z)
+	\end{align*}
+	with \(f(0) = 1\). Use this formulation of \(e^{z}\) to show that
+	\begin{align*}
+		e^{a+b} = e^{a}e^{b}
+	\end{align*}
+	Many references choose to define \(e^{z}\) as the unique solution to the differential equation above. Proving this bridges the gap between the two definitions, and now either formulation can be used interchangably.
+\end{hw}
+
+\begin{prop}
+	\begin{align*}
+		e^{2 \pi i} = 1.
+	\end{align*}
+\end{prop}
+\begin{proof}
+	Observe that
+	\begin{align*}
+		e^{z} = (\cos(z),\sin(z))
+	\end{align*}
+	and hence
+	\begin{align*}
+		e^{2\pi i} = \left( \cos(2\pi i), \sin(2\pi i) \right) = \left( 1,0 \right) = 1.
+	\end{align*}
+\end{proof}
+
+\begin{exmp}[Logarithm]
+We define the \textbf{logarithm} to be the inverse function of the exponential:
+\begin{align*}
+	\log: \C\setminus\left\{ 0 \right\} \to \C
+	\log(e^{z}) := z
+\end{align*}
+Hence by definition, the domain of \(\log\) is the range of \(e^{z}\), that is, \(\C\setminus \left\{ 0 \right\} \).\\
+
+First, notice that the logarithm is not injective. To see this, write \(z = (x,y)\) and notice that
+\begin{align*}
+	e^{z} = e^{(x,y)} = e^{(x,0)}e^{(0,y)} = e^{(x,0)}e^{(0,2\pi k+ y}
+\end{align*}
+for \(k \in \Z\). Hence the real part is unique, but the imaginary part is only unique up to multiples of \(2\pi \). We refer to the real part of the logarithm as the \textbf{real logarithm}, and note that it is given by
+\begin{align*}
+	\log(e^{(x,0)}) = \left| z \right| .
+\end{align*}
+The imaginary part is referred to as the \textbf{argument of \(z\)} and is given by
+\begin{align*}
+	\log(e^{(0,y)}) = \sfrac{z}{\left| z \right| }.
+\end{align*}
+When taking the argument of a complex number, we first must choose a \textbf{branch}-- an interval of length \(2\pi \) in which the argument is to lie. If unstated, then we implicitly are choosing the canonical branch \(0\leq \textrm{arg}(z)<2\pi \).\\
+
+Geometrically, we can view the argument of \(z\) as the angle. Hence, for all \(z \in \C\setminus\left\{ 0 \right\} \), we have
+\begin{align*}
+	\log(z) = (\log\left| z \right|, \textrm{arg}(z)).
+\end{align*}
+Let the canonical branch be chosen. This function is not holomorphic on \(\C\setminus \left\{ 0 \right\}\), but is holomorphic on \(\C\setminus \left\{ z\in \R \mid z \leq 0 \right\} \). This is because there is a discontinuity on the negative real line.
+\end{exmp}
+
+\begin{thm}
+	The power series \(f(z) = \sum_{n=0}^{\infty} a_n (z-z_0)^n\) is a holomorphic function in its disc of convergence. The derivative of \(f\) is also a power series obtained by differentiating term by term the series for \(f\), that is,
+	\begin{align*}
+		f'(z) = \sum_{n=0}^{\infty} na_n(z-z_0)^{n-1}
+	\end{align*}
+	Moreover, \(f'\) has the same radius of convergence as \(f\).
+\end{thm}
+\begin{proof}
+	
+\end{proof}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: The power series \(f(z) = \sum_{n=0}^{\infty} a_n (z-z_0)^n\) is a {{c1::holomorphic function}} in its disc of convergence. The derivative of \(f\) is also a {{c1::power series}} obtained by {{c1::differentiating term by term the series for \(f\)}}, that is,
+ {{c1::\(\begin{align*}
+        	f'(z) = \sum_{n=0}^{\infty} na_n(z-z_0)^{n-1}
+        \end{align*}\)}} 
+	Moreover, \(f'\) has the {{c1::same radius of convergence}} as \(f\).
+Extra: A power series is infinitely complex differentiable in its disc of convergence, and the higher derivatives are also power series obtained by termwise differentiation.
+Tags: analysis complex_analysis power_series complex_analyticity
+<!--ID: 1624504054031-->
+END
+\end{anki}
+
+
+\begin{cor}
+	A power series is infinitely complex differentiable in its disc of convergence, and the higher derivatives are also power series obtained by termwise differentiation.
+\end{cor}
+This is an incredibly powerful statement. Compare this to real analysis-- in real analysis, we cannot infer a function has higher derivatives from the existence of a first derivative. The strength of this tool is that now if we want to show a complex equation is holomorphic in a region, we simply show that it is equal to a power series within the region, then show the region is within the power series' region of convergence. Now we formalize this idea:
+
+\begin{defn}[Analytic]
+	A function \(f\) defined on an open set is said to be \textbf{analytic} at a point \(z_0\) if there exists a power series centered at \(z_0\) with positive radius of convergence such that
+	\begin{align*}
+		f(z) = \sum_{n=0}^{\infty} a_n(z-z_0)^{n}
+	\end{align*}
+	for all \(z\) in a neighborhood of \(z_0\).\\
+
+	If \(f\) has a power series expansion at every point in the open set, it is \textbf{analytic} on the open set.
+\end{defn}
+It follows immediately that an analytic function on \(\Omega \) is holomorphic on \(\Omega \). We will later show the converse.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: A function \(f\) defined on an open set is said to be **analytic** at a point \(z_0\) if {{c1::there exists a power series centered at \(z_0\)}} with {{c1::positive radius of convergence}} such that
+{{c1::\(\begin{align*}
+        	f(z) = \sum_{n=0}^{\infty} a_n(z-z_0)^{n} 
+        \end{align*}\)}}
+for all \(z\) in a neighborhood of \(z_0\).
+
+If \(f\) has {{c1::a power series expansion}} at every point in the open set, it is **analytic** on the open set.
+Extra: An analytic function on \(\Omega\) is holomorphic on \(\Omega\) (the converse also holds)
+Tags: analysis complex_analysis defn power_series complex_analyticity
+<!--ID: 1624504054064-->
+END
+\end{anki}
+
+\begin{prop}
+	If \(f,g\) are power series which converge absolutely on \(D(z_0,R)\), then \(f+g\) and \(fg\) converge absolutely on \(D(z_0,R)\). Furthermore, if \(\alpha  \in \C\), then \(\alpha f\) converges absolutely on \(D(z_0,R)\). In fact, we have:
+	\begin{align*}
+		(f+g)(z-z_0) = f(z-z_0) + g(z-z_0)\\
+		(fg)(z-z_0) = f(z-z_0)g(z-z_0)\\
+		(\alpha f)(z-z_0) = \alpha f(z-z_0)
+	\end{align*}
+	for all \(z \in D(z_0,R)\).
+\end{prop}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: If \(f,g\) are power series which converge absolutely on \(D(z_0,R)\), then \(f+g\) and \(fg\) {{c1::converge absolutely on \(D(z_0,R)\)}}. Furthermore, if \(\alpha  \in \C\), then {{c1::\(\alpha f\)}} converges absolutely on \(D(z_0,R)\). In fact, we have:
+ {{c1::\(\begin{align*}
+         	(f+g)(z-z_0) = f(z-z_0) + g(z-z_0)\\
+         	(fg)(z-z_0) = f(z-z_0)g(z-z_0)\\
+         	(\alpha f)(z-z_0) = \alpha f(z-z_0)
+         \end{align*}\)}} 
+for all \(z \in D(z_0,R)\).
+Tags: analysis complex_analysis power_series
+<!--ID: 1624845302985-->
+END
+\end{anki}
+
+
+This leads to the following theorem:
+\begin{thm}
+	\begin{enumerate}[(a).]
+		\item Let \(f(z) = \sum_{n=0}^{\infty} a_n z^{n}\) be a non-constant power series with non-zero radius of convergence. If \(f(0) = 0\), then there exists a disc of radius \(s>0\) such that
+			\begin{align*}
+				f(z)\neq 0
+			\end{align*}
+			for all \(z \in D(0,s)\setminus\left\{ 0 \right\} \).
+		\item Suppose that \(f,g\) are convergent power series with
+			\begin{align*}
+				f(z) = \sum_{n=0}^{\infty} a_n z^n\\
+				g(z) = \sum_{n=0}^{\infty} b_n z^{n}.
+			\end{align*}
+			If \(f(z)=g(z)\) in any infinite set \(A\) with \(0 \in \overline{A}\), then \(f(z)=g(z)\) everywhere-- i.e. \(a_n = b_n\) for all \(n\).
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	
+\end{proof}
+This theorem is extremely useful for proving the uniqueness of holomorphic functions, as well as distinguishing holomorphic functions.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: 
+* Let \(f(z) = \sum_{n=0}^{\infty} a_n z^{n}\) be a non-constant power series with non-zero radius of convergence. If \(f(0) = 0\), then there exists a {{c1::disc of radius \(s>0\)}} such that
+{{c1::\(\begin{align*}
+        f(z)\neq 0
+        \end{align*}\)}} 
+for all {{c1::\(z \in D(0,s)\setminus\left\{ 0 \right\} \)}}.
+* Suppose that \(f,g\) are convergent power series with
+\(\begin{align*}
+  f(z) = \sum_{n=0}^{\infty} a_n z^n\\
+  g(z) = \sum_{n=0}^{\infty} b_n z^{n}.
+  \end{align*}\)
+If \(f(z)=g(z)\) in {{c2::any infinite set \(A\) with \(0 \in \overline{A}\)}}, then {{c2::\(f(z)=g(z)\) everywhere}}-- i.e. {{c2::\(a_n = b_n\) for all \(n\)::coefficients}}.
+Tags: analysis complex_analysis power_series
+<!--ID: 1624845303027-->
+END
+\end{anki}
+
+
+\begin{prop}[Composition of Power Series]
+	Let
+	\begin{align*}
+		f(z) = \sum_{n=0}^{\infty} a_n z^{n}\\
+		g(z) = \sum_{n=0}^{\infty} b_n z^{n}
+	\end{align*}
+	be convergent power series, and assume that \(b_0 = 0\). If \(f(z)\) is absolutely convergent for \(z \in D(0,R)\), \(R>0\), and there exists an integer \(s>0\) so that
+	\begin{align*}
+		\sum_{n=0}^{\infty} \left| b_n \right| s^{n} \leq R
+	\end{align*}
+	then
+	\begin{align*}
+		h(z) = \sum_{n=0}^{\infty} a_n \left( \sum_{m=0}^{\infty} b_m z^{m} \right)^{n}
+	\end{align*}
+	converges absolutely for \(z \in D(0,s)\), and within this disc satisfies
+	\begin{align*}
+		h = f\circ g.
+	\end{align*}
+\end{prop}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let
+\(\begin{align*}
+  	f(z) = \sum_{n=0}^{\infty} a_n z^{n}\\
+  	g(z) = \sum_{n=0}^{\infty} b_n z^{n}
+  \end{align*}\)
+be convergent power series, and assume that \(b_0 = 0\). If \(f(z)\) is {{c1::absolutely convergent}} for {{c1::\(z \in D(0,R)\)}}, \(R>0\), and there exists {{c1::an integer \(s>0\)}} so that
+{{c1::\(\begin{align*}
+        	\sum_{n=0}^{\infty} \left| b_n \right| s^{n} \leq R
+        \end{align*}\)}} 
+then
+\(\begin{align*}
+  	h(z) = \sum_{n=0}^{\infty} a_n \left( \sum_{m=0}^{\infty} b_m z^{m} \right)^{n}
+  \end{align*}\)
+{{c1::converges absolutely}} for {{c1::\(z \in D(0,s)\)}}, and within this disc satisfies
+{{c1::\(\begin{align*}
+        	h = f\circ g.
+        \end{align*}\)}} 
+Tags: analysis complex_analysis power_series
+<!--ID: 1624845303068-->
+END
+\end{anki}
+
+There is a slightly more general form of power series that will be useful when discussing holomorphic functions.
+
+\begin{defn}[Laurent Series]
+A \textbf{Laurent series} is an infinite sum of monomials
+\begin{align*}
+	f(z) = \sum_{n-\infty}^{\infty} a_n (z-z_0)^{n}
+\end{align*}
+where \(\left\{ a_n \right\},z_0  \in \C\) and \(z\) is a complex variable. We say that the Laurent series \textbf{converges absolutely} on \(\Omega \subset \C\) if
+\begin{align*}
+	f^{+}(z) = \sum_{n=0}^{\infty} a_n (z-z_0)^{n}\\
+	f^{-}(z) = \sum_{n=-\infty}^{-1} a_n (z-z_0)^{n}
+\end{align*}
+converges absolutely on \(\Omega \). Notice that if this holds, then
+\begin{align*}
+	f = f^{+}+ f^{-}.
+\end{align*}
+\end{defn}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: A **Laurent series** is an infinite sum of monomials
+ {{c1::\(\begin{align*}
+         	f(z) = \sum_{n-\infty}^{\infty} a_n (z-z_0)^{n}
+         \end{align*}\)}} 
+where \(\left\{ a_n \right\},z_0  \in \C\) and \(z\) is a complex variable. We say that the Laurent series **converges absolutely** on \(\Omega \subset \C\) if
+{{c1::\(\begin{align*}
+         	f^{+}(z) = \sum_{n=0}^{\infty} a_n (z-z_0)^{n}\\
+         	f^{-}(z) = \sum_{n=-\infty}^{-1} a_n (z-z_0)^{n}
+         \end{align*}\)}} 
+converges absolutely on \(\Omega \). Notice that if this holds, then
+ {{c1::\(\begin{align*}
+        	f = f^{+}+ f^{-}.
+        \end{align*}\)}} 
+Tags: analysis complex_analysis power_series defn
+<!--ID: 1625522318703-->
+END
+\end{anki}
+
+
+\subsection{Obtaining Convergence and Absolute Convergence}
+\label{sub:obtaining_absolute_convergence}
+We will briefly develop a few tools that will help us show a series is absolutely convergent. As discussed earlier, this is a vital step in obtaining holomorphicity of a function.
+
+\begin{thm}[Weierstrass M test]
+	Let \(\left\{ f_n \right\} \) be a sequence of real or complex-valued functions, and \(\left\{ A_n \right\} \) a sequence of non-negative real numbers so that
+	\begin{align*}
+		\left| f_n(z) \right| \leq A_n
+	\end{align*}
+	for all \(z\) in some region \(\Omega\). If the sum
+	\begin{align*}
+		\sum_{n=0}^{\infty} A_n
+	\end{align*}
+	converges, then
+	\begin{align*}
+		\sum_{n=0}^{\infty} f_n(z)
+	\end{align*}
+	converges absolutely and uniformly on \(\Omega\).\\
+
+	In this case, we call \(A_n\) a \textbf{majorant} of the \textbf{minorant} \(\left\{ f_n \right\} \). 
+\end{thm}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Weierstrass M-test**
+	Let \(\left\{ f_n \right\} \) be a sequence of real or complex-valued functions, and \(\left\{ A_n \right\} \) a sequence of non-negative real numbers so that
+	{{c1::\(\begin{align*}
+	        	\left| f_n(z) \right| \leq A_n
+	        \end{align*}\)}} 
+	for all \(z\) in some region \(\Omega\). If
+	{{c1::\(\begin{align*}
+	        	\sum_{n=0}^{\infty} A_n
+	        \end{align*}\)}} 
+	converges, then
+	{{c1::\(\begin{align*}
+	        	\sum_{n=0}^{\infty} f_n(z)
+	        \end{align*}\)}} 
+	converges absolutely and uniformly on \(\Omega\).
+
+In this case, we call \(A_n\) a **majorant** of the **minorant** \(\left\{ f_n \right\} \). 
+Tags: analysis complex_analysis power_series
+<!--ID: 1624504054101-->
+END
+\end{anki}
+
+
+We have another useful tool:
+
+\begin{thm}[Abel's Limit Theorem]
+	Let \(G(z)\) be a power series given by
+	\begin{align*}
+		G(z) = \sum_{n=0}^{\infty} a_n z^{n}
+	\end{align*}
+	Suppose that the sum below converges:
+	\begin{align*}
+		\sum_{n=0}^{\infty} a_n = a
+	\end{align*}
+	for some \(a \in \C\). Then
+	\begin{align*}
+		\lim_{z \to 1} G(z) = \sum_{n=0}^{\infty} a_n
+	\end{align*}
+	provided that \(z\) remains within a \textbf{Stolz sector}, that is, satisfies
+	\begin{align*}
+		\frac{\left| 1-z \right| }{1-\left| z \right| } \leq M
+	\end{align*}
+	for some \(M \in \R\).
+\end{thm}
+This is most useful when the radius of convergence of a power series is \(1\), as it can be used to find the limit of the power series from within the disc of convergence. Hence, even if the power series does not have a limit on the radius of convergence, we might be able to obtain an "inner limit" that we can use for calculations.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Abel's Limit Theorem**
+	Let \(G(z)\) be a power series given by
+	\(\begin{align*}
+	  	G(z) = \sum_{n=0}^{\infty} a_n z^{n}
+	  \end{align*}\)
+	Suppose that the sum below converges:
+	\(\begin{align*}
+	  	\sum_{n=0}^{\infty} a_n = a
+	  \end{align*}\)
+	for some \(a \in \C\). Then
+	{{c1::\(\begin{align*}
+	        	\lim_{z \to 1} G(z) = \sum_{n=0}^{\infty} a_n
+	        \end{align*}\)}} 
+	provided that \(z\) remains within a \textbf{Stolz sector}, that is, satisfies
+	{{c1::\(\begin{align*}
+	        	\frac{\left| 1-z \right| }{1-\left| z \right| } \leq M	
+	        \end{align*}\)}} 
+	for some \(M \in \R\).
+Tags:  analysis complex_analysis power_series
+<!--ID: 1624504054138-->
+END
+\end{anki}
+
+One last tool that will be helpful is Stirling's formula.
+
+\begin{prop}[Stirling's Formula]
+	\begin{align*}
+		\sqrt{2\pi n} (n^{n}e^{-n}) \leq n! \leq e\sqrt{n} (n^{n}e^{-n})
+	\end{align*}
+	for all \(n \in \N\). Furthermore, \(n!\) limits towards the lower bound-- that is,
+	\begin{align*}
+		\lim_{n \to \infty} \frac{n!}{\sqrt{2\pi n} (n^{n}e^{-n})} =1.
+	\end{align*}
+	Sometimes, the approximation is written by
+	\begin{align*}
+		\ln n! \approx n\ln n - n.
+	\end{align*}
+\end{prop}
+This can be useful when comparing power series to show radius of convergence.
+
+\begin{exmp}[Radius of Convergence of Various Series]
+	Consider the power series given below by
+	\begin{align}
+		\sum_{n=0}^{\infty} n! z^{n}\\
+		\sum_{n=0}^{\infty} \frac{1}{n!}z^{n}\\
+		\sum_{n=0}^{\infty} \frac{n!}{n^{n}}z^{n}\\
+	\end{align}
+	The radius of convergence of the first power series is 0 because \(\frac{n^{n}}{e^{n}z^{n}}\) is unbounded as \(n\to \infty\). Likewise, \(\frac{z^{n}}{n^{n}e^{n}}\) approaches zero as \(n\to \infty\) and hence the second series has infinite radius of convergence. A similar trick can be used to show that the third series' radius of convergence is \(e\).\\
+
+	In general the ratio test states that if
+	\begin{align*}
+		\lim_{n \to \infty} \frac{a_{n+1}}{a_n} = A\geq 0
+	\end{align*}
+	for positive numbers \(a_n\), then
+	\begin{align*}
+		\lim_{n \to \infty} a_n^{\sfrac{1}{n}}=A.
+	\end{align*}
+\end{exmp}
+
+\begin{exmp}[Binomial Series]
+	Let \(\alpha  \in \C\) be a non-zero complex number. The \textbf{binomial coefficients} are given by
+	\begin{align*}
+	{\alpha\choose{n}} := \frac{\alpha (\alpha-1)\ldots(\alpha -n+1)}{n!}\\
+	{\alpha \choose{0}}=1
+	\end{align*}
+	and the \textbf{binomial series} by
+	\begin{align*}
+		B_\alpha (T) := \sum_{n=0}^{\infty} {\alpha \choose{n}}z^{n} = (1+z)^{\alpha }.
+	\end{align*}
+	One can check that the second equality indeed holds, and in fact the radius of convergence of the binomial series is \(1\) provided that \(\alpha \) is not an integer \(\geq 0\).
+\end{exmp}
+\begin{proof}
+	Observe that
+	\begin{align*}
+		\left| \frac{ {\alpha \choose{n+1}}}{ {\alpha \choose{n}}} \right| = \left| \frac{\alpha -n}{n+1} \right| 
+	\end{align*}
+	and hence limits to \(1\). By the ratio test, the binomial sum has the radius of convergence desired.
+\end{proof}
+
+\end{document}

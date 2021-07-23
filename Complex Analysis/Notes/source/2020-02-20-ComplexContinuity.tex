@@ -1,0 +1,214 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+% \section{}	
+
+Now we consider functions on the complex field. Namely, we are characterizing functions \(f:\C\to \C\). It is immediate that any function \(f\) can be parametrized by
+\begin{align*}
+	f:\C\to \C\\
+	(x,y) \mapsto (u(x,y),v(x,y))
+\end{align*}
+for \(u,v \) real-valued functions. Sometimes we might write \(f = u + iv\) for shorthand of the above parametrization. This notation arises because
+\begin{align*}
+	f(x,y) = (u(x,y),v(x,y)) &\implies\\
+	f &= (u(x,y),0) + (0,v(x,y)) \implies\\
+	f &= u + iv.
+\end{align*}
+Now we construct the equivalent analytic structures on complex functions.
+\begin{defn}[Complex Continuity]
+	Let \(\Omega\subset \C\). A function \(f:\Omega\to \C\) is \textbf{continuous} if for all \(\varepsilon >0\), for all \(z \in \Omega\), there exists a \(\delta>0\) such that, for all \(w \in \Omega\),
+	\begin{align*}
+		|w-z| < \delta \implies \left| f(w)-f(z) \right| < \varepsilon
+	\end{align*}
+Equivalently, if \((z_n) \subset \Omega\) is an arbitrary sequence in \(\Omega\) converging to \(z \in \C\), then \(f(z_n) \to f(z)\).\\
+
+We denote the space of complex continuous functions on \(\Omega\) by \(C(\Omega)\).
+\end{defn}
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+
+START
+MathJaxCloze
+Text: Let \(\Omega\subset \C\). A function \(f:\Omega\to \C\) is **continuous** if {{c2::for all \(\varepsilon >0\)}}, {{c2::for all \(z \in \Omega\)}}, {{c2::there exists a \(\delta>0\)}} such that, {{c2::for all \(w \in \Omega\)}},
+{{c1::\(\begin{align*}
+        	|w-z| < \delta \implies \left| f(w)-f(z) \right| < \varepsilon
+        \end{align*}\)}} 
+Equivalently, if \((z_n) \subset \Omega\) is an arbitrary sequence in \(\Omega\) converging to \(z \in \C\), then {{c1::\(f(z_n) \to f(z)\)}}.
+Extra: Of course, we can alternatively define continuity of a function at a point, then refer to a continuous function as one that's continuous at all points.
+Tags: analysis complex_analysis complex_analyticity defn
+<!--ID: 1624399037000-->
+END
+\end{anki}
+
+Of course, we can alternatively define continuity of a function at a point, then refer to a continuous function as one that's continuous at all points.\\
+
+The sum, difference, product, ratio, and composition of continuous functions is continuous. We leave the proof of this as an exercise to the reader.
+\begin{defn}[Uniform Continuity]
+	Let \(\Omega \subset \C\). A function \(f:\Omega\to \C\) is \textbf{uniformly continuous} if for all \(\varepsilon\), there exists a \(\delta>0\) such that for all \(z,w \in \Omega\),
+	\begin{align*}
+		|w-z| < \delta \implies \left| f(w)-f(z) \right| < \varepsilon
+	\end{align*}
+\end{defn}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\). A function \(f:\Omega\to \C\) is **uniformly continuous** if {{c1::for all \(\varepsilon\)}}, {{c1::there exists a \(\delta>0\)}} such that {{c1::for all \(z,w \in \Omega\)}},
+{{c2::\(\begin{align*}
+        	|w-z| < \delta \implies \left| f(w)-f(z) \right| < \varepsilon
+        \end{align*}\)}}
+Extra: In other words, we choose \(\delta \) first before being given the point \(z \in \Omega\). On unbounded domains, this is a much stronger property than continuity. 
+Tags: analysis complex_analysis complex_analyticity defn
+<!--ID: 1624399037047-->
+END
+\end{anki}
+
+In other words, we choose \(\delta \) first before being given the point \(z \in \Omega\). On unbounded domains, this is a much stronger property than continuity. However, under many circumstances the notions are equivalent:
+\begin{thm}
+	On a compact set in \(\C\), every continuous function is uniformly continuous.
+\end{thm}
+\begin{anki}
+START
+MathJaxCloze
+Text: On a compact set in \(\C\), every continuous function is {{c1::uniformly continuous}}.
+Tags: analysis complex_analysis complex_analyticity
+<!--ID: 1624399037095-->
+END
+\end{anki}
+
+Many of the theorems here are equivalent to the real-valued version, and hence unless the proof differs, proofs will be omitted as they can be found in a standard real analysis textbook.\\
+
+\begin{thm}
+	The continuous image of a compact set in \(\C\) is compact.
+\end{thm}
+This is actually a corollary via point-set topology.
+
+\begin{cor}
+	A continuous real-valued function on a compact set has a maximum and a minimum.
+\end{cor}
+This doesn't seem very relevant immediately, as the range of a complex function is not well-ordered. However, by considering the modulus of complex functions, we can obtain a similar result.
+
+\begin{defn}[Maximum and Minimum of Complex Functions]
+	Let \(f:\C\to \C\) be a complex-valued function. We say that \(f\) attains a \textbf{maximum} at \(z_0 \in \Omega \) if
+	\begin{align*}
+		\left| f(z) \right| \leq \left| f(z_0) \right| 
+	\end{align*}for all \(z \in \Omega \).\\
+
+	If instead
+	\begin{align*}
+		\left| f(z) \right| \geq \left| f(z_0) \right| 
+	\end{align*} for all \(z\in \Omega \) then we say \(z_0\) is a \textbf{minimum} for \(f\).
+\end{defn}
+Notice that if \(f\) is continuous, then \(z\mapsto \left| f(z) \right| \) is continuous (by the triangle inequality).
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(f:\C\to \C\) be a complex-valued function. We say that \(f\) attains a **maximum** at \(z_0 \in \Omega \) if
+{{c1::\(\begin{align*}
+        	\left| f(z) \right| \leq \left| f(z_0) \right| 
+        \end{align*}\)}}
+for all \(z \in \Omega \).
+
+If instead
+{{c1::\(\begin{align*}
+      \left| f(z) \right| \geq \left| f(z_0) \right| 
+      \end{align*}\)}}
+for all \(z\in \Omega \) then we say \(z_0\) is a **minimum** for \(f\).
+Extra: Notice that if \(f\) is continuous, then \(z\mapsto \left| f(z) \right| \) is continuous (by the triangle inequality).
+Tags: analysis complex_analysis complex_analyticity defn
+<!--ID: 1624399037133-->
+END
+\end{anki}
+
+\begin{cor}
+	A continuous (real or complex-valued) function on a compact set \(\Omega\) is bounded and attains a maximum and minimum on \(\Omega\).
+\end{cor}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: A continuous (real or complex-valued) function on a compact set \(\Omega \) is {{c1::bounded}} and {{c1::attains a maximum and minimum on \(\Omega\)}}.
+Tags: analysis complex_analysis complex_analyticity
+<!--ID: 1624399037173-->
+END
+\end{anki}
+
+\subsection{Curves in \(\C\)}
+\label{sub:curves_in_c}
+
+\begin{defn}[Continuous Curve]
+	Let \(\Omega\subset \C\). A \textbf{continuous curve} in \(\Omega\) is a continuous function \(\gamma :[t_0,t_1]\to \Omega\) where \([t_0,t_1]\subset \R\).
+\end{defn}
+
+\begin{anki}
+% Up to 5 consequences
+START
+Definition
+Name: Continuous Curve in \(\C\)
+Premise 1: \(\Omega\subset \C\), \([t_0,t_1] \subset \R\)
+Consequence 1: \(\gamma \) is a continuous curve if \(\gamma:[t_0,t_1]\to \Omega\) is a continous function
+Tags: analysis complex_analysis complex_analyticity defn
+<!--ID: 1624399037216-->
+END
+\end{anki}
+
+Because every complex function can be parametrized by \(F(x,y) = (u(x,y),v(x,y))\), it follows that we can write a curve \(\gamma \) by
+\begin{align*}
+	\gamma (t) = (x(t),y(t))
+\end{align*}
+for real-valued curves \(x,y\). This will prove useful later when we introduce complex differentiation.
+
+\begin{defn}[Path-Connected]
+	Let \(\Omega\subset \C\). Then \(\Omega\) is path-connected if every two points in  \(\Omega\) can be joined by a continuous curve in \(\Omega\).
+\end{defn}
+
+\begin{anki}
+% Up to 5 consequences
+START
+Definition
+Name: Path-Connected Set in \(\C\)
+Premise 1: \(\Omega\subset \C\)
+Consequence 1: \(\Omega\) is path-connected if \(\forall z_0,z_1 \in \Omega\), \(\exists \gamma:[t_0,t_1]\to \Omega\) with \(\gamma(t_i)=z_i\)
+Tags: analysis complex_analysis complex_topology defn
+<!--ID: 1624399037262-->
+END
+\end{anki}
+
+
+\begin{thm}
+	Let \(\Omega\subset \C\) be open, Then the following are equivalent:
+	\begin{itemize}
+		\item \(\Omega\) is connected
+		\item Every two points in \(\Omega\) can be joined by a broken line consisting of (finitely many) horizontal and vertical line segments within \(\Omega\)
+		\item \(\Omega\) is path-connected
+	\end{itemize}
+\end{thm}
+
+\begin{anki}
+% Up to 4 premises
+% Up to 5 equivalences
+START
+Equivalence
+Name: Connectedness of open \(\Omega\subset \C\)
+Premise 1:  \(\Omega\subset \C\) open set
+Equivalence 1: \(\Omega\) is connected
+Equivalence 2: Every \(z_0,z_1 \in \Omega\) is joined by line consisting of (finitely many) horizontal and vertical line segments in \(\Omega\)
+Equivalence 3: \(\Omega\) is path-connected
+Tags: analysis complex_analysis complex_topology
+<!--ID: 1624399037300-->
+END
+\end{anki}
+
+
+\end{document}

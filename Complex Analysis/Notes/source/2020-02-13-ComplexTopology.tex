@@ -1,0 +1,228 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+% \begin{figure}[ht]
+%     \centering
+%     \incfig{riemmans-theorem}
+%     \caption{Riemmans theorem}
+%     \label{fig:riemmans-theorem}
+% \end{figure}
+
+\begin{document}
+The topology of \(\C\) is based on the metric \((\C,d)\), where \(d(z,z') = \left| z-z' \right| \).  Equivalently, the topology of \(\C\) is based on the notion of \textit{open discs}.
+\begin{defn}[Open Disc]
+	Let \(z_0 \in \C\) and \(r>0\). The \textbf{open disc \(D_r(z_0)\) of radius \(r\) centered at \(z_0\)} is the set
+	\begin{align*}
+		D_r(z_0) = \left\{z \in \C \mid \left| z-z_0 \right| <r \right\} .
+	\end{align*}
+The \textbf{closed disc \(\overline{D_r}(z_0)\) of radius \(r\) centered at \(z_0\)} is defined by
+	\begin{align*}
+	\overline{D_r}(z_0) = \left\{z \in \C \mid |z-z_0|\leq r \right\} .
+	\end{align*}
+\end{defn}
+We may write \(D_r\) to denote the disc of radius \(r\) centered at \(0\).
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: Let \(z_0 \in \C\) and \(r>0\). The **open disc \(D_r(z_0)\) of radius \(r\) centered at \(z_0\)** is the set
+ {{c1::\(\begin{align*}
+         	D_r(z_0) = \left\{z \in \C \mid \left| z-z_0 \right| <r \right\} .
+         \end{align*}\)}}
+The **closed disc \(\overline{D_r}(z_0)\) of radius \(r\) centered at \(z_0\)** is defined by
+{{c1::\(\begin{align*}
+        \overline{D_r}(z_0) = \left\{z \in \C \mid |z-z_0|\leq r \right\} .
+        \end{align*}\)}}
+Tags: analysis complex_analysis complex_topology defn
+<!--ID: 1624844998803-->
+END
+\end{anki}
+
+\begin{defn}[Isolated Points and Discrete Sets]
+	Let \(\Omega \subset \C\) and let \(z_0 \in \Omega \). If there exists a disc \(D_{r}(z_0)\) for some \(r>0\) so that
+	 \begin{align*}
+		 D_r(z_0) \cap \Omega = \left\{ z_0 \right\}
+	\end{align*}
+then we say that \(z_0\) is \textbf{isolated}.\\
+
+If every \(z_0 \in \Omega \) is isolated, then we say that \(\Omega \) is \textbf{discrete}.
+\end{defn}
+Later, we will see that the set of zeroes of a non-constant holomorphic function is discrete.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) and let \(z_0 \in \Omega \). If there exists a disc \(D_{r}(z_0)\) for some \(r>0\) so that
+ {{c1::\( \begin{align*}
+        	 D_r(z_0) \cap \Omega = \left\{ z_0 \right\}
+        \end{align*}\)}}
+then we say that \(z_0\) is **isolated**.
+
+If every \(z_0 \in \Omega \) is isolated, then we say that \(\Omega \) is **discrete**.
+Extra: If \(f\) is non-constant holomorphic on \(\Omega \), then its zeroes form a discrete set in \(\C\). Furthermore, if \(f=g\) on a non-discrete subset \(U\subset \Omega \) for \(f,g\) holomorphic functions, then \(f=g\) on \(\Omega \).
+Tags: analysis complex_analysis complex_topology defn
+<!--ID: 1625188420444-->
+END
+\end{anki}
+
+
+\begin{defn}[Interior, Exterior, and Boundary Points]
+	Let \(\Omega \subset \C\), and let \(z \in \C\). 
+	\begin{itemize}
+		\item \(z\) is an \textbf{interior point of \(\Omega \)} if there exists an \(r>0\) such that \(D_r(z) \subset \Omega \). The set of interior points of \(\Omega\) is called the \textbf{interior of \(\Omega\)}, denoted \textrm{int}\(\Omega\).
+	\item \(z\) is an \textbf{exterior point of \(\Omega\)} if there exists an \(r>0\) such that \(D_r(z) \cap \Omega = \emptyset\). The set of exterior points of \(\Omega\) is called the \textbf{exterior of \(\Omega\)}, denoted \textrm{ext}\(\Omega\).
+	\item \(z\) is a \textbf{boundary point of \(\Omega\)} if it is neither an interior point or exterior point. The set of boundary points of \(\Omega\) is called the \textbf{boundary of \(\Omega\)}, denoted \(\partial \Omega\).
+	\end{itemize}
+\end{defn}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega\subset \C\), and let \(z \in \C\). 
+
+* \(z\) is an **interior point of \(\Omega\)** if {{c1::there exists an \(r>0\) s.t. \(D_r(z) \subset \Omega\)}}. The {{c1::set of interior points of \(\Omega\)}} is called the **interior of \(\Omega\)**, denoted \textrm{int}\(\Omega\).
+* \(z\) is an **exterior point of \(\Omega\)** if there exists an \(r>0\) s.t. \(D_r(z) \cap \Omega = \emptyset\). The set of exterior points of \(\Omega\) is called the **exterior of \(\Omega\)**, denoted \textrm{ext}\(\Omega\).
+* \(z\) is a **boundary point of \(\Omega\)** if it is neither an interior point or exterior point. The set of boundary points of \(\Omega\) is called the **boundary of \(\Omega\)**, denoted \(\partial \Omega\).
+Tags: analysis complex_analysis complex_topology defn
+<!--ID: 1624844998844-->
+END
+\end{anki}
+
+\begin{defn}[Closure]
+	Let \(\Omega \subset \C\). The \textbf{closure} of \(\Omega\) is the union of the interior and the boundary of \(\Omega\). Alternatively, it is the complement of the exterior of \(\Omega\). We denote the closure of \(\Omega\) by \(\overline{\Omega}\).
+\end{defn}
+
+\begin{anki}
+% Up to 5 consequences
+START
+Definition
+Name: Closure
+Premise 1: Let \(\Omega\subset \C\)
+Consequence 1: The **closure** of \(\Omega\) is defined as \(\overline{\Omega} := \textrm{int} (\Omega) \cup \partial \Omega\).
+Tags: analysis complex_analysis complex_topology defn
+<!--ID: 1624844998884-->
+END
+\end{anki}
+
+\begin{prop}
+	Let \(\Omega\subset \C\), and let \(z \in \C\). Then \(z \in \overline{\Omega}\) if and only if for every \(r>0\), \(D(z,r) \cap \Omega \neq \emptyset\).
+\end{prop}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega\subset \C\), and let \(z \in \C\). Then \(z \in \overline{\Omega}\) if and only if {{c1::for every \(r>0\), \(D(z,r) \cap \Omega \neq \emptyset\)}}.
+Extra: There is a partition of \(\C\) relative to any arbitrary \(\Omega\) given by
+\begin{align*}
+	\C = \textrm{int}\Omega \cup \textrm{ext}\Omega \cup \partial \Omega
+\end{align*}
+which in turn tells us that the interior of the complement is the exterior, and vice versa.
+Tags: 
+<!--ID: 1624844998921-->
+END
+\end{anki}
+
+
+We have introduced a partition relative to an arbitrary \(\Omega \subset \C\), namely:
+\begin{align*}
+	\C = \textrm{int} \Omega \cup \partial \Omega \cup \textrm{ext} \Omega
+\end{align*}
+where each set is disjoint. Another partition:
+\begin{align*}
+	\C = \textrm{ext}\Omega^{c} \cup \partial \Omega^{c} \cup \textrm{int}\Omega^{c} 
+\end{align*}
+Therefore the interior of a set is the exterior of the complement, and the boundaries are equal.
+\begin{defn}[Open and Closed Sets]
+	Let \(\Omega\subset \C\). Then
+	\begin{itemize}
+		\item \(\Omega\) is \textbf{open} if \(\Omega\) contains none of its boundary points; \(\Omega \cap \partial \Omega = \emptyset\)
+		\item \(\Omega\) is \textbf{closed} if \(\Omega\) contains all of its boundary points; \(\partial \Omega \subset \Omega\)
+	\end{itemize}
+\end{defn}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega\subset \C\). Then
+* \(\Omega\) is **open** if \(\Omega\) contains none of its boundary points; \(\Omega \cap \partial \Omega = \emptyset\)
+* \(\Omega\) is **closed** if \(\Omega\) contains all of its boundary points; \(\partial \Omega \subset \Omega\)
+Tags: analysis complex_analysis complex_topology defn
+<!--ID: 1624844998958-->
+END
+\end{anki}
+
+\begin{exmp}[Properties of Open/Closed Sets]
+\begin{itemize}
+	\item \(\Omega\) is open if and only if \( \textrm{int}\Omega = \Omega\) 
+	\item \(\Omega\) is closed if and only if \(\overline{\Omega} = \Omega\) 
+	\item The topology of \(\C\) is the set of all open sets
+	\item Most sets in \(\C\) are neither open nor closed; there are only continuum many open/closed sets
+	\item \(\emptyset,\C\) are both open and closed (the only two sets with this property). This implies that every other set in \(\C\) has a non-empty boundary
+\end{itemize}
+\end{exmp}
+
+\begin{prop}
+	Let \(\Omega\subset \C\). Then \(\Omega\) is open if and only if \(\Omega^{c}\) is closed.
+\end{prop}
+
+\begin{prop}[More Properties of Open/Closed Sets]
+	\begin{itemize}
+		\item The union of an arbitrary family of open sets is open
+		\item The finite intersection of an arbitrary family of open sets is open
+		\item The intersection of an arbitrary family of closed sets is closed
+		\item The finite union of an arbitrary family of closed sets is closed
+	\end{itemize}
+\end{prop}
+
+\begin{prop}
+	Let \(A\subset B\subset \C\). Then 
+	\begin{itemize}
+		\item \( \textrm{int}A \subset \textrm{ int}B\) 
+		\item \(\overline{A}\subset \overline{B}\)
+	\end{itemize}
+\end{prop}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(A\subset B\subset \C\). Then 
+* \( \textrm{int}A \subset \textrm{ int}B\
+* \(\overline{A}\subset \overline{B}\)
+Tags: analysis complex_analysis complex_topology
+<!--ID: 1624844998996-->
+END
+\end{anki}
+
+\begin{thm}
+	Let \(\Omega\subset \C\). Then
+	 \begin{itemize}
+		\item \( \textrm{int}\Omega\) is open; it is the largest open subset of \(\Omega\)
+		\item \( \overline{\Omega}\) is closed; it is the smallest closed superset of \(\Omega\).
+	\end{itemize}
+\end{thm}
+
+\begin{cor}
+	Let \(\Omega\subset \C\). Then
+	\begin{itemize}
+		\item \( \textrm{ext}\Omega\) is open
+		\item \(\partial \Omega\) is closed
+	\end{itemize}
+\end{cor}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega\subset \C\). Then
+* \( \textrm{int}\Omega\) is open; it is the largest open subset of \(\Omega\)
+* \( \overline{\Omega}\) is closed; it is the smallest closed superset of \(\Omega\).
+* \( \textrm{ext}\Omega\) is open
+* \(\partial \Omega\) is closed
+Tags: analysis complex_analysis complex_topology
+<!--ID: 1624844999032-->
+END
+\end{anki}
+
+
+\end{document}

@@ -1,0 +1,270 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 07/03/21
+
+Before we explicitly state Cauchy's integration formulas, it will be beneficial to look at a particular class of curves. This will give us important intuition when working more generally with Cauchy's integration formulas later.
+
+\subsection{Winding Number}
+\label{sub:winding_number}
+
+Recall that if \(\gamma \) is the boundary of the unit disc, then
+\begin{align*}
+	\int_{\gamma } \frac{1}{z} \,d t = 2\pi i. 
+\end{align*}
+When we initially discussed this notion, we implicitly took that \(\gamma \) was simple. Instead, consider the situation where \(\gamma(t) = e^{2it}\) on the interval \([0,2\pi ]\). Then one can check that
+\begin{align*}
+	\int_\gamma  \frac{1}{z}\,d t = 4\pi i.
+\end{align*}
+In fact, it happens that if \(\gamma(t) = e^{k(it)}\) for \(k \in \Z\), then
+\begin{align*}
+	\int_\gamma \frac{1}{z}\,d t = (2\pi i)k.
+\end{align*}
+
+We refer to \(k\) as the \textbf{winding number of \(\gamma \) around zero}. Now we construct this notion more generally.
+
+\begin{lemma}
+	Let \(\gamma \) be a piecewise smooth closed curve, and assume that \(\gamma (t)\neq z_0\) for all \(t \in [t_0,t_1]\). Then
+	\begin{align*}
+		\int_{\gamma } \frac{1}{z-z_0}\,d t = k(2\pi i) 
+	\end{align*}
+	for some \(k \in \Z\).
+\end{lemma}
+\begin{proof}
+	
+\end{proof}
+
+\begin{defn}[Winding Number]
+	The \textbf{winding number of \(z_0\) with respect to \(\gamma \)}, also called the \textbf{index of \(z_0\) with respect to \(\gamma \)} is defined by
+	\begin{align*}
+		n(\gamma ,z_0) = \frac{1}{2\pi i} \int_\gamma \frac{1}{z-z_0}\,d t.
+	\end{align*}
+\end{defn}
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: The **winding number of \(z_0\) with respect to \(\gamma \)**, also called the **index of \(z_0\) with respect to \(\gamma \)** is defined by
+ {{c1::\(\begin{align*}
+         	n(\gamma ,z_0) = \frac{1}{2\pi i} \int_\gamma \frac{1}{z-z_0}\,d t.
+         \end{align*}\)}}
+Extra: This follows from the fact that if \(\gamma(t) = e^{k(it)}\) for \(k \in \Z\), then
+\(\begin{align*}
+  	\int_\gamma \frac{1}{z}\,d t = (2\pi i)k.
+  \end{align*}\)
+Tags: analysis complex_analysis complex_integration defn
+<!--ID: 1625372340718-->
+END
+\end{anki}
+
+
+\begin{prop}[Properties of Winding Numbers]
+	\begin{itemize}
+		\item \(n(-\gamma ,z_0) = -n(\gamma,z_0)\) 
+		\item If \(z_0\) lies on the exterior of \(\gamma \), then \(n(\gamma ,z_0) = 0\)
+		\item \(n(\gamma ,z_0)=n(\gamma ,z_1)\) if there exists a path between \(z_0\) and \(z_1\) that does not intersect \(\gamma \) 
+	\end{itemize}
+\end{prop}
+
+In fact, we can define the notion of winding number and obtain the first two properties even if \(\gamma \) is only continuous. This goes a long way to classifying curves as a whole, and in fact is useful in proving the Jordan curve theorem.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\gamma \) be a piecewise smooth curve and \(z_0\) an arbitrary point in \(\C\).
+
+* {{c1::\(n(-\gamma ,z_0) = -n(\gamma,z_0)\)::reverse of curve}}  
+* If \(z_0\) {{c2::lies on the exterior of \(\gamma \)}}, then \(n(\gamma ,z_0) = 0\)
+* \(n(\gamma ,z_0)=n(\gamma ,z_1)\) if there {{c3::exists a path between \(z_0\) and \(z_1\) that does not intersect \(\gamma \)}} 
+Extra: The first two properties hold even if \(\gamma \) is only continuous (instead of piecewise-smooth)
+Tags: analysis complex_analysis complex_integration
+<!--ID: 1625372340727-->
+END
+\end{anki}
+
+
+\begin{exmp}[Jordan Curve Theorem]
+	The Jordan curve theorem states that every Jordan curve in the plane determines exactly two regions. We will prove via winding numbers that the complement of a Jordan curve \(\gamma \) has at least two components. Observe that this holds if there exists a point \(z_0\) such that \(n(\gamma ,z_0)\neq 0\).\\
+
+	Without loss of generality, assume that \(\textrm{Re}(\gamma )>0\) and furthermore that there exist points \(z_1,z_2 \in \gamma (t)\) so that \(\textrm{Im}(z_1)<0\) and \(\textrm{Im}(z_2)>0\). In fact, we can choose \(z_1,z_2\) so that the line segments \(\ell(0,z_1)\) and \(\ell(0,z_2)\) do not intersect \(\gamma \).\\
+
+	Let \(\gamma_1\) be the subcurve between \(z_1,z_2\), and \(\gamma_2\) the subcurve that takes \(z_2\) to \(z_1\) along \(\gamma \) (so that \(\gamma = \gamma_1+\gamma_2\)). Let \(\sigma_1\) be the curve formed by following \(\ell(0,z_1) + \gamma_1 + \ell(0,z_2)^{^{-}}\), and let \(\sigma_2\) be the curve formed by following \(\ell(0,z_1) + \gamma_2^{-} + \ell(0,z_2)^{-}\) (so that \(\sigma_1-\sigma_2 = \gamma \)).\\
+
+	Observe that the positive real axis intersects both \(\gamma_1,\gamma_2\) at points which we will refer to by \(x_1,x_2\) respectively. Then we show that:
+	\begin{itemize}
+		\item \(n(\sigma_1,x_2) = 0\) and hence \(n(\sigma_1,\gamma_2) = 0\) 
+		\item \(n(\sigma_1,z) = n(\sigma_2,z) = 1\) for \(0<z<x_1\)
+		\item \(n(\sigma_2,z_1) = 1\) and hence \(n(\sigma_2,\gamma_1) = 1\) 
+	\end{itemize}
+\end{exmp}
+
+\subsection{Cauchy's Integral Formulas}
+\label{sub:cauchy_s_integral_formulas}
+
+\begin{thm}[Cauchy's Integral Formula]
+	Let \(\Omega \subset \C\) be an open region and \(f\) a holomorphic function on \(\Omega \). Let \(\gamma \) be a closed curve in \(\Omega \) homologous to a point. Then for all \(z \in \Omega \) with \(n(\gamma ,z)\neq 0\),
+	\begin{align*}
+		f(z) = \frac{1}{n(\gamma,z)2\pi i} \int_\gamma \frac{f(\xi )}{\xi -z}\,d t.
+	\end{align*}
+	If we restrict our \(z\) further into a connected region with \(n(\gamma ,z)=1\), then we obtain Cauchy's integral formula:
+	\begin{align*}
+		f(z) = \frac{1}{2\pi i} \int_\gamma \frac{f(\xi )}{\xi -z}\,d t
+	\end{align*}
+	and hence defines a holomorphic function equal to \(f\) on this region.
+\end{thm}
+Note that we are implicitly requiring that \(z\) not be on the curve for \(\gamma \), as the winding number is not well-defined on the curve.
+
+\begin{proof}% Ahlfors p.118
+	
+\end{proof}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) be an open region and \(f\) a holomorphic function on \(\Omega \). Let \(\gamma \) be a closed curve in \(\Omega \) homologous to a point. Then for all \(z \in \Omega \) with \(n(\gamma ,z)\neq 0\),
+{{c1::\(\begin{align*}
+f(z) = \frac{1}{n(\gamma,z)2\pi i} \int_\gamma \frac{f(\xi )}{\xi -z}\,d t.
+\end{align*}\)}} 
+If we restrict our \(z\) further into a connected region with \(n(\gamma ,z)=1\), then we obtain **Cauchy's integral formula**:
+{{c1::\(\begin{align*}
+	f(z) = \frac{1}{2\pi i} \int_\gamma \frac{f(\xi )}{\xi -z}\,d t
+\end{align*}\)}}
+and hence defines a holomorphic function equal to \(f\) on this region.
+Extra: Note that we are implicitly requiring that \(z\) not be on the curve for \(\gamma \), as the winding number is not well-defined on the curve.
+Tags: analysis complex_analysis complex_integration
+<!--ID: 1625525402615-->
+END
+\end{anki}
+
+This allows us to get infinite differentiability of holomorphic functions.
+
+\begin{cor}
+	Let \(f\) be a holomorphic function on an open set \(\Omega \) containing an open disc \(D_r(z_0)\subset \Omega \) for some \(z_0 \in \Omega \), \(r>0\), and let \(\gamma \) be a closed curve in \(D_r(z_0)\). Then \(f\) has infinitely many complex derivatives in \(\Omega \). Furthermore, for all \(z \in D_r(z_0)\), we have
+	\begin{align*}
+		f^{(n)}(z) = \frac{n!}{n(\gamma,z)2\pi i} \int_\gamma \frac{f(\xi )}{(\xi  -z)^{n+1}}\,d t
+	\end{align*}
+\end{cor}
+
+Notice that because analytic functions are holomorphic, this also shows infinite complex differentiability of analytic functions. All that remains is to show that holomorphic functions are analytic.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(f\) be a holomorphic function on an open set \(\Omega \) containing an open disc \(D_r(z_0)\subset \Omega \) for some \(z_0 \in \Omega \), \(r>0\), and let \(\gamma \) be a closed curve in \(D_r(z_0)\). Then \(f\) has infinitely many complex derivatives in \(\Omega \). Furthermore, for all \(z \in D_r(z_0)\), we have
+ {{c1::\(\begin{align*}
+        	f^{(n)}(z) = \frac{n!}{n(\gamma,z)2\pi i} \int_\gamma \frac{f(\xi )}{(\xi  -z)^{n+1}}\,d t
+        \end{align*}\)::value of higher derivatives}} 
+Extra: Notice that because analytic functions are holomorphic, this also shows infinite complex differentiability of analytic functions.
+Observe that this also gives us uniform convergence on the higher order derivatives by simply taking the modulus of both sides:
+\(\begin{align*}
+  	\left| f^{(n)}(z_0) \right| \leq \frac{\left| f(z) \right|_{z \in \partial D_r(z_0)} n!}{r^{n}}.
+  \end{align*}\)
+Tags: analysis complex_analysis complex_integration
+<!--ID: 1625525402632-->
+END
+\end{anki}
+
+
+\begin{proof}
+	
+\end{proof}
+
+Observe that this also gives us uniform convergence on the higher order derivatives by simply taking the modulus of both sides:
+\begin{align*}
+	\left| f^{(n)}(z_0) \right| \leq \frac{\left| f(z) \right|_{z \in \partial D_r(z_0)} n!}{r^{n}}.
+\end{align*}
+
+%\begin{cor}[Cauchy inequalities]
+%       If \(f\) is holomorphic in an open set that contains the closure of a disc \(D\) centered at \(z_0\) of radius \(R\), then
+%       \begin{align*}
+%       	\left| f^{(n)}(z_0) \right| \leq \frac{n! \|f\|_C}{R^{n}}
+%       \end{align*}
+%       where \(\|f\|_C = \sup_{z \in C} \left| f(z) \right| \) denotes the supremum of \(\left| f \right| \) on the boundary of \(C\).
+%\end{cor}
+
+\begin{thm}[Taylor's Theorem]
+	Suppose \(f\) is holomorphic in an open set \(\Omega \subset \C\). Let \(D_r(z_0)\) be a disc with radius \(r>0\) with \(\overline{D_r(z_0)}\subset \Omega \). Then \(f\) has a power series expansion at \(z_0\) :
+	\begin{align*}
+		f(z) = \sum_{n=0}^{\infty} a_n(z-z_0)^{n}\\
+		a_n := \frac{f^{(n)}(z_0)}{n!} \text{ for all } n\geq 0
+	\end{align*}
+	which converges absolutely and uniformly for all \(z \in D_r(z_0)\).
+\end{thm}
+This finally gives us the equivalence between holomorphic and analytic functions.\\
+
+The power series expansion of holomorphic functions converges uniformly, and hence this theorem is a stronger version of Taylor's theorem for complex functions. That is, a holomorphic function can be approximated by partial sums of the power series expansion with a remainder that limits to zero at \(z_0\).
+
+\begin{proof}
+	
+\end{proof}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Taylor's Theorem**
+Suppose \(f\) is holomorphic in an open set \(\Omega \subset \C\). Let \(D_r(z_0)\) be a disc with radius \(r>0\) with \(\overline{D_r(z_0)}\subset \Omega \). Then \(f\) has a power series expansion at \(z_0\) :
+ {{c1::\(\begin{align*}
+         	f(z) = \sum_{n=0}^{\infty} a_n(z-z_0)^{n}\\
+         	a_n := \frac{f^{(n)}(z_0)}{n!} \text{ for all } n\geq 0
+         \end{align*}\)}}
+which {{c1::converges absolutely and uniformly}}  for all \(z \in D_r(z_0)\).
+Extra: The power series expansion of holomorphic functions converges uniformly, and hence this theorem is a stronger version of Taylor's theorem for complex functions. That is, a holomorphic function can be approximated by partial sums of the power series expansion with a remainder that limits to zero at \(z_0\).
+Tags: analysis complex_analysis complex_integration
+<!--ID: 1625525402654-->
+END
+\end{anki}
+
+In fact, this isn't the strongest form we can get of Taylor's theorem. Utilizing our earlier construction of Laurent series allows us to obtain an equivalence within an annulus.
+\begin{thm}
+	Let \(\Omega \subset \C\) be an annulus centered at \(z_0\) with inner radius \(r\) and outer radius \(R\) satisfying \(0\leq r<R\). Suppose \(f\) is holomorphic on \(\Omega \)-- then for all \(s,S\) satisfying \(r<s<S<R\), \(f\) has a Laurent expansion
+	\begin{align*}
+		f(z) = \sum_{n=-\infty}^{\infty} a_n (z-z_0)^{n}\\
+		a_n = \begin{cases}
+			\frac{1}{2\pi i} \int_{\partial D_R(z_0)} \frac{f(\xi )}{(\xi -z_0)^{n+1}}\,d t & n\geq 0\\
+			\frac{1}{2\pi i} \int_{\partial D_r(z_0)} \frac{f(\xi )}{(\xi -z_0)^{n+1}}\,d t & n< 0\\
+		\end{cases}
+	\end{align*}
+	which converges absolutely and uniformly on \(s\leq \left| z \right| \leq S\).
+\end{thm}
+Thus, if \(f\) is holomorphic on \(D_r(z_0)\setminus\left\{ z_0 \right\} \) for some \(r>0\), then the theorem implies that \(f\) has a unique Laurent expansion in \(D_r(z_0)\). This Laurent expansion is not holomorphic on \(D_r(z_0)\), but is holomorphic on \(D_r(z_0)\setminus\left\{ z_0 \right\} \). This will be useful later when dealing with meromorphic functions.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \subset \C\) be an annulus centered at \(z_0\) with inner radius \(r\) and outer radius \(R\) satisfying \(0\leq r<R\). Suppose \(f\) is holomorphic on \(\Omega \)-- then for all \(s,S\) satisfying \(r<s<S<R\), \(f\) has a Laurent expansion
+ {{c1::\(\begin{align*}
+         	f(z) = \sum_{n=-\infty}^{\infty} a_n (z-z_0)^{n}\\
+         	a_n = \begin{cases}
+         		\frac{1}{2\pi i} \int_{\partial D_R(z_0)} \frac{f(\xi )}{(\xi -z_0)^{n+1}}\,d t & n\geq 0\\
+         		\frac{1}{2\pi i} \int_{\partial D_r(z_0)} \frac{f(\xi )}{(\xi -z_0)^{n+1}}\,d t & n< 0\\
+         	\end{cases}
+         \end{align*}\)}} 
+	which {{c1::converges absolutely and uniformly}} on \(s\leq \left| z \right| \leq S\).
+Extra: Thus, if \(f\) is holomorphic on \(D_r(z_0)\setminus\left\{ z_0 \right\} \) for some \(r>0\), then the theorem implies that \(f\) has a unique Laurent expansion in \(D_r(z_0)\). This Laurent expansion is not holomorphic on \(D_r(z_0)\), but is holomorphic on \(D_r(z_0)\setminus\left\{ z_0 \right\} \).
+Tags: analysis complex_analysis complex_integration
+<!--ID: 1625525402672-->
+END
+\end{anki}
+
+
+% \printindex
+\end{document}

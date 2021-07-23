@@ -1,0 +1,317 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 07/09/21
+
+Recall that a holomorphic isomorphism is a holomorphic map
+\begin{align*}
+	f:U\to V
+\end{align*}
+with a holomorphic inverse
+\begin{align*}
+	g:V\to U
+\end{align*}
+so that
+\begin{align*}
+	f\circ g &= \textrm{Id}_V\\
+	g\circ f &= \textrm{Id}_U
+\end{align*}
+We say that \(f\) is an \textbf{automorphism} if \(U=V\), and refer to the set of automorphisms of \(U\) by \(\textrm{Aut}(U)\).
+
+\subsection{Automorphisms of the Unit Disc}
+\label{sub:automorphisms_of_the_unit_disc}
+
+\begin{thm}[Schwarz' Lemma]
+	Let \(f:D_1 \to D_1\) be a holomorphic automorphism of the unit disc with \(f(0) = 0\). Then
+	\begin{align*}
+		\left| f(z) \right| \leq \left| z \right| 
+	\end{align*}
+	for all \(z \in D_1\). If for some \(z_0\neq 0\) we have \(\left| f(z_0) \right| = \left| z_0 \right| \), then
+	\begin{align*}
+		f(z) = e^{i \theta } z
+	\end{align*}
+	for some \(\theta \in \R\).
+
+	In particular, \(\left| f'(0) \right| \leq 1\). If equality holds, then \(f(z) = e^{i\theta } z\) for some \(\theta \in \R\).
+\end{thm}
+In other words, an automorphism of the unit disc that fixes the origin has an implicit "contraction" requisite. If it isn't a contraction, then it must be a rotation.
+
+\begin{proof}
+	
+\end{proof}%Lang p.210, via maximum modulus principle
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: **Schwarz' Lemma**
+Let \(f:D_1 \to D_1\) be a holomorphic automorphism of the unit disc with \(f(0) = 0\). Then
+ {{c1::\(\begin{align*}
+        	\left| f(z) \right| \leq \left| z \right| 
+        \end{align*}\)::modulus}}
+for all \(z \in D_1\). If for some \(z_0\neq 0\) we have \(\left| f(z_0) \right| = \left| z_0 \right| \), then
+ {{c1::\(\begin{align*}
+        	f(z) = e^{i \theta } z
+        \end{align*}\)::function is of form}}
+for some \(\theta \in \R\).
+
+In particular, {{c1::\(\left| f'(0) \right| \leq 1\)::modulus}}. If equality holds, then {{c1::\(f(z) = e^{i\theta } z\)::function is of form}} for some \(\theta \in \R\).
+\end{thm}
+Tags: analysis complex_analysis conformal_mappings
+<!--ID: 1626293841377-->
+END
+\end{anki}
+
+
+We can apply Schwarz Lemma to classify all the automorphisms of the unit disc. Because every automorphism must send exactly one point to zero, we can transform the general case to the origin.
+
+\begin{thm}[Structure of Automorphisms of the Unit Disc]
+\label{thm:classification_of_automorphisms_of_the_unit_disc}
+	Let \(\sigma :D_1\to D_1\) be a holomorphic automorphism of the unit disc, and let \(z_0\in D_1\) be the point for which \(\sigma (z_0 )=0\). Then for some \(\theta \in \R\)
+	\begin{align*}
+		\sigma (z) = e^{i\theta } \frac{z-z_0}{1-\overline{z_0}z}
+	\end{align*}
+\end{thm}
+
+Observe that when \(\theta =2\pi k\) for \(k \in \Z\), the automorphism of the disc satisfies \(\sigma (z_0) = 0\), \(\sigma (0) = z_0\), and \(\sigma \circ \sigma  = \textrm{Id}_{D_1}\). For this reason, we will denote by \(\sigma_{z_0}\) the \textbf{canonical automorphism of the unit disc centered at \(z_0\)} when \(\theta =2\pi k\) and \(\sigma (z_0)=0\).
+
+\begin{anki}
+START
+MathJaxCloze
+Text: \textbf{Structure of Automorphisms of the Unit Disc}
+Let \(\sigma :D_1\to D_1\) be a holomorphic automorphism of the unit disc, and let \(z_0\in D_1\) be the point for which \(\sigma (z_0 )=0\). Then for some \(\theta \in \R\)
+ {{c1::\(\begin{align*}
+        	\sigma (z) = e^{i\theta } \frac{z-z_0}{1-\overline{z_0}z}
+        \end{align*}\)}} 
+Extra: Observe that when \(\theta =2\pi k\) for \(k \in \Z\), the automorphism of the disc satisfies \(\sigma (z_0) = 0\), \(\sigma (0) = z_0\), and \(\sigma \circ \sigma  = \textrm{Id}_{D_1}\). For this reason, we will denote by \(\sigma_{z_0}\) the **canonical automorphism of the unit disc centered at \(z_0\)** when \(\theta =2\pi k\) and \(\sigma (z_0)=0\).
+Tags: analysis complex_analysis conformal_mappings
+<!--ID: 1626293841400-->
+END
+\end{anki}
+
+\subsection{Isomorphism from the Upper Half Plane}
+\label{sub:isomorphism_from_the_upper_half_plane}
+
+We began this chapter with automorphisms of the unit disc because it turns out that we can obtain an isomorphism from larger parts of the complex plane to the disc. Then we can use the automorphisms of the disc to characterize more general sections of the complex plane.\\
+
+We will now show that the entire upper half complex plane is holomorphically isomorphic to the unit disc.
+
+\begin{thm}[Isomorphism between \(\mathbb{H}\) and \(D_1\)]
+	Let \(\mathbb{H}\subset \C\) be the upper half plane. The map
+	\begin{align*}
+		f&:\mathbb{H} \to D_1\\
+		f&:z \mapsto \frac{z-i}{z+i}
+	\end{align*}
+	is a holomorphic isomorphism onto the unit disc.
+\end{thm}
+The inverse map for \(f\) is given by
+\begin{align*}
+	g&:D_1 \to \mathbb{H}\\
+	g&:z\mapsto -i\frac{z+1}{z-1}
+\end{align*}
+We encourage the reader to verify that \(g\) is indeed an inverse for \(f\).
+
+\begin{anki}
+START
+MathJaxCloze
+Text: 
+Let \(\mathbb{H}\subset \C\) be the upper half plane. The map
+ {{c1::\(\begin{align*}
+        	f&:\mathbb{H} \to D_1\\
+        	f&:z \mapsto \frac{z-i}{z+i}
+        \end{align*}\)}} 
+is a holomorphic isomorphism onto the unit disc.
+
+The inverse map for \(f\) is given by
+ {{c1::\(\begin{align*}
+        	g&:D_1 \to \mathbb{H}\\
+        	g&:z\mapsto -i\frac{z+1}{z-1}
+        \end{align*}\)}}
+Extra: It follows that
+\(\begin{align*}
+  	\textrm{Aut}(\mathbb{H}) = f^{-1} \textrm{Aut}(D) f
+  \end{align*}\)
+Tags: analysis complex_analysis conformal_mappings
+<!--ID: 1626293841426-->
+END
+\end{anki}
+
+
+\begin{cor}[Automorphism Group of \(\mathbb{H}\)]
+	\begin{align*}
+		\textrm{Aut}(\mathbb{H}) = f^{-1} \textrm{Aut}(D) f
+	\end{align*}
+	where
+	\begin{align*}
+		f&:\mathbb{H} \to D_1\\
+		f&:z \mapsto \frac{z-i}{z+i}
+	\end{align*}
+\end{cor}
+Of course, it remains to actually calculate what automorphisms of the upper half plane look like.
+
+\begin{thm}[Structure of Automorphisms of \(\mathbb{H}\)]
+	Every automorphism of \(\mathbb{H}\) is a linear fractional translation of the form
+	\begin{align*}
+		A = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \\
+		S_A(z) =\frac{az+b}{c z + d}
+	\end{align*}
+	where \(a,b,c,d \in \R\) with \(\textrm{det}(A)\neq 0\).\\
+
+	Two automorphisms \(S_A\) and \(S_{A'}\) are equal if and only if \(A' = \pm A\).
+\end{thm}
+Hence, the automorphism group \(\textrm{Aut}(\mathbb{H})\) is isomorphic to the projective special linear group-- that is,
+ \begin{align*}
+	 \textrm{Aut}(\mathbb{H}) \cong PSL_2(\R).
+\end{align*}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Structure of Automorphisms of \(\mathbb{H}\)**
+Every automorphism of \(\mathbb{H}\) is a {{c1::linear fractional translation}} of the form
+{{c1::\(\begin{align*}
+        	A = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \\
+        	S_A(z) =\frac{az+b}{c z + d}
+        \end{align*}\)}}
+where {{c1::\(a,b,c,d \in \R\)}} with {{c1::\(\textrm{det}(A)\neq 0\)}}.\\
+
+Two automorphisms \(S_A\) and \(S_{A'}\) are equal if and only if {{c2::\(A' = \pm A\)}} .
+Extra: Hence, the automorphism group \(\textrm{Aut}(\mathbb{H})\) is isomorphic to the projective special linear group-- that is,
+\( \begin{align*}
+  	 \textrm{Aut}(\mathbb{H}) \cong PSL_2(\R).
+  \end{align*}\)
+Tags: analysis complex_analysis conformal_mappings
+<!--ID: 1626293841448-->
+END
+\end{anki}
+
+
+\subsection{Isomorphisms Between Boundaries of Closed Curves}
+\label{sub:isomorphisms_between_boundaries_of_closed_curves}
+
+We note that so far, many results have been shown by utilizing the behavior of the function on the boundary of an open set. This is no coincidence-- we formalize this notion via the following theorems.
+
+\begin{thm}[Surjectivity via Boundary Mapping]
+	Let \(\Omega \) be a bounded connected open set. Suppose \(f\) is a non-constant holomorphic function on \(\Omega \) that is continuous on \(\partial\Omega \), which maps \(\partial\Omega \) into \(\partial D_1\), that is,
+	\begin{align*}
+		\left| f(z) \right| =1
+	\end{align*}
+	for all \(z \in \partial\Omega \). Then
+	\begin{align*}
+		f(\Omega ) = D_1.
+	\end{align*}
+\end{thm}
+If we further assume that \(f\) is injective, then it follows that \(f\) is an isomorphism.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\Omega \) be a bounded connected open set. Suppose \(f\) is a non-constant holomorphic function on \(\Omega \) that is continuous on \(\partial\Omega \), which maps \(\partial\Omega \) into \(\partial D_1\), that is,
+\(\begin{align*}
+  	\left| f(z) \right| =1
+  \end{align*}\)
+for all \(z \in \partial\Omega \). Then
+ {{c1::\(\begin{align*}
+        	f(\Omega ) = D_1.
+        \end{align*}\)}}
+Extra: If we further assume that \(f\) is injective, then it follows that \(f\) is an isomorphism.
+Tags: analysis complex_analysis conformal_mappings
+<!--ID: 1626293841465-->
+END
+\end{anki}
+
+
+\begin{proof}%Lang VII 4.2, pg. 227
+	
+\end{proof}
+
+We can further generalize this via interiors of curves, but first we prove a lemma that will be essential:
+
+\begin{lemma}
+	Let \(\gamma \) be a piecewise smooth closed curve in an open set \(\Omega \subset \C\). Suppose that \(\gamma \) has an interior denoted by \(\textrm{Int}(\gamma )\). Then
+	\begin{align*}
+		\textrm{Int}(\gamma ) \cup \gamma 
+	\end{align*}
+	is compact.
+\end{lemma}
+This follows from the compactness of \(\gamma \) combined with the continuity of the winding number within the interior.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(\gamma \) be a piecewise smooth closed curve in an open set \(\Omega \subset \C\). Suppose that \(\gamma \) has an interior denoted by \(\textrm{Int}(\gamma )\). Then
+\(\begin{align*}
+  	\textrm{Int}(\gamma ) \cup \gamma 
+  \end{align*}\)
+is {{c1::compact::topological property}}.
+Extra: This follows from the compactness of \(\gamma \) combined with the continuity of the winding number within the interior.
+Tags: analysis complex_analysis complex_topology
+<!--ID: 1626293841487-->
+END
+\end{anki}
+
+
+\begin{thm}[Condition for Conformality on Open Connected Sets]
+	Let \(f\) be a non-constant holomorphic function on some open connected set \(\Omega \subset \C\), and let \(\gamma \) be a piecewise-smooth closed curve in \(\Omega \) homologous to \(0\).\\
+
+	If \(\gamma \) and \(f\circ \gamma \) have interiors so that
+	\begin{align*}
+		f\circ \gamma \cap f(\textrm{Int}\gamma ) = \emptyset
+	\end{align*}
+	then \(f\) is injective on \(\textrm{Int}(\gamma )\) and hence \(f:\textrm{Int}(\gamma )\to f(\textrm{Int}\gamma )\) is an isomorphism. If in addition \(\textrm{Int}(f\circ \gamma )\) is connected, then
+	\begin{align*}
+		f(\textrm{Int}\gamma ) = \textrm{Int}(f\circ \gamma ).
+	\end{align*}
+\end{thm}
+
+\begin{proof}
+	
+\end{proof}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: Let \(f\) be a non-constant holomorphic function on some open connected set \(\Omega \subset \C\), and let \(\gamma \) be a piecewise-smooth closed curve in \(\Omega \) homologous to \(0\).\\
+
+If \(\gamma \) and \(f\circ \gamma \) have interiors so that
+{{c1::\(\begin{align*}
+        	f\circ \gamma \cap f(\textrm{Int}\gamma ) = \emptyset
+        \end{align*}\)::necessary condition}} 
+then \(f\) is injective on \(\textrm{Int}(\gamma )\) and hence \(f:\textrm{Int}(\gamma )\to f(\textrm{Int}\gamma )\) is an isomorphism. If in addition \(\textrm{Int}(f\circ \gamma )\) is connected, then
+{{c1::\(\begin{align*}
+        	f(\textrm{Int}\gamma ) = \textrm{Int}(f\circ \gamma ).
+        \end{align*}\)::mapping of interior}}
+Tags: analysis complex_analysis conformal_mappings
+<!--ID: 1626293841503-->
+END
+\end{anki}
+
+
+\begin{exmp}
+	
+\end{exmp}
+
+\begin{exmp}%Unbounded example
+	
+\end{exmp}
+
+% \printindex
+\end{document}

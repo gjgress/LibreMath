@@ -1,0 +1,230 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+We have noted previously that a holomorphic function on a domain \(U\subset \Omega \subset \C\) may have a holomorphic extension onto \(\Omega \) which we refer to as its analytic continuation.
+It is not always simple to construct such an extension-- however, if one considers the special case of a set symmetric over the real line, we can find conditions that give us these extensions.
+
+\begin{defn}[Symmetric Set over \(\R\)]
+	We say a set \(\Omega \) is \textbf{symmetric over the real axis} if \(z \in \Omega \iff \overline{z} \in \Omega \). If this holds, we denote by \(\Omega^{+}\subset \Omega \), \(\Omega^{-}\subset \Omega \), and \(\Omega^{\R}\) the subsets given by 
+	\begin{align*}
+		\Omega^{+} &:= \left\{z \in \Omega  \mid \textrm{Im}(z)>0 \right\} \\
+		\Omega^{\R}&:= \left\{z \in \Omega  \mid \textrm{Im}(z)=0 \right\} \\
+		\Omega^{-} &:= \left\{z \in \Omega  \mid \textrm{Im}(z)<0 \right\} 
+	\end{align*}
+	so that
+	\begin{align*}
+		\Omega = \Omega^{+} \sqcup \Omega^{\R} \sqcup \Omega^{-}.
+	\end{align*}
+\end{defn}
+
+\begin{anki}
+TARGET DECK
+Complex Qual::Complex Analysis
+START
+MathJaxCloze
+Text: We say a set \(\Omega \) is \textbf{symmetric over the real axis} if {{c1::\(z \in \Omega \iff \overline{z} \in \Omega \)}}. If this holds, we denote by \(\Omega^{+}\subset \Omega \), \(\Omega^{-}\subset \Omega \), and \(\Omega^{\R}\) the subsets given by 
+{{c1::\(\begin{align*}
+        	\Omega^{+} &:= \left\{z \in \Omega  \mid \textrm{Im}(z)>0 \right\} \\
+        	\Omega^{\R}&:= \left\{z \in \Omega  \mid \textrm{Im}(z)=0 \right\} \\
+        	\Omega^{-} &:= \left\{z \in \Omega  \mid \textrm{Im}(z)<0 \right\} 
+        \end{align*}\)}}
+	so that
+\(\begin{align*}
+	\Omega = \Omega^{+} \sqcup \Omega^{\R} \sqcup \Omega^{-}.
+  \end{align*}\)
+Tags: analysis complex_analysis analytic_continuation defn
+<!--ID: 1626804188322-->
+END
+\end{anki}
+
+Before we discuss holomorphic functions on symmetric sets, we address the more rigid class of harmonic functions.
+
+\begin{thm}[Schwarz Reflection Principle (Harmonic Functions)]
+	Let \(\Omega \subset \C\) be an open symmetric set, and let \(v\) be a continuous real-valued harmonic function on \(\Omega^{+}\cup \Omega^{\R}\) with \(v(\Omega^{\R})=0\).
+	Then \(v\) extends to a harmonic function on \(\Omega \).
+\end{thm}
+We chose to refer to this harmonic function as \(v\) because one can see that we can treat \(v\) as the imaginary part of a holomorphic function, which will give us the Schwarz Reflection Principle for holomorphic functions.
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Schwarz Reflection Principle for Harmonic Functions**
+Let \(\Omega \subset \C\) be an open symmetric set, and let \(v\) be a continuous real-valued harmonic function on {{c1::\(\Omega^{+}\cup \Omega^{\R}\)}} with \(v(\Omega^{\R})=0\). Then \(v\) extends to a harmonic function on \(\Omega \).
+Extra: We chose to refer to this harmonic function as \(v\) because one can see that we can treat \(v\) as the imaginary part of a holomorphic function, which will give us the Schwarz Reflection Principle for holomorphic functions.
+Tags: analysis complex_analysis analytic_continuation
+<!--ID: 1626804188340-->
+END
+\end{anki}
+
+
+\begin{thm}[Schwarz Reflection Principle (Holomorphic Functions)]
+Let \(\Omega \subset \C\) be an open set symmetric on the real axis. Let \(f\) be a complex-valued function on \(\Omega \).
+\begin{enumerate}[(i).]
+	\item If \(f\) is holomorphic on \(\Omega^{+}\cup \Omega^{-}\) and continuous on \(\Omega^{\R}\), then \(f\) is holomorphic on \(\Omega \).
+	\item It follows from (i). that if \(f\) is holomorphic on \(\Omega^{+}\) and continuous on \(\Omega^{\R}\) with \(f(\Omega^{\R}) \subset \R\) (that is, \(f\) is real-valued on \(\Omega^{\R}\)), then \(f\) has a unique analytic continuation \(F\) on \(\Omega \) given by
+		\begin{align*}
+			F(z) = \begin{cases}
+				f(z) & z \in \Omega^{+}\cup \Omega^{\R}\\
+				\overline{f(\overline{z})} & z \in \Omega^{-}
+			\end{cases}.
+		\end{align*}
+\end{enumerate}
+\end{thm}
+There are actually two ways to prove this theorem-- we give both here as it is valuable to understand how to prove it both ways.
+
+\begin{proof}[Schwarz Reflection Principle via Harmonic Functions]
+	
+\end{proof}
+
+\begin{proof}[Schwarz Reflection Principle via Cauchy's Theorem]
+	
+\end{proof}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Schwarz Reflection Principle for Holomorphic Functions**
+Let \(\Omega \subset \C\) be an open set symmetric on the real axis. Let \(f\) be a complex-valued function on \(\Omega \).
+
+* If \(f\) is holomorphic on {{c1::\(\Omega^{+}\cup \Omega^{-}\)}} and continuous on {{c1::\(\Omega^{\R}\)}}, then \(f\) is holomorphic on \(\Omega \).
+* It follows from the above that if \(f\) is holomorphic on {{c1::\(\Omega^{+}\)}} and continuous on {{c1::\(\Omega^{\R}\)}} with {{c1::\(f(\Omega^{\R}) \subset \R\)}} (that is, \(f\) is {{c1::real-valued on \(\Omega^{\R}\)}}), then \(f\) has a unique analytic continuation \(F\) on \(\Omega \) given by
+{{c1::\(\begin{align*}
+        	F(z) = \begin{cases}
+        		f(z) & z \in \Omega^{+}\cup \Omega^{\R}\\
+        		\overline{f(\overline{z})} & z \in \Omega^{-}
+        	\end{cases}.
+        \end{align*}\)}}
+Tags: analysis complex_analysis analytic_continuation
+<!--ID: 1625527512412-->
+END
+\end{anki}
+
+If our holomorphic function is an isomorphism, we can give an interesting statement that will prove to be quite powerful.
+
+\begin{prop}[Schwarz Principle for Isomorphisms]
+	Let \(\Omega \subset \C\) be given and let \(f\) be a holomorphic function on \(\Omega \) with \(f(\Omega^{\R}) \subset \R\).
+	If \(f\) is an isomorphism on \(\Omega^{+}\cup \Omega^{-}\) with
+	\begin{align*}
+		f(\Omega^{+}) &\subset \mathbb{H}\\
+		f(\Omega^{-}) &\subset \overline{\mathbb{H}}
+	\end{align*}
+	then \(f:\Omega \to f(\Omega )\) is an isomorphism.
+\end{prop}
+Of course, the Schwarz Reflection Principle applies on \(\C\) so the isomorphism allows us to apply the principle to our original set \(\Omega \).
+
+\begin{proof}
+	
+\end{proof}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Schwarz Principle for Isomorphisms** 
+Let \(\Omega \subset \C\) be given and let \(f\) be a holomorphic function on \(\Omega \) with \(f(\Omega^{\R}) \subset \R\).
+If \(f\) is an isomorphism on \(\Omega^{+}\cup \Omega^{-}\) with
+{{c1::\(\begin{align*}
+		f(\Omega^{+}) &\subset \mathbb{H}\\
+		f(\Omega^{-}) &\subset \overline{\mathbb{H}}
+	\end{align*}\)}}
+	then \(f:\Omega \to f(\Omega )\) is {{c1::an isomorphism}}.
+Extra: Of course, the Schwarz Reflection Principle applies on \(\C\) so the isomorphism allows us to apply the principle to our original set \(\Omega \).
+Tags: analysis complex_analysis analytic_continuation
+<!--ID: 1626993866883-->
+END
+\end{anki}
+
+
+\subsection{Reflection Over Holomorphic Arcs}
+\label{sub:reflection_over_Holomorphic_arcs}
+
+The real axis gave us a nice condition to impose on our function in order to induce the analytic continuation, but it is not hard to imagine that the idea can be extended to a more general notion of symmetry.
+
+\begin{defn}[Isomorphically Symmetric]
+	We say an open set \(\Omega\subset \C \) is \textbf{isomorphically symmetric over \(\gamma \)} if there exists a disjoint partition of \(\Omega \) into two open sets and a curve:
+	\begin{align*}
+		\Omega = \Omega^{+} \sqcup \gamma \sqcup \Omega^{-}
+	\end{align*}
+	and a holomorphic isomorphism \(\psi:\Omega \to \Omega'\) into a set symmetric over the real axis, satisfying
+	\begin{align*}
+		\psi (\Omega^{+}) &= \Omega'^{+}\\
+		\psi(\gamma ) &= \Omega'^{\R}\\
+		\psi (\Omega^{-}) &= \Omega'^{-}.
+	\end{align*}
+\end{defn}
+
+\begin{anki}
+START
+MathJaxCloze
+Text: We say an open set \(\Omega\subset \C \) is **isomorphically symmetric over \(\gamma \)** if there exists a disjoint partition of \(\Omega \) into two open sets and a curve:
+\(\begin{align*}
+  	\Omega = \Omega^{+} \sqcup \gamma \sqcup \Omega^{-}
+  \end{align*}\)
+and a {{c1::holomorphic isomorphism}} \(\psi:\Omega \to \Omega'\) into a set \(\Omega '\) {{c1::symmetric over the real axis}}, satisfying
+{{c1::\(\begin{align*}
+        	\psi (\Omega^{+}) &= \Omega'^{+}\\
+        	\psi(\gamma ) &= \Omega'^{\R}\\
+        	\psi (\Omega^{-}) &= \Omega'^{-}.
+        \end{align*}\)}} 
+Tags: analysis complex_analysis analytic_continuation defn
+<!--ID: 1626993866909-->
+END
+\end{anki}
+
+The Schwarz Reflection Principle follows directly by composition.
+\begin{thm}[Schwarz Reflection Principle Over Arcs]
+	Let  \(\Omega \subset \C\) be an set isomorphically symmetric over \(\gamma \), and suppose there is a function \(f\) on \(\Omega \). Then
+	\begin{enumerate}[(i).]
+		\item If \(f\) is holomorphic on \(\Omega^{+}\) and \(\Omega^{-}\) and continuous on \(\gamma \), then \(f\) is holomorphic on \(\Omega \).
+		\item If \(f\) is holomorphic on \(\Omega^{+}\) and continuous on \(\gamma \) with \(f(\gamma)\subset \R\), then \(f\) is holomorphic on \(\Omega \).
+	\end{enumerate}
+\end{thm}
+
+This is very natural due to the Riemann Mapping Theorem, but \(\gamma \) can be very poorly behaved, and so it may be difficult for \(f\) to be continuous on \(\gamma \).
+It will help us to define some additional structure on our curve \(\gamma \).
+
+\begin{anki}
+START
+MathJaxCloze
+Text: **Schwarz Reflection Principle Over Arcs**
+Let  \(\Omega \subset \C\) be an set isomorphically symmetric over \(\gamma\subset \Omega \), and suppose there is a function \(f\) on \(\Omega \). Then
+
+* If \(f\) is holomorphic on \(\Omega^{+}\) and \(\Omega^{-}\) and continuous on \(\gamma \), then {{c1::\(f\) is holomorphic on \(\Omega \)}}.
+* If \(f\) is holomorphic on \(\Omega^{+}\) and continuous on \(\gamma \) with \(f(\gamma)\subset \R\), then \(f\) is holomorphic on \(\Omega \).
+Extra: This is very natural due to the Riemann Mapping Theorem, but \(\gamma \) can be very poorly behaved, and so it may be difficult for \(f\) to be continuous on \(\gamma \).
+Tags: analysis complex_analysis analytic_continuation
+<!--ID: 1626993866925-->
+END
+\end{anki}
+
+
+%% All in Lang IX sec 2 "Reflection Across Analytic Arcs"
+
+% Defn for real analytic and proper analytic
+
+% Open neighborhood around [a,b] in C for the curve that is analytic isomorphism
+
+% Analytic continuation across gamma
+
+% Harmonic version
+
+% \printindex
+\end{document}

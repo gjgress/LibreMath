@@ -1,0 +1,41 @@
+\documentclass{memoir}
+\usepackage{notestemplate}
+
+%\logo{~/School-Work/Auxiliary-Files/resources/png/logo.png}
+%\institute{Rice University}
+%\faculty{Faculty of Whatever Sciences}
+%\department{Department of Mathematics}
+%\title{Class Notes}
+%\subtitle{Based on MATH xxx}
+%\author{\textit{Author}\\Gabriel \textsc{Gress}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+%\date{\today}
+
+%\makeindex
+
+\begin{document}
+
+% \maketitle
+
+% Notes taken on 
+
+\subsection{Free Homotopy of Curves}
+\label{sub:free_homotopy_of_curves}
+
+In order to state Cauchy's theorem in complete generality, we need to construct a notion of homotopy for curves.
+
+\begin{defn}[Free Homotopy]
+	A \textbf{free homotopy} of closed curves in \(\Omega \) is a continuous map \(\gamma(\tau,t)\) from \([0,1]\times [t_0,t_1]\) to \(\Omega \) such that
+\begin{align*}
+	\gamma(\tau,t_0) = \gamma(\tau,t_1)
+\end{align*}
+for every \(\tau\in [0,1]\). We can denote \(\gamma_\tau(t) := \gamma(\tau,t)\).\\
+
+We say \(\gamma_0,\gamma_1\) are \textbf{homotopic} if there exists a free homotopy with \(\gamma(0,t) = \gamma_0\) and \(\gamma(1,t) = \gamma_1\).
+\end{defn}
+Of course, if \(\Omega \) is convex, then any two curves are automatically freely homotopic.
+
+
+% \printindex
+\end{document}
