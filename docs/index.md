@@ -11,7 +11,7 @@ LibreMath is a personal education project created and developed by Gabriel Gress
   - Analysis
     - Real Analysis I (under construction)
     - Real Analysis II (under construction)
-    - Complex Analysis (under construction)
+    - [Complex Analysis](resources/ComplexAnalysis.pdf)
     - Measure Theory (under construction)
     - Analysis - Topics
       - Dynamical Systems (under construction)
