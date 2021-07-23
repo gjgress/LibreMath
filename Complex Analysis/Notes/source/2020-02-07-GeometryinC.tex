@@ -59,78 +59,78 @@ END
 
 %%% Might need to relabel things
 
-\begin{thm}[Pythagorem Theorem]
-	In a right triangle, the square of the hypotenuse is equal to the sum of squares of the legs.By plotting the triangle in the complex plane, we can restate it as \(\left| x+yi \right|^2 = x^2+y^2\). Writing \(x+yi\) as the polar form, and writing \(x,y\) as \(r^2\) which is the product of complex conjugates, everything checks out.
-\end{thm}
-\begin{thm}[]
-	The blue triangle in \ref{fig:triangles} is an equilateral triangle.	
-\end{thm}
-
-\begin{figure}[ht]
-    \centering
-     \def\svgwidth{1\linewidth}
-     \input{./figures/triangles.pdf_tex}
-    \caption{Complex Pythagorem Theorem}
-    \label{fig:triangles}
-\end{figure}
-
-Let \(a,b,c\) of the original triangle, and let \(a',b',c'\) be the vertices of the blue triangle. Then our goal is to do the mult. and get the side lengths we expect.
-\begin{thm}
-	Consider a regular \(n\)-gon in the unit circle. From a vertex, draw a line segment to the other vertices. The product of the lengths of these \(n-1\) line segments is \(n\).
-\end{thm}
-\begin{proof}
-WLOG, the vertices are the \(n\)-th roots of unity: \(w^{k}\) (\(k = 0,\ldots,n-1\) ) where \(w = e^{2\pi \frac{i}{n}}\). Also WLOG, the vertex we start with is \(1\). Then we want to show that \(\prod_{k=1}^{n-1} |1-w^{k}| = n \). Equivalently, \(\left| \prod_{k=1}^{n-1} (1-w^{k})  \right| = n\). Now we evaluate the product inside. To do this, we substitute in \(z\) for \(1\), so we calculate \(\prod_{n=1}^{n-1} (z-w^{k}) \). We then think of the inside as a polynomial. It has roots for \(w^{k}\), except for \(1\), so we multiply by \((z-1)\), and now it has roots for \(w^{k}\) including 0. So this is really \(z^{n}-1\). So our original product is simply \(\frac{z^{n}-1}{z-1} = 1 + z + z^2 + \ldots + z^{n-1}\). Plugging in \(1\), you get \(n\). We are done.
-\end{proof}
-
-\begin{thm}
-	Let \(A_1,\ldots,A_n\) be a regular \(n\)-gon in the unit circle. Let \(p\) be an arbitrary point on the unit circle. Then the maximum of \(pA_1 \cdot \ldots \cdot pA_n\) equals \(2\) (where p varies).
-\end{thm}
-
-\begin{proof}
-Think of \(A_1,\ldots,A_n\) as complex numbers \(a_1,\ldots,a_n\). WLOG, these \(n\) numbers are the \(n \)-th roots of \(-1\), or \(w^{\frac{2k-1}{n}\pi i}\). Relabeling \(p\) as \(z\), we want to show
-\begin{align*}
-	\textrm{max}_{|z|=1}\prod_{k=1}^{n} |z-a_k| = 2 
-\end{align*}
-Equivalently,
-\begin{align*}
-	\textrm{max}_{|z|=1}\left| \prod_{k=1}^{n} (z-a_k)  \right| = 2
-\end{align*}because the \(a_k's\) are roots of the RHS.
-So the statement reduces to
-\begin{align*}
-	\textrm{max}_{|z|=1} |z^{n}+1| = 2
-\end{align*}
-By the triangle inequality, it is clear that this statement holds. Indeed, for any \(z\) with \(|z| = 1\), \(|z^{n}+1| \leq |z^{n}| + 1 = |z|^{n}+1 = 2\). 
-\end{proof}
-
-
-\begin{thm}
-	Let \(A_1,\ldots,A_n\) be a non-regular \(n\)-gon in the unit circle. Then
-	\begin{align*}
-		\textrm{max}_{p \text{ on the unit circle}} pA_1 \cdot \ldots\cdot pA_n > 2
-	\end{align*}
-\end{thm}
-
-\begin{proof}
-We shall think of the vertices as complex numbers \(a_1,\ldots,a_n\). and \(p\) as a complex number. We want to show that
-\begin{align*}
-	\textrm{max}_{|z|=1} \left| \prod_{k=1}^{n} (z-a_k)  \right| > 2
-\end{align*}
-Look at the constant term of the polynomial inside: \((-a_1)(-a_2)\ldots(-a_n) = (-1)^{n}a_1\ldots a_n\). Rotating all the \(a_k's\) by the same angle does not change the maximum. In other words, for a given \(u \in \C\) on the unit circle, we can replace each \(a_k\) by \(ua_k\), without changing the maximum in question. This changes the constant term to \(u^{n}(-1)^{n}a_1\ldots a_n\). Now we will pick \(u\) so the constant term is \(1\). WLOG, this results in
- \begin{align*}
-	 \prod_{k=1}^{n} (z-a_k) = z^{n} + c_{n-1}z^{n-1} + \ldots + c_1 z + 1 
-\end{align*}
-We will call the terms in the middle (not \(z^n\) and not 1) \(p(z)\). Then we want to show that
-\begin{align*}
-	\textrm{max}_{|z| = 1} |z^{n}+1+p(z)| > 2
-\end{align*}
-Plugging in \(n\)-th roots of unity, we simply need to show that \(p(w^{k})\) can be positive. One of the roots must be non-zero, as it is of smaller degree and cannot be identically zero (would be a regular \(n\)-gon). Moreover, the sum of all the \(p(w^{k})\) must be zero. We will show this, which will then show that there is a \(k\) such that \(p(w^{k})\) has a positive real part. Now let's prove that statement. Recall that
-\begin{align*}
-	p(z) = \sum_{m=1}^{n-1} c_m z^{m}
-\end{align*}
-So
-\begin{align*}
-	\sum_{k=0}^{n-1} p(w^{k}) = \sum_{k=0}^{n-1} \sum_{m=1}^{n-1} c_m w^{km} = \sum_{m=1}^{n-1} c)_m \sum_{k=0}^{n-1} w^{km} = \sum_{m=1}^{n-1} \frac{w^{nm}-1}{w^{m}-1} = \sum_{m=1}^{n-1} c_m * 0 = 0
-\end{align*}
-\end{proof}
+%\begin{thm}[Pythagorem Theorem]
+%	In a right triangle, the square of the hypotenuse is equal to the sum of squares of the legs.By plotting the triangle in the complex plane, we can restate it as \(\left| x+yi \right|^2 = x^2+y^2\). Writing \(x+yi\) as the polar form, and writing \(x,y\) as \(r^2\) which is the product of complex conjugates, everything checks out.
+%\end{thm}
+%\begin{thm}[]
+%	The blue triangle in \ref{fig:triangles} is an equilateral triangle.	
+%\end{thm}
+%
+%\begin{figure}[ht]
+%    \centering
+%     \def\svgwidth{1\linewidth}
+%     \input{./figures/triangles.pdf_tex}
+%    \caption{Complex Pythagorem Theorem}
+%    \label{fig:triangles}
+%\end{figure}
+%
+%Let \(a,b,c\) of the original triangle, and let \(a',b',c'\) be the vertices of the blue triangle. Then our goal is to do the mult. and get the side lengths we expect.
+%\begin{thm}
+%	Consider a regular \(n\)-gon in the unit circle. From a vertex, draw a line segment to the other vertices. The product of the lengths of these \(n-1\) line segments is \(n\).
+%\end{thm}
+%\begin{proof}
+%WLOG, the vertices are the \(n\)-th roots of unity: \(w^{k}\) (\(k = 0,\ldots,n-1\) ) where \(w = e^{2\pi \frac{i}{n}}\). Also WLOG, the vertex we start with is \(1\). Then we want to show that \(\prod_{k=1}^{n-1} |1-w^{k}| = n \). Equivalently, \(\left| \prod_{k=1}^{n-1} (1-w^{k})  \right| = n\). Now we evaluate the product inside. To do this, we substitute in \(z\) for \(1\), so we calculate \(\prod_{n=1}^{n-1} (z-w^{k}) \). We then think of the inside as a polynomial. It has roots for \(w^{k}\), except for \(1\), so we multiply by \((z-1)\), and now it has roots for \(w^{k}\) including 0. So this is really \(z^{n}-1\). So our original product is simply \(\frac{z^{n}-1}{z-1} = 1 + z + z^2 + \ldots + z^{n-1}\). Plugging in \(1\), you get \(n\). We are done.
+%\end{proof}
+%
+%\begin{thm}
+%	Let \(A_1,\ldots,A_n\) be a regular \(n\)-gon in the unit circle. Let \(p\) be an arbitrary point on the unit circle. Then the maximum of \(pA_1 \cdot \ldots \cdot pA_n\) equals \(2\) (where p varies).
+%\end{thm}
+%
+%\begin{proof}
+%Think of \(A_1,\ldots,A_n\) as complex numbers \(a_1,\ldots,a_n\). WLOG, these \(n\) numbers are the \(n \)-th roots of \(-1\), or \(w^{\frac{2k-1}{n}\pi i}\). Relabeling \(p\) as \(z\), we want to show
+%\begin{align*}
+%	\textrm{max}_{|z|=1}\prod_{k=1}^{n} |z-a_k| = 2 
+%\end{align*}
+%Equivalently,
+%\begin{align*}
+%	\textrm{max}_{|z|=1}\left| \prod_{k=1}^{n} (z-a_k)  \right| = 2
+%\end{align*}because the \(a_k's\) are roots of the RHS.
+%So the statement reduces to
+%\begin{align*}
+%	\textrm{max}_{|z|=1} |z^{n}+1| = 2
+%\end{align*}
+%By the triangle inequality, it is clear that this statement holds. Indeed, for any \(z\) with \(|z| = 1\), \(|z^{n}+1| \leq |z^{n}| + 1 = |z|^{n}+1 = 2\). 
+%\end{proof}
+%
+%
+%\begin{thm}
+%	Let \(A_1,\ldots,A_n\) be a non-regular \(n\)-gon in the unit circle. Then
+%	\begin{align*}
+%		\textrm{max}_{p \text{ on the unit circle}} pA_1 \cdot \ldots\cdot pA_n > 2
+%	\end{align*}
+%\end{thm}
+%
+%\begin{proof}
+%We shall think of the vertices as complex numbers \(a_1,\ldots,a_n\). and \(p\) as a complex number. We want to show that
+%\begin{align*}
+%	\textrm{max}_{|z|=1} \left| \prod_{k=1}^{n} (z-a_k)  \right| > 2
+%\end{align*}
+%Look at the constant term of the polynomial inside: \((-a_1)(-a_2)\ldots(-a_n) = (-1)^{n}a_1\ldots a_n\). Rotating all the \(a_k's\) by the same angle does not change the maximum. In other words, for a given \(u \in \C\) on the unit circle, we can replace each \(a_k\) by \(ua_k\), without changing the maximum in question. This changes the constant term to \(u^{n}(-1)^{n}a_1\ldots a_n\). Now we will pick \(u\) so the constant term is \(1\). WLOG, this results in
+% \begin{align*}
+%	 \prod_{k=1}^{n} (z-a_k) = z^{n} + c_{n-1}z^{n-1} + \ldots + c_1 z + 1 
+%\end{align*}
+%We will call the terms in the middle (not \(z^n\) and not 1) \(p(z)\). Then we want to show that
+%\begin{align*}
+%	\textrm{max}_{|z| = 1} |z^{n}+1+p(z)| > 2
+%\end{align*}
+%Plugging in \(n\)-th roots of unity, we simply need to show that \(p(w^{k})\) can be positive. One of the roots must be non-zero, as it is of smaller degree and cannot be identically zero (would be a regular \(n\)-gon). Moreover, the sum of all the \(p(w^{k})\) must be zero. We will show this, which will then show that there is a \(k\) such that \(p(w^{k})\) has a positive real part. Now let's prove that statement. Recall that
+%\begin{align*}
+%	p(z) = \sum_{m=1}^{n-1} c_m z^{m}
+%\end{align*}
+%So
+%\begin{align*}
+%	\sum_{k=0}^{n-1} p(w^{k}) = \sum_{k=0}^{n-1} \sum_{m=1}^{n-1} c_m w^{km} = \sum_{m=1}^{n-1} c)_m \sum_{k=0}^{n-1} w^{km} = \sum_{m=1}^{n-1} \frac{w^{nm}-1}{w^{m}-1} = \sum_{m=1}^{n-1} c_m * 0 = 0
+%\end{align*}
+%\end{proof}
 
 \end{document}
