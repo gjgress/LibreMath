@@ -48,6 +48,10 @@ LibreMath is a personal education project created and developed by Gabriel Gress
     - Differential Geometry (under construction)
 - Philosophy (under construction)
 
+## Syllabi
+
+- [Introduction to Functional Analysis](resources/FunctionalAnalysisSyllabus.pdf)
+
 ## Anki Decks
 
 **Under Construction**

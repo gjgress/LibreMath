@@ -1,0 +1,9 @@
+[0] Config.pm:311> INFO - This is Biber 2.16
+[0] Config.pm:314> INFO - Logfile is '/home/gjgress/LibreMath/docs/resources/FunctionalAnalysisSyllabus.blg'
+[97] biber:340> INFO - === Wed Oct 27, 2021, 23:47:46
+[117] Biber.pm:415> INFO - Reading '/home/gjgress/LibreMath/docs/resources/FunctionalAnalysisSyllabus.bcf'
+[287] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
+[296] Utils.pm:395> WARN - The file '/home/gjgress/LibreMath/docs/resources/FunctionalAnalysisSyllabus.bcf' does not contain any citations!
+[306] bbl.pm:654> INFO - Writing '/home/gjgress/LibreMath/docs/resources/FunctionalAnalysisSyllabus.bbl' with encoding 'UTF-8'
+[307] bbl.pm:757> INFO - Output to /home/gjgress/LibreMath/docs/resources/FunctionalAnalysisSyllabus.bbl
+[307] Biber.pm:128> INFO - WARNINGS: 1
