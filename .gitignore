@@ -10,5 +10,9 @@
 *.synctex.gz
 *.ind
 *.idx
+*.bbl
+*.bcf
+*.blg
+*.run.xml
 
 !.gitignore
