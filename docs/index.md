@@ -11,31 +11,31 @@ LibreMath is a personal education project created and developed by Gabriel Gress
   - Analysis
     - Real Analysis I (under construction)
     - Real Analysis II (under construction)
-    - [Complex Analysis](resources/ComplexAnalysis.pdf)
+    - [Complex Analysis](resources/ComplexAnalysis.html)
     - Measure Theory (under construction)
     - Analysis - Topics
       - Dynamical Systems (under construction)
       - Functional Analysis (under construction)
       - Harmonic Analysis (under construction)
-      - [Geometric Measure Theory](resources/GMT.pdf)
+      - [Geometric Measure Theory](resources/GMT.html)
       - Topological Groups (under construction)
   - Algebra
-    - [Linear Algebra](resources/LinearAlgebra.pdf)
+    - [Linear Algebra](resources/LinearAlgebra.html)
     - Introductory Algebra
-      - [Abstract Algebra I](resources/AlgebraI.pdf)
-      - [Abstract Algebra II](resources/AlgebraII.pdf)
+      - [Abstract Algebra I](resources/AlgebraI.html)
+      - [Abstract Algebra II](resources/AlgebraII.html)
     - Advanced Algebra
-      - [Group Theory](resources/GroupTheory.pdf)
-      - [Ring Theory](resources/RingTheory.pdf)
-      - [Module Theory](resources/ModuleTheory.pdf)
-      - [Field Theory](resources/FieldTheory.pdf)
+      - [Group Theory](resources/GroupTheory.html)
+      - [Ring Theory](resources/RingTheory.html)
+      - [Module Theory](resources/ModuleTheory.html)
+      - [Field Theory](resources/FieldTheory.html)
     - Lie Theory (under construction)
   - Differential Equations
     - Ordinary Differential Equations (under construction)
     - Partial Differential Equations I (under construction)
     - Partial Differential Equations - Topics
       - Fluid Flow Equations (under construction)
-      - [Calculus of Variations](resources/CoV.pdf)
+      - [Calculus of Variations](resources/CoV.html)
   - Probability
     - Probability Theory I (under construction)
     - Topics in Probability
@@ -50,7 +50,7 @@ LibreMath is a personal education project created and developed by Gabriel Gress
 
 ## Syllabi
 
-- [Introduction to Functional Analysis](resources/FunctionalAnalysisSyllabus.pdf)
+- [Introduction to Functional Analysis](resources/FunctionalAnalysisSyllabus.html)
 
 ## Anki Decks
 
