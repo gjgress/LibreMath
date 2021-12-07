@@ -1,5 +1,10 @@
 ---
-layout: default
+layout: home
+title: "LibreMath"
+date: 2021-12-07
+author: gjgress
+#category: 
+#tags: 
 ---
 
 LibreMath is a personal education project created and developed by Gabriel Gress. Its aim is to be a continuously growing free open-source educational resource for students wanting to learn mathematics and other subjects.
@@ -11,31 +16,31 @@ LibreMath is a personal education project created and developed by Gabriel Gress
   - Analysis
     - Real Analysis I (under construction)
     - Real Analysis II (under construction)
-    - [Complex Analysis](resources/ComplexAnalysis.html)
+    - [Complex Analysis](resources/ComplexAnalysis.md)
     - Measure Theory (under construction)
     - Analysis - Topics
       - Dynamical Systems (under construction)
       - Functional Analysis (under construction)
       - Harmonic Analysis (under construction)
-      - [Geometric Measure Theory](resources/GMT.html)
+      - [Geometric Measure Theory](resources/GMT.md)
       - Topological Groups (under construction)
   - Algebra
-    - [Linear Algebra](resources/LinearAlgebra.html)
+    - [Linear Algebra](resources/LinearAlgebra.md)
     - Introductory Algebra
-      - [Abstract Algebra I](resources/AlgebraI.html)
-      - [Abstract Algebra II](resources/AlgebraII.html)
+      - [Abstract Algebra I](resources/AlgebraI.md)
+      - [Abstract Algebra II](resources/AlgebraII.md)
     - Advanced Algebra
-      - [Group Theory](resources/GroupTheory.html)
-      - [Ring Theory](resources/RingTheory.html)
-      - [Module Theory](resources/ModuleTheory.html)
-      - [Field Theory](resources/FieldTheory.html)
+      - [Group Theory](resources/GroupTheory.md)
+      - [Ring Theory](resources/RingTheory.md)
+      - [Module Theory](resources/ModuleTheory.md)
+      - [Field Theory](resources/FieldTheory.md)
     - Lie Theory (under construction)
   - Differential Equations
     - Ordinary Differential Equations (under construction)
     - Partial Differential Equations I (under construction)
     - Partial Differential Equations - Topics
       - Fluid Flow Equations (under construction)
-      - [Calculus of Variations](resources/CoV.html)
+      - [Calculus of Variations](resources/CoV.md)
   - Probability
     - Probability Theory I (under construction)
     - Topics in Probability
@@ -50,7 +55,7 @@ LibreMath is a personal education project created and developed by Gabriel Gress
 
 ## Syllabi
 
-- [Introduction to Functional Analysis](resources/FunctionalAnalysisSyllabus.html)
+- [Introduction to Functional Analysis](resources/FunctionalAnalysisSyllabus.md)
 
 ## Anki Decks
 
