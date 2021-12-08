@@ -106,11 +106,10 @@ Here we generate all the categories.
 {% comment%}
 Now for the dynamic generation of the nav bar.
 {% endcomment%}
-
  <div class="navbar">
     <div class="dropdown">
 	    <button class="dropbtn">
-		    <a href='/'>{% if page.url == '/' %}<b>Home</b>
+		    <a href="{{site.baseurl}}/">{% if page.url == '/' %}<b>Home</b>
 			    {% else %}Home
 			    {% endif %}</a>
 		    <i></i>
@@ -119,7 +118,7 @@ Now for the dynamic generation of the nav bar.
 {% for category in cats %}
     <div class="dropdown">
 	    <button class="dropbtn">
-		    <a href="/{{category}}/">
+		    <a href="{{site.baseurl}}/{{category}}/">
 			    {% assign catname = category | truncatewords:1,"" %} 
 			    {% comment %} Because of the ugly way in which I got the page.url to recognize the category, it isn't robust; if two categories share the same first word, it will fail. But you can fix that when it comes up. {% endcomment %}
 			    {% if page.url contains catname%}<b>{{ category }}</b>
@@ -131,8 +130,8 @@ Now for the dynamic generation of the nav bar.
 		    
     {% for pages in site.pages %}
     	{% if pages.category contains category %}
-	    <a href="{{ pages.url }}">
-		    	{% if page.url == pages.url%}<b>{{ pages.title }}</b>
+	<a href="{{site.baseurl}}{{ pages.url }}">
+		    	{% if page.url contains pages.url%}<b>{{ pages.title }}</b>
 			{% else %} {{ pages.title }}
 			{% endif %}
         		</a>

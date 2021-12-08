@@ -7,7 +7,7 @@ layout: post
 <div id="pdf"></div>
 
 <script>
-	var pageurl = "/web/viewer.html?file=" + "{{ page.url }}";
+	var pageurl = "{{site.baseurl}}" + "/web/viewer.html?file=" + "{{site.baseurl}}" +"{{ page.url }}";
 	pageurl = pageurl.substring(0,pageurl.length-1);
 	pageurl = pageurl + ".pdf#view=fit"
 	document.getElementById("pdf").innerHTML = '<iframe id="pdf-js-viewer" src=' + pageurl + ' style="width: 100%;border: none" height="1000vh"></iframe>';
