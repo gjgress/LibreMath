@@ -12,7 +12,7 @@ collections:
   posts:
     output          : true
 theme : minima
-  #title: LibreMath
+title: # Add LibreMath when ready
   #subtitle: 
   #author: Gabriel Gress
   #logo: logo.png
