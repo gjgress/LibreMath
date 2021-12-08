@@ -15,39 +15,665 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="LibreMath" />
 <script type="application/ld+json">
-{"headline":"LibreMath","dateModified":"2021-12-07T00:00:00-07:00","datePublished":"2021-12-07T00:00:00-07:00","url":"http://localhost:4000/","author":{"@type":"Person","name":"Gabriel Gress"},"@type":"WebSite","@context":"https://schema.org"}</script>
+{"datePublished":"2021-12-07T00:00:00-07:00","headline":"LibreMath","url":"http://localhost:4000/","author":{"@type":"Person","name":"Gabriel Gress"},"@type":"WebSite","dateModified":"2021-12-07T00:00:00-07:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" /></head>
-<body><header class="site-header" role="banner">
+<body><div>
+    <header class="site-header" style="background-image: url('/assets/img/');">
+        <div class="banner">
+            <div class="img-container">
+                
+            </div>
+                
+            </h1>
+                
+        </div>
+	<!-- Old nav bar
+        <div class="wrapper"><nav class="site-nav">
+                    <input class="nav-trigger" id="nav-trigger" type="checkbox"/>
+                    <label for="nav-trigger">
+                        <span class="menu-icon">
+                            <svg height="15px" viewbox="0 0 18 15" width="18px">
+                                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+                            </svg>
+                        </span>
+                    </label>
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/"></a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-        <label for="nav-trigger">
-          <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
-            </svg>
-          </span>
-        </label>
+                    <div class="trigger">
+                        <a class="page-current" href="/"  aria-disabled="true" ></a><a class="page-link" href="/Course%20Notes/AlgebraI/" >Algebra I</a><a class="page-link" href="/Course%20Notes/AlgebraII/" >Algebra II</a><a class="page-link" href="/Anki%20Decks/" >Anki Decks</a><a class="page-link" href="/Lecture%20Notes/CoV/" >Calculus of Variations</a><a class="page-link" href="/Course%20Notes/ComplexAnalysis/" >Complex Analysis</a><a class="page-link" href="/Course%20Notes/" >Course Notes</a><a class="page-link" href="/Course%20Notes/FieldTheory/" >Field Theory</a><a class="page-link" href="/Syllabi/FunctionalAnalysisSyllabus/" >Functional Analysis Syllabus</a><a class="page-link" href="/Course%20Notes/GMT/" >Geometric Measure Theory</a><a class="page-link" href="/Course%20Notes/GroupTheory/" >Group Theory</a><a class="page-link" href="/Research/KakeyaFiniteFields/" >Kakeya Sets in Finite Fields</a><a class="page-link" href="/Course%20Notes/LinearAlgebra/" >Linear Algebra</a><a class="page-link" href="/Course%20Notes/ModuleTheory/" >Module Theory</a><a class="page-link" href="/Research/" >Research</a><a class="page-link" href="/Course%20Notes/RingTheory/" >Ring Theory</a><a class="page-link" href="/categories/" >Categories</a><a class="page-current" href="/"  aria-disabled="true" >LibreMath</a><a class="page-link" href="/tag/" >Tags</a></div>
+                </nav></div>
+	-->
 
-        <div class="trigger"><a class="page-link" href="/">LibreMath</a></div>
-      </nav></div>
+
+
+<style>
+ /* Navbar container */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div class="navbar">
+    <div class="dropdown">
+	    <button class="dropbtn">
+		    <a href='/'><b>Home</b>
+			    </a>
+		    <i></i>
+	    </button>
+    </div>
+
+    <div class="dropdown">
+	    <button class="dropbtn">
+		    <a href="/Course Notes/">
+			     
+			    
+			     Course Notes
+			    </a> 
+		    <i></i>
+	    </button>
+	    <div class="dropdown-content">
+		    
+    
+    	
+	    <a href="/Course%20Notes/AlgebraI/">
+		    	 Algebra I
+			
+        		</a>
+	
+	
+    	
+	    <a href="/Course%20Notes/AlgebraII/">
+		    	 Algebra II
+			
+        		</a>
+	
+	
+    	
+	
+    	
+	
+    	
+	    <a href="/Course%20Notes/ComplexAnalysis/">
+		    	 Complex Analysis
+			
+        		</a>
+	
+	
+    	
+	
+    	
+	    <a href="/Course%20Notes/FieldTheory/">
+		    	 Field Theory
+			
+        		</a>
+	
+	
+    	
+	
+    	
+	    <a href="/Course%20Notes/GMT/">
+		    	 Geometric Measure Theory
+			
+        		</a>
+	
+	
+    	
+	    <a href="/Course%20Notes/GroupTheory/">
+		    	 Group Theory
+			
+        		</a>
+	
+	
+    	
+	
+    	
+	    <a href="/Course%20Notes/LinearAlgebra/">
+		    	 Linear Algebra
+			
+        		</a>
+	
+	
+    	
+	    <a href="/Course%20Notes/ModuleTheory/">
+		    	 Module Theory
+			
+        		</a>
+	
+	
+    	
+	
+    	
+	    <a href="/Course%20Notes/RingTheory/">
+		    	 Ring Theory
+			
+        		</a>
+	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    </div>
+  </div>
+
+    <div class="dropdown">
+	    <button class="dropbtn">
+		    <a href="/Lecture Notes/">
+			     
+			    
+			     Lecture Notes
+			    </a> 
+		    <i></i>
+	    </button>
+	    <div class="dropdown-content">
+		    
+    
+    	
+	
+    	
+	
+    	
+	
+    	
+	    <a href="/Lecture%20Notes/CoV/">
+		    	 Calculus of Variations
+			
+        		</a>
+	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    </div>
+  </div>
+
+    <div class="dropdown">
+	    <button class="dropbtn">
+		    <a href="/Research/">
+			     
+			    
+			     Research
+			    </a> 
+		    <i></i>
+	    </button>
+	    <div class="dropdown-content">
+		    
+    
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	    <a href="/Research/KakeyaFiniteFields/">
+		    	 Kakeya Sets in Finite Fields
+			
+        		</a>
+	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    </div>
+  </div>
+
+    <div class="dropdown">
+	    <button class="dropbtn">
+		    <a href="/Syllabi/">
+			     
+			    
+			     Syllabi
+			    </a> 
+		    <i></i>
+	    </button>
+	    <div class="dropdown-content">
+		    
+    
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	    <a href="/Syllabi/FunctionalAnalysisSyllabus/">
+		    	 Functional Analysis Syllabus
+			
+        		</a>
+	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    	
+	
+    </div>
+  </div>
+
+</div> 
+
 </header>
+</div>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <html>
-<div class="home">
+        <div class="home">
 <!-- Look the author details up from the site config. -->
   <center><h1 class="page-heading">LibreMath</h1><span>
 <!-- Output author details if some exist. -->
           <!-- Personal Info. -->
           Developed by <a href="">Gabriel Gress</a>
-	    </span></center><hr>
-  <p>LibreMath is a personal education project created and developed by Gabriel Gress. Its aim is to be a continuously growing free open-source educational resource for students wanting to learn mathematics and other subjects.</p>
+	    </span></center><hr><br>
+  <p>LibreMath is a mathematics education project. Its aim is to be a continuously growing free open-source educational resource for students wanting to learn mathematics and other subjects.</p>
 
-<h1 id="resources">Resources</h1>
+<h1 id="current-resources">Current Resources</h1>
 
-<h2 id="lecture-notes">Lecture Notes</h2>
+<div id="archives">
+
+  <div class="archive-group">
+    <div id="#Course Notes"></div>
+    <center><h2 class="category-head">Course Notes</h2></center>
+    
+    	
+    <article class="archive-item">
+      <h4><a href="/Course%20Notes/AlgebraI/">Algebra I</a></h4>
+    </article>
+    	
+    
+    	
+    <article class="archive-item">
+      <h4><a href="/Course%20Notes/AlgebraII/">Algebra II</a></h4>
+    </article>
+    	
+    
+    	
+    
+    	
+    
+    	
+    <article class="archive-item">
+      <h4><a href="/Course%20Notes/ComplexAnalysis/">Complex Analysis</a></h4>
+    </article>
+    	
+    
+    	
+    
+    	
+    <article class="archive-item">
+      <h4><a href="/Course%20Notes/FieldTheory/">Field Theory</a></h4>
+    </article>
+    	
+    
+    	
+    
+    	
+    <article class="archive-item">
+      <h4><a href="/Course%20Notes/GMT/">Geometric Measure Theory</a></h4>
+    </article>
+    	
+    
+    	
+    <article class="archive-item">
+      <h4><a href="/Course%20Notes/GroupTheory/">Group Theory</a></h4>
+    </article>
+    	
+    
+    	
+    
+    	
+    <article class="archive-item">
+      <h4><a href="/Course%20Notes/LinearAlgebra/">Linear Algebra</a></h4>
+    </article>
+    	
+    
+    	
+    <article class="archive-item">
+      <h4><a href="/Course%20Notes/ModuleTheory/">Module Theory</a></h4>
+    </article>
+    	
+    
+    	
+    
+    	
+    <article class="archive-item">
+      <h4><a href="/Course%20Notes/RingTheory/">Ring Theory</a></h4>
+    </article>
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+  </div>
+
+  <div class="archive-group">
+    <div id="#Lecture Notes"></div>
+    <center><h2 class="category-head">Lecture Notes</h2></center>
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    <article class="archive-item">
+      <h4><a href="/Lecture%20Notes/CoV/">Calculus of Variations</a></h4>
+    </article>
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+  </div>
+
+  <div class="archive-group">
+    <div id="#Research"></div>
+    <center><h2 class="category-head">Research</h2></center>
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    <article class="archive-item">
+      <h4><a href="/Research/KakeyaFiniteFields/">Kakeya Sets in Finite Fields</a></h4>
+    </article>
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+  </div>
+
+  <div class="archive-group">
+    <div id="#Syllabi"></div>
+    <center><h2 class="category-head">Syllabi</h2></center>
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    <article class="archive-item">
+      <h4><a href="/Syllabi/FunctionalAnalysisSyllabus/">Functional Analysis Syllabus</a></h4>
+    </article>
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+    	
+    
+  </div>
+
+</div>
+
+<h1 id="goal">Goal</h1>
 <ul>
   <li>Mathematics
     <ul>
@@ -55,14 +681,14 @@
         <ul>
           <li>Real Analysis I (under construction)</li>
           <li>Real Analysis II (under construction)</li>
-          <li><a href="resources/ComplexAnalysis.md">Complex Analysis</a></li>
+          <li><a href="/Course%20Notes/ComplexAnalysis/">Complex Analysis</a></li>
           <li>Measure Theory (under construction)</li>
           <li>Analysis - Topics
             <ul>
               <li>Dynamical Systems (under construction)</li>
               <li>Functional Analysis (under construction)</li>
               <li>Harmonic Analysis (under construction)</li>
-              <li><a href="resources/GMT.md">Geometric Measure Theory</a></li>
+              <li><a href="/Course%20Notes/GMT/">Geometric Measure Theory</a></li>
               <li>Topological Groups (under construction)</li>
             </ul>
           </li>
@@ -70,19 +696,19 @@
       </li>
       <li>Algebra
         <ul>
-          <li><a href="resources/LinearAlgebra.md">Linear Algebra</a></li>
+          <li><a href="/Course%20Notes/LinearAlgebra/">Linear Algebra</a></li>
           <li>Introductory Algebra
             <ul>
-              <li><a href="resources/AlgebraI.md">Abstract Algebra I</a></li>
-              <li><a href="resources/AlgebraII.md">Abstract Algebra II</a></li>
+              <li><a href="/Course%20Notes/AlgebraI/">Abstract Algebra I</a></li>
+              <li><a href="/Course%20Notes/AlgebraII/">Abstract Algebra II</a></li>
             </ul>
           </li>
           <li>Advanced Algebra
             <ul>
-              <li><a href="resources/GroupTheory.md">Group Theory</a></li>
-              <li><a href="resources/RingTheory.md">Ring Theory</a></li>
-              <li><a href="resources/ModuleTheory.md">Module Theory</a></li>
-              <li><a href="resources/FieldTheory.md">Field Theory</a></li>
+              <li><a href="/Course%20Notes/GroupTheory/">Group Theory</a></li>
+              <li><a href="/Course%20Notes/RingTheory/">Ring Theory</a></li>
+              <li><a href="/Course%20Notes/ModuleTheory/">Module Theory</a></li>
+              <li><a href="/Course%20Notes/FieldTheory/">Field Theory</a></li>
             </ul>
           </li>
           <li>Lie Theory (under construction)</li>
@@ -95,7 +721,7 @@
           <li>Partial Differential Equations - Topics
             <ul>
               <li>Fluid Flow Equations (under construction)</li>
-              <li><a href="resources/CoV.md">Calculus of Variations</a></li>
+              <li><a href="/Lecture%20Notes/CoV/">Calculus of Variations</a></li>
             </ul>
           </li>
         </ul>
@@ -124,17 +750,11 @@
   <li>Philosophy (under construction)</li>
 </ul>
 
-<h2 id="syllabi">Syllabi</h2>
-
-<ul>
-  <li><a href="resources/FunctionalAnalysisSyllabus.md">Introduction to Functional Analysis</a></li>
-</ul>
-
 <h2 id="anki-decks">Anki Decks</h2>
 
 <p><strong>Under Construction</strong></p>
 
-<h2 id="source-files">Source Files</h2>
+<h1 id="source-files">Source Files</h1>
 
 <p>The source repository for these resources can be found <a href="https://github.com/gjgress/LibreMath">here</a>.</p>
 
@@ -154,23 +774,32 @@
 
   <div class="wrapper">
 
-    <h2 class="footer-heading"></h2>
-
     <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li class="p-name"></li></ul>
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
       </div>
-
-      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
-</div>
-
-      <div class="footer-col footer-col-3">
+      <div class="footer-col">
         <p></p>
+      </div>
+      <div class="footer-col">
+        <a href="/categories/">Categories</a>
+      </div>
+      <div class="footer-col">
+        <a href="/tag/">Tags</a>
       </div>
     </div>
 
+    <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+
   </div>
+
 
 </footer>
 </body>

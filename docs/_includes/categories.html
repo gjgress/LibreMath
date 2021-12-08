@@ -1,0 +1,43 @@
+{% comment%}
+Here we generate all the categories.
+{% endcomment%}
+
+{% assign rawcats = "" %}
+{% for pages in site.pages %}
+{% assign tcats = pages.category | join:'|' | append:'|' %}
+{% assign rawcats = rawcats | append:tcats %}
+{% endfor %}
+
+{% assign rawcats = rawcats | split:'|' | sort %}
+
+{% assign cats = "" %}
+
+{% for cat in rawcats %}
+{% if cat != "" %}
+
+{% if cats == "" %}
+{% assign cats = cat | split:'|' %}
+{% endif %}
+
+{% unless cats contains cat %}
+{% assign cats = cats | join:'|' | append:'|' | append:cat | split:'|' %}
+{% endunless %}
+{% endif %}
+{% endfor %}
+
+
+<div id="archives">
+{% for category in cats %}
+  <div class="archive-group">
+    <div id="#{{ category | slugize }}"></div>
+    <center><h2 class="category-head">{{ category }}</h2></center>
+    {% for pages in site.pages %}
+    	{% if pages.category contains category %}
+    <article class="archive-item">
+      <h4><a href="{{ site.baseurl }}{{ pages.url }}">{{pages.title}}</a></h4>
+    </article>
+    	{% endif %}
+    {% endfor %}
+  </div>
+{% endfor %}
+</div>

@@ -7,40 +7,42 @@ author: gjgress
 #tags: 
 ---
 
-LibreMath is a personal education project created and developed by Gabriel Gress. Its aim is to be a continuously growing free open-source educational resource for students wanting to learn mathematics and other subjects.
+LibreMath is a mathematics education project. Its aim is to be a continuously growing free open-source educational resource for students wanting to learn mathematics and other subjects.
 
-# Resources
+# Current Resources
 
-## Lecture Notes
+{% include categories.html %}
+
+# Goal
 - Mathematics
   - Analysis
     - Real Analysis I (under construction)
     - Real Analysis II (under construction)
-    - [Complex Analysis](resources/ComplexAnalysis.md)
+    - [Complex Analysis]({% link Course Notes/ComplexAnalysis.md %})
     - Measure Theory (under construction)
     - Analysis - Topics
       - Dynamical Systems (under construction)
       - Functional Analysis (under construction)
       - Harmonic Analysis (under construction)
-      - [Geometric Measure Theory](resources/GMT.md)
+      - [Geometric Measure Theory]({% link Course Notes/GMT.md %})
       - Topological Groups (under construction)
   - Algebra
-    - [Linear Algebra](resources/LinearAlgebra.md)
+    - [Linear Algebra]({% link Course Notes/LinearAlgebra.md %})
     - Introductory Algebra
-      - [Abstract Algebra I](resources/AlgebraI.md)
-      - [Abstract Algebra II](resources/AlgebraII.md)
+      - [Abstract Algebra I]({% link Course Notes/AlgebraI.md %})
+      - [Abstract Algebra II]({% link Course Notes/AlgebraII.md %})
     - Advanced Algebra
-      - [Group Theory](resources/GroupTheory.md)
-      - [Ring Theory](resources/RingTheory.md)
-      - [Module Theory](resources/ModuleTheory.md)
-      - [Field Theory](resources/FieldTheory.md)
+      - [Group Theory]({% link Course Notes/GroupTheory.md %})
+      - [Ring Theory]({% link Course Notes/RingTheory.md %})
+      - [Module Theory]({% link Course Notes/ModuleTheory.md %})
+      - [Field Theory]({% link Course Notes/FieldTheory.md %})
     - Lie Theory (under construction)
   - Differential Equations
     - Ordinary Differential Equations (under construction)
     - Partial Differential Equations I (under construction)
     - Partial Differential Equations - Topics
       - Fluid Flow Equations (under construction)
-      - [Calculus of Variations](resources/CoV.md)
+      - [Calculus of Variations]({% link Lecture Notes/CoV.md %})
   - Probability
     - Probability Theory I (under construction)
     - Topics in Probability
@@ -53,15 +55,11 @@ LibreMath is a personal education project created and developed by Gabriel Gress
     - Differential Geometry (under construction)
 - Philosophy (under construction)
 
-## Syllabi
-
-- [Introduction to Functional Analysis](resources/FunctionalAnalysisSyllabus.md)
-
 ## Anki Decks
 
 **Under Construction**
 
-## Source Files
+# Source Files
 
 The source repository for these resources can be found [here](https://github.com/gjgress/LibreMath).
 

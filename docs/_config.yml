@@ -12,6 +12,10 @@ collections:
   posts:
     output          : true
 theme : minima
+  #title: LibreMath
+  #subtitle: 
+  #author: Gabriel Gress
+  #logo: logo.png
 
 # Handling Reading
 #safe                : false #Cannot change on github pages
@@ -47,7 +51,7 @@ baseurl             : "" # does not include hostname
 show_dir_listing    : false
 
 # Outputting
-permalink           : date
+permalink           : /:categories/:title/
 paginate_path       : /page:num
 timezone            : null
 
